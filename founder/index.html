@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Founder | HardToCrack</title>
-  <meta name="description" content="Página de contacto del fundador de HardToCrack. Muy pronto.">
+  <meta name="description" content="Conoce la visión del fundador de HardToCrack y el propósito de construir una infraestructura de privacidad digital para Europa.">
   <meta name="theme-color" content="#070b12">
   <link rel="icon" type="image/png" href="assets/ht-logo.png">
   <style>
@@ -73,6 +73,77 @@
     .contact svg{width:18px;height:18px;stroke:url(#mailGradient);fill:none;stroke-width:1.8}
     footer{margin-top:37px;color:#667482;font-size:.75rem;letter-spacing:.08em}
     @media(max-width:600px){.card{padding:43px 20px 28px;border-radius:24px}.logo{width:105px;height:105px}.contact{width:100%;justify-content:center}.tagline{letter-spacing:.18em;font-size:.67rem}}
+
+    .story{
+      max-width:650px;
+      margin:0 auto 34px;
+      text-align:left;
+      color:#c7d2dc;
+      font-size:clamp(.98rem,2vw,1.08rem);
+      line-height:1.78
+    }
+    .story p{margin:0 0 19px}
+    .story strong{color:#fff}
+    .story .mission{
+      margin:26px 0;
+      padding:20px 22px;
+      border:1px solid rgba(35,184,255,.18);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(35,184,255,.055),rgba(32,227,140,.035))
+    }
+    .story ul{
+      list-style:none;
+      padding:0;
+      margin:14px 0 0;
+      display:grid;
+      gap:10px
+    }
+    .story li{
+      position:relative;
+      padding-left:24px;
+      color:#d7e2eb
+    }
+    .story li:before{
+      content:"";
+      position:absolute;
+      left:2px;
+      top:.72em;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--gradient);
+      box-shadow:0 0 12px rgba(35,184,255,.32)
+    }
+    .story .closing{
+      font-size:1.05rem;
+      color:#eef7fb
+    }
+    .hashtags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:25px 0 0
+    }
+    .hashtags a{
+      display:inline-flex;
+      align-items:center;
+      min-height:36px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid rgba(35,184,255,.18);
+      color:#dff8ff;
+      text-decoration:none;
+      background:rgba(35,184,255,.045);
+      font-size:.78rem;
+      font-weight:700;
+      transition:.2s ease
+    }
+    .hashtags a:hover{
+      transform:translateY(-1px);
+      border-color:rgba(32,227,140,.4);
+      background:rgba(32,227,140,.07)
+    }
+
   </style>
 </head>
 <body>
@@ -82,10 +153,41 @@
       <p class="brand">HARD<span>TO</span>CRACK</p>
       <p class="tagline">Security · Privacy · Freedom</p>
       <div class="divider" aria-hidden="true"></div>
-      <div class="eyebrow">Founder access</div>
-      <h1 id="title">Muy <strong>pronto.</strong></h1>
-      <p class="lead">Estamos preparando un acceso privado y directo al ecosistema HardToCrack. Mientras tanto, puede contactar por email.</p>
-      <div class="contacts">
+      <div class="eyebrow">Founder · HardToCrack</div>
+      <h1 id="title">Privacidad.<strong>Libertad digital.</strong></h1>
+
+      <div class="story">
+        <p>Durante más de 20 años me dediqué al trading internacional de productos petrolíferos: negociando con bancos, operando en mercados complejos y liderando equipos bajo presión.</p>
+
+        <p>Esa etapa me enseñó a tomar decisiones difíciles y a ver oportunidades donde otros solo ven riesgo.</p>
+
+        <p>Hoy dirijo toda esa energía hacia algo que considero mucho más importante: <strong>ayudar a las personas a recuperar las riendas de su vida digital.</strong></p>
+
+        <p>Así nace <strong>HardToCrack</strong>. La privacidad, tal como la entendíamos, ha dejado de existir. Nuestros dispositivos, nuestras comunicaciones y nuestros datos están en manos de sistemas que nos vigilan, nos perfilan y nos manipulan.</p>
+
+        <div class="mission">
+          <p><strong>HardToCrack nace para ofrecer una alternativa real:</strong></p>
+          <ul>
+            <li>Configuración profesional de GrapheneOS.</li>
+            <li>VPN y correo electrónico privado.</li>
+            <li>eSIMs locales, regionales y para viajeros.</li>
+            <li>Gestión de dominios personales y corporativos.</li>
+            <li>Próximamente, almacenamiento en la nube con cifrado zero-knowledge, gratuito durante un periodo inicial para nuestros clientes.</li>
+          </ul>
+        </div>
+
+        <p>Esta idea no nace solo para vender tecnología. Nace con la intención, paso a paso, de <strong>construir la infraestructura de privacidad que Europa necesita.</strong> Se trata de defender la libertad en la era digital.</p>
+
+        <p class="closing">Esto es solo el principio. Si te preocupa tu privacidad digital tanto como a mí, sígueme. En las próximas semanas iré compartiendo cómo estamos construyendo esto.</p>
+
+        <div class="hashtags" aria-label="LinkedIn hashtags">
+          <a href="https://www.linkedin.com/search/results/all/?keywords=%23privacidad&origin=HASH_TAG_FROM_FEED" target="_blank" rel="noopener noreferrer">#Privacidad</a>
+          <a href="https://www.linkedin.com/search/results/all/?keywords=%23grapheneos&origin=HASH_TAG_FROM_FEED" target="_blank" rel="noopener noreferrer">#GrapheneOS</a>
+          <a href="https://www.linkedin.com/search/results/all/?keywords=%23ciberseguridad&origin=HASH_TAG_FROM_FEED" target="_blank" rel="noopener noreferrer">#Ciberseguridad</a>
+        </div>
+      </div>
+
+<div class="contacts">
         <a class="contact" href="mailto:founder@hardtocrack.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="mailGradient" x1="0" x2="1"><stop stop-color="#23b8ff"/><stop offset="1" stop-color="#20e38c"/></linearGradient></defs><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
           founder@hardtocrack.com
