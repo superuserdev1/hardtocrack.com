@@ -69,12 +69,18 @@
     }
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .mark{
-      width:38px;height:42px;border:1px solid rgba(34,200,240,.6);
-      clip-path:polygon(50% 0,92% 23%,92% 76%,50% 100%,8% 76%,8% 23%);
-      display:grid;place-items:center;
-      background:linear-gradient(145deg,rgba(34,200,240,.13),rgba(57,229,141,.08));
-      box-shadow:0 0 28px rgba(34,200,240,.12);
-      font-size:.72rem;font-weight:900;letter-spacing:-.05em;
+      width:42px;
+      height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+    .mark img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
     }
     .brand-copy strong{display:block;font-size:1rem;letter-spacing:.04em}
     .brand-copy small{display:block;color:var(--dim);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase}
@@ -221,7 +227,7 @@
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="/">
-      <span class="mark">HT</span>
+      <span class="mark"><img src="/assets/logo-ht.png" alt="HT — HardToCrack"></span>
       <span class="brand-copy">
         <strong>HardToCrack</strong>
         <small>Security · Privacy · Freedom</small>
