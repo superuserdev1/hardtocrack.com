@@ -103,6 +103,42 @@
     .nav-links a{color:var(--muted);font-size:.86rem;font-weight:650;white-space:nowrap}
     .nav-links a:hover,.nav-links a:focus-visible{color:#fff}
     .nav-actions{display:flex;align-items:center;gap:10px}
+    .lang-switcher{
+      display:flex;
+      align-items:center;
+      gap:3px;
+      padding:4px;
+      border:1px solid var(--line2);
+      border-radius:999px;
+      background:rgba(255,255,255,.025);
+      box-shadow:0 8px 26px rgba(0,0,0,.16);
+    }
+    .lang-switcher a{
+      min-width:34px;
+      height:32px;
+      padding:0 8px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:.69rem;
+      font-weight:850;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      transition:.2s ease;
+    }
+    .lang-switcher a:hover,
+    .lang-switcher a:focus-visible{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+      outline:none;
+    }
+    .lang-switcher a.active{
+      color:#03100b;
+      background:var(--grad);
+      box-shadow:0 6px 18px rgba(34,200,240,.15);
+    }
     .menu-button{
       display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);
       background:transparent;color:#fff;cursor:pointer
@@ -318,6 +354,8 @@
       .brand-sub{display:none}
       .nav-actions .secondary{display:none}
       .nav-actions .primary{min-height:42px;padding-inline:14px;font-size:.78rem}
+      .lang-switcher{gap:1px;padding:3px}
+      .lang-switcher a{min-width:30px;height:30px;padding:0 6px;font-size:.62rem}
       .section-head{grid-template-columns:1fr;gap:15px}
       .hero-proof{grid-template-columns:1fr 1fr}
       .hero-proof div{border-right:0;border-bottom:1px solid var(--line);padding:15px 12px 15px 0}
@@ -467,6 +505,12 @@
     </nav>
 
     <div class="nav-actions">
+      <div class="lang-switcher" aria-label="Seleccionar idioma">
+        <a class="active" href="/" lang="es" hreflang="es" aria-current="page">ES</a>
+        <a href="/en/" lang="en" hreflang="en">EN</a>
+        <a href="/nl/" lang="nl" hreflang="nl">NL</a>
+        <a href="/pt/" lang="pt" hreflang="pt">PT</a>
+      </div>
       <a class="btn secondary small" href="https://partners.hardtocrack.eu">Partners</a>
       <a class="btn primary small" href="#pedido">Realizar pedido</a>
       <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
