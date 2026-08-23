@@ -6,14 +6,14 @@
   <title>HardToCrack — Google Pixel con GrapheneOS</title>
   <meta name="description" content="Google Pixel con GrapheneOS, preparación profesional, configuración de privacidad y soporte especializado en castellano.">
   <meta name="theme-color" content="#05080d">
-  <link rel="canonical" href="https://hardtocrack.com/">
+  <link rel="canonical" href="https://hardtocrack.eu/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="HardToCrack">
   <meta property="og:title" content="Privacidad móvil, preparada para ti.">
   <meta property="og:description" content="Google Pixel con GrapheneOS, configuración profesional y soporte especializado.">
-  <meta property="og:url" content="https://hardtocrack.com/">
+  <meta property="og:url" content="https://hardtocrack.eu/">
 
   <style>
     :root{
@@ -134,11 +134,57 @@
       background:rgba(255,255,255,.06);
       outline:none;
     }
-    .lang-switcher a.active{
+    
+.lang-switcher a.active{
       color:#03100b;
       background:var(--grad);
       box-shadow:0 6px 18px rgba(34,200,240,.15);
     }
+    .mobile-lang{
+      display:none;
+      position:relative;
+      flex:0 0 auto;
+    }
+    .mobile-lang button{
+      height:42px;
+      min-width:46px;
+      padding:0 11px;
+      border:1px solid var(--line2);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      color:#fff;
+      font-size:.72rem;
+      font-weight:850;
+      letter-spacing:.05em;
+      cursor:pointer;
+    }
+    .mobile-lang-menu{
+      display:none;
+      position:absolute;
+      top:48px;
+      right:0;
+      min-width:86px;
+      padding:7px;
+      border:1px solid var(--line2);
+      border-radius:12px;
+      background:#071019;
+      box-shadow:var(--shadow);
+      z-index:160;
+    }
+    .mobile-lang.open .mobile-lang-menu{display:grid;gap:3px}
+    .mobile-lang-menu a{
+      display:block;
+      padding:8px 10px;
+      border-radius:8px;
+      color:var(--muted);
+      font-size:.72rem;
+      font-weight:800;
+      text-align:center;
+    }
+    .mobile-lang-menu a:hover,
+    .mobile-lang-menu a:focus-visible{background:rgba(255,255,255,.06);color:#fff}
+    .mobile-lang-menu a.active{background:var(--grad);color:#03100b}
+
     .menu-button{
       display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);
       background:transparent;color:#fff;cursor:pointer
@@ -337,7 +383,7 @@
       .nav-links{display:none}
       .menu-button{display:grid;place-items:center}
       .nav-links.open{
-        display:grid;position:absolute;left:20px;right:20px;top:86px;margin:0;padding:18px;
+        display:grid;position:absolute;left:14px;right:14px;top:76px;margin:0;padding:18px;
         border:1px solid var(--line2);border-radius:17px;background:#071019;box-shadow:var(--shadow)
       }
       .hero-grid{grid-template-columns:1fr;gap:48px}
@@ -352,10 +398,16 @@
       .hero{padding:126px 0 72px}
       h1{font-size:clamp(2.7rem,13vw,4.7rem)}
       .brand-sub{display:none}
+      .nav{gap:10px;min-height:70px}
+      .brand{gap:8px;min-width:0;flex:1 1 auto}
+      .brand img{width:34px;height:38px}
+      .brand-word{font-size:.92rem;letter-spacing:.04em}
+      .nav-actions{gap:7px;flex:0 0 auto}
       .nav-actions .secondary{display:none}
-      .nav-actions .primary{min-height:42px;padding-inline:14px;font-size:.78rem}
-      .lang-switcher{gap:1px;padding:3px}
-      .lang-switcher a{min-width:30px;height:30px;padding:0 6px;font-size:.62rem}
+      .nav-actions .primary{min-height:42px;padding-inline:12px;font-size:.74rem}
+      .lang-switcher{display:none}
+      .mobile-lang{display:block}
+      .menu-button{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px}
       .section-head{grid-template-columns:1fr;gap:15px}
       .hero-proof{grid-template-columns:1fr 1fr}
       .hero-proof div{border-right:0;border-bottom:1px solid var(--line);padding:15px 12px 15px 0}
@@ -459,19 +511,19 @@
     "@graph":[
       {
         "@type":"Organization",
-        "@id":"https://hardtocrack.com/#organization",
+        "@id":"https://hardtocrack.eu/#organization",
         "name":"HardToCrack",
-        "url":"https://hardtocrack.com/",
-        "logo":"https://hardtocrack.com/assets/ht-logo.png",
-        "email":"contact@hardtocrack.com"
+        "url":"https://hardtocrack.eu/",
+        "logo":"https://hardtocrack.eu/assets/ht-logo.png",
+        "email":"contact@hardtocrack.eu"
       },
       {
         "@type":"WebSite",
-        "@id":"https://hardtocrack.com/#website",
-        "url":"https://hardtocrack.com/",
+        "@id":"https://hardtocrack.eu/#website",
+        "url":"https://hardtocrack.eu/",
         "name":"HardToCrack",
         "inLanguage":"es",
-        "publisher":{"@id":"https://hardtocrack.com/#organization"}
+        "publisher":{"@id":"https://hardtocrack.eu/#organization"}
       }
     ]
   }
@@ -505,6 +557,16 @@
     </nav>
 
     <div class="nav-actions">
+      <div class="mobile-lang" id="mobileLang">
+        <button type="button" id="mobileLangBtn" aria-haspopup="true" aria-expanded="false" aria-label="Seleccionar idioma">ES ▾</button>
+        <div class="mobile-lang-menu" aria-label="Idiomas">
+          <a class="active" href="/" lang="es" hreflang="es" aria-current="page">ES</a>
+          <a href="/en/" lang="en" hreflang="en">EN</a>
+          <a href="/nl/" lang="nl" hreflang="nl">NL</a>
+          <a href="/pt/" lang="pt" hreflang="pt">PT</a>
+        </div>
+      </div>
+
       <div class="lang-switcher" aria-label="Seleccionar idioma">
         <a class="active" href="/" lang="es" hreflang="es" aria-current="page">ES</a>
         <a href="/en/" lang="en" hreflang="en">EN</a>
@@ -529,7 +591,7 @@
           <a class="btn primary" href="#paquetes">Ver packs</a>
           <a class="btn secondary" href="#paquetes">Comparar paquetes</a>
         </div>
-        <div class="hero-note">¿Ya tienes un Google Pixel? <a href="mailto:contact@hardtocrack.com?subject=Instalación%20profesional%20de%20GrapheneOS">Solicita instalación profesional →</a></div>
+        <div class="hero-note">¿Ya tienes un Google Pixel? <a href="mailto:contact@hardtocrack.eu?subject=Instalación%20profesional%20de%20GrapheneOS">Solicita instalación profesional →</a></div>
 
         <div class="hero-proof">
           <div><strong>Instalación verificada</strong><span>Proceso técnico controlado</span></div>
@@ -586,7 +648,7 @@
           <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2.4-2.4z"/></svg></div>
           <h3>Ya tengo un Google Pixel</h3>
           <p>Contrata la instalación y configuración profesional sin necesidad de comprar otro dispositivo.</p>
-          <a class="card-link" href="mailto:contact@hardtocrack.com?subject=Instalación%20de%20GrapheneOS">Solicitar instalación →</a>
+          <a class="card-link" href="mailto:contact@hardtocrack.eu?subject=Instalación%20de%20GrapheneOS">Solicitar instalación →</a>
         </article>
         <article class="card reveal">
           <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 19 6v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div>
@@ -852,7 +914,7 @@
         <label class="full-field"><span>Recurso 2026 (opcional)</span><select name="recurso" id="orderResource"><option value="">Ninguno</option><option>Dossier 2026 digital — 39 €</option><option>Dossier 2026 impreso — 49 €</option></select></label>
         <label class="full-field"><span>Comentarios, color, capacidad o necesidades especiales</span><textarea name="comentarios" rows="5" placeholder="Indica cualquier preferencia o consulta adicional."></textarea></label>
         <label class="consent"><input type="checkbox" required><span>Acepto que HardToCrack utilice estos datos exclusivamente para responder a esta solicitud de pedido.</span></label>
-        <div class="order-actions"><button class="btn primary" type="submit">Enviar solicitud de pedido</button><span>Destino: pedidos@hardtocrack.com</span></div>
+        <div class="order-actions"><button class="btn primary" type="submit">Enviar solicitud de pedido</button><span>Destino: pedidos@hardtocrack.eu</span></div>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
         <p class="form-help">Al pulsar el botón se abrirá tu aplicación de correo con la solicitud preparada. El pedido no queda confirmado hasta recibir respuesta con disponibilidad, importe final y métodos de pago.</p>
       </form>
@@ -899,7 +961,7 @@
         <p>Explora los dispositivos disponibles o cuéntanos qué necesitas para recomendarte una configuración proporcionada, clara y sin servicios innecesarios.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#paquetes">Ver packs</a>
-          <a class="btn secondary" href="mailto:contact@hardtocrack.com?subject=Consulta%20HardToCrack">Hablar con HardToCrack</a>
+          <a class="btn secondary" href="mailto:contact@hardtocrack.eu?subject=Consulta%20HardToCrack">Hablar con HardToCrack</a>
         </div>
       </div>
     </div>
@@ -916,9 +978,9 @@
         </a>
         <p>Dispositivos Google Pixel con GrapheneOS, servicios de preparación y un ecosistema orientado a la privacidad digital.</p>
       </div>
-      <div class="footer-col"><h3>Soluciones</h3><a href="#dispositivos">Dispositivos</a><a href="#paquetes">Paquetes</a><a href="#ecosistema">Ecosistema</a><a href="mailto:contact@hardtocrack.com">Empresas</a></div>
-      <div class="footer-col"><h3>Recursos</h3><a href="#dossier-2026">Dossier e informe 2026</a><a href="#pedido">Realizar pedido</a><a href="blog.html">Blog</a><a href="https://partners.hardtocrack.com">Programa Partners</a></div>
-      <div class="footer-col"><h3>Contacto</h3><a href="mailto:pedidos@hardtocrack.com">pedidos@hardtocrack.com</a><a href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a><a href="mailto:partners@hardtocrack.com">partners@hardtocrack.com</a><a href="#faq">Preguntas frecuentes</a></div>
+      <div class="footer-col"><h3>Soluciones</h3><a href="#dispositivos">Dispositivos</a><a href="#paquetes">Paquetes</a><a href="#ecosistema">Ecosistema</a><a href="mailto:contact@hardtocrack.eu">Empresas</a></div>
+      <div class="footer-col"><h3>Recursos</h3><a href="#dossier-2026">Dossier e informe 2026</a><a href="#pedido">Realizar pedido</a><a href="blog.html">Blog</a><a href="https://partners.hardtocrack.eu">Programa Partners</a></div>
+      <div class="footer-col"><h3>Contacto</h3><a href="mailto:pedidos@hardtocrack.eu">pedidos@hardtocrack.eu</a><a href="mailto:contact@hardtocrack.eu">contact@hardtocrack.eu</a><a href="mailto:partners@hardtocrack.eu">partners@hardtocrack.eu</a><a href="#faq">Preguntas frecuentes</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 HardToCrack. Todos los derechos reservados.</span><span>Hardware verificado · Deja de ser el producto</span></div>
   </div>
@@ -1006,10 +1068,29 @@
       'Solicito confirmación de disponibilidad, importe final y métodos de pago.'
     ];
     const subject = `Solicitud de pedido — ${data.get('modelo')} — ${data.get('paquete')}`;
-    const mailto = `mailto:pedidos@hardtocrack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-    document.getElementById('formStatus').textContent = 'Abriendo tu aplicación de correo para enviar la solicitud a pedidos@hardtocrack.com…';
+    const mailto = `mailto:pedidos@hardtocrack.eu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    document.getElementById('formStatus').textContent = 'Abriendo tu aplicación de correo para enviar la solicitud a pedidos@hardtocrack.eu…';
     window.location.href = mailto;
   });
 
 </script>
+
+<script>
+(function(){
+  const lang = document.getElementById('mobileLang');
+  const btn = document.getElementById('mobileLangBtn');
+  if(lang && btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      const open = lang.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(){
+      lang.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  }
+})();
+</script>
+
 </body>
