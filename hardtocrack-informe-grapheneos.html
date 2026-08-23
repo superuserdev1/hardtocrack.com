@@ -1,2417 +1,728 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Informe: Por Qué Necesitas un Pixel + GrapheneOS — hardtocrack.link</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500;600&family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #060a0f;
-  --s1: #0c1118;
-  --s2: #111c28;
-  --s3: #162030;
-  --accent: #22d3ee;
-  --accent2: #0ea5e9;
-  --green: #34d399;
-  --amber: #fbbf24;
-  --red: #f87171;
-  --purple: #a78bfa;
-  --rose: #fb7185;
-  --text: #e2e8f0;
-  --muted: #64748b;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(34,211,238,0.15);
-  --mono: 'DM Mono', monospace;
-  --display: 'Syne', sans-serif;
-  --serif: 'Instrument Serif', serif;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--display);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ── NOISE TEXTURE ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: .4;
-}
-
-/* ── LAYOUT ── */
-.page {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 5rem 3rem;
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-}
-
-.page + .page {
-  border-top: 1px solid var(--border);
-}
-
-/* ── COVER ── */
-.cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 6rem 3rem;
-  position: relative;
-  overflow: hidden;
-}
-.cover-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-.cover-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%);
-  top: -200px;
-  right: -200px;
-  pointer-events: none;
-}
-.cover-glow-2 {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%);
-  bottom: -100px;
-  left: -100px;
-  pointer-events: none;
-}
-
-.tag-line {
-  font-family: var(--mono);
-  font-size: .65rem;
-  color: var(--accent);
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-}
-.tag-line::before {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.cover-title {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -.03em;
-  margin-bottom: 1.5rem;
-}
-.cover-title .accent { color: var(--accent); }
-.cover-title .dim { color: var(--muted); }
-
-.cover-subtitle {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.25rem;
-  color: var(--muted);
-  max-width: 540px;
-  margin-bottom: 3rem;
-  line-height: 1.7;
-}
-
-.cover-meta {
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-}
-.meta-label {
-  font-family: var(--mono);
-  font-size: .58rem;
-  color: var(--muted);
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-.meta-value {
-  font-family: var(--mono);
-  font-size: .78rem;
-  color: var(--text);
-}
-
-.cover-device {
-  position: absolute;
-  right: 3rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 180px;
-  height: 360px;
-  opacity: .15;
-}
-.phone-frame {
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--accent);
-  border-radius: 28px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.phone-notch {
-  position: absolute;
-  top: 12px;
-  width: 60px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 4px;
-  opacity: .6;
-}
-.phone-screen-text {
-  font-family: var(--mono);
-  font-size: .5rem;
-  color: var(--accent);
-  text-align: center;
-  line-height: 1.8;
-}
-.phone-dot {
-  position: absolute;
-  bottom: 12px;
-  width: 30px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  opacity: .4;
-}
-
-/* ── CHAPTER HEADERS ── */
-.chapter-header {
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-.chapter-num {
-  font-family: var(--mono);
-  font-size: .62rem;
-  color: var(--accent);
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-}
-.chapter-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -.02em;
-}
-.chapter-title .hl { color: var(--accent); }
-.chapter-lead {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--muted);
-  margin-top: 1rem;
-  max-width: 600px;
-  line-height: 1.7;
-}
-
-/* ── TOC ── */
-.toc {
-  display: flex;
-  flex-direction: column;
-  gap: .3rem;
-}
-.toc-item {
-  display: flex;
-  align-items: baseline;
-  gap: .5rem;
-  padding: .5rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: .88rem;
-}
-.toc-num {
-  font-family: var(--mono);
-  font-size: .6rem;
-  color: var(--accent);
-  min-width: 2.5rem;
-}
-.toc-name { flex: 1; color: var(--text); }
-.toc-dots {
-  flex: 1;
-  height: 1px;
-  border-bottom: 1px dashed rgba(255,255,255,0.1);
-  margin: 0 .5rem;
-  align-self: center;
-}
-.toc-page {
-  font-family: var(--mono);
-  font-size: .6rem;
-  color: var(--muted);
-}
-
-/* ── CALLOUT ── */
-.callout {
-  border-left: 3px solid var(--accent);
-  background: rgba(34,211,238,0.04);
-  padding: 1.2rem 1.5rem;
-  border-radius: 0 8px 8px 0;
-  margin: 1.5rem 0;
-  font-size: .92rem;
-  line-height: 1.7;
-  color: #94a3b8;
-}
-.callout strong { color: var(--accent); }
-.callout.danger { border-color: var(--red); background: rgba(248,113,113,0.04); }
-.callout.danger strong { color: var(--red); }
-.callout.success { border-color: var(--green); background: rgba(52,211,153,0.04); }
-.callout.success strong { color: var(--green); }
-.callout.amber { border-color: var(--amber); background: rgba(251,191,36,0.04); }
-.callout.amber strong { color: var(--amber); }
-.callout.purple { border-color: var(--purple); background: rgba(167,139,250,0.04); }
-.callout.purple strong { color: var(--purple); }
-
-/* ── TABLES ── */
-.table-wrap {
-  overflow-x: auto;
-  margin: 1.5rem 0;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .82rem;
-}
-th {
-  background: var(--s2);
-  font-family: var(--mono);
-  font-size: .62rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  padding: .9rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border2);
-}
-td {
-  padding: .8rem 1rem;
-  border-bottom: 1px solid var(--border);
-  color: #94a3b8;
-  vertical-align: top;
-  line-height: 1.5;
-}
-tr:last-child td { border-bottom: none; }
-tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
-.td-good { color: var(--green); font-weight: 600; }
-.td-bad { color: var(--red); }
-.td-warn { color: var(--amber); }
-.td-hl { color: var(--text); font-weight: 600; }
-
-/* ── STAT CARDS ── */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.stat-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.2rem;
-  position: relative;
-  overflow: hidden;
-}
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-}
-.stat-card.c-red::before { background: var(--red); }
-.stat-card.c-amber::before { background: var(--amber); }
-.stat-card.c-green::before { background: var(--green); }
-.stat-card.c-cyan::before { background: var(--accent); }
-.stat-card.c-purple::before { background: var(--purple); }
-
-.stat-num {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -.04em;
-  line-height: 1;
-  margin-bottom: .3rem;
-}
-.stat-card.c-red .stat-num { color: var(--red); }
-.stat-card.c-amber .stat-num { color: var(--amber); }
-.stat-card.c-green .stat-num { color: var(--green); }
-.stat-card.c-cyan .stat-num { color: var(--accent); }
-.stat-card.c-purple .stat-num { color: var(--purple); }
-
-.stat-label {
-  font-family: var(--mono);
-  font-size: .6rem;
-  color: var(--muted);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-
-/* ── THREAT DIAGRAM ── */
-.threat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.threat-item {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1rem 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: .4rem;
-}
-.threat-header {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-}
-.threat-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-.ti-red { background: rgba(248,113,113,.12); }
-.ti-amber { background: rgba(251,191,36,.12); }
-.ti-purple { background: rgba(167,139,250,.12); }
-.ti-cyan { background: rgba(34,211,238,.12); }
-
-.threat-name {
-  font-size: .85rem;
-  font-weight: 700;
-  color: var(--text);
-}
-.threat-desc {
-  font-size: .77rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.threat-status {
-  font-family: var(--mono);
-  font-size: .58rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-top: .2rem;
-  padding: .2rem .5rem;
-  border-radius: 3px;
-  align-self: flex-start;
-}
-.ts-exposed { background: rgba(248,113,113,.15); color: var(--red); }
-.ts-blocked { background: rgba(52,211,153,.15); color: var(--green); }
-
-/* ── BAR CHART ── */
-.bar-chart {
-  display: flex;
-  flex-direction: column;
-  gap: .9rem;
-  margin: 1.5rem 0;
-}
-.bar-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.bar-label {
-  font-family: var(--mono);
-  font-size: .65rem;
-  color: var(--muted);
-  min-width: 180px;
-  text-align: right;
-}
-.bar-track {
-  flex: 1;
-  height: 22px;
-  background: var(--s2);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-.bar-fill {
-  height: 100%;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: .5rem;
-  font-family: var(--mono);
-  font-size: .6rem;
-  font-weight: 600;
-  transition: width .8s ease;
-}
-.bf-red { background: linear-gradient(90deg, rgba(248,113,113,.3), var(--red)); color: #fff; }
-.bf-green { background: linear-gradient(90deg, rgba(52,211,153,.3), var(--green)); color: #022c22; }
-.bf-amber { background: linear-gradient(90deg, rgba(251,191,36,.3), var(--amber)); color: #422006; }
-.bf-cyan { background: linear-gradient(90deg, rgba(34,211,238,.3), var(--accent)); color: #062030; }
-
-/* ── COMPARISON CARDS ── */
-.compare-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.compare-col {
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-.compare-col-header {
-  padding: 1rem 1.2rem;
-  font-weight: 700;
-  font-size: .9rem;
-  letter-spacing: -.01em;
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-.cch-bad { background: rgba(248,113,113,.12); color: var(--red); }
-.cch-good { background: rgba(52,211,153,.12); color: var(--green); }
-.compare-item {
-  padding: .7rem 1.2rem;
-  font-size: .8rem;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: flex-start;
-  gap: .5rem;
-  color: #94a3b8;
-  line-height: 1.4;
-  background: var(--s1);
-}
-.compare-item:last-child { border-bottom: none; }
-.ci-icon { flex-shrink: 0; margin-top: 1px; font-size: .85rem; }
-
-/* ── STAR RATINGS ── */
-.extras-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin: 1.5rem 0;
-}
-.extra-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-.extra-card.featured {
-  border-color: rgba(251,191,36,.4);
-  box-shadow: 0 0 30px rgba(251,191,36,.06);
-}
-.extra-card.top {
-  border-color: rgba(34,211,238,.3);
-  box-shadow: 0 0 30px rgba(34,211,238,.05);
-}
-.extra-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-family: var(--mono);
-  font-size: .55rem;
-  padding: .25rem .6rem;
-  border-radius: 20px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.eb-recommended { background: rgba(251,191,36,.15); color: var(--amber); border: 1px solid rgba(251,191,36,.3); }
-.eb-essential { background: rgba(34,211,238,.1); color: var(--accent); border: 1px solid rgba(34,211,238,.2); }
-.eb-loyalty { background: rgba(167,139,250,.1); color: var(--purple); border: 1px solid rgba(167,139,250,.2); }
-.eb-pro { background: rgba(52,211,153,.1); color: var(--green); border: 1px solid rgba(52,211,153,.2); }
-
-.extra-top {
-  padding: 1.2rem 1.4rem .8rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-.extra-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-.ei-cyan { background: rgba(34,211,238,.1); }
-.ei-purple { background: rgba(167,139,250,.1); }
-.ei-amber { background: rgba(251,191,36,.1); }
-.ei-green { background: rgba(52,211,153,.1); }
-.ei-rose { background: rgba(251,113,133,.1); }
-
-.extra-info { flex: 1; }
-.extra-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: .15rem;
-}
-.extra-price {
-  font-family: var(--mono);
-  font-size: .85rem;
-  font-weight: 600;
-}
-
-.stars {
-  display: flex;
-  gap: 3px;
-  align-items: center;
-  margin-top: .4rem;
-}
-.star {
-  font-size: .85rem;
-  filter: grayscale(1) opacity(.3);
-}
-.star.lit { filter: none; }
-.star-amber { color: var(--amber); }
-.star-cyan { color: var(--accent); }
-.star-purple { color: var(--purple); }
-.star-green { color: var(--green); }
-
-.star-label {
-  font-family: var(--mono);
-  font-size: .55rem;
-  color: var(--muted);
-  margin-left: .4rem;
-  letter-spacing: .06em;
-}
-
-.extra-divider {
-  height: 1px;
-  background: var(--border);
-  margin: 0 1.4rem;
-}
-.extra-body {
-  padding: .8rem 1.4rem 1.2rem;
-  font-size: .8rem;
-  color: #64748b;
-  line-height: 1.7;
-}
-.extra-body ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: .3rem;
-}
-.extra-body ul li::before {
-  content: '→ ';
-  color: var(--accent);
-  font-family: var(--mono);
-}
-.extra-body p { margin-bottom: .5rem; }
-
-.extra-impact {
-  display: flex;
-  gap: .5rem;
-  flex-wrap: wrap;
-  margin-top: .6rem;
-}
-.impact-tag {
-  font-family: var(--mono);
-  font-size: .55rem;
-  padding: .18rem .5rem;
-  border-radius: 3px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.it-privacy { background: rgba(34,211,238,.08); color: var(--accent); }
-.it-security { background: rgba(167,139,250,.08); color: var(--purple); }
-.it-anonymity { background: rgba(52,211,153,.08); color: var(--green); }
-.it-comms { background: rgba(251,191,36,.08); color: var(--amber); }
-.it-access { background: rgba(248,113,113,.08); color: var(--red); }
-
-/* ── PROFILE CARDS ── */
-.profiles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.profile-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-}
-.profile-avatar {
-  font-size: 2rem;
-  margin-bottom: .2rem;
-}
-.profile-type {
-  font-family: var(--mono);
-  font-size: .6rem;
-  color: var(--accent);
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-.profile-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-}
-.profile-risk {
-  font-size: .78rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.risk-meter {
-  display: flex;
-  gap: 3px;
-  margin-top: .2rem;
-}
-.risk-dot {
-  width: 14px;
-  height: 5px;
-  border-radius: 2px;
-  background: var(--s3);
-}
-.risk-dot.active { background: var(--red); }
-.risk-dot.active.amber { background: var(--amber); }
-.risk-dot.active.green { background: var(--green); }
-
-/* ── SECTION TITLE ── */
-.section-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 2rem 0 .8rem;
-  letter-spacing: -.01em;
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-}
-.section-title::before {
-  content: '';
-  width: 4px;
-  height: 1em;
-  background: var(--accent);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-/* ── BODY TEXT ── */
-.body-text {
-  font-size: .88rem;
-  color: #94a3b8;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-/* ── CODE / MONO BLOCK ── */
-.mono-block {
-  background: #020508;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1rem 1.2rem;
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: var(--green);
-  line-height: 1.9;
-  margin: 1rem 0;
-  white-space: pre-wrap;
-}
-
-/* ── RECOMMENDED BOX ── */
-.recommended-box {
-  background: linear-gradient(135deg, rgba(34,211,238,.06), rgba(167,139,250,.04));
-  border: 1px solid rgba(34,211,238,.25);
-  border-radius: 14px;
-  padding: 2rem;
-  margin: 2rem 0;
-  position: relative;
-  overflow: hidden;
-}
-.recommended-box::before {
-  content: '★ CONFIGURACIÓN RECOMENDADA';
-  font-family: var(--mono);
-  font-size: .58rem;
-  letter-spacing: .2em;
-  color: var(--amber);
-  display: block;
-  margin-bottom: 1rem;
-}
-.rec-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: .5rem;
-  letter-spacing: -.02em;
-}
-.rec-price {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -.04em;
-  margin-bottom: 1rem;
-}
-.rec-items {
-  display: flex;
-  flex-direction: column;
-  gap: .3rem;
-  margin-bottom: 1.2rem;
-}
-.rec-item {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: var(--green);
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-.rec-item::before { content: '✓'; font-weight: 700; }
-.rec-desc {
-  font-size: .82rem;
-  color: var(--muted);
-  line-height: 1.6;
-  font-style: italic;
-}
-
-/* ── TIMELINE ── */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-  margin: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: .1rem;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 6px;
-  top: 8px;
-  bottom: 8px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--accent), var(--purple), transparent);
-}
-.tl-item {
-  position: relative;
-  padding: .6rem 0 .6rem .5rem;
-  border-bottom: 1px solid var(--border);
-}
-.tl-item:last-child { border-bottom: none; }
-.tl-dot {
-  position: absolute;
-  left: -1.65rem;
-  top: 1rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg);
-}
-.tl-item.danger .tl-dot { background: var(--red); }
-.tl-item.warn .tl-dot { background: var(--amber); }
-.tl-item.success .tl-dot { background: var(--green); }
-
-.tl-date {
-  font-family: var(--mono);
-  font-size: .58rem;
-  color: var(--muted);
-  letter-spacing: .1em;
-}
-.tl-title {
-  font-size: .88rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: .1rem 0;
-}
-.tl-desc {
-  font-size: .77rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* ── ROI TABLE ── */
-.roi-box {
-  background: var(--s1);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 1.5rem 0;
-}
-.roi-header {
-  background: var(--s2);
-  padding: 1rem 1.4rem;
-  font-family: var(--mono);
-  font-size: .65rem;
-  color: var(--accent);
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-.roi-row {
-  display: flex;
-  align-items: center;
-  padding: .8rem 1.4rem;
-  border-bottom: 1px solid var(--border);
-  gap: 1rem;
-  font-size: .82rem;
-}
-.roi-row:last-child { border-bottom: none; }
-.roi-item-name { flex: 1; color: #94a3b8; }
-.roi-value-bad { font-family: var(--mono); font-weight: 700; color: var(--red); min-width: 80px; text-align: right; }
-.roi-value-good { font-family: var(--mono); font-weight: 700; color: var(--green); min-width: 80px; text-align: right; }
-.roi-value-na { font-family: var(--mono); font-size: .65rem; color: var(--muted); min-width: 80px; text-align: right; }
-
-/* ── FOOTER ── */
-.report-footer {
-  background: var(--s1);
-  border-top: 1px solid var(--border);
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-.footer-brand {
-  font-family: var(--mono);
-  font-size: .7rem;
-  color: var(--accent);
-  letter-spacing: .12em;
-}
-.footer-note {
-  font-family: var(--mono);
-  font-size: .58rem;
-  color: var(--muted);
-  text-align: right;
-}
-
-/* ── DIVIDER ── */
-.hr {
-  height: 1px;
-  background: var(--border);
-  margin: 2.5rem 0;
-}
-
-/* ── PAGE BREAK HINT ── */
-.page-break-hint {
-  font-family: var(--mono);
-  font-size: .55rem;
-  color: #1e2a3a;
-  text-align: right;
-  margin-bottom: 4rem;
-  letter-spacing: .12em;
-}
-
-/* ── PIE-LIKE RING ── */
-.ring-wrap {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-}
-.ring-legend {
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-  flex: 1;
-}
-.ring-item {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  font-size: .8rem;
-  color: #94a3b8;
-}
-.ring-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* ── PROGRESS BARS ── */
-.progress-rows {
-  display: flex;
-  flex-direction: column;
-  gap: .8rem;
-  margin: 1.2rem 0;
-}
-.pr-row { display: flex; flex-direction: column; gap: .3rem; }
-.pr-label {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: .62rem;
-  color: var(--muted);
-  letter-spacing: .06em;
-}
-.pr-track {
-  height: 8px;
-  background: var(--s2);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.pr-fill {
-  height: 100%;
-  border-radius: 4px;
-}
-.pf-red { background: linear-gradient(90deg, #7f1d1d, var(--red)); }
-.pf-amber { background: linear-gradient(90deg, #78350f, var(--amber)); }
-.pf-green { background: linear-gradient(90deg, #064e3b, var(--green)); }
-.pf-cyan { background: linear-gradient(90deg, #0c4a6e, var(--accent)); }
-.pf-purple { background: linear-gradient(90deg, #3b0764, var(--purple)); }
-
-@media (max-width: 640px) {
-  .page { padding: 3rem 1.5rem; }
-  .cover { padding: 4rem 1.5rem; }
-  .compare-cols { grid-template-columns: 1fr; }
-  .threat-grid { grid-template-columns: 1fr; }
-  .bar-label { min-width: 120px; font-size: .55rem; }
-  .cover-device { display: none; }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05080d">
+  <title>Informe 2026 — Pixel + GrapheneOS | HardToCrack</title>
+  <meta name="description" content="Informe técnico 2026 sobre privacidad móvil, Google Pixel, GrapheneOS, aislamiento de aplicaciones, Verified Boot, mitigaciones de exploits y modelo de amenazas.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="HardToCrack">
+  <meta property="og:title" content="Informe 2026 — Pixel + GrapheneOS">
+  <meta property="og:description" content="Qué cambia realmente cuando el sistema operativo deja de tratar tus datos como parte del producto.">
+  <style>
+    :root{
+      --bg:#05080d;
+      --bg2:#07111a;
+      --panel:#0b151f;
+      --panel2:#0f1b28;
+      --text:#f4f8fb;
+      --muted:#a5b3bf;
+      --dim:#71808d;
+      --line:rgba(255,255,255,.09);
+      --line2:rgba(255,255,255,.16);
+      --blue:#1685ff;
+      --cyan:#22c8f0;
+      --green:#39e58d;
+      --amber:#f3c969;
+      --red:#ff7d88;
+      --purple:#ab8cff;
+      --grad:linear-gradient(120deg,var(--blue),var(--cyan) 48%,var(--green));
+      --shadow:0 28px 80px rgba(0,0,0,.38);
+      --radius:24px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 8% 0%,rgba(22,133,255,.13),transparent 32rem),
+        radial-gradient(circle at 92% 16%,rgba(57,229,141,.10),transparent 34rem),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      line-height:1.68;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;
+      background-image:
+        linear-gradient(rgba(34,200,240,.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(34,200,240,.06) 1px,transparent 1px);
+      background-size:64px 64px;
+      mask-image:linear-gradient(to bottom,black,transparent 84%);
+    }
+    a{color:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(5,8,13,.78);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+    }
+    .nav{
+      min-height:72px;
+      display:flex;align-items:center;gap:22px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .mark{
+      width:38px;height:42px;border:1px solid rgba(34,200,240,.6);
+      clip-path:polygon(50% 0,92% 23%,92% 76%,50% 100%,8% 76%,8% 23%);
+      display:grid;place-items:center;
+      background:linear-gradient(145deg,rgba(34,200,240,.13),rgba(57,229,141,.08));
+      box-shadow:0 0 28px rgba(34,200,240,.12);
+      font-size:.72rem;font-weight:900;letter-spacing:-.05em;
+    }
+    .brand-copy strong{display:block;font-size:1rem;letter-spacing:.04em}
+    .brand-copy small{display:block;color:var(--dim);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase}
+    .nav-links{margin-left:auto;display:flex;gap:20px;align-items:center}
+    .nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none}
+    .nav-links a:hover{color:#fff}
+    .hero{
+      min-height:calc(100svh - 72px);
+      display:grid;align-items:center;
+      padding:90px 0 80px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:64px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;color:var(--cyan);
+      text-transform:uppercase;letter-spacing:.17em;font-weight:850;font-size:.72rem;margin-bottom:18px
+    }
+    .eyebrow::before{content:"";width:28px;height:1px;background:var(--grad)}
+    h1,h2,h3{margin:0;line-height:1.06;letter-spacing:-.035em}
+    h1{font-size:clamp(3.2rem,7vw,6.4rem);max-width:800px}
+    h2{font-size:clamp(2.2rem,4.7vw,4.4rem)}
+    h3{font-size:1.2rem;letter-spacing:-.02em}
+    .gradient{
+      background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .lead{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.28rem);max-width:760px;margin:28px 0 0}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+    .pill{
+      border:1px solid var(--line2);border-radius:999px;padding:9px 12px;
+      color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;
+      background:rgba(255,255,255,.025)
+    }
+    .threat-map{
+      border:1px solid var(--line2);border-radius:30px;padding:26px;
+      min-height:510px;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 15%,rgba(22,133,255,.22),transparent 42%),
+        radial-gradient(circle at 80% 82%,rgba(57,229,141,.16),transparent 42%),
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.01));
+      box-shadow:var(--shadow)
+    }
+    .threat-map::before{
+      content:"";position:absolute;inset:0;opacity:.35;
+      background-image:radial-gradient(circle,rgba(34,200,240,.42) 1px,transparent 1px);
+      background-size:26px 26px;mask-image:linear-gradient(to bottom,black,transparent 90%);
+    }
+    .tm-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+    .tm-kicker{color:var(--cyan);font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+    .tm-title{font-size:1.6rem;font-weight:850;margin-top:8px}
+    .tm-list{display:grid;gap:10px;margin-top:26px}
+    .tm-item{display:flex;gap:11px;padding:13px;border:1px solid var(--line);border-radius:14px;background:rgba(5,8,13,.46)}
+    .dot{width:8px;height:8px;border-radius:50%;margin-top:8px;flex:0 0 auto}
+    .dot.red{background:var(--red);box-shadow:0 0 14px rgba(255,125,136,.55)}
+    .dot.amber{background:var(--amber);box-shadow:0 0 14px rgba(243,201,105,.5)}
+    .dot.green{background:var(--green);box-shadow:0 0 14px rgba(57,229,141,.5)}
+    .tm-item strong{font-size:.84rem}
+    .tm-item span{display:block;color:var(--dim);font-size:.75rem;margin-top:2px}
+    .tm-foot{margin-top:26px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:18px}
+    .section{padding:100px 0;border-bottom:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:.38fr 1fr;gap:38px;margin-bottom:46px}
+    .chapter{
+      font-size:.7rem;text-transform:uppercase;letter-spacing:.17em;color:var(--cyan);font-weight:850;padding-top:10px
+    }
+    .section-intro{color:var(--muted);max-width:800px;font-size:1.04rem;margin:18px 0 0}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+      background:linear-gradient(150deg,rgba(255,255,255,.038),rgba(255,255,255,.012))
+    }
+    .card .tag{font-size:.64rem;color:var(--cyan);letter-spacing:.13em;text-transform:uppercase;font-weight:850;margin-bottom:10px}
+    .card p{color:var(--muted);font-size:.91rem;margin:12px 0 0}
+    .callout{
+      margin-top:22px;padding:22px 24px;border-radius:18px;border:1px solid rgba(34,200,240,.23);
+      border-left:3px solid var(--cyan);background:rgba(34,200,240,.045);color:var(--muted)
+    }
+    .callout strong{color:#fff}
+    .callout.amber{border-color:rgba(243,201,105,.25);border-left-color:var(--amber);background:rgba(243,201,105,.04)}
+    .callout.green{border-color:rgba(57,229,141,.25);border-left-color:var(--green);background:rgba(57,229,141,.04)}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:20px;margin-top:26px}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{padding:15px 17px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    tr:last-child td{border-bottom:0}
+    th{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);background:rgba(255,255,255,.025)}
+    td{font-size:.86rem;color:var(--muted)}
+    td:first-child{color:#fff;font-weight:750}
+    .good{color:var(--green);font-weight:760}
+    .warn{color:var(--amber);font-weight:760}
+    .bad{color:var(--red);font-weight:760}
+    .stack{display:grid;gap:12px;margin-top:24px}
+    .stack-row{
+      display:grid;grid-template-columns:190px 1fr;gap:18px;
+      border:1px solid var(--line);border-radius:16px;padding:18px;
+      background:rgba(255,255,255,.018)
+    }
+    .stack-row strong{font-size:.88rem}
+    .stack-row p{margin:0;color:var(--muted);font-size:.88rem}
+    .quote{
+      margin-top:34px;font-size:clamp(1.45rem,3vw,2.5rem);line-height:1.25;
+      letter-spacing:-.035em;max-width:920px
+    }
+    .quote span{color:var(--muted)}
+    .sources{display:grid;gap:12px}
+    .source{
+      display:flex;gap:14px;align-items:flex-start;padding:17px 18px;border:1px solid var(--line);border-radius:14px;
+      background:rgba(255,255,255,.015)
+    }
+    .source b{font-size:.85rem}
+    .source a{display:block;color:var(--cyan);font-size:.78rem;margin-top:3px;word-break:break-all}
+    .source p{margin:5px 0 0;color:var(--dim);font-size:.78rem}
+    .footer{padding:42px 0 56px}
+    .footer-grid{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+    .footer strong{font-size:.9rem}
+    .footer p{margin:7px 0 0;color:var(--dim);font-size:.76rem;max-width:700px}
+    .footer a{color:var(--cyan);text-decoration:none}
+    @media (max-width:880px){
+      .nav-links{display:none}
+      .hero-grid,.section-head,.grid-2,.grid-3{grid-template-columns:1fr}
+      .hero{padding-top:60px}
+      .threat-map{min-height:auto}
+      .section-head{gap:14px}
+      .stack-row{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .section{padding:76px 0}
+      h1{font-size:clamp(2.8rem,14vw,4.2rem)}
+      .card{padding:21px}
+      .footer-grid{display:block}
+    }
+    @media print{
+      .site-header{display:none}
+      body{background:#fff;color:#111}
+      body::before{display:none}
+      .hero,.section{min-height:auto;break-inside:avoid;border-color:#ddd}
+      .card,.table-wrap,.stack-row,.source,.callout,.threat-map{break-inside:avoid;border-color:#ccc;background:#fff;box-shadow:none}
+      .muted,.lead,.section-intro,.card p,td,.stack-row p,.source p,.footer p{color:#444!important}
+      .gradient{color:#111;-webkit-text-fill-color:#111;background:none}
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     COVER
-═══════════════════════════════════════════════ -->
-<div class="cover page">
-  <div class="cover-bg-grid"></div>
-  <div class="cover-glow"></div>
-  <div class="cover-glow-2"></div>
-
-  <div class="cover-device">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen-text">
-        GrapheneOS<br>
-        ─────────<br>
-        🔒 SECURE<br>
-        🚫 0 trackers<br>
-        ✓ Verified Boot<br>
-        ─────────<br>
-        hardtocrack.link
-      </div>
-      <div class="phone-dot"></div>
-    </div>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/">
+      <span class="mark">HT</span>
+      <span class="brand-copy">
+        <strong>HardToCrack</strong>
+        <small>Security · Privacy · Freedom</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación del informe">
+      <a href="#modelo">Modelo de amenazas</a>
+      <a href="#graphene">GrapheneOS</a>
+      <a href="#pixel">Pixel</a>
+      <a href="#operativa">Uso real</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
   </div>
+</header>
 
-  <div class="tag-line">hardtocrack.link — Informe de privacidad digital</div>
-
-  <h1 class="cover-title">
-    Tu teléfono<br>
-    <span class="accent">sabe más</span><br>
-    <span class="dim">de ti que tú.</span>
-  </h1>
-
-  <p class="cover-subtitle">
-    Por qué llevar un Pixel con GrapheneOS no es paranoia: es la diferencia entre tener control de tu vida digital o cederla, punto por punto, a empresas que la monetizan sin límite.
-  </p>
-
-  <div class="cover-meta">
-    <div class="meta-item">
-      <span class="meta-label">Documento</span>
-      <span class="meta-value">Informe Técnico-Comercial v2.1</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Edición</span>
-      <span class="meta-value">2026 — GrapheneOS + Pixel 9a</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Elaborado por</span>
-      <span class="meta-value">hardtocrack.link</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Clasificación</span>
-      <span class="meta-value">Divulgación pública</span>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     ÍNDICE
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 00 — Índice de contenidos</div>
-    <h2 class="chapter-title">Tabla de <span class="hl">contenidos</span></h2>
-    <p class="chapter-lead">Estructura del informe. Cada sección puede leerse de forma independiente.</p>
-  </div>
-
-  <div class="toc">
-    <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">El problema: tu Android te observa</span><span class="toc-dots"></span><span class="toc-page">§3</span></div>
-    <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Datos que tu teléfono recopila hoy</span><span class="toc-dots"></span><span class="toc-page">§4</span></div>
-    <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">¿Qué es GrapheneOS? Anatomía de la diferencia</span><span class="toc-dots"></span><span class="toc-page">§5</span></div>
-    <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Comparativa técnica: Stock Android vs GrapheneOS</span><span class="toc-dots"></span><span class="toc-page">§6</span></div>
-    <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Amenazas reales que GrapheneOS neutraliza</span><span class="toc-dots"></span><span class="toc-page">§7</span></div>
-    <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Perfiles de usuario: ¿a quién beneficia más?</span><span class="toc-dots"></span><span class="toc-page">§8</span></div>
-    <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Las configuraciones disponibles</span><span class="toc-dots"></span><span class="toc-page">§9</span></div>
-    <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Los Extras — análisis y valoración ★★★★★</span><span class="toc-dots"></span><span class="toc-page">§10</span></div>
-    <div class="toc-item"><span class="toc-num">09</span><span class="toc-name">Configuración recomendada: el setup completo</span><span class="toc-dots"></span><span class="toc-page">§12</span></div>
-    <div class="toc-item"><span class="toc-num">10</span><span class="toc-name">Análisis coste-beneficio y ROI de privacidad</span><span class="toc-dots"></span><span class="toc-page">§13</span></div>
-    <div class="toc-item"><span class="toc-num">11</span><span class="toc-name">Línea temporal: lo que ha pasado con tu data</span><span class="toc-dots"></span><span class="toc-page">§14</span></div>
-    <div class="toc-item"><span class="toc-num">12</span><span class="toc-name">Conclusión y siguiente paso</span><span class="toc-dots"></span><span class="toc-page">§15</span></div>
-  </div>
-
-  <div class="callout" style="margin-top:2rem;">
-    <strong>Nota metodológica:</strong> Los datos estadísticos citados provienen de estudios publicados por el Yale Privacy Lab, Exodus Privacy, el Electronic Frontier Foundation (EFF), Amnesty International Tech, la UE (GDPR enforcement reports) y auditorías públicas de GrapheneOS. Los precios y configuraciones corresponden a la oferta actual de hardtocrack.link.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 01 — EL PROBLEMA
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 01 — El problema</div>
-    <h2 class="chapter-title">Tu Android<br><span class="hl">te observa.</span></h2>
-    <p class="chapter-lead">No es metáfora. Es arquitectura de software diseñada para extraer valor de tu comportamiento, ubicación y relaciones.</p>
-  </div>
-
-  <p class="body-text">
-    Cuando compras un smartphone con Android de serie — ya sea de Google, Samsung, Xiaomi o cualquier otro fabricante — estás firmando un contrato implícito: acceso al dispositivo a cambio de una vigilancia constante y silenciosa. El problema no es un malware instalado por un tercero malicioso. <strong style="color:var(--text)">El problema está en el sistema operativo mismo.</strong>
-  </p>
-
-  <div class="stats-grid">
-    <div class="stat-card c-red">
-      <div class="stat-num">4.500+</div>
-      <div class="stat-label">datos enviados<br>a Google cada 12h<br>desde un Pixel stock</div>
-    </div>
-    <div class="stat-card c-amber">
-      <div class="stat-num">14,6 MB</div>
-      <div class="stat-label">datos enviados a<br>Google en reposo<br>durante 24 horas</div>
-    </div>
-    <div class="stat-card c-red">
-      <div class="stat-num">72%</div>
-      <div class="stat-label">de las apps Android<br>comparten datos con<br>terceros sin aviso</div>
-    </div>
-    <div class="stat-card c-amber">
-      <div class="stat-num">340+</div>
-      <div class="stat-label">identificadores únicos<br>vinculados a tu<br>perfil en Google</div>
-    </div>
-    <div class="stat-card c-cyan">
-      <div class="stat-num">0</div>
-      <div class="stat-label">datos de telemetría<br>enviados a Google<br>desde GrapheneOS</div>
-    </div>
-  </div>
-
-  <p class="body-text">
-    Un estudio de la Universidad de Trinity College (2021) analizó el tráfico de red de dispositivos Android en reposo. El resultado fue devastador: un Pixel con Android stock envía datos de identificación y localización aproximada a Google cada <strong style="color:var(--text)">4,5 minutos</strong>, incluso con el dispositivo bloqueado, sin apps abiertas y con la sincronización de cuenta desactivada.
-  </p>
-
-  <div class="callout danger">
-    <strong>Lo que Google sabe de ti gracias a tu teléfono:</strong> tu ubicación en tiempo real (y el historial completo), con quién hablas, cuándo y cuánto tiempo, qué apps usas y a qué hora, qué buscas, qué compras, tus preferencias políticas y religiosas inferidas, tu estado de salud inferido, tus rutinas físicas, tus relaciones personales, tu situación económica aproximada.
-  </div>
-
-  <p class="body-text">
-    Y Google no es el único. Samsung añade su propia capa de telemetría. Xiaomi ha sido pillada enviando historial de navegación incluso en modo incógnito. Las apps de terceros —redes sociales, juegos, apps de clima— van por encima de todo esto. <strong style="color:var(--text)">Un teléfono normal es una red de vigilancia que llevas en el bolsillo.</strong>
-  </p>
-
-  <div class="section-title">¿Por qué nadie lo sabe?</div>
-  <p class="body-text">
-    Porque el consentimiento está escondido en Términos y Condiciones de 40.000 palabras que nadie lee. Porque los ajustes de privacidad son intencionadamente confusos. Porque las sanciones regulatorias —aunque crecientes— no cambian el modelo de negocio de base. La GDPR europea ha multado a Google con más de 4.000 millones de euros desde 2018. Google los paga y continúa.
-  </p>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 02 — DATOS QUE RECOPILA
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 02 — El inventario</div>
-    <h2 class="chapter-title">Qué recopila<br><span class="hl">exactamente</span></h2>
-    <p class="chapter-lead">Categorías de datos extraídas de un Android stock durante un día de uso normal.</p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Categoría de dato</th>
-          <th>Destino</th>
-          <th>Frecuencia</th>
-          <th>En GrapheneOS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-hl">Ubicación GPS</td>
-          <td>Google Location Svcs</td>
-          <td class="td-bad">Cada 2-4 min</td>
-          <td class="td-good">Bloqueado por defecto</td>
-        </tr>
-        <tr>
-          <td class="td-hl">IMEI y número de serie</td>
-          <td>Google, fabricante</td>
-          <td class="td-bad">En cada conexión</td>
-          <td class="td-good">No transmitido</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Historial de búsquedas</td>
-          <td>Google Search</td>
-          <td class="td-bad">Tiempo real</td>
-          <td class="td-good">Sin Google instalado</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Redes WiFi vistas</td>
-          <td>Google Maps DB</td>
-          <td class="td-bad">Pasivo, continuo</td>
-          <td class="td-good">No enviado</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Contactos y agenda</td>
-          <td>Google Contacts</td>
-          <td class="td-bad">Sincronización auto</td>
-          <td class="td-good">Local, sin sync forzada</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Historial de llamadas</td>
-          <td>Google / carrier</td>
-          <td class="td-bad">Cada llamada</td>
-          <td class="td-good">Control granular</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Contenido del portapapeles</td>
-          <td>Apps, teclado Gboard</td>
-          <td class="td-bad">Cada copia</td>
-          <td class="td-good">Aislado por perfil</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Sensores (giroscopio, acelerómetro)</td>
-          <td>Análisis de comportamiento</td>
-          <td class="td-bad">Continuo en background</td>
-          <td class="td-good">Permiso granular</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Diagnósticos y crash reports</td>
-          <td>Google / OEM</td>
-          <td class="td-bad">Automático</td>
-          <td class="td-good">Desactivado</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Identificador publicitario (GAID)</td>
-          <td>Red publicitaria global</td>
-          <td class="td-bad">Persistente</td>
-          <td class="td-good">No existe</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Volumen de datos: la foto completa</div>
-
-  <div class="bar-chart">
-    <div class="bar-row">
-      <span class="bar-label">Android Stock (Google)</span>
-      <div class="bar-track"><div class="bar-fill bf-red" style="width:94%">94%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">Samsung OneUI</span>
-      <div class="bar-track"><div class="bar-fill bf-red" style="width:88%">88%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">Xiaomi MIUI</span>
-      <div class="bar-track"><div class="bar-fill bf-red" style="width:96%">96%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">iOS (Apple)</span>
-      <div class="bar-track"><div class="bar-fill bf-amber" style="width:42%">42%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">GrapheneOS</span>
-      <div class="bar-track"><div class="bar-fill bf-green" style="width:2%">~0</div></div>
-    </div>
-  </div>
-  <p style="font-family:var(--mono);font-size:.6rem;color:var(--muted);margin-top:-.5rem">Índice de telemetría hacia servidores del fabricante/SO. Fuente: Trinity College Dublin, 2021 + Exodus Privacy, 2024.</p>
-
-  <div class="callout amber">
-    <strong>El modelo de negocio, en una frase:</strong> Si el producto es gratis, el producto eres tú. Google no cobra por Android porque sus ingresos provienen de vender acceso publicitario a tu perfil de datos. En 2023, Google generó 237.000 millones de dólares, el 77% de publicidad basada en datos de usuarios.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 03 — QUÉ ES GRAPHENEOS
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 03 — La solución</div>
-    <h2 class="chapter-title">Qué es<br><span class="hl">GrapheneOS</span></h2>
-    <p class="chapter-lead">No es un parche ni una app de privacidad. Es una reconstrucción completa del sistema operativo desde los cimientos.</p>
-  </div>
-
-  <p class="body-text">
-    GrapheneOS es un sistema operativo Android de código abierto, auditado públicamente y mantenido por un equipo independiente sin financiación corporativa. Su única misión: seguridad y privacidad sin compromisos. Solo funciona en dispositivos Google Pixel porque son los únicos con hardware de seguridad (<em>Titan M2</em>) y bootloader reconfigurable que permiten reinstalar el arranque verificado después de instalar el SO.
-  </p>
-
-  <div class="compare-cols">
-    <div class="compare-col">
-      <div class="compare-col-header cch-bad">⚠ Android Stock</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Google Services obligatorio en cada arranque</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Telemetría activada por defecto, sin opción real de desactivar</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Apps de Google preinstaladas con acceso profundo al sistema</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Bootloader firmado solo por el fabricante</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Un único perfil de usuario (toda tu vida en un espacio)</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Permisos de apps difíciles de controlar y revocables solo en parte</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Updates de seguridad atadas al ciclo del fabricante (2-3 años)</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Identificadores publicitarios persistentes y únicos</div>
-    </div>
-    <div class="compare-col">
-      <div class="compare-col-header cch-good">✓ GrapheneOS</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Cero Google Services en el arranque. Sandbox opcional</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Telemetría = 0. Confirmado en auditorías de red independientes</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Sin apps preinstaladas de terceros. Solo lo que tú instales</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Bootloader rebloquedo con tu propia clave criptográfica</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Hasta 4 perfiles completamente aislados (trabajo, personal, anónimo)</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Control granular: permisos por sensor, por red, por app</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Actualizaciones de seguridad hasta 2033 en Pixel 9a</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Sin identificador publicitario. Sin huella rastreable por defecto</div>
-    </div>
-  </div>
-
-  <div class="section-title">Características técnicas exclusivas de GrapheneOS</div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Característica</th>
-          <th>Descripción</th>
-          <th>Equivalente en iOS</th>
-          <th>En Android stock</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-hl">Hardened malloc</td>
-          <td>Allocador de memoria con protección contra exploits de memoria</td>
-          <td class="td-warn">Parcial</td>
-          <td class="td-bad">No</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Verified Boot personalizado</td>
-          <td>El dispositivo verifica la integridad del SO en cada arranque</td>
-          <td class="td-warn">Solo con clave Apple</td>
-          <td class="td-warn">Solo con clave Google</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Perfiles aislados</td>
-          <td>Hasta 4 entornos completamente separados, sin comunicación entre ellos</td>
-          <td class="td-bad">No existe</td>
-          <td class="td-bad">No existe</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Sandboxed Google Play</td>
-          <td>Play Store en una caja de arena sin privilegios de sistema</td>
-          <td class="td-bad">No</td>
-          <td class="td-bad">No (está integrado)</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Auto-reboot temporizado</td>
-          <td>Reinicio automático configurable (ej: 72h) para limpiar RAM y claves</td>
-          <td class="td-bad">No</td>
-          <td class="td-bad">No</td>
-        </tr>
-        <tr>
-          <td class="td-hl">USB port control</td>
-          <td>Bloqueo del puerto USB cuando el dispositivo está bloqueado</td>
-          <td class="td-warn">Solo carga en lock</td>
-          <td class="td-bad">No configurable</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Network permission granular</td>
-          <td>Bloquear acceso a internet de cualquier app individualmente</td>
-          <td class="td-bad">No</td>
-          <td class="td-bad">No</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Sensor permission toggle</td>
-          <td>Desactivar todos los sensores con un switch (cámara, mic, giroscopio, etc.)</td>
-          <td class="td-warn">Solo cámara/mic</td>
-          <td class="td-bad">No</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 04 — AMENAZAS
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 04 — Mapa de amenazas</div>
-    <h2 class="chapter-title">Amenazas que<br><span class="hl">GrapheneOS neutraliza</span></h2>
-    <p class="chapter-lead">Cada una de estas amenazas es real, documentada y cotidiana para cualquier usuario de smartphone.</p>
-  </div>
-
-  <div class="threat-grid">
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-red">🎯</div>
-        <div>
-          <div class="threat-name">Fingerprinting publicitario</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Tracking cross-app</div>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Informe técnico 2026 · Edición revisada</div>
+        <h1>Tu móvil no debería ser <span class="gradient">un sensor de terceros.</span></h1>
+        <p class="lead">
+          Un smartphone moderno concentra identidad, conversaciones, ubicación, autenticadores,
+          fotografías, contactos, hábitos y acceso a cuentas. El problema de privacidad no es una sola app:
+          es la suma de arquitectura, permisos, servicios de plataforma, identificadores y decisiones operativas.
+        </p>
+        <div class="hero-meta">
+          <span class="pill">Sin precios</span>
+          <span class="pill">Sin paquetes comerciales</span>
+          <span class="pill">Modelo de amenazas</span>
+          <span class="pill">Pixel + GrapheneOS</span>
+          <span class="pill">Android 17 · 2026</span>
         </div>
       </div>
-      <div class="threat-desc">Redes publicitarias construyen tu perfil único combinando datos de docenas de apps. En Android stock, el GAID lo hace trivial.</div>
-      <div class="threat-status ts-exposed">⚠ EXPUESTO en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ NEUTRALIZADO en GrapheneOS</div>
-    </div>
 
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-red">📍</div>
-        <div>
-          <div class="threat-name">Rastreo de ubicación persistente</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Location history</div>
-        </div>
-      </div>
-      <div class="threat-desc">Google mantiene tu historial de ubicación durante años. En 2023, una investigación AP demostró que desactivar el historial no detiene la recopilación.</div>
-      <div class="threat-status ts-exposed">⚠ EXPUESTO en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ NEUTRALIZADO en GrapheneOS</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-amber">🔓</div>
-        <div>
-          <div class="threat-name">Acceso físico al dispositivo</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Physical access attack</div>
-        </div>
-      </div>
-      <div class="threat-desc">Si alguien obtiene tu teléfono (policía, ladrón, pareja), el USB control y el auto-reboot de GrapheneOS hacen que los datos sean inaccesibles en minutos.</div>
-      <div class="threat-status ts-exposed">⚠ VULNERABLE en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ PROTEGIDO en GrapheneOS</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-red">🏭</div>
-        <div>
-          <div class="threat-name">Telemetría del fabricante</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">OEM data collection</div>
-        </div>
-      </div>
-      <div class="threat-desc">Samsung, Xiaomi y otros OEM añaden sus propias capas de recopilación sobre Android. Documentado y sancionado por reguladores europeos en múltiples ocasiones.</div>
-      <div class="threat-status ts-exposed">⚠ PRESENTE en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ ELIMINADO en GrapheneOS</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-purple">💉</div>
-        <div>
-          <div class="threat-name">Exploits de memoria (0-day)</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Memory corruption attacks</div>
-        </div>
-      </div>
-      <div class="threat-desc">Herramientas como Pegasus o Predator explotan vulnerabilidades de memoria. El hardened malloc de GrapheneOS hace estos ataques órdenes de magnitud más difíciles.</div>
-      <div class="threat-status ts-exposed">⚠ VULNERABLE en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ MUY REDUCIDO en GrapheneOS</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-amber">🌐</div>
-        <div>
-          <div class="threat-name">Vigilancia de red</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Network surveillance</div>
-        </div>
-      </div>
-      <div class="threat-desc">Tu operadora, redes WiFi públicas y potenciales interceptores pueden ver qué apps usan internet y cuándo. GrapheneOS + VPN elimina este vector.</div>
-      <div class="threat-status ts-exposed">⚠ VISIBLE en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ CIFRADO con VPN integrada</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-red">📱</div>
-        <div>
-          <div class="threat-name">Contaminación cruzada de identidades</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Identity cross-contamination</div>
-        </div>
-      </div>
-      <div class="threat-desc">Tu cuenta de trabajo vincula tu identidad real a tus actividades personales. Los perfiles aislados de GrapheneOS los mantienen 100% separados, incluso comparten la misma app.</div>
-      <div class="threat-status ts-exposed">⚠ MEZCLADO en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ SEPARADO en GrapheneOS</div>
-    </div>
-
-    <div class="threat-item">
-      <div class="threat-header">
-        <div class="threat-icon ti-cyan">🔑</div>
-        <div>
-          <div class="threat-name">Acceso forense a datos</div>
-          <div style="font-family:var(--mono);font-size:.58rem;color:var(--muted)">Forensic extraction</div>
-        </div>
-      </div>
-      <div class="threat-desc">Cellebrite y UFED extraen datos de la mayoría de dispositivos. GrapheneOS con auto-reboot y cifrado de arranque complica enormemente la extracción forense.</div>
-      <div class="threat-status ts-exposed">⚠ EXTRACTABLE en stock</div>
-      <div class="threat-status ts-blocked" style="margin-top:.3rem">✓ RESISTENTE en GrapheneOS</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 05 — PERFILES DE USUARIO
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 05 — Perfiles de usuario</div>
-    <h2 class="chapter-title">¿Para quién es<br><span class="hl">imprescindible?</span></h2>
-    <p class="chapter-lead">GrapheneOS no es solo para técnicos. Aquí están los perfiles con mayor riesgo y mayor beneficio.</p>
-  </div>
-
-  <div class="profiles-grid">
-    <div class="profile-card">
-      <div class="profile-avatar">⚖️</div>
-      <div class="profile-type">Perfil 01</div>
-      <div class="profile-name">Abogado / Notario</div>
-      <div class="profile-risk">Maneja datos de clientes bajo secreto profesional. Una filtración = responsabilidad legal y fin de carrera.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--red);margin-top:.2rem">RIESGO MUY ALTO sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">📰</div>
-      <div class="profile-type">Perfil 02</div>
-      <div class="profile-name">Periodista / Investigador</div>
-      <div class="profile-risk">Fuentes confidenciales, comunicaciones sensibles. GrapheneOS es el estándar recomendado por el EFF para periodismo de riesgo.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--red);margin-top:.2rem">RIESGO MUY ALTO sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">💼</div>
-      <div class="profile-type">Perfil 03</div>
-      <div class="profile-name">Empresario / Directivo</div>
-      <div class="profile-risk">Acuerdos confidenciales, datos de empleados, comunicaciones con socios. El espionaje industrial existe y usa las mismas herramientas que la vigilancia masiva.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active amber"></div><div class="risk-dot"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--amber);margin-top:.2rem">RIESGO ALTO sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">🏥</div>
-      <div class="profile-type">Perfil 04</div>
-      <div class="profile-name">Médico / Psicólogo</div>
-      <div class="profile-risk">Datos de salud de pacientes protegidos por ley. La LOPD y el RGPD exigen confidencialidad técnica activa, no solo política.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--red);margin-top:.2rem">RIESGO MUY ALTO sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">🌍</div>
-      <div class="profile-type">Perfil 05</div>
-      <div class="profile-name">Activista / ONG</div>
-      <div class="profile-risk">En muchos países, la comunicación privada puede ser literalmente una cuestión de seguridad personal. GrapheneOS es herramienta de derechos humanos.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--red);margin-top:.2rem">RIESGO EXISTENCIAL sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">🔐</div>
-      <div class="profile-type">Perfil 06</div>
-      <div class="profile-name">Usuario de crypto / Finanzas</div>
-      <div class="profile-risk">Seeds, claves privadas y wallets en un teléfono espía son una invitación al robo. El aislamiento de GrapheneOS protege activos digitales reales.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active"></div><div class="risk-dot active amber"></div><div class="risk-dot"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--amber);margin-top:.2rem">RIESGO ALTO sin protección</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">👤</div>
-      <div class="profile-type">Perfil 07</div>
-      <div class="profile-name">Ciudadano consciente</div>
-      <div class="profile-risk">No tiene nada que esconder pero sí mucho que proteger: su identidad, sus relaciones, su dinero, su tranquilidad. La privacidad es un derecho, no un lujo.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active amber"></div><div class="risk-dot active amber"></div><div class="risk-dot active amber"></div><div class="risk-dot"></div><div class="risk-dot"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--amber);margin-top:.2rem">RIESGO MEDIO — CRECIENTE</div>
-    </div>
-
-    <div class="profile-card">
-      <div class="profile-avatar">🧒</div>
-      <div class="profile-type">Perfil 08</div>
-      <div class="profile-name">Padre / Madre digital</div>
-      <div class="profile-risk">Los hijos también tienen teléfonos. El modelo de perfiles aislados permite supervisión sin invadir la privacidad, y protección real frente a apps predadoras de datos.</div>
-      <div class="risk-meter">
-        <div class="risk-dot active amber"></div><div class="risk-dot active amber"></div><div class="risk-dot active amber"></div><div class="risk-dot"></div><div class="risk-dot"></div>
-      </div>
-      <div style="font-family:var(--mono);font-size:.58rem;color:var(--amber);margin-top:.2rem">RIESGO FAMILIAR</div>
-    </div>
-  </div>
-
-  <div class="callout success">
-    <strong>Conclusión del capítulo:</strong> No existe un perfil de usuario para el que la privacidad digital sea irrelevante. La diferencia es solo de urgencia. Para los perfiles 1-5, un smartphone convencional es un riesgo profesional y legal activo. Para el resto, es una vulnerabilidad latente que solo espera el momento equivocado.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 06 — CONFIGURACIONES
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 06 — Configuraciones</div>
-    <h2 class="chapter-title">Las configuraciones<br><span class="hl">disponibles</span></h2>
-    <p class="chapter-lead">Tres niveles de setup, todos incluyendo instalación, configuración, manual dossier 52 páginas edición 2026, garantía propia de un año y soporte técnico 1 mes por SimpleX.</p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-    <div class="compare-col" style="border-color:rgba(34,211,238,.2)">
-      <div class="compare-col-header" style="background:rgba(34,211,238,.08);color:var(--accent)">🔒 Config 1 Perfil — Owner</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>GrapheneOS última versión estable</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>1 perfil Owner con hardening completo</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Signal, SimpleX Chat, Brave Browser</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Mullvad VPN preconfigurada</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Bitwarden gestor de contraseñas</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Proton Mail + Proton Drive</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Organic Maps (sin Google Maps)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>F-Droid (apps open source)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Auto-reboot 72h configurado</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>USB bloqueado en reposo</div>
-      <div class="compare-item" style="background:rgba(34,211,238,.04)"><span class="ci-icon">💶</span><strong style="color:var(--accent)">+140€</strong></div>
-    </div>
-
-    <div class="compare-col" style="border-color:rgba(167,139,250,.2)">
-      <div class="compare-col-header" style="background:rgba(167,139,250,.08);color:var(--purple)">🛡️ Config 3 Perfiles Aislados</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Todo lo del perfil básico</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>3 perfiles completamente aislados</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Perfil 1 — Owner (privacidad total)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Perfil 2 — Trabajo (Google Play sandboxed)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Perfil 3 — Vacío / personalizable</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Threema preinstalada y configurada</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Orbot (Tor para Android)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>NewPipe (YouTube sin tracking)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Standard Notes (notas cifradas)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Cryptomator (cifrado local)</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Aurora Store (Play sin cuenta Google)</div>
-      <div class="compare-item" style="background:rgba(167,139,250,.04)"><span class="ci-icon">💶</span><strong style="color:var(--purple)">+180€</strong></div>
-    </div>
-  </div>
-
-  <!-- Config 3+ full width -->
-  <div class="compare-col" style="border-color:rgba(251,191,36,.25);border-radius:10px;overflow:hidden;margin-bottom:1.5rem">
-    <div class="compare-col-header" style="background:rgba(251,191,36,.08);color:var(--amber)">⭐ Config 3+ Avanzada — Máxima Personalización</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr">
-      <div class="compare-item"><span class="ci-icon">✓</span>Todo lo de Config 3 Perfiles</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Configuración avanzada de los 3 perfiles según necesidades del cliente</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Apps adicionales preinstaladas según perfil</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Hardening avanzado a nivel de kernel y red</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Sandboxed Google Play configurado con restricciones máximas</div>
-      <div class="compare-item"><span class="ci-icon">✓</span>Sesión de onboarding personalizada por SimpleX</div>
-    </div>
-    <div class="compare-item" style="background:rgba(251,191,36,.05)"><span class="ci-icon">💶</span><strong style="color:var(--amber)">+210€ — Setup definitivo bajo medida</strong></div>
-  </div>
-
-  <div class="callout purple">
-    <strong>¿Qué significa "perfil aislado"?</strong> Es como tener dos teléfonos en uno, con separación a nivel de kernel. Lo que pasa en el perfil de trabajo (cuentas Google, apps de empresa, email corporativo) no puede leer, ver ni acceder a lo que hay en el perfil personal. Ni siquiera comparten el portapapeles. Si una app del perfil de trabajo contiene spyware corporativo, no puede saltar al perfil personal.
-  </div>
-
-  <div class="section-title">Desglose de privacidad por configuración</div>
-
-  <div class="progress-rows">
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 1 perfil — Privacidad</span><span>92 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-green" style="width:92%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 1 perfil — Seguridad activa</span><span>88 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-cyan" style="width:88%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 3 perfiles — Privacidad</span><span>97 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-green" style="width:97%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 3 perfiles — Seguridad activa</span><span>95 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-cyan" style="width:95%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 3+ avanzada — Privacidad</span><span>99 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-green" style="width:99%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Config 3+ avanzada — Seguridad activa</span><span>98 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-cyan" style="width:98%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>Android stock — Privacidad</span><span>8 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-red" style="width:8%"></div></div>
-    </div>
-    <div class="pr-row">
-      <div class="pr-label"><span>iOS último modelo — Privacidad</span><span>41 / 100</span></div>
-      <div class="pr-track"><div class="pr-fill pf-amber" style="width:41%"></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 07 — LOS EXTRAS (Página principal)
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 07 — Los Extras</div>
-    <h2 class="chapter-title">Servicios adicionales<br><span class="hl">★ valorados ★</span></h2>
-    <p class="chapter-lead">Cada extra amplía el escudo de privacidad en una dimensión específica. Valorados por impacto real, exclusividad del servicio y retorno para el cliente.</p>
-  </div>
-
-  <div class="extras-grid">
-
-    <!-- PACK BÁSICO -->
-    <div class="extra-card featured">
-      <span class="extra-badge eb-recommended">⭐ Más vendido</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-cyan">📡</div>
-        <div class="extra-info">
-          <div class="extra-name">Pack Privacidad Anual Básico</div>
-          <div class="extra-price" style="color:var(--accent)">+185€ / año (95 + 60 + 30€)</div>
-          <div class="stars">
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star-label">5/5 — IMPACTO MÁXIMO</span>
+      <div class="threat-map" aria-label="Resumen del modelo de amenazas">
+        <div class="tm-inner">
+          <div>
+            <div class="tm-kicker">// El punto de partida</div>
+            <div class="tm-title">Reducir superficie de ataque, privilegios y exposición de datos.</div>
+            <div class="tm-list">
+              <div class="tm-item">
+                <span class="dot red"></span>
+                <div><strong>Telemetría y ecosistema</strong><span>Qué servicios reciben datos, con qué privilegios y bajo qué identidad.</span></div>
+              </div>
+              <div class="tm-item">
+                <span class="dot amber"></span>
+                <div><strong>Explotación del dispositivo</strong><span>Vulnerabilidades, interfaces físicas, navegador, baseband y apps complejas.</span></div>
+              </div>
+              <div class="tm-item">
+                <span class="dot amber"></span>
+                <div><strong>Correlación de identidad</strong><span>Número, email, cookies, IP, cuentas y patrones de uso pueden volver a unir lo que intentas separar.</span></div>
+              </div>
+              <div class="tm-item">
+                <span class="dot green"></span>
+                <div><strong>Control local</strong><span>Permisos, perfiles, almacenamiento, red, Google Play sandboxed y políticas del sistema.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="tm-foot">
+            La seguridad seria no promete invisibilidad. Define qué amenazas intenta reducir,
+            qué capa las mitiga y qué riesgos siguen existiendo.
           </div>
         </div>
       </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>El extra más impactante en relación calidad/precio. Cubre tres dimensiones de privacidad que el teléfono solo no puede cubrir: <strong style="color:var(--text)">tu tráfico de red, tu identidad en el email, y tu identidad en los dominios que registras.</strong></p>
-        <ul>
-          <li>1 año de Mullvad VPN — sin cuenta, pago anónimo aceptado, auditada</li>
-          <li>Aliases de email ilimitados (SimpleLogin/Addy) — nunca des tu email real</li>
-          <li>Dominio propio para recibir mail sin revelar identidad</li>
-          <li>Sin VPN ≠ sin GrapheneOS. Son capas complementarias</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-privacy">Privacidad</span>
-          <span class="impact-tag it-anonymity">Anonimato</span>
-          <span class="impact-tag it-security">Seguridad de red</span>
+    </div>
+  </section>
+
+  <section class="section" id="modelo">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 01 — Modelo de amenazas</div>
+        <div>
+          <h2>Privacidad no significa <span class="gradient">anonimato automático.</span></h2>
+          <p class="section-intro">
+            Una arquitectura segura empieza separando conceptos. Privacidad, seguridad, anonimato
+            y resistencia forense se solapan, pero no son lo mismo. Confundirlos produce falsas garantías.
+          </p>
         </div>
       </div>
-    </div>
 
-    <!-- PACK PREMIUM -->
-    <div class="extra-card top">
-      <span class="extra-badge eb-pro">🏆 Para clientes PRO</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-purple">📬</div>
-        <div class="extra-info">
-          <div class="extra-name">Pack Privacidad Anual Premium</div>
-          <div class="extra-price" style="color:var(--purple)">+255€ / año (185 + 70€)</div>
-          <div class="stars">
-            <span class="star star-purple lit">★</span>
-            <span class="star star-purple lit">★</span>
-            <span class="star star-purple lit">★</span>
-            <span class="star star-purple lit">★</span>
-            <span class="star star-purple lit">★</span>
-            <span class="star-label">5/5 — SETUP PROFESIONAL COMPLETO</span>
+      <div class="grid-3">
+        <article class="card">
+          <div class="tag">Privacidad</div>
+          <h3>Minimizar exposición</h3>
+          <p>Reducir la cantidad de datos que aplicaciones, proveedores, redes y servicios pueden obtener o correlacionar.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Seguridad</div>
+          <h3>Resistir compromiso</h3>
+          <p>Disminuir la probabilidad y el impacto de vulnerabilidades, malware, escaladas de privilegios y acceso físico.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Anonimato</div>
+          <h3>Romper atribución</h3>
+          <p>Evitar que una actividad pueda vincularse con una identidad real. Requiere disciplina operativa además de tecnología.</p>
+        </article>
+      </div>
+
+      <div class="callout amber">
+        <strong>Principio esencial:</strong> GrapheneOS puede reducir de forma material la superficie de ataque
+        y dar más control sobre datos y permisos, pero no convierte por sí solo al usuario en anónimo.
+        Iniciar sesión con la misma cuenta, reutilizar el mismo número, pagar con identidad real o mezclar perfiles
+        puede volver a correlacionar actividades.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="datos">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 02 — La capa de datos</div>
+        <div>
+          <h2>El riesgo no está en un único dato. Está en <span class="gradient">la correlación.</span></h2>
+          <p class="section-intro">
+            Ubicación, contactos, identificadores, notificaciones, búsquedas y metadatos pueden parecer inocuos por separado.
+            Combinados, permiten construir una representación muy precisa de rutinas, relaciones y contexto.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Vector</th><th>Qué puede revelar</th><th>Control relevante</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ubicación</td><td>Domicilio, trabajo, rutinas, viajes, relaciones presenciales.</td><td>Permisos de ubicación, Wi‑Fi privacy, uso de perfiles y elección de servicios.</td></tr>
+            <tr><td>Contactos</td><td>Grafo social y profesional completo.</td><td>Contact Scopes y separación por perfiles.</td></tr>
+            <tr><td>Red</td><td>Destino de conexiones, horarios, proveedor y dirección IP.</td><td>Permiso de red por app, DNS/VPN cuando corresponda y minimización de apps.</td></tr>
+            <tr><td>Identidad de cuenta</td><td>Email, número, métodos de pago y cuentas vinculadas.</td><td>Separación de identidades y evitar reutilización innecesaria.</td></tr>
+            <tr><td>Sensores</td><td>Movimiento, contexto físico y señales auxiliares.</td><td>Permisos adicionales y política de sensores.</td></tr>
+            <tr><td>Archivos</td><td>Fotos, documentos y metadatos locales.</td><td>Storage Scopes, perfiles y cifrado del sistema.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>El salto conceptual:</strong> no se trata de “desactivar Google” y dar el problema por resuelto.
+        Se trata de controlar qué componentes existen, qué privilegios tienen, qué datos reciben y desde qué identidad operan.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="graphene">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 03 — GrapheneOS</div>
+        <div>
+          <h2>Una plataforma Android centrada en <span class="gradient">hardening.</span></h2>
+          <p class="section-intro">
+            GrapheneOS parte de Android Open Source Project y añade defensas de seguridad y privacidad
+            en múltiples capas: asignador de memoria endurecido, mitigaciones contra explotación,
+            reducción de superficie de ataque, controles de permisos, servicios propios y políticas más estrictas.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="tag">Exploit protection</div>
+          <h3>Endurecimiento de memoria</h3>
+          <p>
+            El objetivo no es asumir que el software nunca tendrá bugs, sino dificultar que un bug
+            se convierta en ejecución fiable de código o en una escalada de privilegios.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Attack surface</div>
+          <h3>Menos interfaces expuestas</h3>
+          <p>
+            Funciones como el control del puerto USB‑C permiten limitar interfaces físicas cuando el dispositivo está bloqueado,
+            reduciendo vectores que no son necesarios para el uso cotidiano.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">App sandbox</div>
+          <h3>Privilegios bajo control</h3>
+          <p>
+            Las aplicaciones continúan dentro del modelo de sandbox de Android. GrapheneOS añade controles de red,
+            sensores, Storage Scopes y Contact Scopes para reducir el acceso a datos.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Data at rest</div>
+          <h3>Auto‑reboot y estado BFU</h3>
+          <p>
+            El reinicio automático configurable ayuda a devolver datos sensibles al estado “Before First Unlock”,
+            donde las claves asociadas a credenciales no permanecen disponibles como después de desbloquear.
+          </p>
+        </article>
+      </div>
+
+      <div class="callout green">
+        <strong>Dato actualizado 2026:</strong> GrapheneOS publicó su primera versión basada en Android 17
+        en junio de 2026. Es una plataforma mantenida activamente, no una ROM congelada sobre una versión antigua de Android.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pixel">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 04 — Por qué Pixel</div>
+        <div>
+          <h2>El hardware importa tanto como <span class="gradient">el sistema operativo.</span></h2>
+          <p class="section-intro">
+            La elección de Pixel no se explica por afinidad con Google. GrapheneOS exige propiedades de hardware,
+            actualización, arranque verificado y soporte de seguridad que no están disponibles de forma equivalente
+            en la mayoría de dispositivos Android.
+          </p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="stack-row">
+          <strong>Verified Boot</strong>
+          <p>Permite verificar la integridad del sistema instalado y detectar modificaciones no autorizadas en la cadena de arranque.</p>
+        </div>
+        <div class="stack-row">
+          <strong>Bootloader relock</strong>
+          <p>Tras una instalación correcta, el bootloader puede volver a bloquearse, restaurando las propiedades de arranque verificado esperadas por GrapheneOS.</p>
+        </div>
+        <div class="stack-row">
+          <strong>Secure Element</strong>
+          <p>El hardware de seguridad de Pixel participa en protección de claves, autenticación y resistencia frente a intentos repetidos de desbloqueo.</p>
+        </div>
+        <div class="stack-row">
+          <strong>Actualizaciones</strong>
+          <p>La seguridad depende de parches continuos para sistema, firmware y componentes. Un dispositivo fuera de soporte deja de ser una base adecuada para un threat model exigente.</p>
+        </div>
+      </div>
+
+      <div class="callout amber">
+        <strong>Importante:</strong> no basta con que un Pixel “pueda arrancar” GrapheneOS.
+        Para una instalación segura debe ser un modelo oficialmente soportado y permitir OEM unlocking.
+        Un terminal bloqueado por operador o con soporte de seguridad finalizado no es equivalente.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="aislamiento">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 05 — Aislamiento</div>
+        <div>
+          <h2>Separar contextos es una de las defensas <span class="gradient">más infravaloradas.</span></h2>
+          <p class="section-intro">
+            Los perfiles de usuario permiten construir compartimentos con aplicaciones y datos separados.
+            La ganancia real no viene de acumular perfiles, sino de diseñar fronteras coherentes y no mezclarlas.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="tag">Owner</div>
+          <h3>Administración</h3>
+          <p>Perfil principal para gestionar el dispositivo y mantener la superficie de uso diario tan limpia como sea razonable.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Trabajo</div>
+          <h3>Contexto profesional</h3>
+          <p>Aplicaciones laborales, contactos profesionales y cuentas de empresa sin mezclarlas con el resto de la actividad personal.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Contexto separado</div>
+          <h3>Uso de mayor exposición</h3>
+          <p>Apps que requieren servicios de Google, redes sociales u otros componentes pueden mantenerse fuera de los contextos más sensibles.</p>
+        </article>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Control</th><th>Qué reduce</th><th>Qué no resuelve</th></tr></thead>
+          <tbody>
+            <tr><td>Network permission</td><td>Impide que una app tenga acceso directo a red.</td><td>No elimina datos que ya hayas entregado a otras apps o cuentas.</td></tr>
+            <tr><td>Storage Scopes</td><td>Permite compatibilidad con apps que piden almacenamiento sin entregarles acceso general a tus archivos.</td><td>No protege lo que eliges compartir explícitamente con la app.</td></tr>
+            <tr><td>Contact Scopes</td><td>Evita entregar la libreta de contactos completa cuando solo necesitas exponer contactos seleccionados.</td><td>No anonimiza conversaciones o metadatos del servicio remoto.</td></tr>
+            <tr><td>Perfiles</td><td>Separa apps y datos entre espacios de usuario.</td><td>No evita correlación externa si reutilizas las mismas identidades.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="googleplay">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 06 — Compatibilidad sin privilegios</div>
+        <div>
+          <h2>Google Play puede existir sin ser <span class="gradient">parte privilegiada del sistema.</span></h2>
+          <p class="section-intro">
+            Una de las diferencias más importantes de GrapheneOS es su capa de compatibilidad para Google Play sandboxed.
+            Cuando se necesita por compatibilidad, puede instalarse como aplicaciones normales dentro del sandbox estándar.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="tag">Sin privilegios especiales</div>
+          <h3>Aplicaciones normales</h3>
+          <p>Google Play no obtiene el modelo de acceso profundamente integrado que tiene en Android certificado convencional. Sus permisos pueden gestionarse como los de otras apps.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Por perfil</div>
+          <h3>Solo donde hace falta</h3>
+          <p>Puede instalarse en un perfil concreto y mantenerse ausente de otros, permitiendo compatibilidad sin convertirlo en requisito global del teléfono.</p>
+        </article>
+      </div>
+
+      <div class="callout">
+        <strong>Consecuencia práctica:</strong> privacidad y compatibilidad dejan de ser una decisión binaria.
+        Puedes mantener un contexto muy austero y, en otro perfil, ejecutar aplicaciones que dependen de Play Services.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="red">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 07 — Red y comunicaciones</div>
+        <div>
+          <h2>El sistema operativo es una capa. <span class="gradient">La red es otra.</span></h2>
+          <p class="section-intro">
+            GrapheneOS controla el dispositivo, pero el operador, el servicio remoto, el proveedor de correo
+            y la aplicación de mensajería siguen formando parte del modelo de amenazas.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="tag">VPN</div>
+          <h3>Oculta tráfico al acceso local</h3>
+          <p>Una VPN puede evitar que la red local o el ISP vean directamente los destinos, pero traslada confianza al proveedor VPN y no sustituye Tor cuando el objetivo es anonimato fuerte.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Mensajería</div>
+          <h3>El protocolo importa</h3>
+          <p>El cifrado de extremo a extremo protege contenido, pero cada servicio maneja de forma distinta identidad, contactos, metadatos y recuperación de cuenta.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Correo e identidad</div>
+          <h3>Minimizar correlación</h3>
+          <p>Alias, dominios separados y cuentas específicas pueden reducir exposición del identificador principal, siempre que no se reutilicen como puente entre contextos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="operativa">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 08 — Seguridad operacional</div>
+        <div>
+          <h2>La configuración técnica falla si <span class="gradient">la operación contradice el modelo.</span></h2>
+          <p class="section-intro">
+            La mayor parte de los errores no requieren romper criptografía. Basta con reutilizar identidades,
+            instalar demasiado software, ignorar actualizaciones o mezclar actividades que se pretendían separar.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Práctica</th><th>Por qué importa</th><th>Enfoque recomendado</th></tr></thead>
+          <tbody>
+            <tr><td>Actualizar rápido</td><td>Los parches corrigen vulnerabilidades explotables en sistema, navegador y firmware.</td><td class="good">Automatizar actualizaciones y no posponerlas sin motivo.</td></tr>
+            <tr><td>PIN/contraseña robustos</td><td>La protección de datos depende también de la entropía de la credencial y del hardware de throttling.</td><td class="good">Usar credenciales resistentes y adecuadas al nivel de riesgo.</td></tr>
+            <tr><td>Auto‑reboot</td><td>Reduce el tiempo que el dispositivo permanece en estado After First Unlock si queda perdido o incautado.</td><td class="good">Elegir un intervalo compatible con el uso real.</td></tr>
+            <tr><td>USB‑C</td><td>Una interfaz física innecesariamente expuesta aumenta superficie de ataque.</td><td class="good">Usar el modo más restrictivo que no rompa el flujo de trabajo.</td></tr>
+            <tr><td>Instalar menos apps</td><td>Cada app añade código, SDKs, permisos y posibles vulnerabilidades.</td><td class="good">Minimizar software y revisar permisos.</td></tr>
+            <tr><td>No mezclar identidades</td><td>La correlación externa puede anular el aislamiento local.</td><td class="good">Definir qué identidad pertenece a cada perfil antes de configurarlo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout amber">
+        <strong>Límite realista:</strong> ningún smartphone de consumo es invulnerable.
+        GrapheneOS busca elevar el coste de explotación, reducir privilegios y dar controles que Android convencional
+        no ofrece de la misma forma. Frente a adversarios de alto nivel, el comportamiento del usuario y la exposición
+        física siguen siendo parte crítica del riesgo.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="conclusion">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// 09 — Conclusión</div>
+        <div>
+          <h2>El objetivo no es desaparecer. Es <span class="gradient">recuperar control.</span></h2>
+          <p class="section-intro">
+            Un Pixel con GrapheneOS no es una promesa de anonimato mágico. Es una plataforma que permite construir
+            un dispositivo móvil con mejores propiedades de seguridad, menos confianza implícita y controles
+            de privacidad más granulares.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="tag">Lo que cambia</div>
+          <h3>Arquitectura y control</h3>
+          <p>
+            Mayor hardening, arranque verificado, aislamiento por perfiles, controles adicionales de permisos,
+            Google Play opcional y sandboxed, auto‑reboot, control USB‑C y una política de actualizaciones centrada en seguridad.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Lo que sigue siendo tuyo</div>
+          <h3>Decisiones operativas</h3>
+          <p>
+            Qué cuentas usas, qué apps instalas, con quién compartes datos, qué perfiles mezclas,
+            qué proveedor de red eliges y qué nivel de exposición física aceptas.
+          </p>
+        </article>
+      </div>
+
+      <p class="quote">
+        La privacidad digital madura no consiste en confiar en una marca.
+        <span>Consiste en diseñar un sistema donde tengas que confiar en menos cosas.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="fuentes">
+    <div class="container">
+      <div class="section-head">
+        <div class="chapter">// Fuentes primarias</div>
+        <div>
+          <h2>Documentación <span class="gradient">verificable.</span></h2>
+          <p class="section-intro">
+            Para evitar convertir un informe técnico en publicidad, las afirmaciones centrales deben poder contrastarse
+            en documentación primaria y actualizarse cuando cambie la plataforma.
+          </p>
+        </div>
+      </div>
+
+      <div class="sources">
+        <div class="source">
+          <span class="dot green"></span>
+          <div>
+            <b>GrapheneOS — Features</b>
+            <a href="https://grapheneos.org/features" target="_blank" rel="noopener">https://grapheneos.org/features</a>
+            <p>Hardening, exploit protection, auto‑reboot, reducción de superficie de ataque y controles del sistema.</p>
+          </div>
+        </div>
+        <div class="source">
+          <span class="dot green"></span>
+          <div>
+            <b>GrapheneOS — Usage Guide</b>
+            <a href="https://grapheneos.org/usage" target="_blank" rel="noopener">https://grapheneos.org/usage</a>
+            <p>Storage Scopes, Contact Scopes, USB‑C, Sandboxed Google Play, Wi‑Fi privacy y uso operativo.</p>
+          </div>
+        </div>
+        <div class="source">
+          <span class="dot green"></span>
+          <div>
+            <b>GrapheneOS — FAQ</b>
+            <a href="https://grapheneos.org/faq" target="_blank" rel="noopener">https://grapheneos.org/faq</a>
+            <p>Dispositivos soportados, cifrado, boot security y respuestas técnicas de referencia.</p>
+          </div>
+        </div>
+        <div class="source">
+          <span class="dot green"></span>
+          <div>
+            <b>GrapheneOS — Releases</b>
+            <a href="https://grapheneos.org/releases" target="_blank" rel="noopener">https://grapheneos.org/releases</a>
+            <p>Registro actualizado de versiones y cambios. En junio de 2026 se inició la base Android 17.</p>
+          </div>
+        </div>
+        <div class="source">
+          <span class="dot amber"></span>
+          <div>
+            <b>Android Open Source Project — Security</b>
+            <a href="https://source.android.com/docs/security" target="_blank" rel="noopener">https://source.android.com/docs/security</a>
+            <p>Modelo de seguridad de Android, sandboxing, verified boot, cifrado y arquitectura de plataforma.</p>
           </div>
         </div>
       </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>El pack básico más ProtonMail con tu dominio propio. Esto significa que <strong style="color:var(--text)">ningún email tuyo pasa jamás por servidores de Google, Microsoft ni ningún proveedor con sede en EEUU</strong>. Tus comunicaciones viven en Suiza, cifradas de extremo a extremo.</p>
-        <ul>
-          <li>Todo lo del Pack Básico</li>
-          <li>ProtonMail con dominio personalizado (ej: tú@tuempresa.com)</li>
-          <li>Cifrado E2E por defecto en todos los emails salientes a otros usuarios Proton</li>
-          <li>Cero acceso de terceros. Proton no puede leer tu correo técnicamente</li>
-          <li>Imprescindible para abogados, médicos, empresarios con dato sensible</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-privacy">Privacidad</span>
-          <span class="impact-tag it-anonymity">Anonimato</span>
-          <span class="impact-tag it-security">Email cifrado</span>
-          <span class="impact-tag it-comms">Comunicaciones</span>
-        </div>
-      </div>
     </div>
+  </section>
+</main>
 
-    <!-- WHATSAPP ANÓNIMO -->
-    <div class="extra-card">
-      <span class="extra-badge eb-essential">✓ Esencial</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-green">💬</div>
-        <div class="extra-info">
-          <div class="extra-name">WhatsApp o Telegram anónimo</div>
-          <div class="extra-price" style="color:var(--green)">+25€ — número desvinculado</div>
-          <div class="stars">
-            <span class="star star-green lit">★</span>
-            <span class="star star-green lit">★</span>
-            <span class="star star-green lit">★</span>
-            <span class="star star-green lit">★</span>
-            <span class="star star-green">★</span>
-            <span class="star-label">4/5 — MUY RECOMENDADO</span>
-          </div>
-        </div>
-      </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>El número de teléfono que usas para crear tu WhatsApp es tu identidad real. <strong style="color:var(--text)">Este servicio activa tu cuenta con un número que no está vinculado a tu SIM, tu nombre ni tu dirección.</strong> A partir de ahí, eres tú quien decide con quién compartes el número real.</p>
-        <ul>
-          <li>Activación con número virtual o eSIM temporal sin KYC</li>
-          <li>La cuenta queda funcionando con tu SIM habitual como línea principal</li>
-          <li>Metadatos mínimos: Telegram especialmente limpio; WhatsApp vía sandboxed Play</li>
-          <li>Combinable: WhatsApp + Telegram juntos por +45€</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-anonymity">Anonimato</span>
-          <span class="impact-tag it-comms">Comunicaciones</span>
-        </div>
-      </div>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>HardToCrack — Informe de Privacidad Móvil 2026</strong>
+      <p>
+        Documento divulgativo y técnico. No garantiza anonimato, invulnerabilidad ni protección frente a todos los adversarios.
+        Las capacidades de GrapheneOS cambian con las versiones; consulta siempre las fuentes primarias enlazadas.
+      </p>
     </div>
-
-    <!-- TRIPLE PACK APPS -->
-    <div class="extra-card featured">
-      <span class="extra-badge eb-recommended">⭐ Mejor valor</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-amber">📲</div>
-        <div class="extra-info">
-          <div class="extra-name">WhatsApp + Telegram + Signal anónimos</div>
-          <div class="extra-price" style="color:var(--amber)">+60€ — triple cobertura</div>
-          <div class="stars">
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star star-amber lit">★</span>
-            <span class="star-label">5/5 — MEJOR RELACIÓN PRECIO/COBERTURA</span>
-          </div>
-        </div>
-      </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>El setup de comunicaciones completo. Tres apps de mensajería, tres identidades, tres vectores de comunicación diferenciados. <strong style="color:var(--text)">WhatsApp para el mundo, Telegram para grupos y canales, Signal para comunicaciones de máxima confianza.</strong> Ninguna con tu número real de identidad.</p>
-        <ul>
-          <li>Cada app activada con número independiente y no vinculado</li>
-          <li>Signal: el protocolo más auditado del mundo, recomendado por Snowden</li>
-          <li>Compartimentación de contextos: familia, trabajo, privacidad</li>
-          <li>Ahorro vs. contratar por separado: de 80€ a 60€</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-anonymity">Anonimato</span>
-          <span class="impact-tag it-comms">Comunicaciones</span>
-          <span class="impact-tag it-privacy">Privacidad</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- THREEMA -->
-    <div class="extra-card">
-      <span class="extra-badge eb-loyalty">💎 Fidelidad</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-rose">🔐</div>
-        <div class="extra-info">
-          <div class="extra-name">Licencia Threema</div>
-          <div class="extra-price" style="color:var(--rose)">+15€ — de por vida</div>
-          <div class="stars">
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan">★</span>
-            <span class="star-label">4/5 — ÚNICO EN SU CLASE</span>
-          </div>
-        </div>
-      </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>Threema es la única app de mensajería masiva que <strong style="color:var(--text)">no requiere número de teléfono para registrarse</strong>. Tu identidad es un ID alfanumérico aleatorio que tú controlas. Sede en Suiza, cifrado E2E, código abierto y auditado. Precio ridículo para lo que ofrece.</p>
-        <ul>
-          <li>Sin número de teléfono = sin identidad real vinculada</li>
-          <li>Sin servidor central de directorio. Sin acceso a tus contactos</li>
-          <li>Muy popular en entornos corporativos europeos y de defensa</li>
-          <li>Licencia de pago única. Sin suscripciones, sin publicidad</li>
-          <li>15€ incluye instalación, configuración y primer mes de soporte</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-anonymity">Anonimato total</span>
-          <span class="impact-tag it-comms">Comunicaciones</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- eSIM ANÓNIMA -->
-    <div class="extra-card top">
-      <span class="extra-badge eb-loyalty">💎 Diferencial</span>
-      <div class="extra-top">
-        <div class="extra-icon-wrap ei-cyan">📶</div>
-        <div class="extra-info">
-          <div class="extra-name">Activación eSIM anónima</div>
-          <div class="extra-price" style="color:var(--accent)">+10€ + datos eSIM</div>
-          <div class="stars">
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star star-cyan lit">★</span>
-            <span class="star-label">5/5 — NIVEL MÁXIMO DE PRIVACIDAD MÓVIL</span>
-          </div>
-        </div>
-      </div>
-      <div class="extra-divider"></div>
-      <div class="extra-body">
-        <p>El último y más poderoso eslabón. Una eSIM es una SIM virtual, activada sin necesidad de presentar un DNI o nombre real en ninguna operadora. <strong style="color:var(--text)">Conectividad sin identidad.</strong> Se paga en crypto. No hay contratos. No hay registros.</p>
-        <ul>
-          <li>Sin KYC (Know Your Customer): sin DNI, sin nombre, sin dirección</li>
-          <li>Pago aceptado en Monero (privado por diseño) o Bitcoin</li>
-          <li>Cobertura global o regional según plan elegido</li>
-          <li>El número de línea no está registrado a tu nombre en ninguna base de datos</li>
-          <li>Combinado con VPN + GrapheneOS: el trifecta de anonimato móvil completo</li>
-          <li>Recarga o renovación también anónima</li>
-        </ul>
-        <div class="extra-impact">
-          <span class="impact-tag it-anonymity">Anonimato total</span>
-          <span class="impact-tag it-privacy">Privacidad</span>
-          <span class="impact-tag it-access">Conectividad</span>
-          <span class="impact-tag it-security">Seguridad operacional</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 08 — CONFIGURACIÓN RECOMENDADA
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 08 — Setup completo</div>
-    <h2 class="chapter-title">La configuración<br><span class="hl">recomendada</span></h2>
-    <p class="chapter-lead">El setup que recomendamos a nuestros clientes más comprometidos con su privacidad. Listo para usar desde el primer encendido.</p>
-  </div>
-
-  <div class="recommended-box">
-    <div class="rec-title">Pixel 9a + GrapheneOS Full Privacy Setup</div>
-    <div class="rec-price">925€ <span style="font-size:1rem;color:var(--muted);font-weight:400">todo incluido</span></div>
-
-    <div class="rec-items">
-      <div class="rec-item">Pixel 9a 128GB — Nuevo sellado (380€ + 20€ fee gestión)</div>
-      <div class="rec-item">GrapheneOS 3 perfiles aislados (+160€)</div>
-      <div class="rec-item">Pack Privacidad Anual Básico (+185€/año)</div>
-      <div class="rec-item">WhatsApp + Telegram + Signal anónimos (+60€)</div>
-      <div class="rec-item">Licencia Threema (+15€)</div>
-      <div class="rec-item">Activación eSIM anónima (+10€ + datos eSIM)</div>
-    </div>
-
-    <div style="margin:1rem 0 .8rem;display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;">
-      <span style="font-family:var(--mono);font-size:.6rem;color:var(--amber);letter-spacing:.15em;text-transform:uppercase;">✦ Pack Accesorios hardtocrack</span>
-      <span style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--amber)">+75€</span>
-      <span style="font-family:var(--mono);font-size:.6rem;color:var(--muted);">Pack valorado en más de 150€ — sin contar la garantía propia de 1 año</span>
-    </div>
-    <div class="rec-items" style="display:grid;grid-template-columns:1fr 1fr;gap:.25rem .5rem;">
-      <div class="rec-item" style="color:#64748b;">🔒 Pantalla anti-espía</div>
-      <div class="rec-item" style="color:#64748b;">📡 Bolsa Faraday — bloqueo de señal</div>
-      <div class="rec-item" style="color:#64748b;">⚡ Cargador 30W + cable distribución Google</div>
-      <div class="rec-item" style="color:#64748b;">🛡️ Carcasa gama media-alta</div>
-      <div class="rec-item" style="color:#64748b;">📖 Manual dossier 52 pág. edición 2026</div>
-      <div class="rec-item" style="color:#64748b;">🔧 Soporte técnico 1 mes vía SimpleX</div>
-      <div class="rec-item" style="color:#64748b;">✅ Garantía propia 1 año</div>
-      <div class="rec-item" style="color:#64748b;">📦 Caja plástica antigolpes de transporte</div>
-      <div class="rec-item" style="color:#64748b;grid-column:1/-1;">🚚 Envío discreto — caja cartón reciclado, sin logos ni nombres, entrega segura</div>
-    </div>
-
-    <div style="margin:1rem 0 .5rem;font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;">Opcionales de protección física</div>
-    <div class="rec-items">
-      <div class="rec-item" style="color:#a78bfa;">🏎️ Funda aramida fibra de carbono premium (+45€)</div>
-      <div class="rec-item" style="color:#a78bfa;">🇮🇹 Funda alcántara Made in Italy (+30€)</div>
-    </div>
-
-    <p class="rec-desc" style="margin-top:1rem;">Abres la caja y ya está todo funcionando. Cero configuración adicional. Manual de 52 páginas. Garantía y soporte incluidos. Enviado de forma segura y discreta.</p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Componente</th>
-          <th>Qué resuelve</th>
-          <th>Sin esto</th>
-          <th>Precio</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-hl">Pixel 9a</td>
-          <td>Hardware con Titan M2 y bootloader reconfigurable. El único compatible con GrapheneOS 2026.</td>
-          <td class="td-bad">Sin él, imposible instalar GrapheneOS</td>
-          <td>380€ + 20€</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Accesorios incluidos</td>
-          <td>Pantalla anti-espía + Bolsa Faraday + Cargador 30W + Carcasa + Manual 52 pág. + Caja + Envío discreto + Soporte 1 mes + Garantía 1 año</td>
-          <td class="td-warn">Pack valorado en más de 150€ (sin contar garantía 1 año)</td>
-          <td class="td-good">INCLUIDO</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Config 3 perfiles</td>
-          <td>Separación total entre vida personal, trabajo y actividades anónimas</td>
-          <td class="td-warn">Todo en el mismo perfil = una brecha lo compromete todo</td>
-          <td>+160€</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Pack Privacidad Básico</td>
-          <td>VPN (Mullvad), aliases email ilimitados, dominio propio. La primera capa de protección sobre el teléfono</td>
-          <td class="td-warn">Sin VPN, tu operadora ve todo. Sin aliases, tu email real circula</td>
-          <td>+175€/año</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Apps anónimas x3</td>
-          <td>WhatsApp, Telegram y Signal activadas sin tu número real</td>
-          <td class="td-warn">Tu número real = tu identidad = rastreable en OSINT en segundos</td>
-          <td>+60€</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Threema</td>
-          <td>Canal de comunicación sin número de teléfono ni datos personales</td>
-          <td class="td-bad">Sin alternativa equivalente en el mercado</td>
-          <td>+15€</td>
-        </tr>
-        <tr>
-          <td class="td-hl">eSIM anónima</td>
-          <td>Conectividad sin identidad. Sin registros en operadoras</td>
-          <td class="td-warn">Tu SIM está vinculada a tu DNI en todos los países de la UE</td>
-          <td>+10€</td>
-        </tr>
-        <tr style="background:rgba(34,211,238,.04);">
-          <td class="td-hl" style="color:var(--accent);">TOTAL</td>
-          <td style="color:var(--muted);">Setup completo. Pack accesorios valorado en +150€. Paga 925€.</td>
-          <td style="color:var(--muted);">—</td>
-          <td style="color:var(--accent);font-weight:700;font-family:var(--mono);font-size:.95rem;">850€</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="callout success">
-    <strong>El valor que no aparece en el precio:</strong> tranquilidad. Saber que tus comunicaciones, ubicación, hábitos y relaciones no están siendo recopiladas, vendidas ni potencialmente usadas en tu contra. Ese valor es incuantificable. El precio, en cambio, sí lo es: 925€ una sola vez + 175€/año de VPN, aliases y privacidad. Menos de 15€ al mes.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 09 — ANÁLISIS COSTE-BENEFICIO
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 09 — Coste-Beneficio</div>
-    <h2 class="chapter-title">El análisis<br><span class="hl">económico real</span></h2>
-    <p class="chapter-lead">¿Qué cuesta la privacidad? ¿Qué cuesta su ausencia? Los números hablan.</p>
-  </div>
-
-  <div class="section-title">¿Cuánto vale tu dato?</div>
-  <p class="body-text">
-    Google ingresa unos 237.000 millones de dólares al año. Tiene aproximadamente 3.000 millones de usuarios activos. Eso implica un ingreso medio por usuario de unos <strong style="color:var(--text)">79 dólares anuales</strong>. Pero ese es el promedio. Los usuarios premium, de países ricos, con alto poder adquisitivo —exactamente el perfil de quien lee este informe— valen considerablemente más: estimaciones del sector hablan de <strong style="color:var(--amber)">200-500€ anuales</strong> por perfil premium en Europa occidental.
-  </p>
-
-  <div class="stats-grid">
-    <div class="stat-card c-amber">
-      <div class="stat-num">~350€</div>
-      <div class="stat-label">valor estimado<br>de tus datos<br>por año (perfil EU)</div>
-    </div>
-    <div class="stat-card c-red">
-      <div class="stat-num">+4.000M€</div>
-      <div class="stat-label">multas a Google<br>por la UE desde<br>2018 (GDPR)</div>
-    </div>
-    <div class="stat-card c-amber">
-      <div class="stat-num">12€/mes</div>
-      <div class="stat-label">coste mensual del<br>setup completo<br>hardtocrack.link</div>
-    </div>
-    <div class="stat-card c-green">
-      <div class="stat-num">2033</div>
-      <div class="stat-label">último año de<br>soporte de seguridad<br>Pixel 9a</div>
+    <div>
+      <a href="/">hardtocrack.com</a>
     </div>
   </div>
-
-  <div class="roi-box">
-    <div class="roi-header">// Comparativa de ROI: qué obtienes con y sin GrapheneOS</div>
-    <div class="roi-row">
-      <div class="roi-item-name" style="font-weight:700;color:var(--text);font-size:.7rem;font-family:var(--mono);letter-spacing:.08em;">DIMENSIÓN</div>
-      <div class="roi-value-bad" style="font-size:.62rem;letter-spacing:.06em;">SIN GRAPHENE</div>
-      <div class="roi-value-good" style="font-size:.62rem;letter-spacing:.06em;">CON GRAPHENE</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Rastreo de ubicación</div>
-      <div class="roi-value-bad">Constante</div>
-      <div class="roi-value-good">Nulo</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Datos enviados al fabricante / día</div>
-      <div class="roi-value-bad">14,6 MB</div>
-      <div class="roi-value-good">0 MB</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Identidad en mensajería</div>
-      <div class="roi-value-bad">Tu número real</div>
-      <div class="roi-value-good">Anónima</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Email vinculado a identidad</div>
-      <div class="roi-value-bad">Gmail = Google</div>
-      <div class="roi-value-good">Cifrado, suizo</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Vulnerabilidad a Pegasus / spyware</div>
-      <div class="roi-value-bad">Alta</div>
-      <div class="roi-value-good">Muy baja</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Datos en robo/pérdida del dispositivo</div>
-      <div class="roi-value-bad">Accesibles</div>
-      <div class="roi-value-good">Cifrados + auto-reboot</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Separación vida laboral/personal</div>
-      <div class="roi-value-bad">Ninguna</div>
-      <div class="roi-value-good">Perfiles aislados</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Conectividad anónima (eSIM)</div>
-      <div class="roi-value-bad">No disponible</div>
-      <div class="roi-value-good">Sí, sin KYC</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Acceso apps sin cuenta Google</div>
-      <div class="roi-value-bad">Imposible</div>
-      <div class="roi-value-good">F-Droid + Aurora Store</div>
-    </div>
-    <div class="roi-row">
-      <div class="roi-item-name">Actualizaciones de seguridad</div>
-      <div class="roi-value-bad">Hasta 2026-2027</div>
-      <div class="roi-value-good">Hasta 2033</div>
-    </div>
-  </div>
-
-  <div class="callout">
-    <strong>El argumento del coste en contexto:</strong> Un abogado o médico con clientes sensibles que sufre una brecha de datos puede enfrentar multas de 20.000 a 300.000€ por el RGPD, además del daño reputacional. El coste total del setup completo de hardtocrack.link equivale a 3 días de trabajo para la mayoría de profesionales liberales. Y se amortiza en el primer incidente que previene.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 10 — LÍNEA TEMPORAL
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 10 — Cronología</div>
-    <h2 class="chapter-title">Lo que le ha pasado<br><span class="hl">a tu data</span></h2>
-    <p class="chapter-lead">Una selección de los escándalos más relevantes de vigilancia digital. No son excepciones: son el sistema funcionando como fue diseñado.</p>
-  </div>
-
-  <div class="timeline">
-    <div class="tl-item danger">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2013</div>
-      <div class="tl-title">Revelaciones de Snowden — PRISM</div>
-      <div class="tl-desc">La NSA tenía acceso directo a los servidores de Google, Facebook, Apple y Microsoft. Los datos de millones de ciudadanos europeos y del mundo, accesibles por el gobierno de EEUU sin orden judicial.</div>
-    </div>
-    <div class="tl-item danger">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2018</div>
-      <div class="tl-title">Cambridge Analytica — Facebook</div>
-      <div class="tl-desc">87 millones de perfiles extraídos sin consentimiento, usados para microtargeting político en las elecciones presidenciales de EEUU y el Brexit. El mayor escándalo de uso indebido de datos de consumidores de la historia.</div>
-    </div>
-    <div class="tl-item warn">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2019</div>
-      <div class="tl-title">Google pagó 5.000M$ por violar privacidad de menores</div>
-      <div class="tl-desc">La FTC multó a Google y YouTube por recopilar datos de menores de 13 años sin consentimiento parental. Google pagó y continuó.</div>
-    </div>
-    <div class="tl-item danger">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2021</div>
-      <div class="tl-title">Pegasus — NSO Group</div>
-      <div class="tl-desc">50.000 periodistas, activistas, abogados y políticos objetivo de spyware gubernamental instalado sin clic, sin acción del usuario. Explotaba vulnerabilidades del día 0 en iOS y Android stock. GrapheneOS habría reducido el vector de ataque.</div>
-    </div>
-    <div class="tl-item warn">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2022</div>
-      <div class="tl-title">Google multado con 391M$ por rastreo de ubicación oculto</div>
-      <div class="tl-desc">40 estados de EEUU demandaron a Google por guardar historial de ubicación de usuarios aunque hubieran desactivado explícitamente la opción. Los ajustes de privacidad eran teatro.</div>
-    </div>
-    <div class="tl-item warn">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2023</div>
-      <div class="tl-title">Xiaomi enviaba historial de navegación en incógnito</div>
-      <div class="tl-desc">Investigadores confirmaron que el navegador nativo de Xiaomi enviaba URLs visitadas a servidores de la empresa incluso en modo privado/incógnito. Afectó a +500 millones de usuarios.</div>
-    </div>
-    <div class="tl-item danger">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2024</div>
-      <div class="tl-title">EU AI Act + multas Google 2.400M€ por abuso de posición</div>
-      <div class="tl-desc">La UE reconoce que el modelo de datos actual de big tech es incompatible con derechos fundamentales. Las multas crecen pero el modelo no cambia. La única solución real: salirse del sistema.</div>
-    </div>
-    <div class="tl-item success">
-      <div class="tl-dot"></div>
-      <div class="tl-date">2026</div>
-      <div class="tl-title">Pixel 9a + GrapheneOS: el punto de salida disponible hoy</div>
-      <div class="tl-desc">Por primera vez en la historia, un dispositivo de consumo masivo permite salir completamente del ecosistema de vigilancia con una experiencia de usuario comparable a Android convencional. El setup completo existe, funciona y está disponible en hardtocrack.link.</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 11 — MATRIX COMPARATIVA EXTRAS
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 11 — Matriz de extras</div>
-    <h2 class="chapter-title">Qué extra<br><span class="hl">es para ti</span></h2>
-    <p class="chapter-lead">Guía rápida para elegir los servicios adicionales según tu perfil y necesidades.</p>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Extra</th>
-          <th>Precio</th>
-          <th>★ Valoración</th>
-          <th>Perfil ideal</th>
-          <th>Sin él, el riesgo es...</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-hl">Pack Privacidad Básico</td>
-          <td style="color:var(--accent);font-family:var(--mono)">+185€/año</td>
-          <td><span style="color:var(--amber)">★★★★★</span></td>
-          <td>Todos los perfiles</td>
-          <td class="td-bad">Tu tráfico de red visible. Tu email real expuesto.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Pack Privacidad Premium</td>
-          <td style="color:var(--purple);font-family:var(--mono)">+255€/año</td>
-          <td><span style="color:var(--purple)">★★★★★</span></td>
-          <td>Profesionales, empresas</td>
-          <td class="td-bad">Email corporativo en servidores de terceros.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">WhatsApp anónimo</td>
-          <td style="color:var(--green);font-family:var(--mono)">+25€</td>
-          <td><span style="color:var(--green)">★★★★☆</span></td>
-          <td>Cualquiera que use WhatsApp</td>
-          <td class="td-warn">Tu número real vinculado a tu cuenta para siempre.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">WhatsApp + Telegram</td>
-          <td style="color:var(--green);font-family:var(--mono)">+45€</td>
-          <td><span style="color:var(--green)">★★★★★</span></td>
-          <td>Usuarios de ambas plataformas</td>
-          <td class="td-warn">Identidad real en las dos apps más usadas del mundo.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Triple pack mensajería</td>
-          <td style="color:var(--amber);font-family:var(--mono)">+60€</td>
-          <td><span style="color:var(--amber)">★★★★★</span></td>
-          <td>Setup completo recomendado</td>
-          <td class="td-bad">Cobertura incompleta. Una app siempre con tu número real.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">Licencia Threema</td>
-          <td style="color:var(--rose);font-family:var(--mono)">+15€</td>
-          <td><span style="color:var(--accent)">★★★★☆</span></td>
-          <td>Comunicación de alto riesgo</td>
-          <td class="td-warn">Sin alternativa a mensajería sin número de teléfono.</td>
-        </tr>
-        <tr>
-          <td class="td-hl">eSIM anónima</td>
-          <td style="color:var(--accent);font-family:var(--mono)">+10€</td>
-          <td><span style="color:var(--accent)">★★★★★</span></td>
-          <td>Máximo anonimato operacional</td>
-          <td class="td-bad">Tu SIM vincula toda tu actividad móvil a tu identidad legal.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Combinaciones recomendadas por presupuesto</div>
-
-  <div class="bar-chart">
-    <div class="bar-row">
-      <span class="bar-label">Solo teléfono base (400€)</span>
-      <div class="bar-track"><div class="bar-fill bf-amber" style="width:35%">405€ / Privacidad 40%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">+ Config 1 perfil</span>
-      <div class="bar-track"><div class="bar-fill bf-cyan" style="width:54%">540€ / Privacidad 75%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">+ Config 3 perfiles</span>
-      <div class="bar-track"><div class="bar-fill bf-cyan" style="width:60%">580€ / Privacidad 82%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">+ Pack Privacidad Básico</span>
-      <div class="bar-track"><div class="bar-fill bf-green" style="width:78%">755€ / Privacidad 91%</div></div>
-    </div>
-    <div class="bar-row">
-      <span class="bar-label">Setup completo 925€</span>
-      <div class="bar-track"><div class="bar-fill bf-green" style="width:97%">925€ / Privacidad 98%</div></div>
-    </div>
-  </div>
-
-  <div class="callout amber">
-    <strong>Ley de los retornos decrecientes de la privacidad:</strong> El primer euro invertido (el teléfono + GrapheneOS) elimina el 80% del riesgo. Cada extra adicional refina y cierra los vectores restantes. Si el presupuesto es limitado, prioriza: (1) config 3 perfiles, (2) pack privacidad básico, (3) triple pack mensajería, (4) eSIM.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     CAP 12 — CONCLUSIÓN
-═══════════════════════════════════════════════ -->
-<div class="page">
-  <div class="chapter-header">
-    <div class="chapter-num">// 12 — Conclusión</div>
-    <h2 class="chapter-title">La decisión<br><span class="hl">es tuya.</span></h2>
-    <p class="chapter-lead">Pero tomarla con información es diferente a tomarla sin ella.</p>
-  </div>
-
-  <p class="body-text">
-    Este informe ha intentado hacer una sola cosa: <strong style="color:var(--text)">traducir a términos concretos la diferencia entre llevar un smartphone convencional y llevar un Pixel con GrapheneOS.</strong> No en términos de especificaciones técnicas o ideología, sino en términos de riesgo real, datos reales y consecuencias reales.
-  </p>
-
-  <p class="body-text">
-    La privacidad digital no es paranoia. Es el equivalente moderno de cerrar la puerta de tu casa con llave. Nadie te pregunta "¿qué tienes que esconder?" cuando cierras la puerta por la noche. La privacidad es infraestructura de una vida libre y autónoma.
-  </p>
-
-  <div class="compare-cols">
-    <div class="compare-col" style="border-color:rgba(248,113,113,.2)">
-      <div class="compare-col-header cch-bad">Sin GrapheneOS — El día a día</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tu ubicación, registrada cada 4 minutos</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tu número de teléfono, tu identidad real en todas tus apps</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tu email, en servidores de EEUU sin cifrado real</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tus búsquedas, construyendo tu perfil psicológico</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tu historial, vendido a aseguradoras, empleadores y políticos</div>
-      <div class="compare-item"><span class="ci-icon">🔴</span>Tu dispositivo, accesible en caso de robo, análisis forense o petición legal</div>
-    </div>
-    <div class="compare-col" style="border-color:rgba(52,211,153,.2)">
-      <div class="compare-col-header cch-good">Con GrapheneOS + Extras — El día a día</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Tu ubicación, exclusivamente tuya</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Alias en cada servicio. Tu número real, solo para quien tú elijas</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Email cifrado, alojado en Suiza, sin acceso de terceros</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Sin buscador Google. Sin perfil construido sobre ti</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Sin datos vendibles. Sin perfil publicitario</div>
-      <div class="compare-item"><span class="ci-icon">🟢</span>Auto-reboot, cifrado, USB bloqueado. Datos inaccesibles en minutos</div>
-    </div>
-  </div>
-
-  <div class="section-title">Lo que ofrecemos</div>
-  <p class="body-text">
-    En hardtocrack.com no vendemos un teléfono. Vendemos la configuración completa, el conocimiento acumulado de instalar y optimizar GrapheneOS para decenas de perfiles distintos, el soporte posterior, el manual personalizado y la garantía de que cuando enciendes el dispositivo por primera vez, ya estás protegido.
-  </p>
-
-  <div class="mono-block">
-🔒 HARDTOCRACK.COM — SERVICIOS 2026
-
-  DISPOSITIVO
-  ├─ Pixel 9a nuevo · 380€ + 20€ fee gestión
-  │
-  ├─ Pack Accesorios hardtocrack · +75€  (valorado en +150€, excl. garantía)
-
-  CONFIGURACIÓN GrapheneOS
-  ├─ Config 1 perfil (Owner) · +120€
-  ├─ Config 3 perfiles (Owner/Work/Empty) · +160€
-  └─ Config 3+ perfiles avanzada · +180€
-
-  PACKS PRIVACIDAD DIGITAL
-  ├─ Pack Privacidad Básico · +185€/año (95+60+30€)   ★★★★★
-  └─ Pack Privacidad Premium · +255€/año (básico+70€)  ★★★★★
-
-  COMUNICACIONES ANÓNIMAS
-  ├─ WhatsApp anónimo · +25€                           ★★★★☆
-  ├─ Telegram anónimo · +25€                          ★★★★☆
-  ├─ WhatsApp + Telegram · +45€                       ★★★★★
-  ├─ Triple mensajería (WA + Telegram + Signal) · +60€ ★★★★★
-  ├─ Threema license · +15€                           ★★★★☆
-  └─ eSIM anónima · +10€                              ★★★★★
-
-  ACCESORIOS OPCIONALES
-  ├─ Funda aramida fibra carbono premium · +45€
-  └─ Funda alcántara Made in Italy · +30€
-
-  ──────────────────────────────────────────
-  SETUP COMPLETO RECOMENDADO: 925€
-  (Valor total incluido ~970€)
-  ──────────────────────────────────────────
-  hardtocrack.com
-  </div>
-
-  <div class="callout success" style="margin-top:2rem">
-    <strong>El siguiente paso es simple:</strong> contacta a través de hardtocrack.link, cuéntanos tu perfil y te recomendamos exactamente qué configuración tiene sentido para ti. Sin compromiso, sin presión, con información real.
-  </div>
-
-  <div style="text-align:center;margin-top:3rem;padding:2rem;border:1px solid var(--border);border-radius:12px;background:var(--s1)">
-    <div style="font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem">Contacto y más información</div>
-    <div style="font-size:1.8rem;font-weight:800;letter-spacing:-.03em;color:var(--accent)">hardtocrack.com</div>
-    <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:.5rem">Privacy is not a feature. It's a right.</div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════ -->
-<div class="report-footer">
-  <div class="footer-brand">hardtocrack.com — Informe Privacidad Digital 2026</div>
-  <div class="footer-note">
-    Documento elaborado para divulgación y captación de clientes.<br>
-    Datos técnicos verificados. Precios sujetos a actualización.
-  </div>
-</div>
+</footer>
 
 </body>
 </html>
