@@ -1,0 +1,23 @@
+{
+  "name": "hardtocrack.com",
+  "version": "1.0.0",
+  "description": "HardToCrack website - Google Pixel with GrapheneOS",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superuserdev1/hardtocrack.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superuserdev1/hardtocrack.com/issues"
+  },
+  "homepage": "https://github.com/superuserdev1/hardtocrack.com#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
