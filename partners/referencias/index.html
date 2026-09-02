@@ -52,7 +52,7 @@
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite">Enlace copiado</div>
   <script>
-    const DATA_URL="../partners.json";
+    const DATA_URL="/partners/partners.json";
     const state={all:[],filtered:[]};
     const $=id=>document.getElementById(id);
     const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
