@@ -42,7 +42,7 @@
     .code-grid{display:grid;grid-template-columns:1fr .92fr;gap:40px;align-items:start;position:relative;z-index:2}.code-form label{display:block;font-weight:800;font-size:1.08rem;margin-bottom:10px}.code-input-row{display:flex;gap:10px}
     .field{width:100%;min-height:54px;padding:0 16px;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:#080d14;color:white;outline:none}.field:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(34,200,240,.12)}.field::placeholder{color:#708092}
     .helper{color:var(--muted);font-size:.86rem;margin-top:10px}.status{margin-top:16px;min-height:28px;font-size:.92rem}.status.ok{color:#a7f7d2}.status.error{color:var(--warning)}
-    .partner-card{display:none;border:1px solid rgba(57,229,141,.30);border-radius:20px;background:rgba(2,10,10,.48);padding:22px}.partner-card.visible{display:block}.partner-label{margin:0 0 7px;color:#a7f7d2;font-size:.75rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.partner-card h3{font-size:1.65rem;margin-bottom:7px}.partner-meta{color:var(--muted);margin:0 0 18px}.partner-actions{display:flex;flex-wrap:wrap;gap:10px}.demo-note{border:1px dashed rgba(255,255,255,.15);border-radius:18px;padding:22px;color:var(--muted);background:rgba(255,255,255,.025)}.demo-note strong{color:white}
+    .partner-card{display:none;border:1px solid rgba(57,229,141,.30);border-radius:20px;background:rgba(2,10,10,.48);padding:22px}.partner-card.visible{display:block}.partner-label{margin:0 0 7px;color:#a7f7d2;font-size:.75rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.partner-card h3{font-size:1.65rem;margin-bottom:0}.partner-details{display:grid;gap:9px;margin:18px 0 20px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.partner-detail{display:grid;grid-template-columns:minmax(112px,138px) minmax(0,1fr);gap:12px;align-items:center}.partner-detail span{color:var(--muted);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.partner-detail strong{color:#f5f9fc;font-size:.94rem;line-height:1.35}.partner-state{display:inline-flex;align-items:center;gap:7px;justify-self:start;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045)}.partner-state:before{content:"";width:7px;height:7px;border-radius:50%;background:#8493a0}.partner-state[data-state="pendiente"]{color:#ffe19a;border-color:rgba(255,209,102,.26);background:rgba(255,209,102,.07)}.partner-state[data-state="pendiente"]:before{background:#ffd166}.partner-state[data-state="operativo"]{color:#b7f8d9;border-color:rgba(57,229,141,.28);background:rgba(57,229,141,.08)}.partner-state[data-state="operativo"]:before{background:var(--green);box-shadow:0 0 10px rgba(57,229,141,.55)}.partner-actions{display:flex;flex-wrap:wrap;gap:10px}.demo-note{border:1px dashed rgba(255,255,255,.15);border-radius:18px;padding:22px;color:var(--muted);background:rgba(255,255,255,.025)}.demo-note strong{color:white}
     .cards,.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card,.package{padding:25px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:var(--radius);min-height:100%}.card-number{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:11px;color:#061017;background:linear-gradient(135deg,var(--cyan),var(--green));font-weight:900;margin-bottom:22px}.card h3{font-size:1.35rem;margin-bottom:12px}.card p,.package .for{color:var(--muted);margin:0}
     .feature-list{list-style:none;margin:18px 0 0;padding:0}.feature-list li{position:relative;padding-left:24px;margin:10px 0;color:#d7e0e8;font-size:.94rem}.feature-list li:before{content:"";width:8px;height:8px;border-radius:50%;position:absolute;left:0;top:.62em;background:linear-gradient(var(--cyan),var(--green));box-shadow:0 0 15px rgba(34,200,240,.45)}
     .package{position:relative;padding:28px;background:var(--panel);overflow:hidden}.package.featured{border-color:rgba(34,200,240,.40);background:linear-gradient(150deg,rgba(22,133,255,.12),rgba(57,229,141,.05)),var(--panel);transform:translateY(-8px)}.package-badge{position:absolute;right:18px;top:18px;padding:6px 10px;border-radius:99px;background:rgba(57,229,141,.12);color:#a7f7d2;font-weight:800;font-size:.72rem}.package h3{font-size:1.7rem;margin-bottom:8px}.package .for{min-height:52px;margin-bottom:18px}
@@ -84,7 +84,7 @@
         <div class="section-heading"><div class="eyebrow">Identificación del comercio</div><h2>Vincula esta guía con la tienda que te atendió.</h2><p>Introduce la referencia impresa en el díptico. La página mostrará la información del establecimiento y conservará la referencia para una futura consulta o reserva.</p></div>
         <div class="code-shell"><div class="code-grid">
           <div class="code-form"><label for="storeCode">Código de tienda</label><div class="code-input-row"><input class="field" id="storeCode" maxlength="12" autocomplete="off" placeholder="Ejemplo: HTC-MAD-001"><button class="button button-primary" id="identifyButton" type="button">Identificar tienda</button></div><p class="helper">Escanea el QR del Partner o introduce la referencia impresa, por ejemplo <strong>HTC-MAD-001</strong>.</p><div class="status" id="codeStatus" role="status" aria-live="polite"></div><button class="button button-ghost" id="clearCodeButton" type="button" hidden>Cambiar o eliminar código</button></div>
-          <div><div class="demo-note" id="genericPartnerMessage"><strong>Guía general HardToCrack.</strong><br>Escanea el QR de una tienda o introduce su referencia para atribuir correctamente tu consulta al Partner que te atendió.</div><article class="partner-card" id="partnerCard" aria-live="polite"><p class="partner-label">Esta guía te la presenta</p><h3 id="partnerName">Partner oficial HardToCrack</h3><p class="partner-meta" id="partnerMeta">Referencia pendiente de identificar</p><div class="partner-actions"><button class="button button-primary" id="partnerReserveButton" type="button">Hacer pedido o encargo</button><a class="button button-secondary" href="https://www.hardtocrack.com/#paquetes" target="_blank" rel="noopener">Ver paquetes</a><button class="button button-ghost" id="partnerInfoButton" type="button">Solicitar información</button></div></article></div>
+          <div><div class="demo-note" id="genericPartnerMessage"><strong>Guía general HardToCrack.</strong><br>Escanea el QR de una tienda o introduce su referencia para atribuir correctamente tu consulta al Partner que te atendió.</div><article class="partner-card" id="partnerCard" aria-live="polite"><p class="partner-label">Esta guía te la presenta</p><h3 id="partnerName">Partner Oficial HardToCrack</h3><div class="partner-details"><div class="partner-detail"><span>Referencia</span><strong id="partnerReference">Pendiente de identificar</strong></div><div class="partner-detail"><span>Zona comercial</span><strong id="partnerZone">Pendiente de identificar</strong></div><div class="partner-detail"><span>Estado</span><strong class="partner-state" id="partnerStatus" data-state="sin-asignar">Sin asignar</strong></div></div><div class="partner-actions"><button class="button button-primary" id="partnerReserveButton" type="button">Hacer pedido o encargo</button><a class="button button-secondary" href="https://www.hardtocrack.com/#paquetes" target="_blank" rel="noopener">Ver paquetes</a><button class="button button-ghost" id="partnerInfoButton" type="button">Solicitar información</button></div></article></div>
         </div></div>
       </div>
     </section>
@@ -113,7 +113,7 @@
     const ATTRIBUTION_MS=30*24*60*60*1000;
     const CONTACT_EMAIL="contact@hardtocrack.com";
     const $=id=>document.getElementById(id);
-    const storeCode=$("storeCode"),identifyButton=$("identifyButton"),clearCodeButton=$("clearCodeButton"),codeStatus=$("codeStatus"),partnerCard=$("partnerCard"),genericPartnerMessage=$("genericPartnerMessage"),partnerName=$("partnerName"),partnerMeta=$("partnerMeta"),reservationModal=$("reservationModal"),formMessage=$("formMessage"),partnerCodeHidden=$("partnerCodeHidden"),partnerNameHidden=$("partnerNameHidden"),partnerZoneHidden=$("partnerZoneHidden"),requestModeHidden=$("requestModeHidden"),leadIdHidden=$("leadIdHidden"),leadSourceHidden=$("leadSourceHidden"),landingUrlHidden=$("landingUrlHidden"),capturedAtHidden=$("capturedAtHidden"),modalPartnerRef=$("modalPartnerRef"),modalEyebrow=$("modalEyebrow"),submitEmailButton=$("submitEmailButton"),orderEmailFallback=$("orderEmailFallback");
+    const storeCode=$("storeCode"),identifyButton=$("identifyButton"),clearCodeButton=$("clearCodeButton"),codeStatus=$("codeStatus"),partnerCard=$("partnerCard"),genericPartnerMessage=$("genericPartnerMessage"),partnerName=$("partnerName"),partnerReference=$("partnerReference"),partnerZone=$("partnerZone"),partnerStatus=$("partnerStatus"),reservationModal=$("reservationModal"),formMessage=$("formMessage"),partnerCodeHidden=$("partnerCodeHidden"),partnerNameHidden=$("partnerNameHidden"),partnerZoneHidden=$("partnerZoneHidden"),requestModeHidden=$("requestModeHidden"),leadIdHidden=$("leadIdHidden"),leadSourceHidden=$("leadSourceHidden"),landingUrlHidden=$("landingUrlHidden"),capturedAtHidden=$("capturedAtHidden"),modalPartnerRef=$("modalPartnerRef"),modalEyebrow=$("modalEyebrow"),submitEmailButton=$("submitEmailButton"),orderEmailFallback=$("orderEmailFallback");
     let currentAttribution={code:"",source:"direct"};
     identifyButton.disabled=true;
 
@@ -154,6 +154,17 @@
       }
     }
 
+    function getPartnerStatus(partner){
+      const value=String(partner.status||"").trim().toLocaleLowerCase("es");
+      if(["activo","operativo","asignado","asignado y operativo"].includes(value)){
+        return {label:"Asignado y operativo",key:"operativo"};
+      }
+      if(value==="pendiente"){
+        return {label:"Pendiente",key:"pendiente"};
+      }
+      return partner.name?{label:"Asignado y operativo",key:"operativo"}:{label:"Sin asignar",key:"sin-asignar"};
+    }
+
     function saveAttribution(code,source){
       const now=Date.now();
       const record={code,source,capturedAt:now,expiresAt:now+ATTRIBUTION_MS};
@@ -178,9 +189,13 @@
 
     function showPartner(code,partner,{restored=false,source="manual"}={}){
       const record=saveAttribution(code,source);
-      const displayName=partner.name||"Partner oficial HardToCrack";
+      const displayName=partner.name||"Partner Oficial HardToCrack";
+      const status=getPartnerStatus(partner);
       partnerName.textContent=displayName;
-      partnerMeta.textContent=`${partner.zone} · ${partner.status} · ${code}`;
+      partnerReference.textContent=code;
+      partnerZone.textContent=partner.zone||"Sin zona comercial";
+      partnerStatus.textContent=status.label;
+      partnerStatus.dataset.state=status.key;
       partnerCard.classList.add("visible");
       genericPartnerMessage.hidden=true;
       clearCodeButton.hidden=false;
