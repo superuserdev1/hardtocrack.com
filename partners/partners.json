@@ -1,7 +1,7 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "updated_at": "2026-09-02",
-  "total": 117,
+  "total": 150,
   "partners": {
     "HTC-MAD-001": {
       "region": "Comunidad de Madrid",
@@ -821,6 +821,237 @@
       "zone": "Antequera",
       "store_name": "",
       "status": "Pendiente"
+    },
+    "HTC-ZGZ-001": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Zaragoza Centro – Casco Histórico",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ZGZ-002": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Delicias – Universidad – Romareda",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ZGZ-003": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Actur – Arrabal – La Almozara",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ZGZ-004": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Las Fuentes – San José – Torrero",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ZGZ-005": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Utebo – Casetas – Alagón",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ZGZ-006": {
+      "region": "Aragón",
+      "province": "Zaragoza",
+      "zone": "Calatayud",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-001": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Murcia Centro – Gran Vía – Santa Eulalia",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-002": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Murcia Norte – Juan Carlos I – La Flota – Espinardo – Molina",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-003": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Murcia Sur – El Carmen – Infante – El Palmar – Alcantarilla",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-004": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Cartagena",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-005": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Mar Menor – San Javier – Los Alcázares",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MUR-006": {
+      "region": "Región de Murcia",
+      "province": "Murcia",
+      "zone": "Lorca – Águilas",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-001": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Palma Centro – Avenidas – Casco Antiguo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-002": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Palma Poniente – Santa Catalina – Son Armadans",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-003": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Playa de Palma – Llucmajor",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-004": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Calvià – Santa Ponça – Magaluf",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-005": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Marratxí – Inca – Norte de Mallorca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MLL-006": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Manacor – Cala Millor – Este de Mallorca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-001": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Bilbao Centro – Abando – Indautxu",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-002": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Casco Viejo – Begoña – Santutxu – Basauri",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-003": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Deusto – San Ignacio – Zorrotzaurre",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-004": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Barakaldo – Sestao – Portugalete – Santurtzi",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-005": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Getxo – Leioa – Erandio",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TFE-001": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "Santa Cruz Centro – La Salle – Salamanca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TFE-002": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "La Laguna – La Cuesta – Taco",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TFE-003": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "Puerto de la Cruz – La Orotava – Los Realejos",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TFE-004": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "Adeje – Arona – Los Cristianos",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TFE-005": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "Granadilla – El Médano – Candelaria",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LPA-001": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Las Palmas Centro – Triana – Vegueta",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LPA-002": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Mesa y López – Santa Catalina – Guanarteme – Puerto",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LPA-003": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Siete Palmas – Tamaraceite – Ciudad Alta",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LPA-004": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Telde – Jinámar",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LPA-005": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Vecindario – Maspalomas – Playa del Inglés",
+      "store_name": "",
+      "status": "Sin asignar"
     }
   },
   "code_format": "HTC-AAA-000"
