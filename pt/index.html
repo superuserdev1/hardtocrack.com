@@ -372,7 +372,7 @@
   
 
     /* Device mockups */
-    .device-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:30px}
+    .device-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:30px}
     .device-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(17,28,43,.96),rgba(7,12,20,.98));padding:28px;min-height:570px;box-shadow:var(--shadow)}
     .device-card::before{content:"";position:absolute;inset:auto -80px -100px auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(32,227,140,.16),transparent 68%)}
     .device-visual{height:245px;display:grid;place-items:center;margin-bottom:20px;position:relative}
@@ -563,7 +563,7 @@
     <div class="container">
       <div class="section-head reveal">
         <div><div class="eyebrow">Dispositivos compatíveis</div><h2>Pixel preparados para GrapheneOS.</h2></div>
-        <p>Três propostas de hardware para diferentes níveis de orçamento e exigência. Os equipamentos são entregues verificados e combinados com o pacote de preparação escolhido.</p>
+        <p>Quatro propostas de hardware para diferentes níveis de orçamento e exigência. Os equipamentos são entregues verificados e combinados com o pacote de preparação escolhido.</p>
       </div>
       <div class="device-grid">
         <article class="device-card reveal">
@@ -582,12 +582,20 @@
             <li><strong>Ecrã</strong><span>6,3″ Actua OLED, hasta 120 Hz</span></li><li><strong>Processador</strong><span>Google Tensor G4</span></li><li><strong>Memória</strong><span>8 GB RAM · 128/256 GB</span></li><li><strong>Câmaras</strong><span>48 MP + ultra gran angular de 13 MP</span></li><li><strong>Bateria</strong><span>5.100 mAh · más de 30 h</span></li><li><strong>Proteção</strong><span>IP68</span></li>
           </ul>
         </article>
+        <article class="device-card reveal">
+          <div class="device-visual"><div class="phone-mock"><div class="camera-bar"></div></div></div>
+          <span class="device-label">Recomendado</span><h3>Google Pixel 10a</h3>
+          <p class="device-intro">A nossa nova referência pelo equilíbrio entre vida útil, autonomia, segurança e custo.</p>
+          <ul class="spec-list">
+            <li><strong>Ecrã</strong><span>6,3″ Actua pOLED · 60–120 Hz · até 3.000 nits</span></li><li><strong>Processador</strong><span>Google Tensor G4 + Titan M2</span></li><li><strong>Memória</strong><span>8 GB RAM · 128/256 GB</span></li><li><strong>Câmaras</strong><span>48 MP + ultra grande angular de 13 MP</span></li><li><strong>Bateria</strong><span>5.100 mAh · carregamento rápido e Qi</span></li><li><strong>Proteção</strong><span>IP68 · Gorilla Glass 7i · hardware MTE</span></li>
+          </ul>
+        </article>
         <article class="device-card pro reveal">
           <div class="device-visual"><div class="phone-mock"><div class="camera-bar"></div></div></div>
-          <span class="device-label">Profissional</span><h3>Google Pixel 9 Pro</h3>
-          <p class="device-intro">Hardware premium, mais memória e sistema de câmara tripla para profissionais e empresas.</p>
+          <span class="device-label">Topo de gama</span><h3>Google Pixel 10 Pro</h3>
+          <p class="device-intro">Plataforma Tensor G5, 16 GB de RAM, ecrã LTPO e sistema fotográfico Pro para máxima exigência profissional.</p>
           <ul class="spec-list">
-            <li><strong>Ecrã</strong><span>6,3″ Super Actua LTPO, 1–120 Hz</span></li><li><strong>Processador</strong><span>Google Tensor G4</span></li><li><strong>Memória</strong><span>16 GB RAM · 128 GB–1 TB</span></li><li><strong>Câmaras</strong><span>50 MP + 48 MP ultra gran angular + 48 MP teleobjetivo 5×</span></li><li><strong>Bateria</strong><span>4.700 mAh · carga inalámbrica</span></li><li><strong>Proteção</strong><span>IP68 · Gorilla Glass Victus 2</span></li>
+            <li><strong>Ecrã</strong><span>6,3″ Super Actua LTPO · 1–120 Hz · até 3.300 nits</span></li><li><strong>Processador</strong><span>Google Tensor G5 + Titan M2</span></li><li><strong>Memória</strong><span>16 GB RAM · 128 GB–1 TB</span></li><li><strong>Câmaras</strong><span>50 MP + 48 MP ultra grande angular + 48 MP teleobjetiva 5×</span></li><li><strong>Construção</strong><span>Gorilla Glass Victus 2 · alumínio premium</span></li><li><strong>Proteção</strong><span>IP68 · hardware MTE</span></li>
           </ul>
         </article>
       </div>
@@ -783,7 +791,7 @@
           <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
           <label><span>País</span><input type="text" name="pais" autocomplete="country-name" required></label>
           <label><span>Telefone (opcional)</span><input type="tel" name="telefono" autocomplete="tel"></label>
-          <label><span>Modelo</span><select name="modelo" id="orderModel" required><option value="">Selecione um modelo</option><option>Google Pixel 8a</option><option>Google Pixel 9a</option><option>Google Pixel 9 Pro</option><option>Já tenho um Pixel compatível</option></select></label>
+          <label><span>Modelo</span><select name="modelo" id="orderModel" required><option value="">Selecione um modelo</option><option>Google Pixel 8a</option><option>Google Pixel 9a</option><option>Google Pixel 10a</option><option>Google Pixel 10 Pro</option><option>Já tenho um Pixel compatível</option></select></label>
           <label><span>Pacote</span><select name="paquete" id="orderPack" required><option value="">Selecione um pacote</option><option>Essential — oferta online 129 €</option><option>Privacy — oferta online 329 €</option><option>Elite — oferta online 479 €</option><option>Apenas dispositivo / consultar</option></select></label>
         </div>
 
