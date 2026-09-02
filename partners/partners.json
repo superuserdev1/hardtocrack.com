@@ -1,7 +1,7 @@
 {
-  "version": "1.2",
+  "version": "1.4",
   "updated_at": "2026-09-02",
-  "total": 150,
+  "total": 224,
   "partners": {
     "HTC-MAD-001": {
       "region": "Comunidad de Madrid",
@@ -1050,6 +1050,524 @@
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Vecindario – Maspalomas – Playa del Inglés",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-001": {
+      "region": "Galicia",
+      "province": "A Coruña",
+      "zone": "A Coruña Centro – Ensanche – Cuatro Caminos",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-002": {
+      "region": "Galicia",
+      "province": "A Coruña",
+      "zone": "A Coruña Metropolitana – Oleiros – Culleredo – Cambre",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-003": {
+      "region": "Galicia",
+      "province": "A Coruña",
+      "zone": "Santiago de Compostela – Ames",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-004": {
+      "region": "Galicia",
+      "province": "Pontevedra",
+      "zone": "Vigo Centro – Casco Vello – Areal",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-005": {
+      "region": "Galicia",
+      "province": "Pontevedra",
+      "zone": "Vigo Metropolitana – Nigrán – Redondela – O Porriño",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-006": {
+      "region": "Galicia",
+      "province": "Pontevedra",
+      "zone": "Pontevedra – Marín",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-007": {
+      "region": "Galicia",
+      "province": "Ourense",
+      "zone": "Ourense",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-008": {
+      "region": "Galicia",
+      "province": "Lugo",
+      "zone": "Lugo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-009": {
+      "region": "Galicia",
+      "province": "A Coruña",
+      "zone": "Ferrol – Narón",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GAL-010": {
+      "region": "Galicia",
+      "province": "Pontevedra",
+      "zone": "Vilagarcía de Arousa – O Salnés",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-AST-001": {
+      "region": "Principado de Asturias",
+      "province": "Asturias",
+      "zone": "Oviedo Centro",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-AST-002": {
+      "region": "Principado de Asturias",
+      "province": "Asturias",
+      "zone": "Gijón Centro",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-AST-003": {
+      "region": "Principado de Asturias",
+      "province": "Asturias",
+      "zone": "Avilés – Castrillón",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-AST-004": {
+      "region": "Principado de Asturias",
+      "province": "Asturias",
+      "zone": "Siero – Lugones – Llanera",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-AST-005": {
+      "region": "Principado de Asturias",
+      "province": "Asturias",
+      "zone": "Mieres – Langreo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CNT-001": {
+      "region": "Cantabria",
+      "province": "Cantabria",
+      "zone": "Santander Centro",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CNT-002": {
+      "region": "Cantabria",
+      "province": "Cantabria",
+      "zone": "Santander Metropolitana – Camargo – El Astillero",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CNT-003": {
+      "region": "Cantabria",
+      "province": "Cantabria",
+      "zone": "Torrelavega",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CNT-004": {
+      "region": "Cantabria",
+      "province": "Cantabria",
+      "zone": "Castro Urdiales – Laredo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-001": {
+      "region": "Castilla y León",
+      "province": "Valladolid",
+      "zone": "Valladolid",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-002": {
+      "region": "Castilla y León",
+      "province": "Salamanca",
+      "zone": "Salamanca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-003": {
+      "region": "Castilla y León",
+      "province": "León",
+      "zone": "León",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-004": {
+      "region": "Castilla y León",
+      "province": "Burgos",
+      "zone": "Burgos",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-005": {
+      "region": "Castilla y León",
+      "province": "Palencia",
+      "zone": "Palencia",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-006": {
+      "region": "Castilla y León",
+      "province": "Zamora",
+      "zone": "Zamora",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-007": {
+      "region": "Castilla y León",
+      "province": "Segovia",
+      "zone": "Segovia",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-008": {
+      "region": "Castilla y León",
+      "province": "Ávila",
+      "zone": "Ávila",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-009": {
+      "region": "Castilla y León",
+      "province": "Soria",
+      "zone": "Soria",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-010": {
+      "region": "Castilla y León",
+      "province": "León",
+      "zone": "Ponferrada",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-011": {
+      "region": "Castilla y León",
+      "province": "Burgos",
+      "zone": "Miranda de Ebro",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CYL-012": {
+      "region": "Castilla y León",
+      "province": "Burgos",
+      "zone": "Aranda de Duero",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-HSC-001": {
+      "region": "Aragón",
+      "province": "Huesca",
+      "zone": "Huesca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TER-001": {
+      "region": "Aragón",
+      "province": "Teruel",
+      "zone": "Teruel",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-ALA-001": {
+      "region": "País Vasco",
+      "province": "Álava",
+      "zone": "Vitoria-Gasteiz",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIP-001": {
+      "region": "País Vasco",
+      "province": "Gipuzkoa",
+      "zone": "Donostia-San Sebastián",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIP-002": {
+      "region": "País Vasco",
+      "province": "Gipuzkoa",
+      "zone": "Irun – Hondarribia",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIP-003": {
+      "region": "País Vasco",
+      "province": "Gipuzkoa",
+      "zone": "Eibar – Arrasate/Mondragón – Bergara",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-BIZ-006": {
+      "region": "País Vasco",
+      "province": "Bizkaia",
+      "zone": "Durango – Amorebieta-Etxano",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TGN-001": {
+      "region": "Cataluña",
+      "province": "Tarragona",
+      "zone": "Tarragona",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TGN-002": {
+      "region": "Cataluña",
+      "province": "Tarragona",
+      "zone": "Reus",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TGN-003": {
+      "region": "Cataluña",
+      "province": "Tarragona",
+      "zone": "Salou – Cambrils – Vila-seca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-TGN-004": {
+      "region": "Cataluña",
+      "province": "Tarragona",
+      "zone": "El Vendrell – Calafell",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIR-001": {
+      "region": "Cataluña",
+      "province": "Girona",
+      "zone": "Girona – Salt",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIR-002": {
+      "region": "Cataluña",
+      "province": "Girona",
+      "zone": "Figueres – Roses",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-GIR-003": {
+      "region": "Cataluña",
+      "province": "Girona",
+      "zone": "Blanes – Lloret de Mar",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LLE-001": {
+      "region": "Cataluña",
+      "province": "Lleida",
+      "zone": "Lleida",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LLE-002": {
+      "region": "Cataluña",
+      "province": "Lleida",
+      "zone": "Tàrrega – Mollerussa – Balaguer",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-NAV-001": {
+      "region": "Comunidad Foral de Navarra",
+      "province": "Navarra",
+      "zone": "Pamplona/Iruña – Barañáin – Burlada",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-NAV-002": {
+      "region": "Comunidad Foral de Navarra",
+      "province": "Navarra",
+      "zone": "Tudela",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-RIO-001": {
+      "region": "La Rioja",
+      "province": "La Rioja",
+      "zone": "Logroño",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-RIO-002": {
+      "region": "La Rioja",
+      "province": "La Rioja",
+      "zone": "Calahorra",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-001": {
+      "region": "Castilla-La Mancha",
+      "province": "Albacete",
+      "zone": "Albacete",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-002": {
+      "region": "Castilla-La Mancha",
+      "province": "Toledo",
+      "zone": "Toledo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-003": {
+      "region": "Castilla-La Mancha",
+      "province": "Toledo",
+      "zone": "Talavera de la Reina",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-004": {
+      "region": "Castilla-La Mancha",
+      "province": "Guadalajara",
+      "zone": "Guadalajara",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-005": {
+      "region": "Castilla-La Mancha",
+      "province": "Guadalajara",
+      "zone": "Azuqueca de Henares – Corredor del Henares",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-006": {
+      "region": "Castilla-La Mancha",
+      "province": "Ciudad Real",
+      "zone": "Ciudad Real",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-007": {
+      "region": "Castilla-La Mancha",
+      "province": "Ciudad Real",
+      "zone": "Puertollano",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-008": {
+      "region": "Castilla-La Mancha",
+      "province": "Cuenca",
+      "zone": "Cuenca",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CLM-009": {
+      "region": "Castilla-La Mancha",
+      "province": "Toledo",
+      "zone": "Illescas – Seseña",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-001": {
+      "region": "Extremadura",
+      "province": "Badajoz",
+      "zone": "Badajoz",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-002": {
+      "region": "Extremadura",
+      "province": "Cáceres",
+      "zone": "Cáceres",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-003": {
+      "region": "Extremadura",
+      "province": "Badajoz",
+      "zone": "Mérida",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-004": {
+      "region": "Extremadura",
+      "province": "Cáceres",
+      "zone": "Plasencia",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-005": {
+      "region": "Extremadura",
+      "province": "Badajoz",
+      "zone": "Don Benito – Villanueva de la Serena",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-EXT-006": {
+      "region": "Extremadura",
+      "province": "Badajoz",
+      "zone": "Almendralejo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-IBZ-001": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Ibiza/Eivissa – Sant Antoni – Santa Eulària",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MEN-001": {
+      "region": "Islas Baleares",
+      "province": "Islas Baleares",
+      "zone": "Maó – Ciutadella",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-LAN-001": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Arrecife – Playa Honda – Puerto del Carmen",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-FUE-001": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Puerto del Rosario – Corralejo",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-FUE-002": {
+      "region": "Canarias",
+      "province": "Las Palmas",
+      "zone": "Gran Tarajal – Costa Calma – Morro Jable",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-SPC-001": {
+      "region": "Canarias",
+      "province": "Santa Cruz de Tenerife",
+      "zone": "Santa Cruz de La Palma – Los Llanos de Aridane",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-CEU-001": {
+      "region": "Ceuta",
+      "province": "Ceuta",
+      "zone": "Ceuta",
+      "store_name": "",
+      "status": "Sin asignar"
+    },
+    "HTC-MEL-001": {
+      "region": "Melilla",
+      "province": "Melilla",
+      "zone": "Melilla",
       "store_name": "",
       "status": "Sin asignar"
     }
