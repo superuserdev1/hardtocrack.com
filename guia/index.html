@@ -97,7 +97,7 @@
 
     <section id="entrega"><div class="wrap"><div class="section-heading"><div class="eyebrow">Reserva y entrega</div><h2>Dos formas de completar el proceso.</h2><p>En la versión final, las condiciones concretas se mostrarán según el Partner, el tipo de pedido y la modalidad elegida.</p></div><div class="info-band"><article class="delivery-card recommended"><h3>Recogida en tienda Partner</h3><span class="price-chip">Modalidad recomendada</span><p>Reserva desde la web, recibe confirmación y completa el pago y la recogida en el establecimiento. La tienda conserva la atención y la atribución de la operación.</p></article><article class="delivery-card"><h3>Entrega directa</h3><span class="price-chip">Disponible según pedido</span><p>HardToCrack prepara y envía el dispositivo al domicilio. Cuando exista un código de tienda válido, la operación puede seguir asociada al Partner correspondiente.</p></article></div></div></section>
 
-    <section id="faq"><div class="wrap"><div class="section-heading"><div class="eyebrow">Preguntas frecuentes</div><h2>Lo esencial antes de decidir.</h2></div><div class="faq"><details><summary>¿Necesito conocimientos técnicos?</summary><p>No. La propuesta está pensada para que recibas el dispositivo preparado y una explicación clara de los elementos importantes.</p></details><details><summary>¿Puedo utilizar mis aplicaciones habituales?</summary><p>La compatibilidad depende de cada aplicación y del modelo de uso. Antes de confirmar una configuración se revisan las aplicaciones que para ti sean imprescindibles.</p></details><details><summary>¿La privacidad es total?</summary><p>No existe una configuración que elimine todos los riesgos. El objetivo es reducir exposición, mejorar la separación y darte más control con medidas proporcionadas.</p></details><details><summary>¿Qué ocurre al introducir un código de tienda?</summary><p>La página identifica al comercio asociado y puede conservar la referencia para formularios, reservas y futuras consultas. La referencia de ejemplo activa es HTC-MAD-001.</p></details><details><summary>¿Puedo reservar online y pagar en la tienda?</summary><p>Sí. El formulario prepara una solicitud identificada con la referencia del Partner. HardToCrack recibirá el lead por email y confirmará contigo la modalidad de pago, recogida o entrega.</p></details></div></div></section>
+    <section id="faq"><div class="wrap"><div class="section-heading"><div class="eyebrow">Preguntas frecuentes</div><h2>Lo esencial antes de decidir.</h2></div><div class="faq"><details><summary>¿Necesito conocimientos técnicos?</summary><p>No. La propuesta está pensada para que recibas el dispositivo preparado y una explicación clara de los elementos importantes.</p></details><details><summary>¿Puedo utilizar mis aplicaciones habituales?</summary><p>La compatibilidad depende de cada aplicación y del modelo de uso. Antes de confirmar una configuración se revisan las aplicaciones que para ti sean imprescindibles.</p></details><details><summary>¿La privacidad es total?</summary><p>No existe una configuración que elimine todos los riesgos. El objetivo es reducir exposición, mejorar la separación y darte más control con medidas proporcionadas.</p></details><details><summary>¿Qué ocurre al introducir un código de tienda?</summary><p>La página identifica al comercio asociado y puede conservar la referencia para formularios, reservas y futuras consultas. Las referencias activas de Madrid abarcan desde HTC-MAD-001 hasta HTC-MAD-030.</p></details><details><summary>¿Puedo reservar online y pagar en la tienda?</summary><p>Sí. El formulario prepara una solicitud identificada con la referencia del Partner. HardToCrack recibirá el lead por email y confirmará contigo la modalidad de pago, recogida o entrega.</p></details></div></div></section>
 
     <section><div class="wrap"><div class="cta"><div><h2>Empieza por identificar tu tienda.</h2><p>Escanea el QR del Partner o utiliza la referencia <strong>HTC-MAD-001</strong>. Las solicitudes quedarán vinculadas al comercio que originó el contacto.</p></div><a class="button button-primary" href="#tienda">Identificar Partner</a></div></div></section>
   </main>
@@ -108,11 +108,36 @@
 
   <script>
     const PARTNERS={
-      "HTC-MAD-001":{
-        name:"Partner oficial HardToCrack",
-        city:"Madrid · Chamberí",
-        status:"Activo"
-      }
+      "HTC-MAD-001":{name:"",zone:"Centro",status:"Activo"},
+      "HTC-MAD-002":{name:"",zone:"Salamanca",status:"Activo"},
+      "HTC-MAD-003":{name:"",zone:"Chamartín",status:"Activo"},
+      "HTC-MAD-004":{name:"",zone:"Tetuán - 4 Caminos",status:"Activo"},
+      "HTC-MAD-005":{name:"",zone:"Chamberí - Moncloa",status:"Activo"},
+      "HTC-MAD-006":{name:"",zone:"Arganzuela - Delicias - Atocha",status:"Activo"},
+      "HTC-MAD-007":{name:"",zone:"Retiro - Moratalaz",status:"Activo"},
+      "HTC-MAD-008":{name:"",zone:"Ciudad Lineal - San Blas - Canillejas",status:"Activo"},
+      "HTC-MAD-009":{name:"",zone:"Hortaleza - Barajas",status:"Activo"},
+      "HTC-MAD-010":{name:"",zone:"Puente de Vallecas - Villa de Vallecas",status:"Activo"},
+      "HTC-MAD-011":{name:"",zone:"Carabanchel - Latina",status:"Activo"},
+      "HTC-MAD-012":{name:"",zone:"Usera - Villaverde",status:"Activo"},
+      "HTC-MAD-013":{name:"",zone:"Alcobendas",status:"Activo"},
+      "HTC-MAD-014":{name:"",zone:"San Sebastián de los Reyes",status:"Activo"},
+      "HTC-MAD-015":{name:"",zone:"Pozuelo de Alarcón",status:"Activo"},
+      "HTC-MAD-016":{name:"",zone:"Majadahonda",status:"Activo"},
+      "HTC-MAD-017":{name:"",zone:"Las Rozas",status:"Activo"},
+      "HTC-MAD-018":{name:"",zone:"Boadilla del Monte",status:"Activo"},
+      "HTC-MAD-019":{name:"",zone:"Alcorcón",status:"Activo"},
+      "HTC-MAD-020":{name:"",zone:"Móstoles",status:"Activo"},
+      "HTC-MAD-021":{name:"",zone:"Fuenlabrada",status:"Activo"},
+      "HTC-MAD-022":{name:"",zone:"Leganés",status:"Activo"},
+      "HTC-MAD-023":{name:"",zone:"Getafe",status:"Activo"},
+      "HTC-MAD-024":{name:"",zone:"Parla",status:"Activo"},
+      "HTC-MAD-025":{name:"",zone:"Alcalá de Henares",status:"Activo"},
+      "HTC-MAD-026":{name:"",zone:"Torrejón de Ardoz",status:"Activo"},
+      "HTC-MAD-027":{name:"",zone:"Coslada - San Fernando",status:"Activo"},
+      "HTC-MAD-028":{name:"",zone:"Rivas - Vaciamadrid",status:"Activo"},
+      "HTC-MAD-029":{name:"",zone:"Collado Villalba",status:"Activo"},
+      "HTC-MAD-030":{name:"",zone:"Aranjuez",status:"Activo"}
     };
     const STORAGE_KEY="hardtocrack_partner_attribution";
     const ATTRIBUTION_MS=30*24*60*60*1000;
@@ -158,8 +183,9 @@
 
     function showPartner(code,partner,{restored=false,source="manual"}={}){
       const record=saveAttribution(code,source);
-      partnerName.textContent=partner.name;
-      partnerMeta.textContent=`${partner.city} · ${partner.status} · ${code}`;
+      const displayName=partner.name||"Partner oficial HardToCrack";
+      partnerName.textContent=displayName;
+      partnerMeta.textContent=`${partner.zone} · ${partner.status} · ${code}`;
       partnerCard.classList.add("visible");
       genericPartnerMessage.hidden=true;
       clearCodeButton.hidden=false;
@@ -246,7 +272,7 @@
         "",
         `Lead ID: ${leadId}`,
         `Partner: ${partnerCode}`,
-        `Partner name: ${data.get("partner_name")||"Sin Partner"}`,
+        `Partner name: ${data.get("partner_name")||(partnerCode!=="DIRECTO"?"Pendiente de asignar":"Sin Partner")}`,
         `Origen: ${data.get("lead_source")||"direct"}`,
         `Fecha: ${data.get("captured_at")||new Date().toISOString()}`,
         `Nombre: ${data.get("name")||""}`,
