@@ -62,12 +62,6 @@
     .header-row { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 850; letter-spacing: -.04em; font-size: 1.28rem; }
     .brand img { width: 42px; height: 42px; object-fit: contain; }
-    .brand-mark {
-      width: 42px; height: 42px; display: grid; place-items: center;
-      border: 2px solid var(--cyan); border-radius: 13px; color: var(--cyan);
-      font-size: .9rem; letter-spacing: -.08em; transform: rotate(30deg);
-    }
-    .brand-mark span { transform: rotate(-30deg); }
     .brand-name { color: transparent; background: var(--gradient); -webkit-background-clip: text; background-clip: text; }
     nav { display: flex; align-items: center; gap: 7px; }
     nav a { padding: 9px 12px; color: var(--muted); text-decoration: none; font-size: .9rem; border-radius: 999px; }
@@ -181,7 +175,7 @@
       .wrap { width: min(calc(100% - 28px), var(--max)); }
       .header-row { min-height: 68px; }
       .brand { font-size: 1.08rem; }
-      .brand img, .brand-mark { width: 36px; height: 36px; }
+      .brand img { width: 36px; height: 36px; }
       .hero { padding: 58px 0 44px; }
       h1 { font-size: clamp(3rem, 18vw, 5rem); }
       main section { padding: 44px 0; }
@@ -202,8 +196,8 @@
   <header class="site-header">
     <div class="wrap header-row">
       <a class="brand" href="/" aria-label="HardToCrack, inicio">
-        <img src="/precios/assets/logo-ht.png?v=20260902" alt="Logotipo oficial de HardToCrack" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-        <span class="brand-mark" hidden aria-hidden="true"><span>HT</span></span>
+        <img src="/precios/assets/logo-ht.png?v=20260902" alt="Logotipo oficial de HardToCrack">
+        <span class="brand-name">HARDTOCRACK</span>
       </a>
       <nav aria-label="Secciones de tarifas">
         <a href="#packs">Packs</a>
