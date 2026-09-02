@@ -107,131 +107,15 @@
   <dialog id="reservationModal" aria-labelledby="modalTitle"><div class="modal-head"><div><p class="partner-label" id="modalEyebrow">Pedido atribuido al Partner</p><h2 id="modalTitle">Hacer pedido o encargo</h2></div><button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">×</button></div><div class="modal-body"><form id="orderForm"><input type="hidden" name="partner_code" id="partnerCodeHidden"><input type="hidden" name="partner_name" id="partnerNameHidden"><input type="hidden" name="partner_zone" id="partnerZoneHidden"><input type="hidden" name="request_mode" id="requestModeHidden"><input type="hidden" name="lead_id" id="leadIdHidden"><input type="hidden" name="lead_source" id="leadSourceHidden"><input type="hidden" name="landing_url" id="landingUrlHidden"><input type="hidden" name="captured_at" id="capturedAtHidden"><p class="helper">Referencia asociada: <strong id="modalPartnerRef">Sin Partner</strong>. Esta referencia aparecerá en el asunto y contenido del email.</p><div class="form-grid"><div class="form-field"><label for="name">Nombre</label><input class="field" id="name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact">Email o teléfono</label><input class="field" id="contact" name="contact" required></div><div class="form-field full"><label for="requestType">Tipo de pedido o encargo</label><select class="field" id="requestType" name="request_type"><option>Dispositivo + configuración HardToCrack</option><option>Instalación en mi propio Google Pixel</option><option>Servicio individual</option><option>Accesorios</option><option>Consulta previa</option></select></div><div class="form-field"><label for="deviceModel">Dispositivo</label><select class="field" id="deviceModel" name="device_model"><option>Google Pixel 8a reacondicionado</option><option>Google Pixel 9a nuevo</option><option>Google Pixel 9 Pro nuevo</option><option>Ya tengo un Google Pixel compatible</option><option>Modelo por decidir</option></select></div><div class="form-field"><label for="interest">Paquete o servicio</label><select class="field" id="interest" name="interest"><option>Essential</option><option>Privacy</option><option>Elite</option><option>Solo instalación GrapheneOS</option><option>Servicio o accesorio individual</option><option>Necesito asesoramiento</option></select></div><div class="form-field full"><label for="delivery">Modalidad preferida</label><select class="field" id="delivery" name="delivery"><option>Reserva, pago y recogida en tienda</option><option>Pago online y recogida en tienda</option><option>Entrega directa a domicilio</option><option>Todavía no lo sé</option></select></div><div class="form-field full"><label for="message">Detalles del pedido o encargo</label><textarea class="field" id="message" name="message" placeholder="Modelo, color, capacidad, aplicaciones imprescindibles, accesorios o cualquier necesidad concreta."></textarea></div></div><div class="form-actions"><button class="button button-secondary" id="cancelForm" type="button">Cancelar</button><button class="button button-primary" id="submitEmailButton" type="submit">Preparar pedido por email</button></div><div class="form-message" id="formMessage" role="status" aria-live="polite">Se abrirá tu aplicación de correo con el pedido preparado y la referencia del Partner.</div><p class="helper">Si el navegador no abre tu correo, escribe directamente a <a id="orderEmailFallback" href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a> e indica la referencia que aparece arriba.</p></form></div></dialog>
 
   <script>
-    const PARTNERS={
-      "HTC-MAD-001":{name:"",zone:"Centro",status:"Pendiente"},
-      "HTC-MAD-002":{name:"",zone:"Salamanca",status:"Pendiente"},
-      "HTC-MAD-003":{name:"",zone:"Chamartín",status:"Pendiente"},
-      "HTC-MAD-004":{name:"",zone:"Tetuán - 4 Caminos",status:"Pendiente"},
-      "HTC-MAD-005":{name:"",zone:"Chamberí - Moncloa",status:"Pendiente"},
-      "HTC-MAD-006":{name:"",zone:"Arganzuela - Delicias - Atocha",status:"Pendiente"},
-      "HTC-MAD-007":{name:"",zone:"Retiro - Moratalaz",status:"Pendiente"},
-      "HTC-MAD-008":{name:"",zone:"Ciudad Lineal - San Blas - Canillejas",status:"Pendiente"},
-      "HTC-MAD-009":{name:"",zone:"Hortaleza - Barajas",status:"Pendiente"},
-      "HTC-MAD-010":{name:"",zone:"Puente de Vallecas - Villa de Vallecas",status:"Pendiente"},
-      "HTC-MAD-011":{name:"",zone:"Carabanchel - Latina",status:"Pendiente"},
-      "HTC-MAD-012":{name:"",zone:"Usera - Villaverde",status:"Pendiente"},
-      "HTC-MAD-013":{name:"",zone:"Alcobendas",status:"Pendiente"},
-      "HTC-MAD-014":{name:"",zone:"San Sebastián de los Reyes",status:"Pendiente"},
-      "HTC-MAD-015":{name:"",zone:"Pozuelo de Alarcón",status:"Pendiente"},
-      "HTC-MAD-016":{name:"",zone:"Majadahonda",status:"Pendiente"},
-      "HTC-MAD-017":{name:"",zone:"Las Rozas",status:"Pendiente"},
-      "HTC-MAD-018":{name:"",zone:"Boadilla del Monte",status:"Pendiente"},
-      "HTC-MAD-019":{name:"",zone:"Alcorcón",status:"Pendiente"},
-      "HTC-MAD-020":{name:"",zone:"Móstoles",status:"Pendiente"},
-      "HTC-MAD-021":{name:"",zone:"Fuenlabrada",status:"Pendiente"},
-      "HTC-MAD-022":{name:"",zone:"Leganés",status:"Pendiente"},
-      "HTC-MAD-023":{name:"",zone:"Getafe",status:"Pendiente"},
-      "HTC-MAD-024":{name:"",zone:"Parla",status:"Pendiente"},
-      "HTC-MAD-025":{name:"",zone:"Alcalá de Henares",status:"Pendiente"},
-      "HTC-MAD-026":{name:"",zone:"Torrejón de Ardoz",status:"Pendiente"},
-      "HTC-MAD-027":{name:"",zone:"Coslada - San Fernando",status:"Pendiente"},
-      "HTC-MAD-028":{name:"",zone:"Rivas - Vaciamadrid",status:"Pendiente"},
-      "HTC-MAD-029":{name:"",zone:"Collado Villalba",status:"Pendiente"},
-      "HTC-MAD-030":{name:"",zone:"Aranjuez",status:"Pendiente"},
-      "HTC-VLC-01":{name:"",zone:"Valencia Capital (Ciutat Vella, Eixample, Extramurs, Pla del Real)",status:"Pendiente"},
-      "HTC-VLC-02":{name:"",zone:"Valencia Norte (Campanar, Benicalap)",status:"Pendiente"},
-      "HTC-VLC-03":{name:"",zone:"Valencia Sur (Quatre Carreres, Patraix, Jesús)",status:"Pendiente"},
-      "HTC-VLC-04":{name:"",zone:"Paterna – Parque Tecnológico",status:"Pendiente"},
-      "HTC-VLC-05":{name:"",zone:"Torrent",status:"Pendiente"},
-      "HTC-ALC-01":{name:"",zone:"Alicante Capital",status:"Pendiente"},
-      "HTC-CST-01":{name:"",zone:"Castellón de la Plana",status:"Pendiente"},
-      "HTC-VLC-06":{name:"",zone:"Gandía",status:"Pendiente"},
-      "HTC-VLC-07":{name:"",zone:"Sagunto – Puerto de Sagunto",status:"Pendiente"},
-      "HTC-VLC-08":{name:"",zone:"Mislata – Xirivella",status:"Pendiente"},
-      "HTC-VLC-09":{name:"",zone:"Burjassot – Godella",status:"Pendiente"},
-      "HTC-VLC-10":{name:"",zone:"Alzira",status:"Pendiente"},
-      "HTC-ALC-02":{name:"",zone:"Elche",status:"Pendiente"},
-      "HTC-ALC-03":{name:"",zone:"Benidorm",status:"Pendiente"},
-      "HTC-ALC-04":{name:"",zone:"San Vicente del Raspeig",status:"Pendiente"},
-      "HTC-ALC-05":{name:"",zone:"Torrevieja",status:"Pendiente"},
-      "HTC-CST-02":{name:"",zone:"Vila-real",status:"Pendiente"},
-      "HTC-VLC-11":{name:"",zone:"Ontinyent",status:"Pendiente"},
-      "HTC-VLC-12":{name:"",zone:"Xàtiva",status:"Pendiente"},
-      "HTC-VLC-13":{name:"",zone:"Requena",status:"Pendiente"},
-      "HTC-ALC-06":{name:"",zone:"Alcoy",status:"Pendiente"},
-      "HTC-ALC-07":{name:"",zone:"Elda – Petrer",status:"Pendiente"},
-      "HTC-ALC-08":{name:"",zone:"Dénia",status:"Pendiente"},
-      "HTC-ALC-09":{name:"",zone:"Orihuela",status:"Pendiente"},
-      "HTC-CST-03":{name:"",zone:"Vinaròs",status:"Pendiente"},
-      "HTC-CST-04":{name:"",zone:"La Vall d'Uixó",status:"Pendiente"},
-      "HTC-VLC-14":{name:"",zone:"Cullera",status:"Pendiente"},
-      "HTC-VLC-15":{name:"",zone:"Oliva",status:"Pendiente"},
-      "HTC-ALC-10":{name:"",zone:"Villena",status:"Pendiente"},
-      "HTC-ALC-11":{name:"",zone:"Jávea (Xàbia)",status:"Pendiente"},
-      "HTC-ALC-12":{name:"",zone:"Calpe",status:"Pendiente"},
-      "HTC-CST-05":{name:"",zone:"Benicarló",status:"Pendiente"},
-      "HTC-BCN-01":{name:"",zone:"Barcelona Centro (Eixample, Ciutat Vella, Gràcia)",status:"Pendiente"},
-      "HTC-BCN-02":{name:"",zone:"Les Corts – Sarrià-Sant Gervasi",status:"Pendiente"},
-      "HTC-BCN-03":{name:"",zone:"Sant Martí – Poblenou – 22@",status:"Pendiente"},
-      "HTC-BCN-04":{name:"",zone:"Sants – Les Corts",status:"Pendiente"},
-      "HTC-BCN-05":{name:"",zone:"Hospitalet de Llobregat",status:"Pendiente"},
-      "HTC-BCN-06":{name:"",zone:"Badalona",status:"Pendiente"},
-      "HTC-BCN-07":{name:"",zone:"Santa Coloma de Gramenet",status:"Pendiente"},
-      "HTC-BCN-08":{name:"",zone:"Cornellà de Llobregat",status:"Pendiente"},
-      "HTC-BCN-09":{name:"",zone:"Sant Cugat del Vallès",status:"Pendiente"},
-      "HTC-BCN-10":{name:"",zone:"Sabadell",status:"Pendiente"},
-      "HTC-BCN-11":{name:"",zone:"Terrassa",status:"Pendiente"},
-      "HTC-BCN-12":{name:"",zone:"Mataró",status:"Pendiente"},
-      "HTC-BCN-13":{name:"",zone:"Castelldefels",status:"Pendiente"},
-      "HTC-BCN-14":{name:"",zone:"El Prat de Llobregat",status:"Pendiente"},
-      "HTC-BCN-15":{name:"",zone:"Sant Boi de Llobregat",status:"Pendiente"},
-      "HTC-BCN-16":{name:"",zone:"Viladecans",status:"Pendiente"},
-      "HTC-BCN-17":{name:"",zone:"Rubí",status:"Pendiente"},
-      "HTC-BCN-18":{name:"",zone:"Cerdanyola del Vallès",status:"Pendiente"},
-      "HTC-BCN-19":{name:"",zone:"Mollet del Vallès",status:"Pendiente"},
-      "HTC-BCN-20":{name:"",zone:"Granollers",status:"Pendiente"},
-      "HTC-BCN-21":{name:"",zone:"Vilanova i la Geltrú",status:"Pendiente"},
-      "HTC-BCN-22":{name:"",zone:"Igualada",status:"Pendiente"},
-      "HTC-BCN-23":{name:"",zone:"Manresa",status:"Pendiente"},
-      "HTC-BCN-24":{name:"",zone:"Vic",status:"Pendiente"},
-      "HTC-BCN-25":{name:"",zone:"Vilafranca del Penedès",status:"Pendiente"},
-      "HTC-BCN-26":{name:"",zone:"Martorell",status:"Pendiente"},
-      "HTC-SEV-01":{name:"",zone:"Sevilla Centro",status:"Pendiente"},
-      "HTC-MLG-01":{name:"",zone:"Málaga Capital",status:"Pendiente"},
-      "HTC-GRA-01":{name:"",zone:"Granada Capital",status:"Pendiente"},
-      "HTC-CAD-01":{name:"",zone:"Cádiz – Jerez de la Frontera",status:"Pendiente"},
-      "HTC-COR-01":{name:"",zone:"Córdoba Capital",status:"Pendiente"},
-      "HTC-MLG-02":{name:"",zone:"Marbella – Puerto Banús",status:"Pendiente"},
-      "HTC-MLG-03":{name:"",zone:"Fuengirola – Mijas",status:"Pendiente"},
-      "HTC-ALM-01":{name:"",zone:"Almería Capital",status:"Pendiente"},
-      "HTC-JAE-01":{name:"",zone:"Jaén Capital",status:"Pendiente"},
-      "HTC-HUV-01":{name:"",zone:"Huelva Capital",status:"Pendiente"},
-      "HTC-SEV-02":{name:"",zone:"Dos Hermanas",status:"Pendiente"},
-      "HTC-SEV-03":{name:"",zone:"Alcalá de Guadaíra",status:"Pendiente"},
-      "HTC-CAD-02":{name:"",zone:"Algeciras",status:"Pendiente"},
-      "HTC-CAD-03":{name:"",zone:"Campo de Gibraltar (La Línea)",status:"Pendiente"},
-      "HTC-GRA-02":{name:"",zone:"Motril – Costa Tropical",status:"Pendiente"},
-      "HTC-MLG-04":{name:"",zone:"Vélez-Málaga",status:"Pendiente"},
-      "HTC-COR-02":{name:"",zone:"Lucena",status:"Pendiente"},
-      "HTC-JAE-02":{name:"",zone:"Linares",status:"Pendiente"},
-      "HTC-ALM-02":{name:"",zone:"El Ejido",status:"Pendiente"},
-      "HTC-ALM-03":{name:"",zone:"Roquetas de Mar",status:"Pendiente"},
-      "HTC-CAD-04":{name:"",zone:"San Fernando",status:"Pendiente"},
-      "HTC-CAD-05":{name:"",zone:"El Puerto de Santa María",status:"Pendiente"},
-      "HTC-SEV-04":{name:"",zone:"Utrera",status:"Pendiente"},
-      "HTC-HUV-02":{name:"",zone:"Lepe",status:"Pendiente"},
-      "HTC-HUV-03":{name:"",zone:"Ayamonte",status:"Pendiente"},
-      "HTC-GRA-03":{name:"",zone:"Guadix",status:"Pendiente"},
-      "HTC-COR-03":{name:"",zone:"Puente Genil",status:"Pendiente"},
-      "HTC-JAE-03":{name:"",zone:"Úbeda – Baeza",status:"Pendiente"},
-      "HTC-MLG-05":{name:"",zone:"Antequera",status:"Pendiente"}
-    };
+    let PARTNERS={};
+    const PARTNERS_URL="/partners/partners.json";
     const STORAGE_KEY="hardtocrack_partner_attribution";
     const ATTRIBUTION_MS=30*24*60*60*1000;
     const CONTACT_EMAIL="contact@hardtocrack.com";
     const $=id=>document.getElementById(id);
     const storeCode=$("storeCode"),identifyButton=$("identifyButton"),clearCodeButton=$("clearCodeButton"),codeStatus=$("codeStatus"),partnerCard=$("partnerCard"),genericPartnerMessage=$("genericPartnerMessage"),partnerName=$("partnerName"),partnerMeta=$("partnerMeta"),reservationModal=$("reservationModal"),formMessage=$("formMessage"),partnerCodeHidden=$("partnerCodeHidden"),partnerNameHidden=$("partnerNameHidden"),partnerZoneHidden=$("partnerZoneHidden"),requestModeHidden=$("requestModeHidden"),leadIdHidden=$("leadIdHidden"),leadSourceHidden=$("leadSourceHidden"),landingUrlHidden=$("landingUrlHidden"),capturedAtHidden=$("capturedAtHidden"),modalPartnerRef=$("modalPartnerRef"),modalEyebrow=$("modalEyebrow"),submitEmailButton=$("submitEmailButton"),orderEmailFallback=$("orderEmailFallback");
     let currentAttribution={code:"",source:"direct"};
+    identifyButton.disabled=true;
 
     function normalizeCode(value){
       return String(value||"").toUpperCase().replace(/[^A-Z0-9-]/g,"").trim();
@@ -244,6 +128,30 @@
     function pushEvent(eventName,details={}){
       window.dataLayer=window.dataLayer||[];
       window.dataLayer.push({event:eventName,...details});
+    }
+
+    async function loadPartners(){
+      codeStatus.className="status";
+      codeStatus.textContent="Cargando referencias de Partners…";
+      try{
+        const response=await fetch(PARTNERS_URL,{cache:"no-store"});
+        if(!response.ok)throw new Error("No se pudo cargar el directorio");
+        const data=await response.json();
+        const directory=data.partners||{};
+        PARTNERS=Object.fromEntries(Object.entries(directory).map(([code,item])=>[code,{
+          name:item.store_name||"",
+          zone:item.zone||"",
+          status:item.status||"Pendiente"
+        }]));
+        if(!Object.keys(PARTNERS).length)throw new Error("El directorio está vacío");
+        codeStatus.textContent="";
+        identifyButton.disabled=false;
+        return true;
+      }catch(error){
+        codeStatus.className="status error";
+        codeStatus.textContent="No se pudo cargar el directorio de Partners. Inténtalo de nuevo en unos minutos.";
+        return false;
+      }
     }
 
     function saveAttribution(code,source){
@@ -302,6 +210,7 @@
     }
 
     function identifyStore(){
+      if(identifyButton.disabled)return;
       const code=normalizeCode(storeCode.value);
       storeCode.value=code;
       if(!code){
@@ -408,20 +317,26 @@
     $("cancelForm").addEventListener("click",()=>reservationModal.close());
     $("orderForm").addEventListener("submit",event=>{event.preventDefault();prepareLeadEmail(event.currentTarget)});
 
-    landingUrlHidden.value=window.location.href;
-    const params=new URLSearchParams(window.location.search);
-    const queryCode=normalizeCode(params.get("ref")||params.get("partner")||"");
-    if(queryCode){
-      storeCode.value=queryCode;
-      PARTNERS[queryCode]?showPartner(queryCode,PARTNERS[queryCode],{source:"qr"}):showUnknown(queryCode);
-    }else{
-      const saved=loadAttribution();
-      if(saved&&PARTNERS[saved.code]){
-        storeCode.value=saved.code;
-        currentAttribution=saved;
-        showPartner(saved.code,PARTNERS[saved.code],{restored:true,source:"stored"});
+    async function initializeGuide(){
+      landingUrlHidden.value=window.location.href;
+      const loaded=await loadPartners();
+      if(!loaded)return;
+      const params=new URLSearchParams(window.location.search);
+      const queryCode=normalizeCode(params.get("ref")||params.get("partner")||"");
+      if(queryCode){
+        storeCode.value=queryCode;
+        PARTNERS[queryCode]?showPartner(queryCode,PARTNERS[queryCode],{source:"qr"}):showUnknown(queryCode);
+      }else{
+        const saved=loadAttribution();
+        if(saved&&PARTNERS[saved.code]){
+          storeCode.value=saved.code;
+          currentAttribution=saved;
+          showPartner(saved.code,PARTNERS[saved.code],{restored:true,source:"stored"});
+        }
       }
     }
+
+    initializeGuide();
   </script>
 </body>
 </html>
