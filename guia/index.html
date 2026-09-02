@@ -122,7 +122,7 @@
     }
 
     function isPartnerCode(code){
-      return /^HTC-[A-Z]{3}-\d{2,3}$/.test(code);
+      return /^HTC-[A-Z]{3}-\d{3}$/.test(code);
     }
 
     function pushEvent(eventName,details={}){
@@ -206,7 +206,7 @@
       localStorage.removeItem(STORAGE_KEY);
       currentAttribution={code:"",source:"direct"};
       codeStatus.className="status error";
-      codeStatus.textContent=isPartnerCode(code)?`La referencia ${code} tiene un formato válido, pero todavía no figura como Partner activo.`:`La referencia ${code} no tiene el formato esperado (HTC-MAD-001 o HTC-VLC-01).`;
+      codeStatus.textContent=isPartnerCode(code)?`La referencia ${code} tiene un formato válido, pero todavía no figura como Partner activo.`:`La referencia ${code} no tiene el formato esperado (HTC-MAD-001).`;
     }
 
     function identifyStore(){
