@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated_at": "2026-09-02",
   "total": 117,
   "partners": {
@@ -213,614 +213,615 @@
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-01": {
+    "HTC-VLC-001": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Capital (Ciutat Vella, Eixample, Extramurs, Pla del Real)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-02": {
+    "HTC-VLC-002": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Norte (Campanar, Benicalap)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-03": {
+    "HTC-VLC-003": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Sur (Quatre Carreres, Patraix, Jesús)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-04": {
+    "HTC-VLC-004": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Paterna – Parque Tecnológico",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-05": {
+    "HTC-VLC-005": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Torrent",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-01": {
+    "HTC-ALC-001": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Alicante Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CST-01": {
+    "HTC-CST-001": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Castellón de la Plana",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-06": {
+    "HTC-VLC-006": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Gandía",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-07": {
+    "HTC-VLC-007": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Sagunto – Puerto de Sagunto",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-08": {
+    "HTC-VLC-008": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Mislata – Xirivella",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-09": {
+    "HTC-VLC-009": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Burjassot – Godella",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-10": {
+    "HTC-VLC-010": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Alzira",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-02": {
+    "HTC-ALC-002": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Elche",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-03": {
+    "HTC-ALC-003": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Benidorm",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-04": {
+    "HTC-ALC-004": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "San Vicente del Raspeig",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-05": {
+    "HTC-ALC-005": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Torrevieja",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CST-02": {
+    "HTC-CST-002": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Vila-real",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-11": {
+    "HTC-VLC-011": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Ontinyent",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-12": {
+    "HTC-VLC-012": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Xàtiva",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-13": {
+    "HTC-VLC-013": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Requena",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-06": {
+    "HTC-ALC-006": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Alcoy",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-07": {
+    "HTC-ALC-007": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Elda – Petrer",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-08": {
+    "HTC-ALC-008": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Dénia",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-09": {
+    "HTC-ALC-009": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Orihuela",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CST-03": {
+    "HTC-CST-003": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Vinaròs",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CST-04": {
+    "HTC-CST-004": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "La Vall d'Uixó",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-14": {
+    "HTC-VLC-014": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Cullera",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-VLC-15": {
+    "HTC-VLC-015": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Oliva",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-10": {
+    "HTC-ALC-010": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Villena",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-11": {
+    "HTC-ALC-011": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Jávea (Xàbia)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALC-12": {
+    "HTC-ALC-012": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Calpe",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CST-05": {
+    "HTC-CST-005": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Benicarló",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-01": {
+    "HTC-BCN-001": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Barcelona Centro (Eixample, Ciutat Vella, Gràcia)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-02": {
+    "HTC-BCN-002": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Les Corts – Sarrià-Sant Gervasi",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-03": {
+    "HTC-BCN-003": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Martí – Poblenou – 22@",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-04": {
+    "HTC-BCN-004": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sants – Les Corts",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-05": {
+    "HTC-BCN-005": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Hospitalet de Llobregat",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-06": {
+    "HTC-BCN-006": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Badalona",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-07": {
+    "HTC-BCN-007": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Santa Coloma de Gramenet",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-08": {
+    "HTC-BCN-008": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Cornellà de Llobregat",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-09": {
+    "HTC-BCN-009": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Cugat del Vallès",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-10": {
+    "HTC-BCN-010": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sabadell",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-11": {
+    "HTC-BCN-011": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Terrassa",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-12": {
+    "HTC-BCN-012": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Mataró",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-13": {
+    "HTC-BCN-013": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Castelldefels",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-14": {
+    "HTC-BCN-014": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "El Prat de Llobregat",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-15": {
+    "HTC-BCN-015": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Boi de Llobregat",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-16": {
+    "HTC-BCN-016": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Viladecans",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-17": {
+    "HTC-BCN-017": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Rubí",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-18": {
+    "HTC-BCN-018": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Cerdanyola del Vallès",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-19": {
+    "HTC-BCN-019": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Mollet del Vallès",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-20": {
+    "HTC-BCN-020": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Granollers",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-21": {
+    "HTC-BCN-021": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vilanova i la Geltrú",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-22": {
+    "HTC-BCN-022": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Igualada",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-23": {
+    "HTC-BCN-023": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Manresa",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-24": {
+    "HTC-BCN-024": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vic",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-25": {
+    "HTC-BCN-025": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vilafranca del Penedès",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-BCN-26": {
+    "HTC-BCN-026": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Martorell",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-SEV-01": {
+    "HTC-SEV-001": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Sevilla Centro",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-MLG-01": {
+    "HTC-MLG-001": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Málaga Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-GRA-01": {
+    "HTC-GRA-001": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Granada Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CAD-01": {
+    "HTC-CAD-001": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Cádiz – Jerez de la Frontera",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-COR-01": {
+    "HTC-COR-001": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Córdoba Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-MLG-02": {
+    "HTC-MLG-002": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Marbella – Puerto Banús",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-MLG-03": {
+    "HTC-MLG-003": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Fuengirola – Mijas",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALM-01": {
+    "HTC-ALM-001": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "Almería Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-JAE-01": {
+    "HTC-JAE-001": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Jaén Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-HUV-01": {
+    "HTC-HUV-001": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Huelva Capital",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-SEV-02": {
+    "HTC-SEV-002": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Dos Hermanas",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-SEV-03": {
+    "HTC-SEV-003": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Alcalá de Guadaíra",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CAD-02": {
+    "HTC-CAD-002": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Algeciras",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CAD-03": {
+    "HTC-CAD-003": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Campo de Gibraltar (La Línea)",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-GRA-02": {
+    "HTC-GRA-002": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Motril – Costa Tropical",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-MLG-04": {
+    "HTC-MLG-004": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Vélez-Málaga",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-COR-02": {
+    "HTC-COR-002": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Lucena",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-JAE-02": {
+    "HTC-JAE-002": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Linares",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALM-02": {
+    "HTC-ALM-002": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "El Ejido",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-ALM-03": {
+    "HTC-ALM-003": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "Roquetas de Mar",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CAD-04": {
+    "HTC-CAD-004": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "San Fernando",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-CAD-05": {
+    "HTC-CAD-005": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "El Puerto de Santa María",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-SEV-04": {
+    "HTC-SEV-004": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Utrera",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-HUV-02": {
+    "HTC-HUV-002": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Lepe",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-HUV-03": {
+    "HTC-HUV-003": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Ayamonte",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-GRA-03": {
+    "HTC-GRA-003": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Guadix",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-COR-03": {
+    "HTC-COR-003": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Puente Genil",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-JAE-03": {
+    "HTC-JAE-003": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Úbeda – Baeza",
       "store_name": "",
       "status": "Pendiente"
     },
-    "HTC-MLG-05": {
+    "HTC-MLG-005": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Antequera",
       "store_name": "",
       "status": "Pendiente"
     }
-  }
+  },
+  "code_format": "HTC-AAA-000"
 }
