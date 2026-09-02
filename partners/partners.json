@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "updated_at": "2026-09-02",
   "total": 224,
   "partners": {
@@ -8,1568 +8,1792 @@
       "province": "Madrid",
       "zone": "Centro",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-002": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Salamanca",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-003": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Chamartín",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-004": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Tetuán - 4 Caminos",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-005": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Chamberí - Moncloa",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-006": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Arganzuela - Delicias - Atocha",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-007": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Retiro - Moratalaz",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-008": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Ciudad Lineal - San Blas - Canillejas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-009": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Hortaleza - Barajas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-010": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Puente de Vallecas - Villa de Vallecas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-011": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Carabanchel - Latina",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MAD-012": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Usera - Villaverde",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MAD-013": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Alcobendas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-014": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "San Sebastián de los Reyes",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-015": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Pozuelo de Alarcón",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-016": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Majadahonda",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-017": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Las Rozas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-018": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Boadilla del Monte",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MAD-019": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Alcorcón",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-020": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Móstoles",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-021": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Fuenlabrada",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-022": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Leganés",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-023": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Getafe",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-024": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Parla",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-025": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Alcalá de Henares",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-026": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Torrejón de Ardoz",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-027": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Coslada - San Fernando",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-028": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Rivas - Vaciamadrid",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MAD-029": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Collado Villalba",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MAD-030": {
       "region": "Comunidad de Madrid",
       "province": "Madrid",
       "zone": "Aranjuez",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-VLC-001": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Capital (Ciutat Vella, Eixample, Extramurs, Pla del Real)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-VLC-002": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Norte (Campanar, Benicalap)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-VLC-003": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Valencia Sur (Quatre Carreres, Patraix, Jesús)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-VLC-004": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Paterna – Parque Tecnológico",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-VLC-005": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Torrent",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALC-001": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Alicante Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-CST-001": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Castellón de la Plana",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-006": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Gandía",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-007": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Sagunto – Puerto de Sagunto",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-008": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Mislata – Xirivella",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-009": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Burjassot – Godella",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-010": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Alzira",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALC-002": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Elche",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALC-003": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Benidorm",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-ALC-004": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "San Vicente del Raspeig",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALC-005": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Torrevieja",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CST-002": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Vila-real",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-VLC-011": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Ontinyent",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-VLC-012": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Xàtiva",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-VLC-013": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Requena",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-ALC-006": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Alcoy",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-ALC-007": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Elda – Petrer",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-ALC-008": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Dénia",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALC-009": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Orihuela",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CST-003": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Vinaròs",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CST-004": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "La Vall d'Uixó",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-VLC-014": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Cullera",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-VLC-015": {
       "region": "Comunidad Valenciana",
       "province": "Valencia",
       "zone": "Oliva",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-ALC-010": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Villena",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-ALC-011": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Jávea (Xàbia)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-ALC-012": {
       "region": "Comunidad Valenciana",
       "province": "Alicante",
       "zone": "Calpe",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CST-005": {
       "region": "Comunidad Valenciana",
       "province": "Castellón",
       "zone": "Benicarló",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-BCN-001": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Barcelona Centro (Eixample, Ciutat Vella, Gràcia)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-002": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Les Corts – Sarrià-Sant Gervasi",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-003": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Martí – Poblenou – 22@",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-004": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sants – Les Corts",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-005": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Hospitalet de Llobregat",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-006": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Badalona",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-007": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Santa Coloma de Gramenet",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-008": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Cornellà de Llobregat",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-009": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Cugat del Vallès",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-010": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sabadell",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-011": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Terrassa",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-012": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Mataró",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BCN-013": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Castelldefels",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BCN-014": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "El Prat de Llobregat",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-015": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Sant Boi de Llobregat",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-016": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Viladecans",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-017": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Rubí",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-018": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Cerdanyola del Vallès",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-019": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Mollet del Vallès",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-020": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Granollers",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-021": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vilanova i la Geltrú",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-022": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Igualada",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BCN-023": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Manresa",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BCN-024": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vic",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BCN-025": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Vilafranca del Penedès",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BCN-026": {
       "region": "Cataluña",
       "province": "Barcelona",
       "zone": "Martorell",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-SEV-001": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Sevilla Centro",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MLG-001": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Málaga Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-GRA-001": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Granada Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-CAD-001": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Cádiz – Jerez de la Frontera",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-COR-001": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Córdoba Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MLG-002": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Marbella – Puerto Banús",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MLG-003": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Fuengirola – Mijas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ALM-001": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "Almería Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-JAE-001": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Jaén Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-HUV-001": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Huelva Capital",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-SEV-002": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Dos Hermanas",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-SEV-003": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Alcalá de Guadaíra",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CAD-002": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Algeciras",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CAD-003": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "Campo de Gibraltar (La Línea)",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GRA-002": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Motril – Costa Tropical",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MLG-004": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Vélez-Málaga",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-COR-002": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Lucena",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-JAE-002": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Linares",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-ALM-002": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "El Ejido",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-ALM-003": {
       "region": "Andalucía",
       "province": "Almería",
       "zone": "Roquetas de Mar",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CAD-004": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "San Fernando",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CAD-005": {
       "region": "Andalucía",
       "province": "Cádiz",
       "zone": "El Puerto de Santa María",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-SEV-004": {
       "region": "Andalucía",
       "province": "Sevilla",
       "zone": "Utrera",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-HUV-002": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Lepe",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-HUV-003": {
       "region": "Andalucía",
       "province": "Huelva",
       "zone": "Ayamonte",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-GRA-003": {
       "region": "Andalucía",
       "province": "Granada",
       "zone": "Guadix",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-COR-003": {
       "region": "Andalucía",
       "province": "Córdoba",
       "zone": "Puente Genil",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-JAE-003": {
       "region": "Andalucía",
       "province": "Jaén",
       "zone": "Úbeda – Baeza",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-MLG-005": {
       "region": "Andalucía",
       "province": "Málaga",
       "zone": "Antequera",
       "store_name": "",
-      "status": "Pendiente"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ZGZ-001": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Zaragoza Centro – Casco Histórico",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-ZGZ-002": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Delicias – Universidad – Romareda",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-ZGZ-003": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Actur – Arrabal – La Almozara",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ZGZ-004": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Las Fuentes – San José – Torrero",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-ZGZ-005": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Utebo – Casetas – Alagón",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-ZGZ-006": {
       "region": "Aragón",
       "province": "Zaragoza",
       "zone": "Calatayud",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-MUR-001": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Murcia Centro – Gran Vía – Santa Eulalia",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MUR-002": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Murcia Norte – Juan Carlos I – La Flota – Espinardo – Molina",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MUR-003": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Murcia Sur – El Carmen – Infante – El Palmar – Alcantarilla",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MUR-004": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Cartagena",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MUR-005": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Mar Menor – San Javier – Los Alcázares",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MUR-006": {
       "region": "Región de Murcia",
       "province": "Murcia",
       "zone": "Lorca – Águilas",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MLL-001": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Palma Centro – Avenidas – Casco Antiguo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MLL-002": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Palma Poniente – Santa Catalina – Son Armadans",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MLL-003": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Playa de Palma – Llucmajor",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-MLL-004": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Calvià – Santa Ponça – Magaluf",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MLL-005": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Marratxí – Inca – Norte de Mallorca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-MLL-006": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Manacor – Cala Millor – Este de Mallorca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BIZ-001": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Bilbao Centro – Abando – Indautxu",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BIZ-002": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Casco Viejo – Begoña – Santutxu – Basauri",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BIZ-003": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Deusto – San Ignacio – Zorrotzaurre",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-BIZ-004": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Barakaldo – Sestao – Portugalete – Santurtzi",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-BIZ-005": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Getxo – Leioa – Erandio",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-TFE-001": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "Santa Cruz Centro – La Salle – Salamanca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-TFE-002": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "La Laguna – La Cuesta – Taco",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-TFE-003": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "Puerto de la Cruz – La Orotava – Los Realejos",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-TFE-004": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "Adeje – Arona – Los Cristianos",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-TFE-005": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "Granadilla – El Médano – Candelaria",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-LPA-001": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Las Palmas Centro – Triana – Vegueta",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-LPA-002": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Mesa y López – Santa Catalina – Guanarteme – Puerto",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-LPA-003": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Siete Palmas – Tamaraceite – Ciudad Alta",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-LPA-004": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Telde – Jinámar",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-LPA-005": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Vecindario – Maspalomas – Playa del Inglés",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GAL-001": {
       "region": "Galicia",
       "province": "A Coruña",
       "zone": "A Coruña Centro – Ensanche – Cuatro Caminos",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-GAL-002": {
       "region": "Galicia",
       "province": "A Coruña",
       "zone": "A Coruña Metropolitana – Oleiros – Culleredo – Cambre",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GAL-003": {
       "region": "Galicia",
       "province": "A Coruña",
       "zone": "Santiago de Compostela – Ames",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GAL-004": {
       "region": "Galicia",
       "province": "Pontevedra",
       "zone": "Vigo Centro – Casco Vello – Areal",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-GAL-005": {
       "region": "Galicia",
       "province": "Pontevedra",
       "zone": "Vigo Metropolitana – Nigrán – Redondela – O Porriño",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GAL-006": {
       "region": "Galicia",
       "province": "Pontevedra",
       "zone": "Pontevedra – Marín",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GAL-007": {
       "region": "Galicia",
       "province": "Ourense",
       "zone": "Ourense",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GAL-008": {
       "region": "Galicia",
       "province": "Lugo",
       "zone": "Lugo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GAL-009": {
       "region": "Galicia",
       "province": "A Coruña",
       "zone": "Ferrol – Narón",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GAL-010": {
       "region": "Galicia",
       "province": "Pontevedra",
       "zone": "Vilagarcía de Arousa – O Salnés",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-AST-001": {
       "region": "Principado de Asturias",
       "province": "Asturias",
       "zone": "Oviedo Centro",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-AST-002": {
       "region": "Principado de Asturias",
       "province": "Asturias",
       "zone": "Gijón Centro",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-AST-003": {
       "region": "Principado de Asturias",
       "province": "Asturias",
       "zone": "Avilés – Castrillón",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-AST-004": {
       "region": "Principado de Asturias",
       "province": "Asturias",
       "zone": "Siero – Lugones – Llanera",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-AST-005": {
       "region": "Principado de Asturias",
       "province": "Asturias",
       "zone": "Mieres – Langreo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CNT-001": {
       "region": "Cantabria",
       "province": "Cantabria",
       "zone": "Santander Centro",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CNT-002": {
       "region": "Cantabria",
       "province": "Cantabria",
       "zone": "Santander Metropolitana – Camargo – El Astillero",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CNT-003": {
       "region": "Cantabria",
       "province": "Cantabria",
       "zone": "Torrelavega",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CNT-004": {
       "region": "Cantabria",
       "province": "Cantabria",
       "zone": "Castro Urdiales – Laredo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CYL-001": {
       "region": "Castilla y León",
       "province": "Valladolid",
       "zone": "Valladolid",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CYL-002": {
       "region": "Castilla y León",
       "province": "Salamanca",
       "zone": "Salamanca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CYL-003": {
       "region": "Castilla y León",
       "province": "León",
       "zone": "León",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CYL-004": {
       "region": "Castilla y León",
       "province": "Burgos",
       "zone": "Burgos",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CYL-005": {
       "region": "Castilla y León",
       "province": "Palencia",
       "zone": "Palencia",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CYL-006": {
       "region": "Castilla y León",
       "province": "Zamora",
       "zone": "Zamora",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CYL-007": {
       "region": "Castilla y León",
       "province": "Segovia",
       "zone": "Segovia",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CYL-008": {
       "region": "Castilla y León",
       "province": "Ávila",
       "zone": "Ávila",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CYL-009": {
       "region": "Castilla y León",
       "province": "Soria",
       "zone": "Soria",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "D"
     },
     "HTC-CYL-010": {
       "region": "Castilla y León",
       "province": "León",
       "zone": "Ponferrada",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CYL-011": {
       "region": "Castilla y León",
       "province": "Burgos",
       "zone": "Miranda de Ebro",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CYL-012": {
       "region": "Castilla y León",
       "province": "Burgos",
       "zone": "Aranda de Duero",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-HSC-001": {
       "region": "Aragón",
       "province": "Huesca",
       "zone": "Huesca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-TER-001": {
       "region": "Aragón",
       "province": "Teruel",
       "zone": "Teruel",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "D"
     },
     "HTC-ALA-001": {
       "region": "País Vasco",
       "province": "Álava",
       "zone": "Vitoria-Gasteiz",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GIP-001": {
       "region": "País Vasco",
       "province": "Gipuzkoa",
       "zone": "Donostia-San Sebastián",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-GIP-002": {
       "region": "País Vasco",
       "province": "Gipuzkoa",
       "zone": "Irun – Hondarribia",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GIP-003": {
       "region": "País Vasco",
       "province": "Gipuzkoa",
       "zone": "Eibar – Arrasate/Mondragón – Bergara",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-BIZ-006": {
       "region": "País Vasco",
       "province": "Bizkaia",
       "zone": "Durango – Amorebieta-Etxano",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-TGN-001": {
       "region": "Cataluña",
       "province": "Tarragona",
       "zone": "Tarragona",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-TGN-002": {
       "region": "Cataluña",
       "province": "Tarragona",
       "zone": "Reus",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-TGN-003": {
       "region": "Cataluña",
       "province": "Tarragona",
       "zone": "Salou – Cambrils – Vila-seca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-TGN-004": {
       "region": "Cataluña",
       "province": "Tarragona",
       "zone": "El Vendrell – Calafell",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GIR-001": {
       "region": "Cataluña",
       "province": "Girona",
       "zone": "Girona – Salt",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-GIR-002": {
       "region": "Cataluña",
       "province": "Girona",
       "zone": "Figueres – Roses",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-GIR-003": {
       "region": "Cataluña",
       "province": "Girona",
       "zone": "Blanes – Lloret de Mar",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-LLE-001": {
       "region": "Cataluña",
       "province": "Lleida",
       "zone": "Lleida",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-LLE-002": {
       "region": "Cataluña",
       "province": "Lleida",
       "zone": "Tàrrega – Mollerussa – Balaguer",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-NAV-001": {
       "region": "Comunidad Foral de Navarra",
       "province": "Navarra",
       "zone": "Pamplona/Iruña – Barañáin – Burlada",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-NAV-002": {
       "region": "Comunidad Foral de Navarra",
       "province": "Navarra",
       "zone": "Tudela",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-RIO-001": {
       "region": "La Rioja",
       "province": "La Rioja",
       "zone": "Logroño",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-RIO-002": {
       "region": "La Rioja",
       "province": "La Rioja",
       "zone": "Calahorra",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CLM-001": {
       "region": "Castilla-La Mancha",
       "province": "Albacete",
       "zone": "Albacete",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CLM-002": {
       "region": "Castilla-La Mancha",
       "province": "Toledo",
       "zone": "Toledo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CLM-003": {
       "region": "Castilla-La Mancha",
       "province": "Toledo",
       "zone": "Talavera de la Reina",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CLM-004": {
       "region": "Castilla-La Mancha",
       "province": "Guadalajara",
       "zone": "Guadalajara",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-CLM-005": {
       "region": "Castilla-La Mancha",
       "province": "Guadalajara",
       "zone": "Azuqueca de Henares – Corredor del Henares",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CLM-006": {
       "region": "Castilla-La Mancha",
       "province": "Ciudad Real",
       "zone": "Ciudad Real",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CLM-007": {
       "region": "Castilla-La Mancha",
       "province": "Ciudad Real",
       "zone": "Puertollano",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CLM-008": {
       "region": "Castilla-La Mancha",
       "province": "Cuenca",
       "zone": "Cuenca",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-CLM-009": {
       "region": "Castilla-La Mancha",
       "province": "Toledo",
       "zone": "Illescas – Seseña",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-EXT-001": {
       "region": "Extremadura",
       "province": "Badajoz",
       "zone": "Badajoz",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A"
     },
     "HTC-EXT-002": {
       "region": "Extremadura",
       "province": "Cáceres",
       "zone": "Cáceres",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-EXT-003": {
       "region": "Extremadura",
       "province": "Badajoz",
       "zone": "Mérida",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-EXT-004": {
       "region": "Extremadura",
       "province": "Cáceres",
       "zone": "Plasencia",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-EXT-005": {
       "region": "Extremadura",
       "province": "Badajoz",
       "zone": "Don Benito – Villanueva de la Serena",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-EXT-006": {
       "region": "Extremadura",
       "province": "Badajoz",
       "zone": "Almendralejo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-IBZ-001": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Ibiza/Eivissa – Sant Antoni – Santa Eulària",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "A+"
     },
     "HTC-MEN-001": {
       "region": "Islas Baleares",
       "province": "Islas Baleares",
       "zone": "Maó – Ciutadella",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-LAN-001": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Arrecife – Playa Honda – Puerto del Carmen",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-FUE-001": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Puerto del Rosario – Corralejo",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "B"
     },
     "HTC-FUE-002": {
       "region": "Canarias",
       "province": "Las Palmas",
       "zone": "Gran Tarajal – Costa Calma – Morro Jable",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-SPC-001": {
       "region": "Canarias",
       "province": "Santa Cruz de Tenerife",
       "zone": "Santa Cruz de La Palma – Los Llanos de Aridane",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-CEU-001": {
       "region": "Ceuta",
       "province": "Ceuta",
       "zone": "Ceuta",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     },
     "HTC-MEL-001": {
       "region": "Melilla",
       "province": "Melilla",
       "zone": "Melilla",
       "store_name": "",
-      "status": "Sin asignar"
+      "status": "Sin asignar",
+      "priority": "C"
     }
   },
   "code_format": "HTC-AAA-000"
