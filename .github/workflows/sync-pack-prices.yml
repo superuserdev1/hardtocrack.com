@@ -1,0 +1,102 @@
+name: Sync HardToCrack pack prices
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-pack-prices.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update prices, offer and order selectors
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          targets = [
+              ('index.html','es'),
+              ('en/index.html','en'),
+              ('nl/index.html','nl'),
+              ('pt/index.html','pt'),
+              ('precios/index.html','es'),
+              ('en/prices/index.html','en'),
+              ('nl/prices/index.html','en'),
+              ('pt/precios/index.html','pt'),
+          ]
+
+          offers = {
+            'es': '''<div class="promo-note"><strong>OFERTA ONLINE · VENTA DIRECTA</strong><br><b>Essential: <span class="promo-discount">159 €</span></b> <s>179 €</s> · <b>Privacy: <span class="promo-discount">369 €</span></b> <s>399 €</s> · <b>Elite: <span class="promo-discount">599 €</span></b> <s>629 €</s>.<br><small>Oferta exclusiva para reservas realizadas directamente con HardToCrack, con pago a HardToCrack y entrega directa al domicilio, locker o parcel shop indicado por el cliente. Los gastos de envío no están incluidos en el precio del pack. No aplicable a compras o reservas realizadas mediante tiendas Partner HardToCrack. El descuento se aplicará en la factura. Válida hasta el 31 de octubre de 2026, salvo cancelación anticipada.</small></div>''',
+            'en': '''<div class="promo-note"><strong>ONLINE OFFER · DIRECT SALE</strong><br><b>Essential: <span class="promo-discount">€159</span></b> <s>€179</s> · <b>Privacy: <span class="promo-discount">€369</span></b> <s>€399</s> · <b>Elite: <span class="promo-discount">€599</span></b> <s>€629</s>.<br><small>Exclusive offer for reservations made directly with HardToCrack, paid directly to HardToCrack and delivered to the customer's address, locker or parcel shop. Shipping costs are not included in the package price. Not applicable to purchases or reservations made through HardToCrack Partner stores. The discount will be applied on the invoice. Valid until 31 October 2026, unless withdrawn earlier.</small></div>''',
+            'nl': '''<div class="promo-note"><strong>ONLINE AANBIEDING · DIRECTE VERKOOP</strong><br><b>Essential: <span class="promo-discount">€159</span></b> <s>€179</s> · <b>Privacy: <span class="promo-discount">€369</span></b> <s>€399</s> · <b>Elite: <span class="promo-discount">€599</span></b> <s>€629</s>.<br><small>Exclusieve aanbieding voor reserveringen die rechtstreeks bij HardToCrack worden geplaatst en betaald, met rechtstreekse levering op het adres van de klant, in een locker of bij een parcel shop. Verzendkosten zijn niet inbegrepen in de prijs van het pakket. Niet van toepassing op aankopen of reserveringen via HardToCrack Partner-winkels. De korting wordt op de factuur toegepast. Geldig tot en met 31 oktober 2026, tenzij eerder ingetrokken.</small></div>''',
+            'pt': '''<div class="promo-note"><strong>OFERTA ONLINE · VENDA DIRETA</strong><br><b>Essential: <span class="promo-discount">159 €</span></b> <s>179 €</s> · <b>Privacy: <span class="promo-discount">369 €</span></b> <s>399 €</s> · <b>Elite: <span class="promo-discount">599 €</span></b> <s>629 €</s>.<br><small>Oferta exclusiva para reservas efetuadas diretamente com a HardToCrack, com pagamento à HardToCrack e entrega direta no domicílio, locker ou parcel shop indicado pelo cliente. Os custos de envio não estão incluídos no preço do pack. Não aplicável a compras ou reservas efetuadas através de lojas Partner HardToCrack. O desconto será aplicado na fatura. Válida até 31 de outubro de 2026, salvo cancelamento antecipado.</small></div>'''
+          }
+
+          css = '.promo-note{max-width:920px;margin:108px auto 24px;padding:18px 22px;border:1px solid rgba(32,227,140,.48);border-radius:18px;background:linear-gradient(110deg,rgba(35,184,255,.10),rgba(32,227,140,.10));color:#dce7ed;line-height:1.55;box-shadow:0 18px 48px rgba(0,0,0,.20)}.promo-note strong{color:#20E38C;font-weight:900;letter-spacing:.06em}.promo-note small{display:inline-block;margin-top:7px;color:#c3d0d9}.promo-note s{color:#7f8d98;margin-left:4px}.promo-discount{color:#23B8FF;font-weight:900}'
+
+          for name, lang in targets:
+              p=Path(name)
+              if not p.exists():
+                  print('skip missing', name); continue
+              s=p.read_text(encoding='utf-8')
+
+              # Official PVP everywhere: 179 / 399 / 629. Avoid unrelated prices by matching pack names/options/price blocks.
+              s=re.sub(r'(<div class="pack-name">Essential</div>.*?<div class="price">)\s*\d+\s*€(</div>)', r'\g<1>179 €\2', s, flags=re.S)
+              s=re.sub(r'(<div class="pack-name">Privacy</div>.*?<div class="price">)\s*\d+\s*€(</div>)', r'\g<1>399 €\2', s, flags=re.S)
+              s=re.sub(r'(<div class="pack-name">Elite</div>.*?<div class="price">)\s*\d+\s*€(</div>)', r'\g<1>629 €\2', s, flags=re.S)
+              s=re.sub(r'(<option[^>]*>Essential\s*[—-])\s*\d+\s*€', r'\g<1> 179 €', s)
+              s=re.sub(r'(<option[^>]*>Privacy\s*[—-])\s*\d+\s*€', r'\g<1> 399 €', s)
+              s=re.sub(r'(<option[^>]*>Elite\s*[—-])\s*\d+\s*€', r'\g<1> 629 €', s)
+
+              # Pricing-page card structures.
+              for pack, val in [('Essential','179'),('Privacy','399'),('Elite','629')]:
+                  pat=rf'(<[^>]+class="[^"]*pack[^\"]*"[^>]*>.*?{pack}.*?<[^>]+class="price"[^>]*>)(.*?)(</[^>]+>)'
+                  def repl(m, val=val):
+                      inner=m.group(2)
+                      if '<strong>' in inner:
+                          inner=re.sub(r'(<strong>)\s*\d+\s*(</strong>)', rf'\g<1>{val}\2', inner)
+                      else:
+                          inner=re.sub(r'\d+\s*€', val+' €', inner, count=1)
+                      return m.group(1)+inner+m.group(3)
+                  s=re.sub(pat,repl,s,flags=re.S|re.I)
+
+              # Remove old promotion boxes and insert one clear direct-sale offer after <main>.
+              s=re.sub(r'<div class="promo-note"[^>]*>.*?</div>', '', s, flags=re.S|re.I)
+              if '<main>' in s:
+                  s=s.replace('<main>', '<main>'+offers[lang], 1)
+              elif '<main ' in s:
+                  s=re.sub(r'(<main[^>]*>)', r'\1'+offers[lang], s, count=1)
+              else:
+                  s=s.replace('<body>', '<body>'+offers[lang], 1)
+
+              # Ensure corporate offer styling exists and wins over older declarations.
+              s=s.replace('</style>', css+'</style>', 1)
+
+              # Correct stale explanatory text where present.
+              s=s.replace('Elite 609 €','Elite 599 €').replace('Elite 639 €','Elite 629 €').replace('Elite — 639 €','Elite — 629 €').replace('Elite — 679 €','Elite — 629 €')
+              s=s.replace('Essential — 199 €','Essential — 179 €').replace('Essential — 149 €','Essential — 179 €')
+              s=s.replace('Elite — 649 €','Elite — 629 €')
+
+              p.write_text(s,encoding='utf-8')
+              print('updated',name)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "HardToCrack Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html en/index.html nl/index.html pt/index.html precios/index.html en/prices/index.html nl/prices/index.html pt/precios/index.html
+          if git diff --cached --quiet; then
+            echo "No changes required"
+          else
+            git commit -m "fix: set pack PVP 179/399/629 and direct online offer"
+            git push
+          fi
