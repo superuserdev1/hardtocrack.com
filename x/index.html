@@ -13,19 +13,25 @@
     *,*::before,*::after{box-sizing:border-box}
     body{min-height:100vh;margin:0;display:grid;place-items:center;padding:28px 18px;background:radial-gradient(ellipse at 48% 0%,#102d3c 0%,var(--bg) 52%);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
     main{width:min(100%,540px);padding:clamp(24px,6vw,42px);border:1px solid var(--edge);border-radius:24px;background:#101923;box-shadow:0 22px 65px #0005}
-    .brand{margin:0 0 35px;font-size:1.15rem;font-weight:850;letter-spacing:.09em}.brand span,h1 span{background:linear-gradient(100deg,var(--cyan),var(--green));color:transparent;background-clip:text;-webkit-background-clip:text}
+    .brand{display:flex;align-items:center;gap:14px;margin:0 0 28px}.brand-logo{width:64px;height:72px;flex:none;filter:drop-shadow(0 0 12px rgba(35,184,255,.18))}.brand-name{font-size:clamp(1.05rem,4vw,1.35rem);font-weight:900;letter-spacing:.055em;line-height:1.1;white-space:nowrap}.brand-name span,h1 span{background:linear-gradient(100deg,var(--cyan),var(--green));color:transparent;background-clip:text;-webkit-background-clip:text}.brand-sub{display:block;color:var(--muted);font-size:.57rem;letter-spacing:.14em;margin-top:6px;text-transform:uppercase}
     .tag{font-size:.76rem;color:var(--muted);letter-spacing:.19em;text-transform:uppercase}h1{font-size:clamp(1.9rem,6vw,2.65rem);letter-spacing:-.045em;line-height:1.15;margin:12px 0 14px}p{color:var(--muted);margin:0 0 22px}
     .primary{display:block;width:100%;border:0;border-radius:12px;background:linear-gradient(105deg,var(--cyan),var(--green));padding:17px 20px;color:#071219;text-decoration:none;text-align:center;font:800 1rem system-ui;cursor:pointer}.primary[aria-disabled=true]{opacity:.55;cursor:not-allowed}
     .status{font-size:.82rem;margin:11px 0 0;color:var(--muted)}.address{margin-top:24px}.address label{display:block;margin-bottom:9px;font-size:.88rem;font-weight:700}.address-row{display:flex;gap:9px;align-items:stretch}.address code{display:block;min-width:0;flex:1;overflow-wrap:anywhere;max-height:100px;overflow:auto;padding:12px;background:#08121a;border:1px solid var(--edge);border-radius:10px;font-size:.73rem;color:#d2e2e9}.copy{flex:0 0 auto;border:1px solid #398dae;border-radius:10px;padding:0 14px;background:#132a35;color:#e6fbff;cursor:pointer;font-weight:700}.copy:disabled{opacity:.5;cursor:not-allowed}
     .divider{height:1px;background:var(--edge);margin:29px 0}.install-title{font-size:1rem;font-weight:750;margin:0 0 8px}.stores{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 18px}.stores a{color:#c2ebfa;text-decoration:none;border:1px solid #35505c;border-radius:8px;padding:8px 11px;font-size:.84rem}.stores a:hover,.email:hover{text-decoration:underline}small{color:var(--muted);display:block;line-height:1.6}.email{font-weight:750;color:#62dfca;text-decoration:none;overflow-wrap:anywhere}.foot{font-size:.75rem;text-align:center;margin:26px 0 0}
     :focus-visible{outline:3px solid var(--green);outline-offset:3px}
-    @media (max-width:380px){.address-row{flex-direction:column}.copy{padding:10px}}
+    @media (max-width:380px){.address-row{flex-direction:column}.copy{padding:10px}.brand-logo{width:51px;height:60px}.brand{gap:9px}.brand-name{letter-spacing:.02em}.brand-sub{letter-spacing:.08em}}
   </style>
 </head>
 <body>
   <main>
-    <div class="brand">⬡ HARD<span>TOCRACK</span></div>
-    <div class="tag">Security · Privacy · Freedom</div>
+    <div class="brand" aria-label="HardToCrack · Security Privacy Freedom">
+      <svg class="brand-logo" viewBox="65 51 230 258" role="img" aria-label="Logotipo corporativo HardToCrack" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ht-logo-gradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#23B8FF"/><stop offset="100%" stop-color="#20E38C"/></linearGradient></defs>
+        <path fill="url(#ht-logo-gradient)" d="M 159.363281 109.351562 L 180.691406 96.957031 L 180.691406 302.234375 L 72.054688 236.917969 L 72.054688 121.484375 L 180.691406 57.765625 L 287.945312 122.199219 L 287.945312 236.402344 L 211.332031 283.523438 L 211.332031 165.953125 L 190.140625 165.953125 L 190.140625 146.160156 L 254.921875 146.160156 L 254.921875 166.152344 L 232.328125 166.152344 L 232.328125 245.332031 L 267.519531 224.539062 L 267.519531 133.363281 L 181.140625 81.578125 L 92.964844 133.960938 L 92.964844 224.136719 L 159.347656 265.128906 L 159.347656 192.347656 L 126.355469 192.347656 L 126.355469 230.535156 L 105.5625 217.941406 L 105.5625 142.558594 L 125.957031 130.164062 L 125.957031 171.152344 L 159.746094 171.152344 Z M 159.363281 109.351562"/>
+      </svg>
+      <div><div class="brand-name">HARD<span>TOCRACK</span></div><span class="brand-sub">Security · Privacy · Freedom</span></div>
+    </div>
+    <div class="tag">Contacto privado</div>
     <h1>Hablemos por <span>SimpleX.</span></h1>
     <p>Una vía directa de contacto con HardToCrack. Tú decides cómo comunicarte.</p>
     <a class="primary" id="open-simplex" href="#" aria-disabled="true">Abrir en SimpleX</a>
@@ -53,7 +59,6 @@
   <script>
     // Dirección reutilizable de contacto de HardToCrack. Cambiar solo esta línea al rotarla.
     const SIMPLEX_CONTACT_URL = "https://smp14.simplex.im/a#ojdpSrsPFySI3tBmAIqrPyZtuIgXOTwNf9LwPt0Zf-c";
-
     const open = document.getElementById("open-simplex");
     const output = document.getElementById("simplex-url");
     const copy = document.getElementById("copy");
