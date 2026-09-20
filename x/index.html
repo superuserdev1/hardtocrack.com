@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="color-scheme" content="dark">
+  <title>Contacto privado · HardToCrack</title>
+  <meta name="description" content="Contacta con HardToCrack mediante SimpleX o correo electrónico.">
+  <style>
+    :root{color-scheme:dark;--bg:#0b1018;--fg:#f3f8fb;--muted:#afc0ce;--cyan:#23b8ff;--green:#20e38c;--edge:#273b49}
+    *,*::before,*::after{box-sizing:border-box}
+    body{min-height:100vh;margin:0;display:grid;place-items:center;padding:28px 18px;background:radial-gradient(ellipse at 48% 0%,#102d3c 0%,var(--bg) 52%);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{width:min(100%,540px);padding:clamp(24px,6vw,42px);border:1px solid var(--edge);border-radius:24px;background:#101923;box-shadow:0 22px 65px #0005}
+    .brand{margin:0 0 35px;font-size:1.15rem;font-weight:850;letter-spacing:.09em}.brand span,h1 span{background:linear-gradient(100deg,var(--cyan),var(--green));color:transparent;background-clip:text;-webkit-background-clip:text}
+    .tag{font-size:.76rem;color:var(--muted);letter-spacing:.19em;text-transform:uppercase}h1{font-size:clamp(1.9rem,6vw,2.65rem);letter-spacing:-.045em;line-height:1.15;margin:12px 0 14px}p{color:var(--muted);margin:0 0 22px}
+    .primary{display:block;width:100%;border:0;border-radius:12px;background:linear-gradient(105deg,var(--cyan),var(--green));padding:17px 20px;color:#071219;text-decoration:none;text-align:center;font:800 1rem system-ui;cursor:pointer}.primary[aria-disabled=true]{opacity:.55;cursor:not-allowed}
+    .status{font-size:.82rem;margin:11px 0 0;color:var(--muted)}.address{margin-top:24px}.address label{display:block;margin-bottom:9px;font-size:.88rem;font-weight:700}.address-row{display:flex;gap:9px;align-items:stretch}.address code{display:block;min-width:0;flex:1;overflow-wrap:anywhere;max-height:100px;overflow:auto;padding:12px;background:#08121a;border:1px solid var(--edge);border-radius:10px;font-size:.73rem;color:#d2e2e9}.copy{flex:0 0 auto;border:1px solid #398dae;border-radius:10px;padding:0 14px;background:#132a35;color:#e6fbff;cursor:pointer;font-weight:700}.copy:disabled{opacity:.5;cursor:not-allowed}
+    .divider{height:1px;background:var(--edge);margin:29px 0}.install-title{font-size:1rem;font-weight:750;margin:0 0 8px}.stores{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 18px}.stores a{color:#c2ebfa;text-decoration:none;border:1px solid #35505c;border-radius:8px;padding:8px 11px;font-size:.84rem}.stores a:hover,.email:hover{text-decoration:underline}small{color:var(--muted);display:block;line-height:1.6}.email{font-weight:750;color:#62dfca;text-decoration:none;overflow-wrap:anywhere}.foot{font-size:.75rem;text-align:center;margin:26px 0 0}
+    :focus-visible{outline:3px solid var(--green);outline-offset:3px}
+    @media (max-width:380px){.address-row{flex-direction:column}.copy{padding:10px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">⬡ HARD<span>TOCRACK</span></div>
+    <div class="tag">Security · Privacy · Freedom</div>
+    <h1>Hablemos por <span>SimpleX.</span></h1>
+    <p>Una vía directa de contacto con HardToCrack. Tú decides cómo comunicarte.</p>
+    <a class="primary" id="open-simplex" href="#" aria-disabled="true">Abrir en SimpleX</a>
+    <p class="status" id="status" role="status">Enlace de contacto pendiente de configurar.</p>
+    <div class="address">
+      <label for="simplex-url">Enlace completo de contacto</label>
+      <div class="address-row">
+        <code id="simplex-url" aria-live="polite">Pendiente de configurar</code>
+        <button class="copy" id="copy" type="button" disabled>Copiar</button>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <h2 class="install-title">¿No tienes SimpleX?</h2>
+    <div class="stores">
+      <a href="https://apps.apple.com/us/app/simplex-chat/id1605771084" rel="noreferrer noopener" target="_blank">App Store ↗</a>
+      <a href="https://play.google.com/store/apps/details?id=chat.simplex.app" rel="noreferrer noopener" target="_blank">Google Play ↗</a>
+      <a href="https://f-droid.org/packages/chat.simplex.app/" rel="noreferrer noopener" target="_blank">F-Droid ↗</a>
+    </div>
+    <small>SimpleX es una aplicación de mensajería cifrada de extremo a extremo.<br>No requiere número de teléfono ni identificador de usuario asignado.<br>Conecta mediante un enlace o código QR que tú decides compartir.</small>
+    <div class="divider"></div>
+    <h2 class="install-title">También puedes escribirnos</h2>
+    <a class="email" href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a>
+    <p class="foot">Sin cookies, analítica ni recursos externos cargados por esta página.</p>
+  </main>
+  <script>
+    // Dirección reutilizable de contacto de HardToCrack. Cambiar solo esta línea al rotarla.
+    const SIMPLEX_CONTACT_URL = "https://smp14.simplex.im/a#ojdpSrsPFySI3tBmAIqrPyZtuIgXOTwNf9LwPt0Zf-c";
+
+    const open = document.getElementById("open-simplex");
+    const output = document.getElementById("simplex-url");
+    const copy = document.getElementById("copy");
+    const status = document.getElementById("status");
+    const configured = /^https:\/\/smp14\.simplex\.im\/a#[A-Za-z0-9_-]+$/.test(SIMPLEX_CONTACT_URL);
+    if (configured) {
+      open.href = SIMPLEX_CONTACT_URL;
+      open.removeAttribute("aria-disabled");
+      status.textContent = "Toca el botón para abrir SimpleX. No hay redirección automática.";
+      output.textContent = SIMPLEX_CONTACT_URL;
+      copy.disabled = false;
+    }
+    open.addEventListener("click", function (event) {
+      if (!configured) event.preventDefault();
+    });
+    copy.addEventListener("click", async function () {
+      if (!configured) return;
+      try {
+        await navigator.clipboard.writeText(SIMPLEX_CONTACT_URL);
+        copy.textContent = "Copiado ✓";
+        status.textContent = "Enlace copiado. Pégalo en SimpleX si lo prefieres.";
+        copy.blur();
+      } catch {
+        status.textContent = "No se pudo copiar automáticamente. Selecciona el enlace completo y cópialo.";
+      }
+    });
+  </script>
+</body>
+</html>
