@@ -1,8 +1,8 @@
 (function () {
   "use strict";
 
-  // Public campaign identifiers. A code identifies the source of a direct
-  // enquiry; it never identifies a store or grants a partner commission.
+  // One code marks direct enquiries without identifying their source channel.
+  // It never identifies a store or grants a partner commission.
   const references = Object.freeze({
     "HTC-DIR-001": { label: "Venta directa HardToCrack", source: "direct" }
   });

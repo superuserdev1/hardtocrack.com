@@ -17,7 +17,7 @@ const htmlEscape = (value) => value.replace(/[&<>"']/g, (char) => ({
 })[char]);
 
 await mkdir(output, { recursive: true });
-const excluded = new Set(['.git', '.github', 'dist', 'scripts', 'vercel.json', 'README_deploy.md']);
+const excluded = new Set(['.git', '.github', 'dist', 'scripts', 'vercel.json', 'README_deploy.md', 'DEPLOY_PRIVACIDAD.md']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (excluded.has(entry.name) || entry.name.startsWith('.')) continue;
   await cp(join(root, entry.name), join(output, entry.name), { recursive: true });
