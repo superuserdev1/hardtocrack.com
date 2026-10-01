@@ -17,13 +17,13 @@ const htmlEscape = (value) => value.replace(/[&<>"']/g, (char) => ({
 })[char]);
 
 await mkdir(output, { recursive: true });
-const excluded = new Set(['.git', '.github', 'dist', 'scripts', 'vercel.json', 'README_deploy.md', 'DEPLOY_PRIVACIDAD.md']);
+const excluded = new Set(['.git', '.github', 'dist', 'scripts', 'vercel.json', 'README_deploy.md', 'DEPLOY_PRIVACIDAD.md', 'PEDIDOS_DIRECTOS.md']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (excluded.has(entry.name) || entry.name.startsWith('.')) continue;
   await cp(join(root, entry.name), join(output, entry.name), { recursive: true });
 }
 
-for (const page of ['index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html']) {
+for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html']) {
   const target = join(output, page);
   let content = await readFile(target, 'utf8');
   for (const field of fields) {
@@ -38,3 +38,4 @@ for (const page of ['index.html', 'guia/index.html', 'privacidad/index.html', 'g
 }
 
 console.log('Static site built with legal information.');
+

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="canonical" href="https://www.hardtocrack.com/pedidos"><title>Pedidos · HardToCrack</title></head>
+<body><p>Continuar al <a id="destination" href="/pedidos/">formulario de pedidos HardToCrack</a>.</p><script>
+  const destination = new URL("/pedidos/", location.origin);
+  destination.search = location.search;
+  destination.hash = location.hash;
+  document.getElementById("destination").href = destination.href;
+  location.replace(destination.href);
+</script></body>
+</html>
