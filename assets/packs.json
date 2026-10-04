@@ -1,0 +1,62 @@
+{
+  "updated": "2026-10-04",
+  "note": "Precios habituales de los packs, IVA incluido. El teléfono, el envío y los accesorios se presupuestan aparte. Las renovaciones posteriores a los periodos incluidos se contratan por separado.",
+  "packs": [
+    {
+      "id": "Essential",
+      "price": 179,
+      "tagline": "GrapheneOS instalado y verificado",
+      "audience": "Para quien quiere una base segura y se encargará de sus aplicaciones y cuentas.",
+      "inheritance": "La base común de los tres packs.",
+      "features": [
+        "Instalación profesional de GrapheneOS",
+        "Última versión estable y verificación del sistema",
+        "Configuración inicial de seguridad"
+      ],
+      "clarification": "No incluye licencias de VPN, mensajería ni servicios de identidad digital."
+    },
+    {
+      "id": "Privacy",
+      "price": 399,
+      "tagline": "Perfiles, apps, VPN y conectividad",
+      "audience": "Para quien quiere una configuración preparada para su uso diario y comunicaciones.",
+      "inheritance": "Todo lo incluido en Essential, más:",
+      "features": [
+        "Configuración de perfiles y aplicaciones según tu uso",
+        "Mullvad VPN durante 6 meses",
+        "eSIM de datos: 50 GB, validez de 180 días",
+        "Licencia de Threema",
+        "Personalización y optimización de la configuración"
+      ],
+      "clarification": "La configuración de apps no incluye todas sus posibles suscripciones de pago."
+    },
+    {
+      "id": "Elite",
+      "price": 629,
+      "tagline": "Tu ecosistema de privacidad e identidad",
+      "audience": "Para quien también necesita correo, alias, contraseñas y dominio personal preparados.",
+      "inheritance": "Todo lo incluido en Privacy, con Mullvad ampliado a 12 meses, más:",
+      "features": [
+        "Proton Plus durante 12 meses",
+        "SimpleLogin Premium durante 12 meses",
+        "Proton Pass Plus durante 12 meses",
+        "Dominio propio durante 12 meses",
+        "Asistencia prioritaria"
+      ],
+      "clarification": "Mullvad son 12 meses en total. Mantiene la eSIM de 50 GB / 180 días y Threema de Privacy."
+    }
+  ],
+  "comparison": [
+    {"label":"GrapheneOS instalado, actualizado y verificado","values":["Incluido","Incluido","Incluido"]},
+    {"label":"Configuración inicial de seguridad","values":["Incluida","Incluida","Incluida"]},
+    {"label":"Configuración de perfiles y apps según tu uso","values":["No incluida","Incluida","Incluida"]},
+    {"label":"Mullvad VPN","values":["No incluido","6 meses","12 meses en total"]},
+    {"label":"eSIM de datos","values":["No incluida","50 GB / 180 días","50 GB / 180 días"]},
+    {"label":"Threema","values":["No incluida","Licencia incluida","Licencia incluida"]},
+    {"label":"Proton Plus","values":["No incluido","No incluido","12 meses"]},
+    {"label":"SimpleLogin Premium","values":["No incluido","No incluido","12 meses"]},
+    {"label":"Proton Pass Plus","values":["No incluido","No incluido","12 meses"]},
+    {"label":"Dominio propio","values":["No incluido","No incluido","12 meses"]},
+    {"label":"Asistencia prioritaria","values":["No incluida","No incluida","Incluida"]}
+  ]
+}

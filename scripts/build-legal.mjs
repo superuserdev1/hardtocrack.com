@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { renderPackSections } from './render-packs.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const output = join(root, 'dist');
@@ -23,6 +24,8 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
   await cp(join(root, entry.name), join(output, entry.name), { recursive: true });
 }
 
+await renderPackSections(output);
+
 for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html']) {
   const target = join(output, page);
   let content = await readFile(target, 'utf8');
@@ -38,4 +41,5 @@ for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.h
 }
 
 console.log('Static site built with legal information.');
+
 

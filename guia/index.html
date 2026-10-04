@@ -55,13 +55,15 @@
     @media(max-width:620px){.wrap{width:min(calc(100% - 22px),var(--max))}section{padding:58px 0}.hero{padding-bottom:30px}h1{font-size:3.3rem}.phone-stage{min-height:470px}.phone{width:235px}.code-input-row{flex-direction:column}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.footer-grid{flex-direction:column}.nav .button{display:none}}
     .demo-note[hidden]{display:none!important}
   </style>
+  <link rel="stylesheet" href="/assets/pack-comparison.css">
+  <script defer src="/assets/pack-comparison.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header>
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="HardToCrack, inicio"><img class="brand-logo" src="/guia/assets/logo-HT.png" alt="" aria-hidden="true"><span>HardToCrack<small>SECURITY · PRIVACY · FREEDOM</small></span></a>
-      <nav class="nav-links" aria-label="Navegación principal"><a id="storeNavLink" href="#tienda">Tu tienda</a><a href="#proteccion">Protección</a><a href="#configuraciones">Configuraciones</a><a href="#entrega">Entrega</a><a href="#faq">Preguntas</a><a href="/precios/">Precios</a><a id="orderNavLink" href="/pedidos/">Pedidos</a><a href="/guia/privacidad/">Privacidad</a></nav>
+      <nav class="nav-links" aria-label="Navegación principal"><a id="storeNavLink" href="#tienda">Tu tienda</a><a href="#proteccion">Protección</a><a href="#configuraciones">Qué incluye cada pack</a><a href="#entrega">Entrega</a><a href="#faq">Preguntas</a><a href="/precios/">Precios</a><a id="orderNavLink" href="/pedidos/">Pedidos</a><a href="/guia/privacidad/">Privacidad</a></nav>
       <a class="button button-secondary" href="#tienda">Identificar tienda</a>
     </div>
   </header>
@@ -73,7 +75,7 @@
           <div class="eyebrow">Guía de privacidad móvil</div>
           <h1>Privacidad móvil, <span class="gradient">preparada para ti.</span></h1>
           <p class="hero-copy">Google Pixel con GrapheneOS, configuración profesional y soporte especializado en castellano. Una propuesta pensada para reducir exposición, separar identidades y tener más control sobre el dispositivo.</p>
-          <div class="hero-actions"><a class="button button-primary" id="heroPrimaryCta" href="#tienda">Introducir código de tienda</a><a class="button button-secondary" href="/precios/" target="_blank" rel="noopener">Precios actualizados</a></div>
+          <div class="hero-actions"><a class="button button-primary" id="heroPrimaryCta" href="#tienda">Introducir código de tienda</a><a class="button button-secondary" href="#configuraciones">Comparar packs</a></div>
           <div class="trust-row"><div class="trust-item"><strong>Instalación profesional</strong><span>Dispositivo preparado y revisado.</span></div><div class="trust-item"><strong>Sin conocimientos técnicos</strong><span>Configuración adaptada a tu uso.</span></div><div class="trust-item"><strong>Soporte especializado</strong><span>Acompañamiento tras la entrega.</span></div></div>
         </div>
         <div class="phone-stage" aria-label="Representación visual de un teléfono preparado"><div class="phone"><div class="phone-screen"><span class="camera" aria-hidden="true"></span><div class="screen-top"><span>18:56</span><span>5G · 94%</span></div><div class="screen-lock"><div class="time">18:56</div><div class="date">Miércoles, 5 de agosto</div></div><img class="screen-logo" src="/guia/assets/logo-HT.png" alt="Logotipo oficial de HardToCrack"><div class="screen-card"><strong>Configuración HardToCrack</strong><span>Privacidad, perfiles y permisos preparados para el uso real.</span></div></div></div></div>
@@ -92,7 +94,21 @@
 
     <section id="proteccion"><div class="wrap"><div class="section-heading"><div class="eyebrow">Control práctico</div><h2>Más control, sin convertir tu teléfono en un proyecto técnico.</h2><p>HardToCrack prepara una configuración centrada en permisos, perfiles, aplicaciones, cuentas y hábitos de uso. El objetivo no es prometer invisibilidad total, sino ayudarte a decidir qué información compartes, con quién y para qué.</p></div><div class="cards"><article class="card"><span class="card-number">01</span><h3>Separación de usos</h3><p>Organiza ámbitos personales, profesionales o sensibles con una estructura más clara.</p><ul class="feature-list"><li>Perfiles diferenciados</li><li>Cuentas y aplicaciones separadas</li><li>Menos cruces innecesarios de información</li></ul></article><article class="card"><span class="card-number">02</span><h3>Permisos bajo control</h3><p>Revisa accesos a cámara, micrófono, ubicación, contactos y conectividad.</p><ul class="feature-list"><li>Configuración según tu uso real</li><li>Revisión de aplicaciones esenciales</li><li>Criterios comprensibles, sin jerga</li></ul></article><article class="card"><span class="card-number">03</span><h3>Entrega preparada</h3><p>Recibes un dispositivo revisado y una explicación adaptada a tus necesidades.</p><ul class="feature-list"><li>Comprobación previa</li><li>Configuración guiada</li><li>Soporte posterior según el servicio</li></ul></article></div></div></section>
 
-    <section id="configuraciones"><div class="wrap"><div class="section-heading"><div class="eyebrow">Tres niveles</div><h2>Elige la configuración que encaje con tu exposición y tu forma de trabajar.</h2><p>Los nombres y contenidos pueden ajustarse más adelante. Esta primera versión evita mostrar precios para no crear conflictos entre la venta online y los comercios colaboradores.</p></div><div class="packages"><article class="package"><h3>Essential</h3><p class="for">Para quien quiere empezar con una base más privada y bien configurada.</p><ul class="feature-list"><li>Instalación y actualización inicial</li><li>Configuración básica de privacidad</li><li>Revisión de aplicaciones principales</li><li>Guía de primeros pasos</li></ul></article><article class="package featured"><span class="package-badge">Equilibrio recomendado</span><h3>Privacy</h3><p class="for">Para profesionales y usuarios que manejan cuentas o información sensible.</p><ul class="feature-list"><li>Todo lo incluido en Essential</li><li>Separación de perfiles y usos</li><li>Configuración ampliada de aplicaciones</li><li>Revisión personalizada de compatibilidad</li></ul></article><article class="package"><h3>Elite</h3><p class="for">Para necesidades avanzadas de separación, movilidad y soporte.</p><ul class="feature-list"><li>Todo lo incluido en Privacy</li><li>Arquitectura de identidades y cuentas</li><li>Servicios y accesorios seleccionados</li><li>Acompañamiento de mayor alcance</li></ul></article></div></div></section>
+    <!-- HTC_PACKS_START -->
+<section id="configuraciones" class="htc-pack-section" data-pack-context="guide" aria-labelledby="pack-comparison-title"><div class="wrap"><div class="htc-pack-heading"><p class="htc-pack-eyebrow">Elige con claridad</p><h2 id="pack-comparison-title">¿Qué incluye cada pack?</h2><p>Essential prepara la base. Privacy añade perfiles, apps, VPN y conectividad. Elite suma servicios de identidad digital durante un año.</p></div><p class="htc-pack-note">Precios habituales de los packs, IVA incluido. El teléfono, el envío y los accesorios se presupuestan aparte. Las renovaciones posteriores a los periodos incluidos se contratan por separado.</p><div class="htc-pack-grid"><article class="htc-pack-card" data-pack-card="Essential" aria-labelledby="pack-Essential"><p class="htc-pack-kicker">GrapheneOS instalado y verificado</p><h3 id="pack-Essential">Essential</h3><p class="htc-pack-price">179 € <span>IVA incluido · precio habitual</span></p><p class="htc-pack-audience">Para quien quiere una base segura y se encargará de sus aplicaciones y cuentas.</p><p class="htc-pack-inheritance">La base común de los tres packs.</p><ul class="htc-pack-list"><li>Instalación profesional de GrapheneOS</li><li>Última versión estable y verificación del sistema</li><li>Configuración inicial de seguridad</li></ul><p class="htc-pack-clarification">No incluye licencias de VPN, mensajería ni servicios de identidad digital.</p><button class="htc-pack-button" type="button" data-htc-pack="Essential">Elegir Essential →</button></article>
+<article class="htc-pack-card" data-pack-card="Privacy" aria-labelledby="pack-Privacy"><p class="htc-pack-kicker">Perfiles, apps, VPN y conectividad</p><h3 id="pack-Privacy">Privacy</h3><p class="htc-pack-price">399 € <span>IVA incluido · precio habitual</span></p><p class="htc-pack-audience">Para quien quiere una configuración preparada para su uso diario y comunicaciones.</p><p class="htc-pack-inheritance">Todo lo incluido en Essential, más:</p><ul class="htc-pack-list"><li>Configuración de perfiles y aplicaciones según tu uso</li><li>Mullvad VPN durante 6 meses</li><li>eSIM de datos: 50 GB, validez de 180 días</li><li>Licencia de Threema</li><li>Personalización y optimización de la configuración</li></ul><p class="htc-pack-clarification">La configuración de apps no incluye todas sus posibles suscripciones de pago.</p><button class="htc-pack-button" type="button" data-htc-pack="Privacy">Elegir Privacy →</button></article>
+<article class="htc-pack-card" data-pack-card="Elite" aria-labelledby="pack-Elite"><p class="htc-pack-kicker">Tu ecosistema de privacidad e identidad</p><h3 id="pack-Elite">Elite</h3><p class="htc-pack-price">629 € <span>IVA incluido · precio habitual</span></p><p class="htc-pack-audience">Para quien también necesita correo, alias, contraseñas y dominio personal preparados.</p><p class="htc-pack-inheritance">Todo lo incluido en Privacy, con Mullvad ampliado a 12 meses, más:</p><ul class="htc-pack-list"><li>Proton Plus durante 12 meses</li><li>SimpleLogin Premium durante 12 meses</li><li>Proton Pass Plus durante 12 meses</li><li>Dominio propio durante 12 meses</li><li>Asistencia prioritaria</li></ul><p class="htc-pack-clarification">Mullvad son 12 meses en total. Mantiene la eSIM de 50 GB / 180 días y Threema de Privacy.</p><button class="htc-pack-button" type="button" data-htc-pack="Elite">Elegir Elite →</button></article></div><details class="htc-pack-comparison"><summary>Comparar los servicios incluidos, uno por uno</summary><div class="htc-pack-table-scroll" role="region" aria-label="Comparativa de packs" tabindex="0"><table><caption>Servicios incluidos en Essential, Privacy y Elite</caption><thead><tr><th scope="col">Configuración o servicio</th><th scope="col">Essential</th><th scope="col">Privacy</th><th scope="col">Elite</th></tr></thead><tbody><tr><th scope="row">GrapheneOS instalado, actualizado y verificado</th><td>Incluido</td><td>Incluido</td><td>Incluido</td></tr>
+<tr><th scope="row">Configuración inicial de seguridad</th><td>Incluida</td><td>Incluida</td><td>Incluida</td></tr>
+<tr><th scope="row">Configuración de perfiles y apps según tu uso</th><td>No incluida</td><td>Incluida</td><td>Incluida</td></tr>
+<tr><th scope="row">Mullvad VPN</th><td>No incluido</td><td>6 meses</td><td>12 meses en total</td></tr>
+<tr><th scope="row">eSIM de datos</th><td>No incluida</td><td>50 GB / 180 días</td><td>50 GB / 180 días</td></tr>
+<tr><th scope="row">Threema</th><td>No incluida</td><td>Licencia incluida</td><td>Licencia incluida</td></tr>
+<tr><th scope="row">Proton Plus</th><td>No incluido</td><td>No incluido</td><td>12 meses</td></tr>
+<tr><th scope="row">SimpleLogin Premium</th><td>No incluido</td><td>No incluido</td><td>12 meses</td></tr>
+<tr><th scope="row">Proton Pass Plus</th><td>No incluido</td><td>No incluido</td><td>12 meses</td></tr>
+<tr><th scope="row">Dominio propio</th><td>No incluido</td><td>No incluido</td><td>12 meses</td></tr>
+<tr><th scope="row">Asistencia prioritaria</th><td>No incluida</td><td>No incluida</td><td>Incluida</td></tr></tbody></table></div></details><p class="htc-pack-note">¿No sabes cuál elegir? Puedes solicitar asesoramiento antes de decidir. Comprobaremos las apps que necesitas, la compatibilidad del dispositivo y la cobertura de la eSIM antes de confirmar el presupuesto.</p></div></section>
+<!-- HTC_PACKS_END -->
 
     <section id="proceso"><div class="wrap"><div class="section-heading"><div class="eyebrow">Proceso sencillo</div><h2>De la recomendación a la entrega.</h2></div><div class="cards"><article class="card"><span class="card-number">1</span><h3>Describe tu uso</h3><p>Trabajo, cuentas sensibles, aplicaciones imprescindibles y nivel de acompañamiento.</p></article><article class="card"><span class="card-number">2</span><h3>Recibe una recomendación</h3><p>Se propone un modelo y una configuración coherentes con tus necesidades.</p></article><article class="card"><span class="card-number">3</span><h3>Recoge o recibe</h3><p>Elige entre recogida en un comercio Partner o entrega directa, cuando esté disponible.</p></article></div></div></section>
 
@@ -427,8 +443,27 @@
       showDirect(DIRECT.defaultCode,{source:"web"});
     }
 
+    document.addEventListener("htc:choose-pack",event=>{
+      const pack=event.detail?.pack;
+      if(!["Essential","Privacy","Elite"].includes(pack))return;
+      if(directRefHidden.value){
+        const destination=new URL("/pedidos/",location.origin);
+        destination.searchParams.set("ref",DIRECT.normalize(directRefHidden.value));
+        destination.searchParams.set("pack",pack);
+        location.href=destination.href;
+      }else if(storeCodeHidden.value){
+        openModal("Hacer pedido o encargo","pedido");
+        $("interest").value=pack;
+      }else{
+        codeStatus.textContent="Revisa la referencia antes de elegir un pack.";
+        storeCode.scrollIntoView({behavior:"smooth",block:"center"});
+        storeCode.focus({preventScroll:true});
+      }
+    });
+
     initializeGuide();
   </script>
 </body>
 </html>
+
 
