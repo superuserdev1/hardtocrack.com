@@ -26,6 +26,13 @@
     .nav-links{display:flex;align-items:center;gap:22px;font-size:.93rem;color:#d7e0ea}.nav-links a{text-decoration:none}.nav-links a:hover{color:white}
     .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 20px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:750;transition:.2s ease}
     .button:hover{transform:translateY(-1px)}.button-primary{color:#03100b;background:linear-gradient(90deg,var(--cyan),var(--green));box-shadow:0 12px 32px rgba(57,229,141,.18)}.button-secondary{background:rgba(255,255,255,.055);border-color:var(--line);color:white}.button-ghost{background:transparent;color:var(--muted)}
+    .audience-picker{padding:24px 0 0;scroll-margin-top:95px}
+    .audience-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .audience-option{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+    .audience-option h3{font-size:1.4rem}.audience-option p{margin:0;color:var(--muted)}
+    .audience-option .button{margin-top:auto}
+    .audience-option .button:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+    @media(max-width:640px){.audience-grid{grid-template-columns:1fr}}
     .hero{padding:92px 0 56px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:58px;align-items:center}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b8f6dd;font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:18px}.eyebrow:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--green))}
     h1,h2,h3{line-height:1.08;margin:0;letter-spacing:-.035em}h1{font-size:clamp(3rem,7vw,6.6rem);max-width:10ch}h1 .gradient{color:transparent;background:linear-gradient(90deg,#fff,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text}
@@ -79,6 +86,18 @@
           <div class="trust-row"><div class="trust-item"><strong>Instalación profesional</strong><span>Dispositivo preparado y revisado.</span></div><div class="trust-item"><strong>Sin conocimientos técnicos</strong><span>Configuración adaptada a tu uso.</span></div><div class="trust-item"><strong>Soporte especializado</strong><span>Acompañamiento tras la entrega.</span></div></div>
         </div>
         <div class="phone-stage" aria-label="Representación visual de un teléfono preparado"><div class="phone"><div class="phone-screen"><span class="camera" aria-hidden="true"></span><div class="screen-top"><span>18:56</span><span>5G · 94%</span></div><div class="screen-lock"><div class="time">18:56</div><div class="date">Miércoles, 5 de agosto</div></div><img class="screen-logo" src="/guia/assets/logo-HT.png" alt="Logotipo oficial de HardToCrack"><div class="screen-card"><strong>Configuración HardToCrack</strong><span>Privacidad, perfiles y permisos preparados para el uso real.</span></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="audience-picker" id="solicitar" aria-labelledby="audienceTitle">
+      <div class="wrap">
+        <div class="section-heading"><div class="eyebrow">Prepara tu solicitud</div><h2 id="audienceTitle">¿Eres cliente o personal de tienda?</h2><p>Elige cómo quieres tramitar tu pedido.</p></div>
+        <div class="audience-grid">
+          <article class="audience-option"><h3>Soy cliente</h3><p>Rellena tu solicitud aquí, en la guía. Conservaremos la referencia de la tienda si has entrado desde su QR.</p><button class="button button-primary" id="clientOrderButton" type="button" aria-haspopup="dialog" aria-controls="reservationModal">Soy cliente →</button></article>
+          <article class="audience-option"><h3>Soy tienda</h3><p>Tramita el pedido por encargo del cliente desde el formulario de HardToCrack Partners.</p><a class="button button-secondary" id="storeOrderLink" href="https://partners.hardtocrack.com/pedidos/">Soy tienda →</a></article>
+        </div>
+        <p class="helper" id="audienceReference" role="status" aria-live="polite">Comprobando la referencia de tu solicitud…</p>
+        <noscript><p class="helper">Para preparar la solicitud de cliente activa JavaScript o escribe a <a href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a>, indicando la referencia de tu tienda.</p></noscript>
       </div>
     </section>
 
@@ -207,10 +226,28 @@
       }
     }
 
+    function updateAudienceReference(code){
+      const target=new URL("https://partners.hardtocrack.com/pedidos/");
+      if(isPartnerCode(code))target.searchParams.set("ref",code);
+      $("storeOrderLink").href=target.href;
+      $("audienceReference").textContent=code?`Referencia de tu solicitud: ${code}.`:"Revisa o identifica tu referencia para preparar una solicitud de cliente.";
+    }
+
+    function openClientOrder(){
+      if(!directRefHidden.value&&!storeCodeHidden.value){
+        codeStatus.textContent="Identifica una referencia válida o elimina el código para iniciar una solicitud directa.";
+        storeCode.scrollIntoView({behavior:"smooth",block:"center"});
+        storeCode.focus({preventScroll:true});
+        return;
+      }
+      openModal("Prepara tu solicitud de cliente","pedido");
+    }
+
     function showDirect(code,{source="link"}={}){
       code=DIRECT.normalize(code);
       const channel=DIRECT.get(code);
       if(!channel)return false;
+      updateAudienceReference(code);
       try{localStorage.removeItem(STORAGE_KEY)}catch{};
       currentAttribution={code,source:channel.source};
       partnerCard.classList.remove("visible");
@@ -228,14 +265,14 @@
       clearCodeButton.hidden=code===DIRECT.defaultCode;
       $("storeNavLink").textContent="Tu referencia";
       $("heroPrimaryCta").textContent="Preparar pedido directo";
-      $("heroPrimaryCta").href=`/pedidos/?ref=${code}`;
-      $("orderNavLink").href=`/pedidos/?ref=${code}`;
+      $("heroPrimaryCta").href="#solicitar";
+      $("orderNavLink").href="#solicitar";
       $("codeHeading").textContent="Tu consulta llega directamente a HardToCrack.";
       $("codeIntro").textContent="Esta referencia identifica una solicitud directa a HardToCrack. Puedes elegir tu equipo y solicitar información sin pasar por una tienda partner.";
       $("ctaTitle").textContent="Habla directamente con HardToCrack.";
       $("ctaCopy").textContent=`Consulta tu configuración o inicia un pedido. Referencia directa: ${code}.`;
       $("ctaButton").textContent="Preparar pedido directo";
-      $("ctaButton").href=`/pedidos/?ref=${code}`;
+      $("ctaButton").href="#solicitar";
       codeStatus.className="status ok";
       codeStatus.textContent=source==="link"?`Referencia directa detectada: ${code}.`:"";
       DIRECT.propagate(code);
@@ -244,6 +281,7 @@
 
     function showPartner(code,partner,{restored=false,source="manual"}={}){
       const record=saveAttribution(code,source);
+      updateAudienceReference(code);
       $("storeNavLink").textContent="Tu tienda";
       $("heroPrimaryCta").textContent="Introducir código de tienda";
       $("heroPrimaryCta").href="#tienda";
@@ -278,6 +316,7 @@
     }
 
     function showUnknown(code){
+      updateAudienceReference("");
       $("heroPrimaryCta").href="#tienda";
       $("heroPrimaryCta").textContent="Revisar referencia";
       $("orderNavLink").href="#tienda";
@@ -418,7 +457,8 @@
     clearCodeButton.addEventListener("click",clearPartner);
     $("partnerReserveButton").addEventListener("click",()=>openModal("Hacer pedido o encargo","pedido"));
     $("partnerInfoButton").addEventListener("click",()=>openModal("Solicitar información","informacion"));
-    $("directReserveButton").addEventListener("click",()=>{location.href=`/pedidos/?ref=${DIRECT.defaultCode}`});
+    $("directReserveButton").addEventListener("click",openClientOrder);
+    $("clientOrderButton").addEventListener("click",openClientOrder);
     $("directInfoButton").addEventListener("click",()=>openModal("Solicitar información","informacion"));
     $("modalClose").addEventListener("click",()=>reservationModal.close());
     $("cancelForm").addEventListener("click",()=>reservationModal.close());
@@ -446,12 +486,7 @@
     document.addEventListener("htc:choose-pack",event=>{
       const pack=event.detail?.pack;
       if(!["Essential","Privacy","Elite"].includes(pack))return;
-      if(directRefHidden.value){
-        const destination=new URL("/pedidos/",location.origin);
-        destination.searchParams.set("ref",DIRECT.normalize(directRefHidden.value));
-        destination.searchParams.set("pack",pack);
-        location.href=destination.href;
-      }else if(storeCodeHidden.value){
+      if(directRefHidden.value||storeCodeHidden.value){
         openModal("Hacer pedido o encargo","pedido");
         $("interest").value=pack;
       }else{
