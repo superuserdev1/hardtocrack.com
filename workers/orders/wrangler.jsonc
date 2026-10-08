@@ -4,7 +4,24 @@
   "compatibility_date": "2026-10-08",
   "workers_dev": true,
   "preview_urls": false,
-  "assets": { "directory": "./public", "binding": "ASSETS", "not_found_handling": "404-page" },
-  "triggers": { "crons": ["*/5 * * * *"] },
-  "observability": { "enabled": false }
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "htc-orders",
+      "database_id": "49a49304-9bc1-4421-bd9b-ce3b04ce1f77"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  },
+  "observability": {
+    "enabled": false
+  }
 }
