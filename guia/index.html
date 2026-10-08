@@ -64,6 +64,7 @@
   </style>
   <link rel="stylesheet" href="/assets/pack-comparison.css">
   <script defer src="/assets/pack-comparison.js"></script>
+  <script defer src="https://www.hardtocrack.com/assets/orders-client.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -398,7 +399,7 @@
       requestModeHidden.value=mode;
       const direct=Boolean(directRefHidden.value);
       modalEyebrow.textContent=direct?(mode==="pedido"?"Pedido directo":"Consulta directa"):(mode==="pedido"?"Pedido atribuido a la tienda":"Consulta atribuida a la tienda");
-      submitEmailButton.textContent=mode==="pedido"?"Preparar pedido por email":"Preparar consulta por email";
+      submitEmailButton.textContent=window.HTCOrdersAutomatic?"Revisar solicitud":(mode==="pedido"?"Preparar pedido por email":"Preparar consulta por email");
       if(mode==="informacion")$("requestType").value="Consulta previa";
       const storeReference=storeCodeHidden.value||"DIRECTO";
       const storeZone=storeZoneHidden.value||"Sin zona asignada";
@@ -500,5 +501,6 @@
   </script>
 </body>
 </html>
+
 
 
