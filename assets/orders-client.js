@@ -68,7 +68,7 @@
   if(sending||!form.reportValidity())return;
   prepared=payload();summary.textContent=[`Referencia: ${prepared.reference}`,`Cliente: ${prepared.customer_name}`,`Email: ${prepared.customer_email}`,prepared.staff_name?`Personal de tienda: ${prepared.staff_name}`:'',`Modelo: ${prepared.model}`,`Pack o servicio: ${prepared.pack}`,`Entrega: ${prepared.delivery||'Por confirmar'}`,...Object.entries(prepared.details).map(([k,v])=>`${k}: ${Array.isArray(v)?v.join(', '):v||'No indicado'}`),'','Solicitud pendiente de revisión. El registro no confirma el precio final ni la compra.'].filter(Boolean).join('\n');
   box.hidden=false;send.disabled=true;status.textContent='Revisa los datos y completa la verificación para enviar.';
-  try{await loadCaptcha();if(widget!==null)turnstile.reset(widget);else widget=turnstile.render(captcha,{sitekey:config.site_key,action:'order',callback:()=>{send.disabled=false;},'expired-callback':()=>{send.disabled=true;},'error-callback':()=>{send.disabled=true;status.textContent='No se pudo verificar. Vuelve a revisar la solicitud.';}});}catch(e){status.textContent=e.message;}
+  try{await loadCaptcha();if(widget!==null)turnstile.reset(widget);else widget=turnstile.render(captcha,{sitekey:config.site_key,action:'order',size:'compact',callback:()=>{send.disabled=false;},'expired-callback':()=>{send.disabled=true;},'error-callback':()=>{send.disabled=true;status.textContent='No se pudo verificar. Vuelve a revisar la solicitud.';}});}catch(e){status.textContent=e.message;}
   box.scrollIntoView({behavior:'smooth',block:'center'});
  },true);
  send.addEventListener('click',async()=>{
