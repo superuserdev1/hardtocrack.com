@@ -40,8 +40,13 @@ async function limit(env,request,scope,max) {
 async function captcha(env,request,token) {
  const origin=request.headers.get('Origin');if(!ORIGINS.has(origin))fail(403,'Origen no permitido.');
  const r=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({secret:env.TURNSTILE_SECRET_KEY,response:field(token,2048,true),remoteip:request.headers.get('CF-Connecting-IP'),idempotency_key:uuid()}),signal:AbortSignal.timeout(10000)});
- if(!r.ok)fail(503,'No se pudo verificar el formulario. Vuelve a intentarlo.');
- const data=await r.json();if(!data.success||data.hostname!==new URL(origin).hostname||data.action!=='order')fail(403,'Repite la verificación del formulario.');
+ let data;try{data=await r.json();}catch{fail(503,'El servicio de verificación no está disponible temporalmente. Vuelve a intentarlo.');}
+ const codes=Array.isArray(data?.['error-codes'])?data['error-codes']:[];
+ if(codes.includes('invalid-input-secret')||codes.includes('missing-input-secret'))fail(503,'La clave de verificación está mal configurada. HTC debe revisar la configuración de Turnstile.');
+ if(codes.includes('timeout-or-duplicate'))fail(403,'La verificación ha caducado. Complétala de nuevo y vuelve a enviar.');
+ if(!r.ok||codes.includes('internal-error'))fail(503,'El servicio de verificación no está disponible temporalmente. Vuelve a intentarlo.');
+ if(!data?.success)fail(403,'Repite la verificación del formulario.');
+ if(data.hostname!==new URL(origin).hostname||data.action!=='order')fail(403,'La verificación no corresponde a esta página. Recarga el formulario y vuelve a intentarlo.');
 }
 export function normalize(p) {
  if(!['direct','guide','store'].includes(p.source))fail(400,'Origen de pedido no válido.');
