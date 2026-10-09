@@ -27,7 +27,7 @@
   "vars": {
     "HTC_EMAIL": "pedidos@hardtocrack.com",
     "MAIL_FROM": "pedidos@avisos.hardtocrack.com",
-    "ORDERS_ENABLED": "false",
+    "ORDERS_ENABLED": "true",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAFRznBh2y2Lwr8Fo"
   }
 }
