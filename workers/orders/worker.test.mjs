@@ -10,9 +10,9 @@ class D1 {
 }
 const env={DB:new D1(),ORDERS_ENABLED:'true',RESEND_API_KEY:'test',TURNSTILE_SECRET_KEY:'test',TURNSTILE_SITE_KEY:'test',CODE_PEPPER:'a'.repeat(48),ADMIN_TOKEN:'b'.repeat(48),MAIL_FROM:'pedidos@avisos.example.com',HTC_EMAIL:'htc@example.com'};
 const waits=[];const ctx={waitUntil(p){waits.push(p);}};
-let captchaValid=true,ambiguous=false;const accepted=new Map(),calls=[];
+let captchaValid=true,ambiguous=false,captchaFailure=null;const accepted=new Map(),calls=[];
 globalThis.fetch=async(url,options)=>{
- if(String(url).includes('siteverify'))return Response.json({success:captchaValid,hostname:'www.hardtocrack.com',action:'order'});
+ if(String(url).includes('siteverify'))return captchaFailure?Response.json(captchaFailure.body,{status:captchaFailure.status}):Response.json({success:captchaValid,hostname:'www.hardtocrack.com',action:'order'});
  if(String(url)==='https://api.resend.com/emails'){
   const key=options.headers['Idempotency-Key'],body=JSON.parse(options.body);calls.push({key,body});
   if(!accepted.has(key))accepted.set(key,body);
@@ -38,6 +38,14 @@ test('orders flow with real SQLite transactions, mocked captcha and mocked email
   assert.equal((await request('',{...direct(),privacy:false})).status,400);
   captchaValid=false;assert.equal((await request('',direct())).status,403);captchaValid=true;
   assert.equal(env.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM orders').get().n,0);
+ });
+ await t.test('Turnstile errors distinguish configuration, expiry and availability without saving orders',async()=>{
+  for(const [code,status,message]of [['invalid-input-secret',400,'mal configurada'],['missing-input-secret',400,'mal configurada'],['timeout-or-duplicate',200,'caducado'],['internal-error',500,'temporalmente']]){
+   captchaFailure={status,body:{success:false,'error-codes':[code]}};
+   const result=await request('',direct());assert.equal(result.status,code==='timeout-or-duplicate'?403:503);assert.ok(result.data.error.includes(message));
+  }
+  assert.equal(env.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM orders').get().n,0);
+  captchaFailure=null;env.DB.sqlite.exec('DELETE FROM rate_limits');
  });
  await t.test('direct submission saved with atomic outbox and three lifecycle emails',async()=>{
   const body=direct(),r=await request('',body);assert.equal(r.status,201);id=r.data.id;
