@@ -109,9 +109,11 @@ function newCode() {return Array.from(crypto.getRandomValues(new Uint8Array(6)),
 async function saveStore(request,env) {
  const p=await jsonBody(request),ref=field(p.ref,20,true).toUpperCase();if(!REF.test(ref)||ref.startsWith('HTC-WEB-'))fail(400,'Referencia de tienda no válida.');
  const existing=await env.DB.prepare('SELECT code_hash FROM stores WHERE ref=?').bind(ref).first();
- const code=!existing||p.rotate_code===true?newCode():null;
- const codeHash=code?await hmac(env.CODE_PEPPER,`${ref}:${code}`):existing.code_hash;
+ // A reserved, inactive reference has no credential. Generate one only when HTC assigns it.
+ const code=(!existing||(!existing.code_hash && p.active!==false)||p.rotate_code===true)?newCode():null;
+ const codeHash=code?await hmac(env.CODE_PEPPER,`${ref}:${code}`):(existing?.code_hash||'');
  const main=email(p.email),receipt=email(p.receipt_email||p.email);
+ if(p.active!==false&&!codeHash)fail(400,'Activa la tienda únicamente después de generar su código.');
  await env.DB.prepare('INSERT INTO stores(ref,name,email,receipt_email,code_hash,active,updated_at) VALUES(?,?,?,?,?,?,?) ON CONFLICT(ref) DO UPDATE SET name=excluded.name,email=excluded.email,receipt_email=excluded.receipt_email,code_hash=excluded.code_hash,active=excluded.active,updated_at=excluded.updated_at').bind(ref,field(p.name,120,true),main,receipt,codeHash,p.active===false?0:1,now()).run();
  return {ok:true,ref,code,receipt_email:receipt};
 }
