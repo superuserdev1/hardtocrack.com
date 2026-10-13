@@ -72,3 +72,17 @@ Node 24 o posterior: `node --test worker.test.mjs`. Usa SQLite real en memoria, 
 Prueba registro, destinatarios privados, validación y rotación de códigos, consentimiento, captcha, límites, repetición sin duplicados, transiciones concurrentes, seguimiento HTTPS y envío ambiguo con reintento.
 
 Referencias oficiales: https://developers.cloudflare.com/d1/worker-api/d1-database/ · https://developers.cloudflare.com/turnstile/get-started/server-side-validation/ · https://resend.com/docs/dashboard/emails/idempotency-keys
+
+## Red de partners: piloto Madrid 001–006 (13 octubre 2026)
+
+**Estado del código:** migración de reserva disponible en `migrations/0001_reserved_madrid_pilot.sql`.
+**Estado de producción:** no se aplica a D1 por el mero hecho de subirla a GitHub; ejecutarla desde la cuenta Cloudflare vinculada antes de dar una referencia por operativa.
+
+1. Antes de aplicar la migración, comprobar que D1 `htc-orders` contiene las tablas del `schema.sql` y hacer una copia de seguridad. En Cloudflare Workers & Pages → D1 → `htc-orders` → Console, ejecutar el SQL de `migrations/0001_reserved_madrid_pilot.sql`, o desde un entorno autorizado: `npx wrangler d1 execute htc-orders --remote --file=migrations/0001_reserved_madrid_pilot.sql` estando en `workers/orders`.
+2. Verificar: `SELECT ref,name,active,code_hash FROM stores WHERE ref BETWEEN 'HTC-MAD-001' AND 'HTC-MAD-006' ORDER BY ref;`. Las filas insertadas por la migración quedan con `active=0`, nombre `Sin asignar` y hash vacío. Se usa `INSERT OR IGNORE`, por lo que **nunca** sobreescribe registros de tiendas reales anteriores.
+3. El formulario `https://partners.hardtocrack.com/pedidos/?ref=HTC-MAD-001` (hasta `006`) ya precarga `ref`. El archivo `assets/orders-client.js` usa la API del mismo Worker para pedidos de web, guía y partners; cuando `/api/orders/config` declara servicio activo, el personal introduce el código individual y el pedido pasa a D1 y a la cola de notificaciones existente.
+4. Al firmar el acuerdo, asignar nombre y emails oficiales desde el panel interno `https://htc-orders.github-ee7.workers.dev/`; activar la tienda y entregar el **código de seis caracteres** generado por separado, nunca en el QR. Actualizar el registro `partner_profiles` con datos legales, territorio y fecha contractual por canal administrativo privado. El panel actual no edita aún esos datos extendidos.
+5. Revisar el primer pedido real y los correos. Una referencia desactivada no puede generar un pedido automático ni recibir comisión automáticamente. Los pedidos siguen sin registrar cobro ni liquidación: cualquier comisión deberá calcularse a partir de pagos confirmados.
+
+**Precaución:** no volver a usar el sistema Python/CSV de `partners/pedidos/server.py` como backend paralelo. Ese código es legado; la fuente operativa única debe ser Cloudflare D1. No publicar `CODE_PEPPER`, `ADMIN_TOKEN`, códigos individuales, datos legales ni contacto de cada establecimiento.
+
