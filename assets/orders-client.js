@@ -48,9 +48,22 @@
  }
  function payload(){
   const data=new FormData(form);
-  if(source==='direct')return {source,reference:data.get('direct_ref')||value('directRef'),customer_name:data.get('nombre'),customer_email:data.get('email'),contact:data.get('contacto_alternativo'),model:data.get('modelo'),pack:data.get('pack'),type:data.get('tipo'),delivery:data.get('entrega'),privacy:data.has('privacidad'),details:{estado:data.get('estado'),capacidad_color:data.get('capacidad_color'),presupuesto:data.get('presupuesto'),perfiles:array(data,'perfiles'),apps:array(data,'apps'),otras_apps:data.get('otras_apps'),extras:array(data,'extras'),localidad:data.get('localidad'),comentarios:data.get('comentarios')}};
+  if(source==='direct')return {source,reference:data.get('direct_ref')||value('directRef'),customer_name:data.get('nombre'),customer_email:data.get('email'),contact:data.get('contacto_alternativo'),model:data.get('modelo'),pack:data.get('pack'),type:data.get('tipo'),delivery:data.get('entrega'),privacy:data.has('privacidad'),details:{estado:data.get('estado'),capacidad_color:data.get('capacidad_color'),presupuesto:data.get('presupuesto'),perfiles:array(data,'perfiles'),apps:array(data,'apps'),otras_apps:data.get('otras_apps'),extras:array(data,'extras'),finanzas_canal:data.get('finanzas_canal')||'por_decidir',localidad:data.get('localidad'),comentarios:data.get('comentarios')}};
   if(source==='guide')return {source,reference:value('directRefHidden')||value('storeCodeHidden'),customer_name:value('name'),customer_email:value('contact'),model:value('deviceModel'),pack:value('interest'),type:value('requestType'),delivery:value('delivery'),privacy:data.has('automatic_privacy'),details:{comentarios:value('message'),modo:value('requestModeHidden')}};
   return {source,reference:value('tienda'),store_code:value('codigo').toUpperCase(),staff_name:value('personal_tienda'),customer_name:value('cliente'),customer_email:value('contacto'),model:value('modelo'),pack:value('pack'),privacy:document.getElementById('autorizacion').checked,type:'Pedido por encargo del cliente',details:detailsOfForm()};
+ }
+ // Client-side check: keep the names out of the POST where they can be detected.
+ // The Worker repeats this check for older browsers, manual API calls and stale pages.
+ const privateFinance = /\b(?:bbva|n26|revolut|caixabank|openbank|santander|bankinter|ing|unicaja|abanca|imagin|bunq|wise|trade republic|interactive brokers|degiro|xtb|binance|coinbase|kraken|bitget|metamask|ledger live|trust wallet)\b|(?:banc(?:o|a|aria|arias)|broker|wallet|exchange|cripto|crypto|financier[ao])\s*(?:[:=]|(?:es|son|que uso)\s)/i;
+ function containsFinancialDetails(v){
+  if(typeof v==='string')return privateFinance.test(v);
+  if(Array.isArray(v))return v.some(containsFinancialDetails);
+  return false;
+ }
+ function invalidPrivateDetails(details){
+  return Object.entries(details||{}).some(([k,v]) =>
+   (/^(apps_finanzas|finance_apps|bank_apps|wallets|crypto_apps)$/i.test(k) && !!v) || containsFinancialDetails(v)
+  );
  }
  function loadCaptcha(){
   if(window.turnstile)return Promise.resolve();
@@ -66,7 +79,12 @@
   event.preventDefault();event.stopImmediatePropagation();await ready;
   if(!config?.enabled){bypass=true;form.requestSubmit();return;}
   if(sending||!form.reportValidity())return;
-  prepared=payload();summary.textContent=[`Referencia: ${prepared.reference}`,`Cliente: ${prepared.customer_name}`,`Email: ${prepared.customer_email}`,prepared.staff_name?`Personal de tienda: ${prepared.staff_name}`:'',`Modelo: ${prepared.model}`,`Pack o servicio: ${prepared.pack}`,`Entrega: ${prepared.delivery||'Por confirmar'}`,...Object.entries(prepared.details).map(([k,v])=>`${k}: ${Array.isArray(v)?v.join(', '):v||'No indicado'}`),'','Solicitud pendiente de revisión. El registro no confirma el precio final ni la compra.'].filter(Boolean).join('\n');
+  prepared=payload();
+  if(invalidPrivateDetails(prepared.details)){
+   status.textContent='No incluyas nombres de bancos, brokers, exchanges o wallets. Para ello utiliza SimpleX desde la página oficial /secure.';
+   prepared=null;box.hidden=true;return;
+  }
+  summary.textContent=[`Referencia: ${prepared.reference}`,`Cliente: ${prepared.customer_name}`,`Email: ${prepared.customer_email}`,prepared.staff_name?`Personal de tienda: ${prepared.staff_name}`:'',`Modelo: ${prepared.model}`,`Pack o servicio: ${prepared.pack}`,`Entrega: ${prepared.delivery||'Por confirmar'}`,...Object.entries(prepared.details).map(([k,v])=>`${k}: ${Array.isArray(v)?v.join(', '):v||'No indicado'}`),'','Solicitud pendiente de revisión. El registro no confirma el precio final ni la compra.'].filter(Boolean).join('\n');
   box.hidden=false;send.disabled=true;status.textContent='Revisa los datos y completa la verificación para enviar.';
   try{await loadCaptcha();if(widget!==null)turnstile.reset(widget);else widget=turnstile.render(captcha,{sitekey:config.site_key,action:'order',size:'compact',callback:()=>{send.disabled=false;},'expired-callback':()=>{send.disabled=true;},'error-callback':()=>{send.disabled=true;status.textContent='No se pudo verificar. Vuelve a revisar la solicitud.';}});}catch(e){status.textContent=e.message;}
   box.scrollIntoView({behavior:'smooth',block:'center'});

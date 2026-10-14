@@ -38,11 +38,23 @@
     input.addEventListener("blur", () => input.setCustomValidity(input.value.trim() ? "" : "Completa este campo."));
   });
   form.addEventListener("input", invalidate);
+  form.querySelectorAll('[name="otras_apps"], [name="comentarios"]').forEach(el => el.addEventListener("input", () => el.setCustomValidity("")));
   form.addEventListener("change", invalidate);
   form.addEventListener("submit", event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
+    // En modo manual tampoco incluimos identificadores financieros en el correo.
+    const sensitive = /\b(?:bbva|n26|revolut|caixabank|openbank|santander|bankinter|ing|unicaja|abanca|imagin|bunq|wise|trade republic|interactive brokers|degiro|xtb|binance|coinbase|kraken|bitget|metamask|ledger live|trust wallet)\b|(?:banc(?:o|a|aria|arias)|broker|wallet|exchange|cripto|crypto|financier[ao])\s*(?:[:=]|(?:es|son|que uso)\s)/i;
+    for (const key of ["otras_apps", "comentarios"]) {
+      const el = form.querySelector(`[name="${key}"]`);
+      if (el && sensitive.test(String(data.get(key) || ""))) {
+        el.setCustomValidity("Por privacidad, comunica las aplicaciones financieras directamente por SimpleX desde /secure.");
+        el.reportValidity();
+        el.focus();
+        return;
+      }
+    }
     if (!["nombre", "email", "localidad", "modelo"].every(key => readValue(data,key))) {
       const input = form.querySelector(`input[name="${["nombre", "email", "localidad", "modelo"].find(key => !readValue(data,key))}"]`);
       input.setCustomValidity("Completa este campo.");
@@ -60,7 +72,7 @@
       `Estado: ${readValue(data,"estado")}`, `Capacidad / color: ${readValue(data,"capacidad_color") || "Consultar"}`,
       `Presupuesto orientativo: ${readValue(data,"presupuesto") || "No indicado"}`, "",
       `Perfiles: ${choices(data,"perfiles")}`, `Aplicaciones: ${choices(data,"apps")}`,
-      `Otras apps: ${readValue(data,"otras_apps") || "No indicadas"}`, `Servicios / accesorios: ${choices(data,"extras")}`, "",
+      `Otras apps no financieras: ${readValue(data,"otras_apps") || "No indicadas"}`, `Opción financiera: ${readValue(data,"finanzas_canal") === "simplex" ? "Se coordinará directamente por SimpleX" : "No indicada"}`, `Servicios / accesorios: ${choices(data,"extras")}`, "",
       `Nombre o alias: ${readValue(data,"nombre")}`, `Email: ${readValue(data,"email")}`,
       `Contacto alternativo: ${readValue(data,"contacto_alternativo") || "No indicado"}`,
       `País / localidad: ${readValue(data,"localidad")}`, `Entrega: ${readValue(data,"entrega")}`, "",

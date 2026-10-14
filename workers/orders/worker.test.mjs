@@ -47,6 +47,22 @@ test('orders flow with real SQLite transactions, mocked captcha and mocked email
   assert.equal(env.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM orders').get().n,0);
   captchaFailure=null;env.DB.sqlite.exec('DELETE FROM rate_limits');
  });
+ await t.test('financial app details never reach ordinary order payloads',async()=>{
+  for(const details of [
+   {apps_finanzas:'N26'},
+   {wallets:['Ledger Live']},
+   {otras_apps:'Revolut y Signal'},
+   {comentarios:'Mi banco es BBVA'},
+   {observaciones:'wallet: Kraken'}
+  ]){
+   assert.throws(()=>normalize({...direct(),details}),/canal privado/);
+  }
+  const clean=normalize({...direct(),details:{finanzas_canal:'simplex',apps_finanzas:'',apps:['Signal']}});
+  assert.equal(clean.details.finanzas_canal,'simplex');
+  assert.ok(!Object.hasOwn(clean.details,'apps_finanzas'));
+  assert.equal(clean.details.apps[0],'Signal');
+  assert.throws(()=>normalize({...direct(),details:{finanzas_canal:'inventado'}}),/opción válida/);
+ });
  await t.test('direct submission saved with atomic outbox and three lifecycle emails',async()=>{
   const body=direct(),r=await request('',body);assert.equal(r.status,201);id=r.data.id;
   assert.equal(env.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM mail_outbox').get().n,2);
