@@ -1,0 +1,34 @@
+name: Pedidos - regresion de privacidad
+
+on:
+  pull_request:
+    paths:
+      - 'workers/orders/**'
+      - 'pedidos/**'
+      - 'assets/orders-client.js'
+      - '.github/workflows/orders-privacy-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'workers/orders/**'
+      - 'pedidos/**'
+      - 'assets/orders-client.js'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check workers/orders/worker.mjs
+          node --check assets/orders-client.js
+          node --check pedidos/pedidos.js
+      - name: Worker integration tests (SQLite in-memory; mocked Turnstile and Resend)
+        run: node --test worker.test.mjs
+        working-directory: workers/orders
