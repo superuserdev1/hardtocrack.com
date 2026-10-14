@@ -75,7 +75,7 @@ export function normalize(p) {
    continue;
   }
   if(k==='finanzas_canal'){
-   if(v!=='no_aplica'&&v!=='simplex')fail(400,'Elige una opción válida para las aplicaciones financieras.');
+   if(v!=='no_aplica'&&v!=='por_decidir'&&v!=='simplex')fail(400,'Elige una opción válida para las aplicaciones financieras.');
    clean[k]=v;continue;
   }
   if(Array.isArray(v)){if(v.length>30)fail(400,'Demasiadas opciones.');clean[k]=v.map(x=>field(x,250));}
