@@ -21,7 +21,7 @@ for(const path of targets){
  }
  if(/class="promo-note"/.test(html)){
   for(const [name,v] of Object.entries(pricing.packs)){
-   const promo=html.match(new RegExp(name+': <span class="promo-discount">(?:€)?([0-9]+) €?<\\/span><\\/b> <s>(?:€)?([0-9]+)'));
+   const promo=html.match(new RegExp(name+': <span class="promo-discount">(?:€)?([0-9]+)\\s*€?<\\/span><\\/b> <s>(?:€)?([0-9]+)'));
    check(!!promo&&Number(promo[1])===v.online&&Number(promo[2])===v.pvp,`${path}: promotional ${name} matches canonical prices`);
   }
  }
