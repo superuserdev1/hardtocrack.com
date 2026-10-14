@@ -45,7 +45,7 @@
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     // En modo manual tampoco incluimos identificadores financieros en el correo.
-    const sensitive = /\\b(?:bbva|n26|revolut|caixabank|openbank|santander|bankinter|ing|unicaja|abanca|imagin|bunq|wise|trade republic|interactive brokers|degiro|xtb|binance|coinbase|kraken|bitget|metamask|ledger live|trust wallet)\\b|(?:banc(?:o|a|aria|arias)|broker|wallet|exchange|cripto|crypto|financier[ao])\\s*(?:[:=]|(?:es|son|que uso)\\s)/i;
+    const sensitive = /\b(?:bbva|n26|revolut|caixabank|openbank|santander|bankinter|ing|unicaja|abanca|imagin|bunq|wise|trade republic|interactive brokers|degiro|xtb|binance|coinbase|kraken|bitget|metamask|ledger live|trust wallet)\b|(?:banc(?:o|a|aria|arias)|broker|wallet|exchange|cripto|crypto|financier[ao])\s*(?:[:=]|(?:es|son|que uso)\s)/i;
     for (const key of ["otras_apps", "comentarios"]) {
       const el = form.querySelector(`[name="${key}"]`);
       if (el && sensitive.test(String(data.get(key) || ""))) {
