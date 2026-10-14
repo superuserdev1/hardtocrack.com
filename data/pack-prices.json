@@ -1,0 +1,25 @@
+{
+  "currency": "EUR",
+  "valid_from": "2026-10-14",
+  "offer_until": "2026-10-31",
+  "offer_scope": "direct_online_only",
+  "packs": {
+    "Essential": {
+      "pvp": 179,
+      "online": 159
+    },
+    "Privacy": {
+      "pvp": 399,
+      "online": 369
+    },
+    "Elite": {
+      "pvp": 629,
+      "online": 599
+    }
+  },
+  "terms": {
+    "shipping_not_included": true,
+    "partner_stores_excluded": true,
+    "subject_to_early_withdrawal": true
+  }
+}
