@@ -48,6 +48,16 @@ async function captcha(env,request,token) {
  if(!data?.success)fail(403,'Repite la verificación del formulario.');
  if(data.hostname!==new URL(origin).hostname||data.action!=='order')fail(403,'La verificación no corresponde a esta página. Recarga el formulario y vuelve a intentarlo.');
 }
+// Defense in depth: legacy/public forms must not place banking, broker or wallet names
+// inside generic order payloads or customer/HTC email summaries. /privado will use
+// a separate encrypted channel once implemented.
+const PRIVATE_FINANCE_FIELDS = /^(?:apps_finanzas|finance_apps|bank_apps|banking_apps|broker_apps|wallets|crypto_apps|cripto_apps|financial_apps)$/i;
+const PRIVATE_FINANCE_HINT = /\b(?:bbva|n26|revolut|caixabank|openbank|santander|bankinter|ing|unicaja|abanca|imagin|bunq|wise|trade republic|interactive brokers|degiro|xtb|binance|coinbase|kraken|bitget|metamask|ledger live|trust wallet)\b|(?:banc(?:o|a|aria|arias)|broker|wallet|exchange|cripto|crypto|financier[ao])\s*(?:[:=]|(?:es|son|que uso)\s)/i;
+function containsPrivateFinance(value) {
+ if(typeof value==='string')return PRIVATE_FINANCE_HINT.test(value);
+ if(Array.isArray(value))return value.some(containsPrivateFinance);
+ return false;
+}
 export function normalize(p) {
  if(!['direct','guide','store'].includes(p.source))fail(400,'Origen de pedido no válido.');
  const ref=field(p.reference,20,true).toUpperCase();if(!REF.test(ref))fail(400,'Referencia no válida.');
@@ -57,7 +67,22 @@ export function normalize(p) {
  if(p.privacy!==true)fail(400,'Confirma la información de privacidad.');
  const details=p.details||{};if(typeof details!=='object'||Array.isArray(details))fail(400,'Detalles no válidos.');
  const clean={};if(Object.keys(details).length>70)fail(400,'Demasiados campos.');
- for(const [k,v]of Object.entries(details)){if(!/^[a-zA-Z_][a-zA-Z0-9_]{0,45}$/.test(k))fail(400,'Campo no válido.');if(Array.isArray(v)){if(v.length>30)fail(400,'Demasiadas opciones.');clean[k]=v.map(x=>field(x,250));}else if(typeof v==='boolean')clean[k]=v;else clean[k]=field(v,2000);}
+ for(const [k,v]of Object.entries(details)){
+  if(!/^[a-zA-Z_][a-zA-Z0-9_]{0,45}$/.test(k))fail(400,'Campo no válido.');
+  // Never persist/send the legacy field even when the front end is out of date.
+  if(PRIVATE_FINANCE_FIELDS.test(k)){
+   if(v!==''&&v!==null&&v!==undefined&&!(Array.isArray(v)&&v.length===0))fail(422,'No incluyas nombres de aplicaciones financieras en el pedido. Utiliza el canal privado de HTC.');
+   continue;
+  }
+  if(k==='finanzas_canal'){
+   if(v!=='no_aplica'&&v!=='simplex')fail(400,'Elige una opción válida para las aplicaciones financieras.');
+   clean[k]=v;continue;
+  }
+  if(Array.isArray(v)){if(v.length>30)fail(400,'Demasiadas opciones.');clean[k]=v.map(x=>field(x,250));}
+  else if(typeof v==='boolean')clean[k]=v;
+  else clean[k]=field(v,2000);
+  if(containsPrivateFinance(clean[k]))fail(422,'No incluyas nombres de aplicaciones financieras en el pedido. Utiliza el canal privado de HTC.');
+ }
  const model=field(p.model,100,true),pack=field(p.pack,100,true);
  if(!['Essential','Privacy','Elite','Consultar','Solo instalación GrapheneOS','Servicio o accesorio individual','Necesito asesoramiento'].includes(pack))fail(400,'Selecciona un pack o servicio válido.');
  return {source:p.source,reference:ref,customer_name:field(p.customer_name,100,true),customer_email:email(p.customer_email),contact:field(p.contact,180),staff_name:field(p.staff_name,100,p.source==='store'),model,pack,type:field(p.type,120),delivery:field(p.delivery,120),privacy:true,details:clean};
