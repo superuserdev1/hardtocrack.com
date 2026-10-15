@@ -1,0 +1,31 @@
+name: Visual parity - Pixel illustrations
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'en/index.html'
+      - 'nl/index.html'
+      - 'pt/index.html'
+      - 'scripts/check-device-visuals.mjs'
+      - '.github/workflows/device-visual-parity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'en/index.html'
+      - 'nl/index.html'
+      - 'pt/index.html'
+      - 'scripts/check-device-visuals.mjs'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check scripts/check-device-visuals.mjs
+      - run: node scripts/check-device-visuals.mjs
+      - run: node scripts/check-pack-prices.mjs
