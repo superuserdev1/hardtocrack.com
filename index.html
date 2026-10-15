@@ -51,6 +51,20 @@
 
 
     
+
+/* HTC-01 — tarjetas comerciales breves; mantiene el precio y CTA de cada pack */
+.packs-quick .pack{min-width:0;padding:28px;gap:0}
+.packs-quick .pack-for{font-size:1.02rem;font-weight:750;color:#e8f5fa;margin-top:7px;min-height:2.5em}
+.packs-quick .pack-benefit{color:#dce7ed;line-height:1.57;margin:18px 0 0;min-height:7.5em}
+.packs-quick .pack-pricing{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
+.packs-quick .pack-price-now{font-size:2.4rem;line-height:1.1;font-weight:900;color:var(--green)}
+.packs-quick .pack-price-regular{font-size:1rem;color:var(--muted)}
+.packs-quick .pack-price-note{flex-basis:100%;font-size:.76rem;color:var(--dim)}
+.packs-quick .pack-audience{color:var(--muted);font-size:.9rem;line-height:1.55;margin:10px 0 0}
+.packs-quick .pack-foot{display:grid;gap:12px;margin-top:auto;padding-top:22px}
+.packs-quick .pack-foot .btn{display:inline-flex;justify-content:center;text-align:center}
+.packs-quick .pack-details{font-weight:750;color:var(--cyan);font-size:.85rem;text-align:center}
+@media(max-width:900px){.packs-quick .pack-benefit,.packs-quick .pack-for{min-height:0}.packs-quick .pack.featured{transform:none}}
 </style>
 </head>
 <body>
@@ -102,11 +116,30 @@
     <div class="policy"><div class="policy-grid"><div><div class="eyebrow">Política HardToCrack</div><h3>Seleccionamos seguridad, no generaciones.</h3><p>HardToCrack no incorpora un dispositivo porque sea el más nuevo. Solo lo ofrecemos cuando cumple nuestros criterios de compatibilidad oficial con GrapheneOS, protección de memoria, arquitectura de seguridad, soporte a largo plazo, estabilidad y relación entre coste y necesidades reales.</p><p>Nuestro catálogo puede evolucionar a medida que nuevos fabricantes y dispositivos alcancen esos estándares. Eso nos permite incorporar futuras plataformas compatibles sin quedar ligados a Google Pixel como identidad de marca.</p></div><div class="warning"><strong>¿Por qué no ofrecemos actualmente Pixel 11?</strong><span>La serie Pixel 11 no forma parte de nuestra selección mientras no alcance el nivel de protección de memoria y seguridad de hardware que exigimos. GrapheneOS ha advertido específicamente de la ausencia de soporte ARM MTE en esta generación y recomienda actualmente los Pixel 8, 9 y 10 frente al Pixel 11. Si las condiciones técnicas cambian, HardToCrack revisará su decisión basándose en evidencia técnica, no en marketing de producto.</span></div></div></div>
   </div></section>
 
-  <section class="section tight" id="paquetes"><div class="container"><div class="section-head"><div><div class="eyebrow">Niveles de preparación</div><h2>Essential, Privacy o Elite.</h2></div><p>Elige el dispositivo por hardware y el pack por nivel de preparación. Son dos decisiones separadas para evitar pagar servicios que no necesitas.</p></div><div class="packs">
-    <article class="pack"><div class="pack-name">Essential</div><div class="pack-for">Base limpia y segura.</div><div class="price">179 €</div><ul><li>Instalación profesional de GrapheneOS</li><li>Verificación completa del sistema</li><li>Configuración inicial de seguridad</li><li>Última versión estable instalada</li><li>Dispositivo preparado y listo para usar</li></ul><div class="pack-foot"><small>Preparación esencial</small><a class="btn secondary" href="/pedidos/?pack=Essential" data-pack="Essential">Elegir Essential</a></div></article>
-    <article class="pack featured"><div class="pack-badge">Recomendado</div><div class="pack-name">Privacy</div><div class="pack-for">Privacidad preparada para el día a día.</div><div class="price">399 €</div><ul><li>Todo lo incluido en Essential</li><li>Configuración Premium</li><li>Mullvad VPN durante 6 meses</li><li>eSIM de 50 GB con validez de 180 días</li><li>Threema, personalización y optimización</li></ul><div class="pack-foot"><small>Equilibrio entre privacidad y sencillez</small><a class="btn primary" href="/pedidos/?pack=Privacy" data-pack="Privacy">Elegir Privacy</a></div></article>
-    <article class="pack"><div class="pack-name">Elite</div><div class="pack-for">Ecosistema de privacidad más completo.</div><div class="price">629 €</div><ul><li>Todo lo incluido en Privacy</li><li>Mullvad VPN durante 12 meses</li><li>Proton Plus durante 12 meses</li><li>SimpleLogin Premium durante 12 meses</li><li>Gestor de contraseñas Proton Pass Plus durante 12 meses</li><li>Dominio propio durante 1 año y asistencia prioritaria</li></ul><div class="pack-foot"><small>Máxima personalización</small><a class="btn secondary" href="/pedidos/?pack=Elite" data-pack="Elite">Elegir Elite</a></div></article>
-  </div><p class="support">Precios habituales de los packs: IVA incluido. Oferta online hasta el 31 de octubre de 2026: Essential 159 €, Privacy 369 € y Elite 599 €, salvo cancelación anticipada. El dispositivo se presupuesta por separado y la disponibilidad de cada servicio se confirma antes del pedido.</p></div></section>
+  <section class="section tight" id="paquetes"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Tres niveles de preparación</div><h2>Elige cómo quieres recibir tu Pixel.</h2></div><p>El teléfono se elige aparte. Aquí eliges cuánto quieres que HardToCrack configure por ti: desde una instalación profesional hasta un ecosistema de privacidad e identidad digital.</p></div>
+  <div class="packs packs-quick">
+    <article class="pack"><div class="pack-name">Essential</div><div class="pack-for">La base segura</div>
+      <p class="pack-benefit">Tu Pixel con GrapheneOS instalado profesionalmente, actualizado y verificado.</p>
+      <div class="pack-pricing"><span class="pack-price-now">159 €</span><s class="pack-price-regular">179 €</s><span class="pack-price-note">Oferta online directa</span></div>
+      <p class="pack-audience">Ideal si prefieres instalar y configurar tus propias aplicaciones.</p>
+      <div class="pack-foot"><a class="btn secondary" href="/pedidos/?pack=Essential" data-pack="Essential">Elegir Essential →</a><a class="pack-details" href="/precios/#packs">Ver prestaciones incluidas</a></div>
+    </article>
+    <article class="pack featured"><div class="pack-badge">Recomendado</div><div class="pack-name">Privacy</div><div class="pack-for">Privacidad lista para el día a día</div>
+      <p class="pack-benefit">Todo Essential, más perfiles y apps personalizados, Mullvad VPN 6 meses, eSIM 50 GB / 180 días y Threema.</p>
+      <div class="pack-pricing"><span class="pack-price-now">369 €</span><s class="pack-price-regular">399 €</s><span class="pack-price-note">Oferta online directa</span></div>
+      <p class="pack-audience">Ideal si quieres recibir el dispositivo preparado según tu uso.</p>
+      <div class="pack-foot"><a class="btn primary" href="/pedidos/?pack=Privacy" data-pack="Privacy">Elegir Privacy →</a><a class="pack-details" href="/precios/#packs">Ver prestaciones incluidas</a></div>
+    </article>
+    <article class="pack"><div class="pack-name">Elite</div><div class="pack-for">Tu ecosistema privado</div>
+      <p class="pack-benefit">Todo Privacy, Mullvad ampliado a 12 meses, Proton Plus, SimpleLogin, Proton Pass y dominio propio durante 12 meses.</p>
+      <div class="pack-pricing"><span class="pack-price-now">599 €</span><s class="pack-price-regular">629 €</s><span class="pack-price-note">Oferta online directa</span></div>
+      <p class="pack-audience">Ideal si también quieres organizar tu correo, alias, contraseñas e identidad digital.</p>
+      <div class="pack-foot"><a class="btn secondary" href="/pedidos/?pack=Elite" data-pack="Elite">Elegir Elite →</a><a class="pack-details" href="/precios/#packs">Ver prestaciones incluidas</a></div>
+    </article>
+  </div>
+  <p class="support">Precios de los packs con IVA incluido, sin dispositivo ni gastos de envío. Oferta exclusiva para reservas directas online hasta el 31 de octubre de 2026, salvo cancelación anticipada; no aplicable a tiendas partner. El descuento se aplica en factura. <a href="/precios/#packs">Comparar todos los servicios y sus duraciones →</a></p>
+</div></section>
 
   <section class="section tight" id="compatibilidades"><div class="container"><div class="quality"><div><div class="eyebrow">Apps y compatibilidades</div><h2>¿Podré seguir usando mis apps?</h2><p>Revisa mensajería, banca, Bizum, pagos NFC, mapas y Android Auto antes de elegir. Consulta qué requiere configuración y qué limitaciones debes conocer.</p><div class="hero-actions"><a class="btn primary" href="/compatibilidades/">Consultar compatibilidades</a><a class="btn secondary" href="/compatibilidades/#revision">Revisar mis aplicaciones</a></div></div><div class="quality-list"><div class="quality-item"><strong>Comunicaciones</strong><span>Mensajes, llamadas y notificaciones.</span></div><div class="quality-item"><strong>Banca y pagos</strong><span>Tu entidad y tus operaciones habituales.</span></div><div class="quality-item"><strong>Uso cotidiano</strong><span>Fotos, mapas y conexión con el coche.</span></div><div class="quality-item"><strong>Google Play opcional</strong><span>Configuración según tus necesidades.</span></div></div></div></div></section>
 
