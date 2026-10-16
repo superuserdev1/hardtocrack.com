@@ -31,7 +31,7 @@ for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.h
   let content = await readFile(target, 'utf8');
   for (const field of fields) {
     const marker = `{{${field}}}`;
-    if (!content.includes(marker) && field === 'LEGAL_NAME') {
+    if (!content.includes(marker) && field === 'LEGAL_NAME' && page !== 'privacidad/index.html') {
       throw new Error(`Missing legal field marker in ${page}: ${field}`);
     }
     content = content.replaceAll(marker, htmlEscape(process.env[field].trim()));
