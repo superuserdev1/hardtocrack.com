@@ -1,3 +1,6 @@
 # Legacy SimpleX contact URL
 /simplex https://hardtocrack.com/x 301
 /simplex/ https://hardtocrack.com/x 301
+
+# Canonical GrapheneOS technical report
+/hardtocrack-informe-grapheneos.html /informe 301
