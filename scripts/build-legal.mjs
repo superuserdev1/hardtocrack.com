@@ -24,6 +24,13 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
   await cp(join(root, entry.name), join(output, entry.name), { recursive: true });
 }
 
+// Publish the GrapheneOS report at its canonical short URL.
+// Keep the source HTML in the repository, but exclude its legacy URL from deployed assets
+// so Cloudflare can apply the permanent redirect defined in _redirects.
+await mkdir(join(output, 'informe'), { recursive: true });
+await cp(join(output, 'hardtocrack-informe-grapheneos.html'), join(output, 'informe', 'index.html'));
+await rm(join(output, 'hardtocrack-informe-grapheneos.html'));
+
 await renderPackSections(output);
 
 for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html']) {
