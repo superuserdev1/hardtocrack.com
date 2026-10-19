@@ -26,7 +26,7 @@
       closeMobileMenu();
     }
   });
-  window.matchMedia("(min-width:1281px)").addEventListener("change", (event) => {
+  window.matchMedia("(min-width:1321px)").addEventListener("change", (event) => {
     if (event.matches) closeMobileMenu();
   });
 

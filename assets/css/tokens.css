@@ -25,11 +25,11 @@
 
   /* Brand lockup — visual name HARDTOCRACK; commercial name HardToCrack */
   --brand-name: #F4F8FB;
-  --brand-name-weight: 700;
-  --brand-name-tracking: .025em;
-  --brand-gap: 9px;
-  --brand-name-size: 20px;
-  --brand-name-size-sm: 17px;
+  --brand-name-weight: 800;
+  --brand-name-tracking: .08em;
+  --brand-gap: 10px;
+  --brand-name-size: 15px;
+  --brand-name-size-sm: 13px;
   --brand-mark-w: 40px;
   --brand-mark-h: 44px;
   --brand-mark-w-sm: 34px;
