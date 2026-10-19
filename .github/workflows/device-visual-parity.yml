@@ -7,6 +7,8 @@ on:
       - 'nl/index.html'
       - 'pt/index.html'
       - 'scripts/check-device-visuals.mjs'
+      - 'assets/css/**'
+      - 'assets/js/**'
       - '.github/workflows/device-visual-parity.yml'
   push:
     branches: [main]
@@ -16,6 +18,8 @@ on:
       - 'nl/index.html'
       - 'pt/index.html'
       - 'scripts/check-device-visuals.mjs'
+      - 'assets/css/**'
+      - 'assets/js/**'
 jobs:
   check:
     runs-on: ubuntu-latest

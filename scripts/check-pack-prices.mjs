@@ -13,9 +13,14 @@ for(const path of targets){
   const card=html.match(new RegExp('data-pack-card="'+name+'"[\\s\\S]{0,250}?class="htc-pack-price">([0-9]+) €'));
   const home=html.match(new RegExp('<div class="pack-name">'+name+'</div>[\\s\\S]{0,300}?<div class="price">([0-9]+) €</div>'));
   const pt=html.match(new RegExp('<div class="pack-name">'+name+'</div>[\\s\\S]{0,320}?<span class="price-old">([0-9]+) €</span><span class="price-new">([0-9]+) €</span>'));
+  const nowRegular=html.match(new RegExp('<div class="pack-name">'+name+'</div>[\\s\\S]{0,500}?<span class="pack-price-now">([0-9]+) €</span>\\s*<s class="pack-price-regular">([0-9]+) €</s>'));
   const value=card?.[1]||home?.[1]||pt?.[1];
   if(value)check(Number(value)===v.pvp,`${path}: ${name} regular ${value} = ${v.pvp}`);
   if(pt)check(Number(pt[2])===v.online,`${path}: ${name} discounted ${pt[2]} = ${v.online}`);
+  if(nowRegular){
+   check(Number(nowRegular[1])===v.online,`${path}: ${name} pack-price-now ${nowRegular[1]} = ${v.online}`);
+   check(Number(nowRegular[2])===v.pvp,`${path}: ${name} pack-price-regular ${nowRegular[2]} = ${v.pvp}`);
+  }
   const option=[...html.matchAll(/<option[^>]*>([^<]+)<\/option>/g)].map(m=>m[1]).find(s=>s.startsWith(name+' — oferta online'));
   if(option)check(option.includes(String(v.online)+' €'),`${path}: ${name} Portuguese selector ${option}`);
  }
