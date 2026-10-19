@@ -26,7 +26,7 @@
       closeMobileMenu();
     }
   });
-  window.matchMedia("(min-width:1081px)").addEventListener("change", (event) => {
+  window.matchMedia("(min-width:1281px)").addEventListener("change", (event) => {
     if (event.matches) closeMobileMenu();
   });
 
@@ -34,19 +34,29 @@
     button.addEventListener("click", () => button.closest(".faq-item").classList.toggle("open"));
   });
 
-  const pageRef = HTCDirect.normalize(new URLSearchParams(location.search).get("ref")) || HTCDirect.defaultCode;
-  if (HTCDirect.get(pageRef)) {
-    HTCDirect.propagate(pageRef);
-  } else {
-    document.querySelectorAll('a[href^="/pedidos/"]').forEach((link) => {
-      const url = new URL(link.href);
-      url.searchParams.set("ref", pageRef);
+  const inbound = HTCDirect.normalize(new URLSearchParams(location.search).get("ref"));
+  const pageRef = inbound || HTCDirect.defaultCode;
+
+  function applyRef(code, prefixes) {
+    document.querySelectorAll("a[href]").forEach((link) => {
+      if (link.dataset.noRef === "true" || link.hasAttribute("download")) return;
+      const url = new URL(link.href, location.href);
+      if (url.origin !== location.origin) return;
+      const path = url.pathname;
+      if (/\.pdf$/i.test(path) || path.startsWith("/assets/")) return;
+      const match = prefixes.some((prefix) => path === prefix || path === prefix + "/" || path.startsWith(prefix.endsWith("/") ? prefix : prefix + "/"));
+      if (!match) return;
+      url.searchParams.set("ref", code);
       link.href = url.href;
     });
   }
-  document.querySelectorAll('a[href^="/compatibilidades/"]').forEach((link) => {
-    const url = new URL(link.href);
-    url.searchParams.set("ref", pageRef);
-    link.href = url.href;
-  });
+
+  if (HTCDirect.get(pageRef)) {
+    HTCDirect.propagate(pageRef);
+    applyRef(pageRef, ["/compatibilidades"]);
+  } else if (inbound) {
+    applyRef(pageRef, ["/pedidos", "/guia", "/compatibilidades"]);
+  } else {
+    applyRef(HTCDirect.defaultCode, ["/pedidos", "/compatibilidades"]);
+  }
 })();
