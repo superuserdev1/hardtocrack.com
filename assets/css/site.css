@@ -24,9 +24,9 @@ h3{font-size:1.2rem}
 /* Header */
 .site-header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(5,8,13,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{min-height:78px;display:flex;align-items:center;gap:26px}
-.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
-.brand img{width:52px;height:58px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(34,200,240,.22))}
-.brand-word{font-weight:900;letter-spacing:.055em;font-size:1.07rem}
+.brand{display:flex;align-items:center;gap:var(--brand-gap);min-width:max-content}
+.brand img{width:var(--brand-mark-w);height:var(--brand-mark-h);object-fit:contain;filter:drop-shadow(0 0 18px rgba(34,200,240,.22))}
+.brand-word{font-weight:var(--brand-name-weight);letter-spacing:var(--brand-name-tracking);font-size:var(--brand-name-size);color:var(--brand-name)}
 .brand-word span{color:var(--green)}
 .brand-sub{font-size:.59rem;color:var(--dim);letter-spacing:.19em;text-transform:uppercase}
 .nav-links{display:flex;align-items:center;gap:11px;margin-left:auto;flex-wrap:nowrap}
@@ -261,7 +261,6 @@ section[id]{scroll-margin-top:94px}
 .discover-note{font-size:.84rem;line-height:1.55}
 .discover-note code{color:var(--cyan);font-size:.8em;word-break:break-all}
 .site-header .nav{position:relative}
-.nav-actions .btn.secondary.small{display:none}
 .hero-actions .btn.ghost{min-height:48px}
 .packs-quick .pack.featured{box-shadow:0 24px 50px rgba(35,184,255,.12)}
 .device-visual{background:radial-gradient(circle at 50% 40%,rgba(35,184,255,.12),transparent 62%)}
@@ -304,7 +303,8 @@ section[id]{scroll-margin-top:94px}
   .lang{display:flex;flex-shrink:0}
   .nav{gap:8px}
   .brand{flex:0 0 auto}
-  .brand img{width:40px;height:45px}
+  .brand img{width:var(--brand-mark-w-sm);height:var(--brand-mark-h-sm)}
+  .brand-word{font-size:var(--brand-name-size-sm)}
   .nav-actions .btn.primary.small{padding-inline:8px;font-size:.68rem;flex-shrink:0}
   .lang a{padding:5px 6px;font-size:.65rem}
   .nav-actions{gap:6px}
