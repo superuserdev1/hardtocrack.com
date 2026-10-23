@@ -4,8 +4,8 @@ Fuente pública NO equivale a prueba realizada por HTC. La versión instalada en
 
 | Componente y canal | Versión de referencia | Fuente |
 |---|---|---|
-| GrapheneOS estable | 2026101600 | https://grapheneos.org/releases |
-| GrapheneOS alpha | 2026102100 | https://grapheneos.org/releases |
+| GrapheneOS estable anterior | 2026101600 | https://grapheneos.org/releases |
+| GrapheneOS estable actual | 2026102100 | https://grapheneos.org/releases |
 | WhatsApp Android beta, NO estable | 2.26.42.9 | https://www.apkmirror.com/categories/communication/W/ |
 | Signal Android estable | 8.32.3 | https://github.com/signalapp/Signal-Android/releases |
 | Signal Android prerelease | 8.33.1 | https://github.com/signalapp/Signal-Android/releases |
