@@ -5,7 +5,7 @@ import { renderPackSections } from './render-packs.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const output = join(root, 'dist');
-const fields = ['LEGAL_NAME', 'LEGAL_NIF', 'LEGAL_POSTAL_ADDRESS'];
+const fields = ['LEGAL_NAME', 'LEGAL_NIF', 'LEGAL_POSTAL_ADDRESS', 'LEGAL_LSSI_ADDRESS'];
 await rm(output, { recursive: true, force: true });
 const missing = fields.filter((field) => !process.env[field]?.trim());
 if (missing.length) {
@@ -17,6 +17,11 @@ const htmlEscape = (value) => value.replace(/[&<>"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[char]);
 
+if (process.env.LEGAL_NAME.trim() !== 'Borja González Álvarez') {
+  console.error('Build cancelled: LEGAL_NAME must match the confirmed legal name.');
+  process.exit(1);
+}
+
 await mkdir(output, { recursive: true });
 const excluded = new Set(['.git', '.github', 'dist', 'scripts', 'workers', 'wrangler.jsonc', 'vercel.json', 'README_deploy.md', 'DEPLOY_PRIVACIDAD.md', 'PEDIDOS_DIRECTOS.md']);
 for (const entry of await readdir(root, { withFileTypes: true })) {
@@ -26,17 +31,22 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
 
 await renderPackSections(output);
 
-for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html']) {
+for (const page of ['pedidos/index.html', 'guia/index.html', 'privacidad/index.html', 'guia/privacidad/index.html', 'aviso-legal/index.html']) {
   const target = join(output, page);
   let content = await readFile(target, 'utf8');
   for (const field of fields) {
     const marker = `{{${field}}}`;
-    if (!content.includes(marker) && field === 'LEGAL_NAME' && page !== 'privacidad/index.html') {
+    if (!content.includes(marker) && (page === 'aviso-legal/index.html' || (field === 'LEGAL_NAME' && page !== 'privacidad/index.html'))) {
       throw new Error(`Missing legal field marker in ${page}: ${field}`);
     }
     content = content.replaceAll(marker, htmlEscape(process.env[field].trim()));
   }
   if (/{{LEGAL_[A-Z_]+}}/.test(content)) throw new Error(`Unresolved legal field in ${page}`);
+  if (page === 'aviso-legal/index.html') {
+    const robots = '<meta name="robots" content="noindex, nofollow">';
+    if (!content.includes(robots)) throw new Error('Missing legal noindex guard');
+    content = content.replace(robots, '<meta name="robots" content="index, follow">');
+  }
   await writeFile(target, content);
 }
 
