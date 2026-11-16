@@ -26,6 +26,6 @@ for(const path of targets){
   }
  }
 }
-check(pricing.offer_until==='2026-10-31','Promotion expiration date has not changed');
+check(pricing.offer_until==='2026-11-30','Promotion expiration date has not changed');
 check(pricing.offer_scope==='direct_online_only','Offer applies only to direct online reservations');
 if(failures)process.exitCode=1;

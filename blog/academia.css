@@ -361,6 +361,7 @@ button[data-clear-inline] {
 .nav-list a { color: var(--blue); text-decoration: none; font-weight: 650; }
 [hidden] { display: none !important; }
 footer { border-top: 1px solid var(--line); color: var(--dim); padding-top: 18px; }
+footer .htc-legal-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 12px; }
 
 @media (max-width: 800px) {
   .layout { grid-template-columns: 1fr; }
