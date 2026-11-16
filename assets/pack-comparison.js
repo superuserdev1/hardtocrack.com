@@ -7,11 +7,20 @@
   const normalize = value => window.HTCDirect ? HTCDirect.normalize(value) : String(value || '').trim().toUpperCase();
   const params = new URLSearchParams(location.search);
   const reference = normalize(params.get('ref') || params.get('store') || params.get('partner'));
+  const pref = window.HTCDirect && HTCDirect.preferred ? HTCDirect.preferred(location.search) : null;
+  if (context === 'prices' && pref && pref.channel === 'partner') {
+    HTCDirect.routePedidosAnchors(pref.code);
+  }
   section.querySelectorAll('[data-htc-pack]').forEach(control => {
     const pack = control.dataset.htcPack;
     if (context === 'prices') {
-      const destination = new URL(control.href, location.origin);
-      if (reference) destination.searchParams.set('ref', reference);
+      if (pref && pref.channel === 'partner') {
+        control.href = HTCDirect.partnerCheckout(pref.code, pack).href;
+        return;
+      }
+      const destination = new URL('/pedidos/', location.origin);
+      destination.searchParams.set('pack', pack);
+      destination.searchParams.set('ref', (pref && pref.code) || reference || (window.HTCDirect && HTCDirect.defaultCode) || 'HTC-WEB-001');
       control.href = destination.href;
       return;
     }

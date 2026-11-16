@@ -4,3 +4,10 @@
 
 # Canonical GrapheneOS technical report
 /hardtocrack-informe-grapheneos.html /informe 301
+
+# Recovered from the published 52afab12 routing
+/guia/privacidad /privacidad 301
+/guia/privacidad/ /privacidad 301
+/guia/pedidos /pedidos 301
+/guia/pedidos/ /pedidos 301
+/informe-version-anterior.html /informe 301

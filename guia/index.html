@@ -7,6 +7,8 @@
   <meta name="description" content="Guía HardToCrack sobre privacidad móvil, Google Pixel, GrapheneOS y configuraciones preparadas para particulares y profesionales.">
   <title>Guía de privacidad móvil | HardToCrack</title>
   <link rel="icon" type="image/png" href="/guia/assets/logo-HT.png">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/chrome.css">
   <style>
     :root{
       --bg:#05080d;--bg-soft:#0b1018;--panel:#0e1622;--text:#f6f9fc;--muted:#9fafc2;
@@ -18,12 +20,7 @@
     a{color:inherit} button,input,select,textarea{font:inherit} button{cursor:pointer}
     .wrap{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
     .skip-link{position:absolute;left:-9999px}.skip-link:focus{left:16px;top:16px;z-index:1000;background:white;color:black;padding:10px 14px;border-radius:10px}
-    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(5,8,13,.78);border-bottom:1px solid var(--line)}
-    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:.02em}
-    .brand-logo{width:46px;height:52px;object-fit:contain;display:block;flex:0 0 auto;filter:drop-shadow(0 0 16px rgba(34,200,240,.20))}
-    .brand small{display:block;font-size:.62rem;color:var(--muted);letter-spacing:.18em;margin-top:-2px}
-    .nav-links{display:flex;align-items:center;gap:22px;font-size:.93rem;color:#d7e0ea}.nav-links a{text-decoration:none}.nav-links a:hover{color:white}
+    .hero,section,.audience-picker{scroll-margin-top:94px}
     .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 20px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:750;transition:.2s ease}
     .button:hover{transform:translateY(-1px)}.button-primary{color:#03100b;background:linear-gradient(90deg,var(--cyan),var(--green));box-shadow:0 12px 32px rgba(57,229,141,.18)}.button-secondary{background:rgba(255,255,255,.055);border-color:var(--line);color:white}.button-ghost{background:transparent;color:var(--muted)}
     .audience-picker{padding:24px 0 0;scroll-margin-top:95px}
@@ -35,7 +32,7 @@
     @media(max-width:640px){.audience-grid{grid-template-columns:1fr}}
     .hero{padding:92px 0 56px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:58px;align-items:center}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b8f6dd;font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:18px}.eyebrow:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--green))}
-    h1,h2,h3{line-height:1.08;margin:0;letter-spacing:-.035em}h1{font-size:clamp(3rem,7vw,6.6rem);max-width:10ch}h1 .gradient{color:transparent;background:linear-gradient(90deg,#fff,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text}
+    h1,h2,h3{line-height:1.08;margin:0;letter-spacing:-.035em}h1{font-size:clamp(2.4rem,6vw,5.2rem);max-width:16ch}h1 .gradient{color:transparent;background:linear-gradient(90deg,#fff,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text}
     .hero-copy{max-width:650px;margin:24px 0 30px;color:#c4ced9;font-size:clamp(1.05rem,2vw,1.25rem)}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
     .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px}.trust-item{padding:15px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}.trust-item strong{display:block;font-size:.95rem}.trust-item span{color:var(--muted);font-size:.82rem}
     .phone-stage{min-height:590px;display:grid;place-items:center;position:relative}.phone-stage:before{content:"";position:absolute;width:410px;height:410px;border-radius:50%;background:radial-gradient(circle,rgba(34,200,240,.22),rgba(57,229,141,.07) 48%,transparent 70%);filter:blur(6px)}
@@ -56,35 +53,68 @@
     .info-band{display:grid;grid-template-columns:1fr 1fr;gap:22px}.delivery-card{padding:28px;border-radius:24px;border:1px solid var(--line);background:var(--panel)}.delivery-card.recommended{border-color:rgba(57,229,141,.32)}.delivery-card h3{font-size:1.45rem;margin-bottom:10px}.price-chip{display:inline-flex;margin:12px 0 14px;padding:7px 11px;border-radius:99px;background:rgba(255,255,255,.06);color:#dfe8f1;font-size:.82rem;font-weight:800}.delivery-card p{color:var(--muted);margin:0}
     .faq{display:grid;gap:12px}details{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:16px;padding:0 18px}summary{cursor:pointer;padding:19px 0;font-weight:800}details p{color:var(--muted);margin:0 0 20px}
     .cta{padding:36px;border-radius:28px;border:1px solid rgba(34,200,240,.28);background:radial-gradient(circle at 100% 0%,rgba(57,229,141,.16),transparent 35%),linear-gradient(135deg,rgba(22,133,255,.13),rgba(255,255,255,.025));display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}.cta h2{font-size:clamp(2rem,4vw,3.4rem);max-width:14ch}.cta p{color:var(--muted);margin:12px 0 0;max-width:650px}
-    footer{padding:42px 0;border-top:1px solid var(--line);color:var(--muted)}.footer-grid{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.footer-note{max-width:700px;font-size:.84rem}
+    .htc-chrome .footer-brand p a{text-decoration:underline}
     dialog{width:min(640px,calc(100% - 24px));border:1px solid var(--line);border-radius:24px;color:white;background:var(--panel);box-shadow:0 50px 120px rgba(0,0,0,.60);padding:0}dialog::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(6px)}.modal-head{padding:24px 24px 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-head h2{font-size:1.7rem}.modal-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white}.modal-body{padding:24px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-field{display:grid;gap:7px}.form-field.full{grid-column:1/-1}.form-field label{font-size:.84rem;color:#dce5ee;font-weight:700}.form-field textarea{min-height:120px;resize:vertical;padding-top:14px}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.form-message{display:none;margin-top:16px;padding:14px;border-radius:14px;background:rgba(57,229,141,.10);color:#b9f8dc;border:1px solid rgba(57,229,141,.25)}.form-message.visible{display:block}
-    @media(max-width:900px){.nav-links{display:none}.hero{padding-top:62px}.hero-grid,.code-grid,.info-band,.cta{grid-template-columns:1fr}.phone-stage{min-height:520px}.cards,.packages{grid-template-columns:1fr}.package.featured{transform:none}.trust-row{grid-template-columns:1fr}}
-    @media(max-width:620px){.wrap{width:min(calc(100% - 22px),var(--max))}section{padding:58px 0}.hero{padding-bottom:30px}h1{font-size:3.3rem}.phone-stage{min-height:470px}.phone{width:235px}.code-input-row{flex-direction:column}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}.footer-grid{flex-direction:column}.nav .button{display:none}}
+    @media(max-width:900px){.hero{padding-top:62px}.hero-grid,.code-grid,.info-band,.cta{grid-template-columns:1fr}.phone-stage{min-height:520px}.cards,.packages{grid-template-columns:1fr}.package.featured{transform:none}.trust-row{grid-template-columns:1fr}}
+    @media(max-width:620px){.wrap{width:min(calc(100% - 22px),var(--max))}section{padding:58px 0}.hero{padding-bottom:30px}h1{font-size:3.3rem}.phone-stage{min-height:470px}.phone{width:235px}.code-input-row{flex-direction:column}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
     .demo-note[hidden]{display:none!important}
   </style>
   <link rel="stylesheet" href="/assets/pack-comparison.css">
   <script defer src="/assets/pack-comparison.js"></script>
-  <script defer src="https://www.hardtocrack.com/assets/orders-client.js"></script>
+  <script defer src="/assets/orders-client.js"></script>
   <link rel="canonical" href="https://hardtocrack.com/guia">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="HardToCrack">
+  <meta property="og:title" content="Guía de privacidad móvil | HardToCrack">
+  <meta property="og:description" content="Guía HardToCrack sobre privacidad móvil, Google Pixel, GrapheneOS y configuraciones preparadas para particulares y profesionales.">
+  <meta property="og:url" content="https://hardtocrack.com/guia">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#inicio" aria-label="HardToCrack, inicio"><img class="brand-logo" src="/guia/assets/logo-HT.png" alt="" aria-hidden="true"><span>HardToCrack<small>SECURITY · PRIVACY · FREEDOM</small></span></a>
-      <nav class="nav-links" aria-label="Navegación principal"><a id="storeNavLink" href="#tienda">Tu tienda</a><a href="#proteccion">Protección</a><a href="#configuraciones">Qué incluye cada pack</a><a href="#entrega">Entrega</a><a href="#faq">Preguntas</a><a href="/precios/">Precios</a><a id="orderNavLink" href="/pedidos/">Pedidos</a><a href="/guia/privacidad/">Privacidad</a></nav>
-      <a class="button button-secondary" href="#tienda">Identificar tienda</a>
+  <div class="htc-chrome">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="HardToCrack, inicio">
+        <img src="/assets/img/logo-HT.png" alt="">
+        <div>
+          <div class="brand-word">HARDTO<span>CRACK</span></div>
+          <div class="brand-sub">Security · Privacy · Freedom</div>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a id="storeNavLink" href="#tienda">Tu tienda</a>
+        <a href="#proteccion">Protección</a>
+        <a href="#configuraciones">Qué incluye cada pack</a>
+        <a href="#entrega">Entrega</a>
+        <a href="#faq">Preguntas</a>
+        <a href="/precios/">Precios</a>
+        <a id="orderNavLink" href="/pedidos/">Pedidos</a>
+        <a href="/privacidad/" target="_blank" rel="noopener">Privacidad</a>
+        <a class="nav-extra" href="https://partners.hardtocrack.com/">Partners</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn secondary small" href="https://partners.hardtocrack.com/">Partners</a>
+        <a class="btn primary small" data-htc-order-cta href="/pedidos/">Realizar pedido</a>
+        <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
+  </div>
 
   <main id="contenido">
     <section class="hero" id="inicio">
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Guía de privacidad móvil</div>
-          <h1>Privacidad móvil, <span class="gradient">preparada para ti.</span></h1>
+          <h1>Guía para elegir tu <span class="gradient">móvil privado</span> con GrapheneOS</h1>
           <p class="hero-copy">Google Pixel con GrapheneOS, configuración profesional y soporte especializado en castellano. Una propuesta pensada para reducir exposición, separar identidades y tener más control sobre el dispositivo.</p>
           <div class="hero-actions"><a class="button button-primary" id="heroPrimaryCta" href="#tienda">Introducir código de tienda</a><a class="button button-secondary" href="#configuraciones">Comparar packs</a></div>
+          <article class="audience-option" aria-labelledby="guia-folleto">
+            <h3 id="guia-folleto">¿Qué es HardToCrack?</h3>
+            <p>Descubre cómo preparamos teléfonos Google Pixel con GrapheneOS y qué opciones de privacidad ofrecemos.</p>
+            <a class="button button-secondary" href="https://hardtocrack.com/assets/docs/guia-descubre-hardtocrack.pdf" target="_blank" rel="noopener noreferrer" data-no-ref="true" aria-label="Ver folleto, 16 páginas, se abre en una pestaña nueva">Ver folleto · 16 páginas</a>
+          </article>
           <div class="trust-row"><div class="trust-item"><strong>Instalación profesional</strong><span>Dispositivo preparado y revisado.</span></div><div class="trust-item"><strong>Sin conocimientos técnicos</strong><span>Configuración adaptada a tu uso.</span></div><div class="trust-item"><strong>Soporte especializado</strong><span>Acompañamiento tras la entrega.</span></div></div>
         </div>
         <div class="phone-stage" aria-label="Representación visual de un teléfono preparado"><div class="phone"><div class="phone-screen"><span class="camera" aria-hidden="true"></span><div class="screen-top"><span>18:56</span><span>5G · 94%</span></div><div class="screen-lock"><div class="time">18:56</div><div class="date">Miércoles, 5 de agosto</div></div><img class="screen-logo" src="/guia/assets/logo-HT.png" alt="Logotipo oficial de HardToCrack"><div class="screen-card"><strong>Configuración HardToCrack</strong><span>Privacidad, perfiles y permisos preparados para el uso real.</span></div></div></div></div>
@@ -140,10 +170,54 @@
     <section><div class="wrap"><div class="cta"><div><h2 id="ctaTitle">Empieza por identificar tu tienda.</h2><p id="ctaCopy">Escanea el QR de la tienda o utiliza la referencia <strong>HTC-MAD-001</strong>. Las solicitudes quedarán vinculadas al comercio que originó el contacto.</p></div><a class="button button-primary" id="ctaButton" href="#tienda">Identificar Partner</a></div></div></section>
   </main>
 
-  <footer><div class="wrap footer-grid"><div class="brand"><img class="brand-logo" src="/guia/assets/logo-HT.png" alt="" aria-hidden="true"><span>HardToCrack<small>SECURITY · PRIVACY · FREEDOM</small></span></div><div class="footer-note">Los pedidos, encargos y solicitudes por email incluyen la referencia de la tienda y un identificador único. HardToCrack valida la atribución de tienda antes de registrar una comisión. La referencia HTC-WEB-001 identifica una solicitud directa, sin distinguir la web de un marketplace ni generar comisión de tienda. <a href="/guia/privacidad/">Privacidad y datos personales</a>.</div></div></footer>
+  <div class="htc-chrome">
+  <footer class="htc-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="HardToCrack, inicio">
+            <img src="/assets/img/logo-HT.png" alt="">
+            <div class="brand-word">HARDTO<span>CRACK</span></div>
+          </a>
+          <p>Los pedidos, encargos y solicitudes por email incluyen la referencia de la tienda y un identificador único. HardToCrack valida la atribución de tienda antes de registrar una comisión. La referencia HTC-WEB-001 identifica una solicitud directa, sin distinguir la web de un marketplace ni generar comisión de tienda. <a href="/privacidad/" target="_blank" rel="noopener">Privacidad y datos personales</a>.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Guía</h3>
+          <a href="#tienda">Tu tienda</a>
+          <a href="#configuraciones">Packs</a>
+          <a href="#entrega">Entrega</a>
+          <a href="#faq">Preguntas</a>
+          <a href="/privacidad/" target="_blank" rel="noopener">Privacidad</a>
+        </div>
+        <div class="footer-col">
+          <h3>Recursos</h3>
+          <a href="/">Inicio</a>
+          <a href="/informe">Informe</a>
+          <a href="/blog">Blog</a>
+          <a id="guidePedidosLink" href="/pedidos/">Pedidos</a>
+          <a href="/precios/">Precios</a>
+        </div>
+        <div class="footer-col">
+          <h3>HardToCrack</h3>
+          <a href="https://partners.hardtocrack.com/">Partners</a>
+          <a href="/secure">Verificar canales oficiales</a>
+          <a href="/privacidad/" target="_blank" rel="noopener">Privacidad</a>
+          <a href="/aviso-legal/">Aviso legal</a>
+          <a href="mailto:contact@hardtocrack.com">Contacto</a>
+          <a href="/">hardtocrack.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 HardToCrack · Security · Privacy · Freedom</span>
+        <span>HardToCrack no está afiliada ni respaldada por GrapheneOS ni Google.</span>
+      </div>
+    </div>
+  </footer>
+  </div>
 
-  <dialog id="reservationModal" aria-labelledby="modalTitle"><div class="modal-head"><div><p class="partner-label" id="modalEyebrow">Pedido atribuido a la tienda</p><h2 id="modalTitle">Hacer pedido o encargo</h2></div><button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">×</button></div><div class="modal-body"><form id="orderForm"><input type="hidden" name="store_code" id="storeCodeHidden"><input type="hidden" name="direct_ref" id="directRefHidden"><input type="hidden" name="store_name" id="storeNameHidden"><input type="hidden" name="store_zone" id="storeZoneHidden"><input type="hidden" name="partner_ref" id="partnerRefHidden"><input type="hidden" name="request_mode" id="requestModeHidden"><input type="hidden" name="lead_id" id="leadIdHidden"><input type="hidden" name="lead_source" id="leadSourceHidden"><input type="hidden" name="landing_url" id="landingUrlHidden"><input type="hidden" name="captured_at" id="capturedAtHidden"><p class="helper">Referencia asociada: <strong id="modalPartnerRef">Sin tienda</strong>. Esta referencia aparecerá en el asunto y contenido del email.</p><div class="form-grid"><div class="form-field"><label for="name">Nombre</label><input class="field" id="name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact">Email o teléfono</label><input class="field" id="contact" name="contact" required></div><div class="form-field full"><label for="requestType">Tipo de pedido o encargo</label><select class="field" id="requestType" name="request_type"><option>Dispositivo + configuración HardToCrack</option><option>Instalación en mi propio Google Pixel</option><option>Servicio individual</option><option>Accesorios</option><option>Consulta previa</option></select></div><div class="form-field"><label for="deviceModel">Dispositivo</label><select class="field" id="deviceModel" name="device_model"><option>Google Pixel 8a reacondicionado</option><option>Google Pixel 9a</option><option>Google Pixel 10a</option><option>Google Pixel 10 Pro</option><option>Ya tengo un Google Pixel compatible</option><option>Modelo por decidir</option></select></div><div class="form-field"><label for="interest">Paquete o servicio</label><select class="field" id="interest" name="interest"><option>Essential</option><option>Privacy</option><option>Elite</option><option>Solo instalación GrapheneOS</option><option>Servicio o accesorio individual</option><option>Necesito asesoramiento</option></select></div><div class="form-field full"><label for="delivery">Modalidad preferida</label><select class="field" id="delivery" name="delivery"><option>Reserva, pago y recogida en tienda</option><option>Pago online y recogida en tienda</option><option>Entrega directa a domicilio</option><option>Todavía no lo sé</option></select></div><div class="form-field full"><label for="message">Detalles del pedido o encargo</label><textarea class="field" id="message" name="message" placeholder="Modelo, color, capacidad, aplicaciones imprescindibles, accesorios o cualquier necesidad concreta."></textarea></div></div><p class="helper">Responsable: {{LEGAL_NAME}}. Trataremos los datos para responder y tramitar la solicitud, junto con la referencia de origen. Consulta la <a href="/guia/privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p><div class="form-actions"><button class="button button-secondary" id="cancelForm" type="button">Cancelar</button><button class="button button-primary" id="submitEmailButton" type="submit">Preparar pedido por email</button></div><div class="form-message" id="formMessage" role="status" aria-live="polite">Se abrirá tu aplicación de correo con el pedido preparado y la referencia de la tienda.</div><p class="helper">Si el navegador no abre tu correo, escribe directamente a <a id="orderEmailFallback" href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a> e indica la referencia que aparece arriba.</p></form></div></dialog>
+  <dialog id="reservationModal" aria-labelledby="modalTitle"><div class="modal-head"><div><p class="partner-label" id="modalEyebrow">Pedido atribuido a la tienda</p><h2 id="modalTitle">Hacer pedido o encargo</h2></div><button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">×</button></div><div class="modal-body"><form id="orderForm"><input type="hidden" name="store_code" id="storeCodeHidden"><input type="hidden" name="direct_ref" id="directRefHidden"><input type="hidden" name="store_name" id="storeNameHidden"><input type="hidden" name="store_zone" id="storeZoneHidden"><input type="hidden" name="partner_ref" id="partnerRefHidden"><input type="hidden" name="request_mode" id="requestModeHidden"><input type="hidden" name="lead_id" id="leadIdHidden"><input type="hidden" name="lead_source" id="leadSourceHidden"><input type="hidden" name="landing_url" id="landingUrlHidden"><input type="hidden" name="captured_at" id="capturedAtHidden"><p class="helper">Referencia asociada: <strong id="modalPartnerRef">Sin tienda</strong>. Esta referencia aparecerá en el asunto y contenido del email.</p><div class="form-grid"><div class="form-field"><label for="name">Nombre</label><input class="field" id="name" name="name" autocomplete="name" required></div><div class="form-field"><label for="contact">Email o teléfono</label><input class="field" id="contact" name="contact" required></div><div class="form-field full"><label for="requestType">Tipo de pedido o encargo</label><select class="field" id="requestType" name="request_type"><option>Dispositivo + configuración HardToCrack</option><option>Instalación en mi propio Google Pixel</option><option>Servicio individual</option><option>Accesorios</option><option>Consulta previa</option></select></div><div class="form-field"><label for="deviceModel">Dispositivo</label><select class="field" id="deviceModel" name="device_model"><option>Google Pixel 8a reacondicionado</option><option>Google Pixel 9a</option><option>Google Pixel 10a</option><option>Google Pixel 10 Pro</option><option>Ya tengo un Google Pixel compatible</option><option>Modelo por decidir</option></select></div><div class="form-field"><label for="interest">Paquete o servicio</label><select class="field" id="interest" name="interest"><option>Essential</option><option>Privacy</option><option>Elite</option><option>Solo instalación GrapheneOS</option><option>Servicio o accesorio individual</option><option>Necesito asesoramiento</option></select></div><div class="form-field full"><label for="delivery">Modalidad preferida</label><select class="field" id="delivery" name="delivery"><option>Reserva, pago y recogida en tienda</option><option>Pago online y recogida en tienda</option><option>Entrega directa a domicilio</option><option>Todavía no lo sé</option></select></div><div class="form-field full"><label for="message">Detalles del pedido o encargo</label><textarea class="field" id="message" name="message" placeholder="Modelo, color, capacidad, aplicaciones imprescindibles, accesorios o cualquier necesidad concreta."></textarea></div></div><p class="helper">Responsable: {{LEGAL_NAME}}. Trataremos los datos para responder y tramitar la solicitud, junto con la referencia de origen. Consulta la <a href="/privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p><div class="form-actions"><button class="button button-secondary" id="cancelForm" type="button">Cancelar</button><button class="button button-primary" id="submitEmailButton" type="submit">Preparar pedido por email</button></div><div class="form-message" id="formMessage" role="status" aria-live="polite">Se abrirá tu aplicación de correo con el pedido preparado y la referencia de la tienda.</div><p class="helper">Si el navegador no abre tu correo, escribe directamente a <a id="orderEmailFallback" href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a> e indica la referencia que aparece arriba.</p></form></div></dialog>
 
+  <script src="/assets/js/chrome.js"></script>
   <script src="/assets/direct-references.js"></script>
   <script>
     let PARTNERS={};
@@ -228,6 +302,18 @@
       }
     }
 
+    function setGuideOrderHref(href){
+      $("orderNavLink").href=href;
+      const footer=$("guidePedidosLink");
+      if(footer)footer.setAttribute("href",href);
+    }
+
+    function applyInboundPack(){
+      const pack=new URLSearchParams(window.location.search).get("pack");
+      if(!["Essential","Privacy","Elite"].includes(pack))return;
+      document.dispatchEvent(new CustomEvent("htc:choose-pack",{detail:{pack}}));
+    }
+
     function updateAudienceReference(code){
       const target=new URL("https://partners.hardtocrack.com/pedidos/");
       if(isPartnerCode(code))target.searchParams.set("ref",code);
@@ -268,7 +354,7 @@
       $("storeNavLink").textContent="Tu referencia";
       $("heroPrimaryCta").textContent="Preparar pedido directo";
       $("heroPrimaryCta").href="#solicitar";
-      $("orderNavLink").href="#solicitar";
+      setGuideOrderHref("#solicitar");
       $("codeHeading").textContent="Tu consulta llega directamente a HardToCrack.";
       $("codeIntro").textContent="Esta referencia identifica una solicitud directa a HardToCrack. Puedes elegir tu equipo y solicitar información sin pasar por una tienda partner.";
       $("ctaTitle").textContent="Habla directamente con HardToCrack.";
@@ -282,12 +368,20 @@
     }
 
     function showPartner(code,partner,{restored=false,source="manual"}={}){
-      const record=saveAttribution(code,source);
+      // Restored visits must keep the original expiry. saveAttribution would restart the 30-day window.
+      let record;
+      if(restored){
+        record=loadAttribution();
+        if(!record||record.code!==code)record=saveAttribution(code,source);
+        else currentAttribution=record;
+      }else{
+        record=saveAttribution(code,source);
+      }
       updateAudienceReference(code);
       $("storeNavLink").textContent="Tu tienda";
       $("heroPrimaryCta").textContent="Introducir código de tienda";
       $("heroPrimaryCta").href="#tienda";
-      $("orderNavLink").href="#tienda";
+      setGuideOrderHref("#tienda");
       $("ctaButton").textContent="Identificar Partner";
       $("ctaButton").href="#tienda";
       $("codeHeading").textContent="Identifica tu tienda HardToCrack.";
@@ -321,7 +415,7 @@
       updateAudienceReference("");
       $("heroPrimaryCta").href="#tienda";
       $("heroPrimaryCta").textContent="Revisar referencia";
-      $("orderNavLink").href="#tienda";
+      setGuideOrderHref("#tienda");
       $("ctaButton").href="#tienda";
       $("ctaButton").textContent="Revisar referencia";
       $("ctaTitle").textContent="Comprueba la referencia del enlace.";
@@ -470,19 +564,41 @@
       landingUrlHidden.value=window.location.href;
       const params=new URLSearchParams(window.location.search);
       const queryCode=normalizeCode(params.get("ref")||params.get("store")||params.get("partner")||"");
+      const storedEarly=loadAttribution();
       if(DIRECT.get(queryCode)){
+        if(storedEarly&&isPartnerCode(storedEarly.code)){
+          const loaded=await loadPartners();
+          if(loaded&&PARTNERS[storedEarly.code]){
+            storeCode.value=storedEarly.code;
+            showPartner(storedEarly.code,PARTNERS[storedEarly.code],{restored:true,source:"stored"});
+            applyInboundPack();
+            return;
+          }
+        }
         showDirect(queryCode,{source:"link"});
+        applyInboundPack();
         await loadPartners();
         return;
       }
-      if(!queryCode)showDirect(DIRECT.defaultCode,{source:"web"});
       const loaded=await loadPartners();
       if(queryCode){
         storeCode.value=queryCode;
         loaded&&PARTNERS[queryCode]?showPartner(queryCode,PARTNERS[queryCode],{source:"qr"}):showUnknown(queryCode);
+        if(loaded&&PARTNERS[queryCode])applyInboundPack();
         return;
       }
+      const stored=storedEarly||loadAttribution();
+      if(stored&&isPartnerCode(stored.code)){
+        if(loaded&&PARTNERS[stored.code]){
+          storeCode.value=stored.code;
+          showPartner(stored.code,PARTNERS[stored.code],{restored:true,source:"stored"});
+          applyInboundPack();
+          return;
+        }
+        if(!loaded)return;
+      }
       showDirect(DIRECT.defaultCode,{source:"web"});
+      applyInboundPack();
     }
 
     document.addEventListener("htc:choose-pack",event=>{
@@ -499,6 +615,30 @@
     });
 
     initializeGuide();
+  </script>
+  <script>
+    (function(){
+      const order=document.getElementById("orderNavLink");
+      const cta=document.querySelector("[data-htc-order-cta]");
+      const footer=document.getElementById("guidePedidosLink");
+      if(!order||!cta)return;
+      const pointsToTienda=href=>href==="#tienda"||/#tienda(?:$|[?#])/.test(href||"");
+      const sync=()=>{
+        const href=order.getAttribute("href")||"";
+        if(pointsToTienda(href)){
+          cta.setAttribute("href","#tienda");
+          if(footer)footer.setAttribute("href","#tienda");
+          return;
+        }
+        if(pointsToTienda(cta.getAttribute("href")||"")){
+          cta.setAttribute("href","/pedidos/");
+          const code=window.HTCDirect&&HTCDirect.fromSearch(location.search);
+          if(code)HTCDirect.propagate(code);
+        }
+      };
+      new MutationObserver(sync).observe(order,{attributes:true,attributeFilter:["href"]});
+      sync();
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Todo lo que Android stock envía a Google (y tú no sabías)</title>
+<meta name="description" content="Todo lo que Android envía a Google sin que lo sepas. Análisis de la telemetría oculta de Android stock.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1018">
+<link rel="canonical" href="https://hardtocrack.com/blog/android-te-espia">
+<meta property="og:title" content="Todo lo que Android stock envía a Google (y tú no sabías)">
+<meta property="og:description" content="Todo lo que Android envía a Google sin que lo sepas. Análisis de la telemetría oculta de Android stock.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://hardtocrack.com/blog/android-te-espia">
+<link rel="stylesheet" href="/blog/academia.css">
+<meta property="og:type" content="article"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Todo lo que Android stock envía a Google (y tú no sabías)","description":"Todo lo que Android envía a Google sin que lo sepas. Análisis de la telemetría oculta de Android stock.","inLanguage":"es","mainEntityOfPage":"https://hardtocrack.com/blog/android-te-espia","author":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/"},"publisher":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/","logo":{"@type":"ImageObject","url":"https://hardtocrack.com/guia/assets/logo-HT.png"}}}</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav">
+    <a class="brand" href="/blog">
+      <img src="/blog/assets/logo-HT.png" width="39" height="44" alt="">
+      <span class="wordmark-inline">hardtocrack</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+    <nav id="nav-links" class="nav-links" aria-label="Secciones">
+      <a href="/blog">Academia</a>
+      <a href="https://hardtocrack.com/">Inicio</a>
+      <a href="https://hardtocrack.com/guia/">Guía</a>
+      <a href="https://hardtocrack.com/secure">Clave pública</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido" class="wrap">
+
+  
+  <header class="article-head">
+    <p class="eyebrow">Serie · Artículos ya publicados</p>
+    <h1>Todo lo que Android stock envía a Google (y tú no sabías)</h1>
+    <p class="lede">Todo lo que Android envía a Google sin que lo sepas. Análisis de la telemetría oculta de Android stock.</p>
+    <p class="chips"><a href="/blog?categoria=privacidad-datos">Privacidad y datos</a><a href="/blog?tags=telemetria">Telemetría</a><a href="/blog?tags=opsec">OPSEC</a><a href="/blog?tags=modelo-de-amenazas">Modelo de amenazas</a><a href="/blog?tags=perfiles-android">Perfiles Android</a></p>
+    <p class="dates"><span class="date-unknown">Fecha de publicación desconocida</span><time datetime="2026-10-28">Revisión 2026-10-28</time></p>
+  </header>
+  <div class="layout">
+    <nav class="toc" aria-label="Índice de contenidos"><p class="toc-label">Índice</p><ol><li><a href="#que-datos-recopila-android-exactamente">Qué datos recopila Android exactamente</a><ol><li><a href="#datos-de-ubicacion">Datos de ubicación</a></li><li><a href="#datos-de-uso-del-dispositivo">Datos de uso del dispositivo</a></li><li><a href="#datos-de-comunicaciones">Datos de comunicaciones</a></li><li><a href="#datos-de-cuenta-y-sincronizacion">Datos de cuenta y sincronización</a></li></ol></li><li><a href="#por-que-no-puedes-simplemente-desactivarlo">Por qué no puedes simplemente desactivarlo</a></li><li><a href="#lo-que-grapheneos-hace-diferente">Lo que GrapheneOS hace diferente</a></li><li><a href="#fuentes">Fuentes</a></li><li><a href="#relacionados">Artículos relacionados</a></li></ol></nav>
+    <div class="prose">
+      <p>La configuración de privacidad de Android tiene un problema fundamental: no importa cuántas opciones desactives en los ajustes, Google Play Services —el corazón invisible de Android— sigue enviando datos a los servidores de Google. Y no puedes desinstalarlo sin romper el sistema.</p>
+<p>Esto no es una teoría conspirativa. Es el modelo de negocio de Google documentado en sus propias políticas de privacidad, analizado por investigadores independientes y confirmado por estudios de tráfico de red.</p>
+<blockquote><p><strong>Dato documentado:</strong> Un teléfono Android en reposo, sin que nadie lo use, envía datos a los servidores de Google aproximadamente cada 4,5 minutos. Esto incluye dispositivos con todas las opciones de privacidad desactivadas.</p></blockquote>
+<h2 id="que-datos-recopila-android-exactamente">Qué datos recopila Android exactamente</h2>
+<h3 id="datos-de-ubicacion">Datos de ubicación</h3>
+<p>Android recopila tu ubicación incluso con el GPS desactivado, usando triangulación de torres de móvil y redes WiFi cercanas. Esta información se envía a Google aunque hayas desactivado &quot;Historial de ubicación&quot; y &quot;Precisión de ubicación de Google&quot;.</p>
+<ul><li>Ubicación aproximada cada pocas horas vía WiFi y torres de móvil</li></ul>
+<ul><li>Historial de lugares visitados (aunque esté &quot;desactivado&quot;)</li></ul>
+<ul><li>Señales WiFi cercanas, incluso sin conectarte</li></ul>
+<ul><li>Identificadores de redes Bluetooth próximas</li></ul>
+<h3 id="datos-de-uso-del-dispositivo">Datos de uso del dispositivo</h3>
+<p>Google recopila estadísticas detalladas de cómo usas tu teléfono. Esto incluye qué apps abres, durante cuánto tiempo, con qué frecuencia, en qué orden.</p>
+<ul><li>Apps instaladas y frecuencia de uso</li></ul>
+<ul><li>Tiempo de pantalla por aplicación</li></ul>
+<ul><li>Estadísticas de batería y rendimiento</li></ul>
+<ul><li>Diagnósticos del sistema y logs de errores</li></ul>
+<h3 id="datos-de-comunicaciones">Datos de comunicaciones</h3>
+<p>Si usas apps de Google para comunicarte (Gmail, Google Messages, Google Voice), el contenido de esas comunicaciones pasa por servidores de Google. Pero incluso si no las usas, los metadatos de comunicaciones pueden estar disponibles.</p>
+<h3 id="datos-de-cuenta-y-sincronizacion">Datos de cuenta y sincronización</h3>
+<p>Una cuenta de Google en el dispositivo sincroniza contactos, calendarios, documentos y preferencias con los servidores de Google. Esto es intencional y documentado, pero muchos usuarios no dimensionan cuánta información representa.</p>
+<h2 id="por-que-no-puedes-simplemente-desactivarlo">Por qué no puedes simplemente desactivarlo</h2>
+<p>Google Play Services no es una app más. Es una capa del sistema operativo con privilegios de sistema que se ejecuta constantemente en segundo plano. No aparece en la lista de apps instaladas de la misma forma, no puedes desinstalarla sin root, y reinicia automáticamente si intentas pararla.</p>
+<p>Esta arquitectura garantiza que Google tenga acceso continuo a los datos del dispositivo independientemente de las preferencias del usuario.</p>
+<blockquote><p><strong>La solución real:</strong> No hay forma de usar Android estándar con privacidad real. La única solución es un sistema operativo que no incluya Google Play Services en su núcleo, como GrapheneOS.</p></blockquote>
+<h2 id="lo-que-grapheneos-hace-diferente">Lo que GrapheneOS hace diferente</h2>
+<p>GrapheneOS elimina toda esta infraestructura de telemetría. No hay Google Play Services en el núcleo del sistema. No hay sincronización automática con servidores de Google. No hay identificadores del dispositivo enviándose en background.</p>
+<p>Si decides instalar las apps de Google, puedes hacerlo dentro de un sandbox aislado donde esas apps no tienen acceso al resto del sistema. Tú controlas qué accede a qué.</p>
+      <section aria-labelledby="fuentes">
+        <h2 id="fuentes">Fuentes</h2>
+        <ol><li><a href="https://hardtocrack.com/blog/android-te-espia" rel="noreferrer">HardToCrack Blog (producción)</a>, consulta 2026-10-28</li></ol>
+      </section>
+      <section aria-labelledby="relacionados">
+        <h2 id="relacionados">Artículos relacionados</h2>
+        <ul><li><a href="/blog/modelo-de-amenazas-privacidad-movil-2026">Privacidad móvil en 2026: el modelo de amenazas importa más que una app</a></li><li><a href="/blog/por-que-grapheneos">Por qué GrapheneOS es el sistema operativo más seguro para Android en 2025</a></li></ul>
+      </section>
+    </div>
+  </div>
+
+</main>
+<footer class="wrap"><p>© 2026 hardtocrack</p></footer>
+
+<script src="/blog/preview.js"></script>
+</body>
+</html>
