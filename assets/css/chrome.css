@@ -1,0 +1,377 @@
+/* HTC-02 V3.1 chrome — header/nav/footer only. Mirror of portada 2.1.
+   All rules are scoped to .htc-chrome. Do not style body, forms, or .section.
+   Breakpoint lock: hamburger max-width 1399px; desktop from 1400px. */
+
+.htc-chrome {
+  box-sizing: border-box;
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.htc-chrome *,
+.htc-chrome *::before,
+.htc-chrome *::after {
+  box-sizing: border-box;
+}
+
+.htc-chrome a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.htc-chrome:has(.site-header) {
+  display: block;
+  min-height: 79px;
+}
+
+.htc-chrome .container {
+  width: min(var(--max), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.htc-chrome .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  background: rgba(5, 8, 13, .78);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.htc-chrome .nav {
+  position: relative;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.htc-chrome .brand {
+  display: flex;
+  align-items: center;
+  gap: var(--brand-gap);
+  min-width: max-content;
+}
+
+.htc-chrome .brand img {
+  width: var(--brand-mark-w);
+  height: var(--brand-mark-h);
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(34, 200, 240, .22));
+}
+
+.htc-chrome .brand-word {
+  font-weight: var(--brand-name-weight);
+  letter-spacing: var(--brand-name-tracking);
+  font-size: var(--brand-name-size);
+  color: var(--brand-name);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.htc-chrome .brand-word span {
+  color: var(--green);
+}
+
+.htc-chrome .brand-sub {
+  font-size: .59rem;
+  color: var(--dim);
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.htc-chrome .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
+.htc-chrome .nav-links a {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.htc-chrome .nav-links .nav-extra {
+  display: none;
+}
+
+.htc-chrome .nav-links a:hover {
+  color: #fff;
+}
+
+.htc-chrome .nav-actions {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.htc-chrome .lang {
+  display: flex;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.htc-chrome .lang a {
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: .69rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.htc-chrome .lang a.active {
+  background: var(--grad);
+  color: #03100b;
+}
+
+.htc-chrome .btn {
+  min-height: 48px;
+  padding: 0 21px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 850;
+  transition: .2s ease;
+  white-space: nowrap;
+}
+
+.htc-chrome .btn.primary {
+  background: var(--grad);
+  color: #03100b;
+  box-shadow: 0 14px 34px rgba(34, 200, 240, .14);
+}
+
+.htc-chrome .btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.htc-chrome .btn.secondary {
+  border-color: var(--line2);
+  background: rgba(255, 255, 255, .02);
+}
+
+.htc-chrome .btn.secondary:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.htc-chrome .btn.small {
+  min-height: 42px;
+  padding-inline: 15px;
+  font-size: .82rem;
+}
+
+.htc-chrome .btn.ghost {
+  border-color: rgba(35, 184, 255, .35);
+  background: transparent;
+  color: var(--cyan);
+}
+
+.htc-chrome .btn.ghost:hover {
+  border-color: var(--green);
+  color: #fff;
+}
+
+.htc-chrome .menu-button {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.htc-chrome .htc-footer {
+  padding: 54px 0 28px;
+  border-top: 1px solid var(--line);
+  background: #04070b;
+}
+
+.htc-chrome .footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 34px;
+}
+
+.htc-chrome .footer-brand p {
+  color: var(--dim);
+  font-size: .86rem;
+}
+
+.htc-chrome .footer-col h3 {
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--dim);
+}
+
+.htc-chrome .footer-col a {
+  display: block;
+  color: var(--muted);
+  padding: 4px 0;
+  font-size: .87rem;
+}
+
+.htc-chrome .footer-bottom {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--dim);
+  font-size: .77rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.htc-chrome a:focus-visible,
+.htc-chrome button:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1399px) {
+  .htc-chrome .nav-links {
+    display: none;
+  }
+
+  .htc-chrome .menu-button {
+    display: grid;
+    place-items: center;
+  }
+
+  .htc-chrome .nav-links.open {
+    display: grid;
+    position: absolute;
+    top: 76px;
+    left: 14px;
+    right: 14px;
+    background: #071019;
+    border: 1px solid var(--line2);
+    border-radius: 16px;
+    padding: 18px;
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .htc-chrome .nav-links.open .nav-extra {
+    display: block;
+  }
+
+  .htc-chrome .nav-actions .btn.secondary.small {
+    display: none;
+  }
+
+  .htc-chrome .nav-actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 1080px) {
+  .htc-chrome .footer-grid {
+    grid-template-columns: 1.3fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .htc-chrome .container {
+    width: min(100% - 28px, var(--max));
+  }
+
+  .htc-chrome .brand-sub {
+    display: none;
+  }
+
+  .htc-chrome .brand-word {
+    display: block;
+    font-size: var(--brand-name-size-sm);
+  }
+
+  .htc-chrome .lang {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .htc-chrome .nav {
+    gap: 8px;
+  }
+
+  .htc-chrome .brand {
+    flex: 0 0 auto;
+  }
+
+  .htc-chrome .brand img {
+    width: var(--brand-mark-w-sm);
+    height: var(--brand-mark-h-sm);
+  }
+
+  .htc-chrome .nav-actions .btn.primary.small {
+    padding-inline: 8px;
+    font-size: .68rem;
+    flex-shrink: 0;
+  }
+
+  .htc-chrome .lang a {
+    padding: 5px 6px;
+    font-size: .65rem;
+  }
+
+  .htc-chrome .nav-actions {
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .htc-chrome .menu-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .htc-chrome .nav-actions .btn.secondary.small,
+  .htc-chrome .nav-actions .btn.ghost.small {
+    display: none;
+  }
+
+  .htc-chrome .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .htc-chrome .nav-actions .btn.primary.small {
+    display: none;
+  }
+}
+
+@media print {
+  .htc-chrome .site-header,
+  .htc-chrome .menu-button {
+    display: none;
+  }
+
+  .htc-chrome:has(.site-header) {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htc-chrome,
+  .htc-chrome *,
+  .htc-chrome *::before,
+  .htc-chrome *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

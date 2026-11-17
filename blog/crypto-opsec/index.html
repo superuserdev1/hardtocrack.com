@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OPSEC para inversores de cripto: el teléfono es el eslabón más débil</title>
+<meta name="description" content="OPSEC para inversores de criptomonedas. Cómo un teléfono comprometido puede costarte toda tu cartera. Vectores de ataque reales y soluciones.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1018">
+<link rel="canonical" href="https://hardtocrack.com/blog/crypto-opsec">
+<meta property="og:title" content="OPSEC para inversores de cripto: el teléfono es el eslabón más débil">
+<meta property="og:description" content="OPSEC para inversores de criptomonedas. Cómo un teléfono comprometido puede costarte toda tu cartera. Vectores de ataque reales y soluciones.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://hardtocrack.com/blog/crypto-opsec">
+<link rel="stylesheet" href="/blog/academia.css">
+<meta property="og:type" content="article"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"OPSEC para inversores de cripto: el teléfono es el eslabón más débil","description":"OPSEC para inversores de criptomonedas. Cómo un teléfono comprometido puede costarte toda tu cartera. Vectores de ataque reales y soluciones.","inLanguage":"es","mainEntityOfPage":"https://hardtocrack.com/blog/crypto-opsec","author":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/"},"publisher":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/","logo":{"@type":"ImageObject","url":"https://hardtocrack.com/guia/assets/logo-HT.png"}}}</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav">
+    <a class="brand" href="/blog">
+      <img src="/blog/assets/logo-HT.png" width="39" height="44" alt="">
+      <span class="wordmark-inline">hardtocrack</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+    <nav id="nav-links" class="nav-links" aria-label="Secciones">
+      <a href="/blog">Academia</a>
+      <a href="https://hardtocrack.com/">Inicio</a>
+      <a href="https://hardtocrack.com/guia/">Guía</a>
+      <a href="https://hardtocrack.com/secure">Clave pública</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido" class="wrap">
+
+  
+  <header class="article-head">
+    <p class="eyebrow">Serie · Artículos ya publicados</p>
+    <h1>OPSEC para inversores de cripto: el teléfono es el eslabón más débil</h1>
+    <p class="lede">OPSEC para inversores de criptomonedas. Cómo un teléfono comprometido puede costarte toda tu cartera. Vectores de ataque reales y soluciones.</p>
+    <p class="chips"><a href="/blog?categoria=opsec-identidades">OPSEC e identidades</a><a href="/blog?tags=opsec">OPSEC</a><a href="/blog?tags=compartimentacion">Compartimentación</a><a href="/blog?tags=modelo-de-amenazas">Modelo de amenazas</a><a href="/blog?tags=custodia">Custodia</a></p>
+    <p class="dates"><span class="date-unknown">Fecha de publicación desconocida</span><time datetime="2026-10-28">Revisión 2026-10-28</time></p>
+  </header>
+  <div class="layout">
+    <nav class="toc" aria-label="Índice de contenidos"><p class="toc-label">Índice</p><ol><li><a href="#por-que-el-telefono-es-el-objetivo">Por qué el teléfono es el objetivo</a></li><li><a href="#los-vectores-de-ataque-mas-comunes">Los vectores de ataque más comunes</a><ol><li><a href="#sim-swapping">SIM Swapping</a></li><li><a href="#malware-movil">Malware móvil</a></li><li><a href="#vulnerabilidades-de-apps-de-mensajeria">Vulnerabilidades de apps de mensajería</a></li><li><a href="#acceso-fisico-al-dispositivo">Acceso físico al dispositivo</a></li></ol></li><li><a href="#el-problema-especifico-de-los-exchanges">El problema específico de los exchanges</a></li><li><a href="#setup-recomendado-para-holders-de-cripto">Setup recomendado para holders de cripto</a><ol><li><a href="#separacion-de-perfiles-obligatoria">Separación de perfiles obligatoria</a></li><li><a href="#apps-de-comunicacion-segura-para-coordinacion-cripto">Apps de comunicación segura para coordinación cripto</a></li><li><a href="#hardware-wallet-telefono-seguro-setup-robusto">Hardware wallet + teléfono seguro = setup robusto</a></li></ol></li><li><a href="#la-visibilidad-publica-es-el-primer-riesgo">La visibilidad pública es el primer riesgo</a></li><li><a href="#fuentes">Fuentes</a></li><li><a href="#relacionados">Artículos relacionados</a></li></ol></nav>
+    <div class="prose">
+      <p>Puedes tener tu seed phrase grabada en titanio, guardada en una caja fuerte, en dos países diferentes. Puedes usar hardware wallets de última generación. Puedes ser extremadamente cuidadoso con tus contraseñas. Y aun así, si tu teléfono está comprometido, todo eso puede no servir de nada.</p>
+<p>El teléfono es el vector de ataque más subestimado en el mundo de las criptomonedas. Y también el más explotado.</p>
+<h2 id="por-que-el-telefono-es-el-objetivo">Por qué el teléfono es el objetivo</h2>
+<p>Tu teléfono tiene acceso a tu email (donde probablemente están los 2FA), a tu app de autenticación, a tus exchanges, posiblemente a tus wallets de software, y a toda la información de contexto que un atacante necesita para hacerse pasar por ti.</p>
+<p>Comprometer el teléfono de alguien es más sencillo que romper la criptografía de una wallet. Los atacantes siempre van por el camino de menor resistencia, y el teléfono suele ser ese camino.</p>
+<blockquote><p><strong>Realidad incómoda:</strong> La mayoría de robos de cripto de alto valor no implican romper criptografía. Implican comprometer el dispositivo o la cuenta del dueño. La tecnología cripto es segura. Los humanos y sus dispositivos no tanto.</p></blockquote>
+<h2 id="los-vectores-de-ataque-mas-comunes">Los vectores de ataque más comunes</h2>
+<h3 id="sim-swapping">SIM Swapping</h3>
+<p>El atacante convence a tu operadora de que eres tú y transfiere tu número a una SIM bajo su control. En minutos recibe todos tus SMS de verificación, puede resetear contraseñas y vaciar exchanges. <strong>Android stock hace este ataque trivialmente explotable</strong>. GrapheneOS con eSIM sin número asociado a tu identidad real elimina esta superficie de ataque.</p>
+<h3 id="malware-movil">Malware móvil</h3>
+<p>Apps aparentemente legítimas con código malicioso, keyloggers disfrazados de utilidades, spyware instalado mediante vulnerabilidades del sistema. Android stock tiene una superficie de ataque enorme y Google Play no es tan seguro como parece: han habido múltiples casos de malware en la tienda oficial.</p>
+<h3 id="vulnerabilidades-de-apps-de-mensajeria">Vulnerabilidades de apps de mensajería</h3>
+<p>Muchos usuarios de cripto coordinan operaciones por Telegram o WhatsApp. Ambas apps han tenido vulnerabilidades serias. Un exploit enviado por mensaje puede comprometer el dispositivo sin que el usuario haga nada excepto recibir el mensaje.</p>
+<h3 id="acceso-fisico-al-dispositivo">Acceso físico al dispositivo</h3>
+<p>Si alguien tiene acceso físico a tu teléfono desbloqueado, en Android estándar puede instalar software de vigilancia en minutos. GrapheneOS tiene protecciones adicionales de arranque seguro que dificultan enormemente esto.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Vector de ataque</th><th scope="col">Riesgo en Android stock</th><th scope="col">Riesgo con GrapheneOS</th></tr></thead><tbody><tr><td>SIM Swapping</td><td>MUY ALTO</td><td>Bajo (con eSIM anónima)</td></tr><tr><td>Malware vía app store</td><td>ALTO</td><td>Muy bajo</td></tr><tr><td>Exploit de mensajería</td><td>ALTO</td><td>Bajo</td></tr><tr><td>Acceso físico</td><td>MEDIO</td><td>Muy bajo</td></tr><tr><td>Espionaje de red</td><td>MEDIO</td><td>Bajo (con VPN)</td></tr></tbody></table></div>
+<h2 id="el-problema-especifico-de-los-exchanges">El problema específico de los exchanges</h2>
+<p>La mayoría de exchanges usa SMS o apps de autenticación para el 2FA. Si tu número puede ser robado por SIM swapping, o si un malware en tu teléfono puede leer los códigos de autenticación, el 2FA no te protege de verdad.</p>
+<p>Con GrapheneOS y una eSIM sin nombre real, el SIM swapping se vuelve prácticamente imposible: no hay número de teléfono registrado a tu nombre que un atacante pueda intentar portar a otra SIM.</p>
+<h2 id="setup-recomendado-para-holders-de-cripto">Setup recomendado para holders de cripto</h2>
+<h3 id="separacion-de-perfiles-obligatoria">Separación de perfiles obligatoria</h3>
+<p>GrapheneOS permite múltiples perfiles aislados. La arquitectura recomendada para cripto:</p>
+<ul><li><strong>Perfil principal:</strong> uso cotidiano, redes sociales, email personal</li></ul>
+<ul><li><strong>Perfil cripto:</strong> solo apps relacionadas con cripto, exchanges, wallets de software, apps de autenticación</li></ul>
+<ul><li><strong>Perfil trabajo:</strong> apps profesionales, separadas del entorno cripto</li></ul>
+<p>Un malware que comprometa el perfil principal no tiene acceso al perfil cripto. Son compartimentos estancos.</p>
+<h3 id="apps-de-comunicacion-segura-para-coordinacion-cripto">Apps de comunicación segura para coordinación cripto</h3>
+<p>Sustituye Telegram por Signal o SimpleX para comunicaciones relacionadas con tus inversiones. Evita compartir información sobre tus holdings por mensajería no cifrada.</p>
+<h3 id="hardware-wallet-telefono-seguro-setup-robusto">Hardware wallet + teléfono seguro = setup robusto</h3>
+<p>El hardware wallet protege tus claves privadas offline. GrapheneOS protege el software que interactúa con el hardware wallet. La combinación de ambos cierra la mayoría de vectores de ataque prácticos.</p>
+<blockquote><p><strong>Regla de oro:</strong> Tu teléfono nunca debería contener seed phrases completas. Si por cualquier razón necesitas manejar una seed phrase digitalmente, hazlo en el perfil más aislado posible, desconectado de internet, y elimina el rastro inmediatamente.</p></blockquote>
+<h2 id="la-visibilidad-publica-es-el-primer-riesgo">La visibilidad pública es el primer riesgo</h2>
+<p>Antes de hablar de software, el mayor riesgo de muchos holders es la visibilidad pública. Publicar ganancias en redes sociales, comentar en foros sobre el tamaño de tu cartera, usar tu nombre real en exchanges que luego filtran datos... todo esto crea un perfil de objetivo.</p>
+<p>OPSEC no empieza en el teléfono. Empieza en qué compartes y con quién.</p>
+      <section aria-labelledby="fuentes">
+        <h2 id="fuentes">Fuentes</h2>
+        <ol><li><a href="https://hardtocrack.com/blog/crypto-opsec" rel="noreferrer">HardToCrack Blog (producción)</a>, consulta 2026-10-28</li></ol>
+      </section>
+      <section aria-labelledby="relacionados">
+        <h2 id="relacionados">Artículos relacionados</h2>
+        <ul><li><a href="/blog/periodistas-fuentes">Proteger tus fuentes en 2025: la guía práctica para periodistas</a></li><li><a href="/blog/empresarios-privacidad">Espionaje corporativo y fuga de información: cómo protegerse siendo directivo</a></li></ul>
+      </section>
+    </div>
+  </div>
+
+</main>
+<footer class="wrap"><p>© 2026 hardtocrack</p><nav class="htc-legal-links" aria-label="HardToCrack"><a href="https://partners.hardtocrack.com/">Partners</a> · <a href="/founder/">Founder</a> · <a href="/secure">Verificar canales oficiales</a> · <a href="/faq/">Preguntas frecuentes</a> · <a href="/condiciones/">Condiciones</a> · <a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:contact@hardtocrack.com">Contacto</a></nav></footer>
+
+<script src="/blog/preview.js"></script>
+</body>
+</html>

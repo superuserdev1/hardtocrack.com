@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Preguntas frecuentes | HardToCrack</title>
-  <meta name="description" content="Preguntas frecuentes sobre garantía, devoluciones, instalación de GrapheneOS, privacidad y entrega de los dispositivos HardToCrack.">
   <meta name="theme-color" content="#05080d">
+  <meta name="description" content="Preguntas frecuentes sobre garantía, devoluciones, instalación de GrapheneOS, privacidad y entrega de los dispositivos HardToCrack.">
   <link rel="canonical" href="https://hardtocrack.com/faq">
-  <link rel="icon" type="image/png" href="/guia/assets/logo-HT.png">
+  <link rel="icon" type="image/png" href="/assets/img/logo-HT.png">
+  <link rel="stylesheet" href="/assets/css/brand-lockup.css">
+  <title>Preguntas frecuentes | HardToCrack</title>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="HardToCrack">
@@ -16,332 +17,61 @@
   <meta property="og:url" content="https://hardtocrack.com/faq">
   <script>document.documentElement.classList.add("js")</script>
   <style>
-    :root {
-      --bg: #05080d;
-      --panel: #0b151f;
-      --text: #f4f8fb;
-      --muted: #a8b5c0;
-      --dim: #71808d;
-      --line: rgba(255, 255, 255, 0.09);
-      --line2: rgba(255, 255, 255, 0.17);
-      --cyan: #23b8ff;
-      --green: #20e38c;
-      --grad: linear-gradient(120deg, var(--cyan), var(--green));
-      --max: 1120px;
-      --header-h: 78px;
-      --scroll-offset: 150px;
-      color-scheme: dark;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at 8% 0%, rgba(35, 184, 255, 0.12), transparent 30rem),
-        radial-gradient(circle at 92% 12%, rgba(32, 227, 140, 0.08), transparent 32rem),
-        var(--bg);
-      color: var(--text);
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height: 1.65;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.18;
-      background-image:
-        linear-gradient(rgba(34, 200, 240, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34, 200, 240, 0.07) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: linear-gradient(to bottom, black, transparent 78%);
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-    .skip-link {
-      position: fixed;
-      top: 8px;
-      left: 8px;
-      z-index: 80;
-      transform: translateY(-150%);
-      padding: 10px 16px;
-      border-radius: 8px;
-      background: #fff;
-      color: #05080d;
-      font-weight: 800;
-    }
-    .skip-link:focus { transform: none; }
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--cyan);
-      outline-offset: 3px;
-    }
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(5, 8, 13, 0.86);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav { min-height: var(--header-h); display: flex; align-items: center; gap: 26px; position: relative; }
-    .brand { display: flex; align-items: center; gap: 11px; min-width: max-content; }
-    .brand-lockup { display: block; }
-    .brand img { width: 39px; height: 44px; object-fit: contain; }
-    .brand-word { font-weight: 900; letter-spacing: 0.055em; font-size: 1.07rem; line-height: 1.1; }
-    .brand-word span { color: var(--green); }
-    .brand-sub { display: block; font-size: 0.59rem; color: var(--dim); letter-spacing: 0.19em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 22px; margin-left: auto; }
-    .nav-links a { color: var(--muted); font-size: 0.85rem; font-weight: 650; }
-    .nav-links a:hover, .nav-links a[aria-current="page"] { color: #fff; }
-    .nav-actions { display: flex; gap: 9px; align-items: center; }
-    .btn {
-      min-height: 48px;
-      padding: 0 21px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 850;
-      letter-spacing: 0.04em;
-      transition: transform 0.2s ease;
-      white-space: nowrap;
-    }
-    .btn.primary { background: var(--grad); color: #03100b; }
-    .btn.primary:hover { transform: translateY(-2px); }
-    .btn.small { min-height: 42px; padding-inline: 15px; font-size: 0.82rem; letter-spacing: 0; }
-    .menu-button {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--line2);
-      background: transparent;
-      color: #fff;
-    }
-    .faq-hero { padding: 72px 0 18px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 16px;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-weight: 800;
-      font-size: 0.74rem;
-    }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--grad); }
-    h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.035em; font-weight: 650; }
-    h1 { font-size: clamp(2.5rem, 6vw, 4.4rem); text-wrap: balance; }
-    .faq-nav {
-      position: sticky;
-      top: var(--header-h);
-      z-index: 20;
-      background: rgba(5, 8, 13, 0.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-    .faq-nav-list {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 28px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .faq-nav-list a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 52px;
-      color: var(--muted);
-      font-size: 0.86rem;
-      font-weight: 650;
-    }
-    .faq-nav-list a:hover, .faq-nav-list a[aria-current="true"] { color: #fff; }
-    .faq-nav-indicator {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 1px;
-      width: 0;
-      background: var(--grad);
-      pointer-events: none;
-    }
-    .faq-nav-indicator.is-ready { transition: transform 0.35s ease, width 0.35s ease; }
-    .faq-categories { padding: 36px 0 24px; }
-    .faq-category { scroll-margin-top: var(--scroll-offset); }
-    .faq-category + .faq-category { margin-top: 76px; }
-    .faq-index {
-      margin: 0 0 10px;
-      color: var(--cyan);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-    }
-    h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); max-width: 20em; text-wrap: balance; }
-    .faq-category.is-arriving h2 { animation: faq-arrive 0.55s ease; }
-    @keyframes faq-arrive {
-      from { opacity: 0.2; transform: translateY(6px); }
-      to { opacity: 1; transform: none; }
-    }
-    .faq-list { margin-top: 22px; }
-    .faq-item { border-top: 1px solid var(--line); }
-    .faq-item:last-child { border-bottom: 1px solid var(--line); }
-    .faq-question { font-size: 1.05rem; font-weight: 650; line-height: 1.35; }
-    .faq-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 1.2rem 0;
-      border: 0;
-      background: none;
-      color: inherit;
-      text-align: left;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .faq-trigger:hover { color: #fff; }
-    .faq-mark {
-      width: 14px;
-      height: 14px;
-      position: relative;
-      flex: none;
-      color: var(--dim);
-    }
-    .faq-trigger:hover .faq-mark, .faq-item.is-open .faq-mark { color: var(--cyan); }
-    .faq-mark::before, .faq-mark::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 14px;
-      height: 1px;
-      background: currentColor;
-      transform: translateY(-50%);
-    }
-    .faq-mark::after { transform: translateY(-50%) rotate(90deg); transition: transform 0.3s ease; }
-    .faq-item.is-open .faq-mark::after { transform: translateY(-50%) rotate(0deg); }
-    .faq-panel { display: grid; grid-template-rows: 1fr; }
-    .js .faq-item:not(.is-open) .faq-panel { grid-template-rows: 0fr; }
-    .js .faq-panel { transition: grid-template-rows 0.34s ease; }
-    .faq-panel-inner { overflow: hidden; min-height: 0; }
-    .faq-panel p {
-      max-width: 68ch;
-      margin: 0 0 0.85rem;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
-    }
-    .faq-panel p:last-child { margin-bottom: 1.4rem; }
-    .faq-panel a {
-      color: var(--cyan);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-    }
-    .faq-panel a:hover { color: #fff; }
-    .faq-cta {
-      margin: 88px 0 8px;
-      padding: 68px 28px;
-      text-align: center;
-      border: 1px solid var(--line2);
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 18% 20%, rgba(35, 184, 255, 0.1), transparent 34%),
-        radial-gradient(circle at 82% 80%, rgba(32, 227, 140, 0.08), transparent 36%),
-        var(--panel);
-    }
-    .faq-cta h2 { max-width: none; margin-inline: auto; font-size: clamp(1.85rem, 4vw, 2.7rem); }
-    .faq-cta p { max-width: 62ch; margin: 16px auto 0; color: var(--muted); }
-    .faq-cta .btn { margin-top: 28px; }
-    footer { margin-top: 64px; padding: 28px 0 36px; border-top: 1px solid var(--line); color: var(--dim); font-size: 0.86rem; }
-    .footer-row { display: flex; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; }
-    .footer-row nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-    .footer-row a { color: var(--muted); }
-    .footer-row a:hover { color: #fff; }
-    @media (max-width: 1080px) {
-      .nav-links { display: none; }
-      .menu-button { display: grid; place-items: center; }
-      .nav-links.open {
-        display: grid;
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        right: 0;
-        padding: 18px;
-        background: #071019;
-        border: 1px solid var(--line2);
-        border-radius: 16px;
-        z-index: 40;
-      }
-      .nav-actions { margin-left: auto; }
-    }
-    @media (max-width: 760px) {
-      .container { width: min(100% - 28px, var(--max)); }
-      .brand-sub { display: none; }
-      .brand { flex: 1; }
-      .brand-word { font-size: 0.93rem; }
-      .nav { gap: 9px; }
-      .faq-hero { padding: 48px 0 8px; }
-      .faq-nav-list { flex-wrap: nowrap; gap: 22px; overflow-x: auto; scrollbar-width: none; }
-      .faq-nav-list::-webkit-scrollbar { display: none; }
-      .faq-nav-list a { white-space: nowrap; }
-      .faq-category + .faq-category { margin-top: 56px; }
-      .faq-cta { margin-top: 64px; padding: 42px 18px; }
-      .faq-cta .btn { white-space: normal; text-align: center; max-width: 100%; }
-      .footer-row { flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .js .faq-panel, .faq-mark::after, .faq-nav-indicator, .btn { transition: none; }
-      .faq-category.is-arriving h2 { animation: none; }
-    }
+    :root{color-scheme:dark;--bg:#05080d;--panel:#0c1722;--line:rgba(255,255,255,.12);--text:#f4f8fb;--muted:#b5c4cf;--cyan:#23b8ff;--green:#20e38c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,rgba(35,184,255,.13),transparent 35rem),var(--bg);color:var(--text);font:16px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--cyan)}a:hover{color:var(--green)}.wrap{width:min(100% - 36px,1050px);margin:auto}
+    header{border-bottom:1px solid var(--line);background:#071019}header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    header nav{display:flex;gap:22px;flex-wrap:wrap}header nav a{color:var(--muted);text-decoration:none;font-size:.9rem}
+    main{padding:48px 0 72px}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.08;letter-spacing:-.04em;margin:12px 0 8px}h2{font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.15;letter-spacing:-.03em;margin:0}
+    .eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0}
+    .faq-nav{position:sticky;top:0;z-index:20;background:rgba(5,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .faq-nav-list{position:relative;display:flex;flex-wrap:wrap;gap:4px 22px;margin:0;padding:0;list-style:none}
+    .faq-nav-list a{display:inline-flex;align-items:center;min-height:48px;color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:650}
+    .faq-nav-list a:hover,.faq-nav-list a[aria-current="true"]{color:#fff}
+    .faq-nav-indicator{position:absolute;left:0;top:0;height:1px;width:0;background:linear-gradient(120deg,var(--cyan),var(--green));pointer-events:none}
+    .faq-nav-indicator.is-ready{transition:transform .35s ease,width .35s ease}
+    .faq-categories{padding:28px 0 8px}
+    .faq-category{scroll-margin-top:76px}
+    .faq-category + .faq-category{margin-top:56px}
+    .faq-index{margin:0 0 8px;color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.14em}
+    .faq-list{margin-top:18px}
+    .faq-item{border-top:1px solid var(--line)}.faq-item:last-child{border-bottom:1px solid var(--line)}
+    .faq-question{margin:0;font-size:1.05rem;font-weight:650;line-height:1.35}
+    .faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:1.05rem 0;border:0;background:none;color:inherit;text-align:left;font:inherit;cursor:pointer}
+    .faq-trigger:hover{color:#fff}
+    .faq-mark{width:14px;height:14px;position:relative;flex:none;color:#71808d}
+    .faq-trigger:hover .faq-mark,.faq-item.is-open .faq-mark{color:var(--cyan)}
+    .faq-mark::before,.faq-mark::after{content:"";position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transform:translateY(-50%)}
+    .faq-mark::after{transform:translateY(-50%) rotate(90deg);transition:transform .3s ease}
+    .faq-item.is-open .faq-mark::after{transform:translateY(-50%) rotate(0deg)}
+    .faq-panel{display:grid;grid-template-rows:1fr}
+    .js .faq-item:not(.is-open) .faq-panel{grid-template-rows:0fr}
+    .js .faq-panel{transition:grid-template-rows .34s ease}
+    .faq-panel-inner{overflow:hidden;min-height:0}
+    .faq-panel p{max-width:68ch;margin:0 0 .85rem;color:var(--muted)}
+    .faq-panel p:last-child{margin-bottom:1.2rem}
+    .faq-cta{margin:64px 0 8px;padding:48px 24px;text-align:center;border:1px solid rgba(35,184,255,.25);border-radius:24px;background:linear-gradient(120deg,rgba(35,184,255,.09),rgba(32,227,140,.08))}
+    .faq-cta p{max-width:62ch;margin:14px auto 0;color:var(--muted)}
+    .faq-cta .btn{display:inline-flex;margin-top:22px;min-height:48px;padding:0 18px;align-items:center;border-radius:12px;background:linear-gradient(120deg,var(--cyan),var(--green));color:#03100b;font-weight:800;letter-spacing:.04em;text-decoration:none}
+    footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none}footer a:hover{color:#fff}
+    @media(max-width:760px){header nav{gap:12px}.faq-nav-list{flex-wrap:nowrap;overflow-x:auto}.faq-nav-list a{white-space:nowrap}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .faq-panel,.faq-mark::after,.faq-nav-indicator{transition:none}}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="HardToCrack, inicio">
-        <img src="/guia/assets/logo-HT.png" alt="" width="39" height="44">
-        <span class="brand-lockup"><span class="brand-word">HardTo<span>Crack</span></span><span class="brand-sub">Security · Privacy · Freedom</span></span>
-      </a>
-      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
-        <a href="/">Inicio</a>
-        <a href="/#dispositivos">Dispositivos</a>
-        <a href="/precios/">Precios</a>
-        <a href="/faq/" aria-current="page">Preguntas</a>
-        <a href="mailto:contact@hardtocrack.com">Contacto</a>
-      </nav>
-      <div class="nav-actions">
-        <a class="btn primary small" href="/pedidos/">Realizar pedido</a>
-        <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-controls="navLinks" aria-expanded="false">☰</button>
-      </div>
-    </div>
-  </header>
-  <main id="contenido" tabindex="-1">
-    <header class="faq-hero">
-      <div class="container">
-        <p class="eyebrow">HardToCrack</p>
-        <h1>Preguntas frecuentes</h1>
-      </div>
-    </header>
+  <header><div class="wrap"><a class="brand htc-lockup" href="/" aria-label="HardToCrack, inicio"><img src="/assets/img/logo-HT.png" alt=""><span class="brand-word">HARDTO<span>CRACK</span></span></a><nav aria-label="Navegación"><a href="/">Inicio</a><a href="/guia/">Guía</a><a href="/privacidad/">Privacidad</a><a href="mailto:contact@hardtocrack.com">Contacto</a></nav></div></header>
+  <main class="wrap" id="contenido">
+    <p class="eyebrow">HardToCrack</p>
+    <h1>Preguntas frecuentes</h1>
     <nav class="faq-nav" aria-label="Categorías">
-      <div class="container">
-        <ul class="faq-nav-list">
-          <li><a href="#garantia" aria-current="true">Garantía y asistencia técnica</a></li>
-          <li><a href="#devoluciones">Devoluciones y reembolsos</a></li>
-          <li><a href="#integridad">Integridad y autenticidad de la instalación</a></li>
-          <li><a href="#privacidad">Privacidad y seguridad</a></li>
-          <li><a href="#preparacion">Preparación y entrega</a></li>
-          <li class="faq-nav-indicator" aria-hidden="true"></li>
-        </ul>
-      </div>
+      <ul class="faq-nav-list">
+        <li><a href="#garantia" aria-current="true">Garantía y asistencia técnica</a></li>
+        <li><a href="#devoluciones">Devoluciones y reembolsos</a></li>
+        <li><a href="#integridad">Integridad y autenticidad de la instalación</a></li>
+        <li><a href="#privacidad">Privacidad y seguridad</a></li>
+        <li><a href="#preparacion">Preparación y entrega</a></li>
+        <li class="faq-nav-indicator" aria-hidden="true"></li>
+      </ul>
     </nav>
     <div class="container faq-categories">
       <section class="faq-category" id="garantia" aria-labelledby="garantia-title">
@@ -490,99 +220,33 @@
       </section>
     </div>
   </main>
-  <footer>
-    <div class="container footer-row">
-      <span>© 2026 HardToCrack · Security · Privacy · Freedom</span>
-      <nav aria-label="Enlaces del sitio">
-        <a href="/">Inicio</a>
-        <a href="/#dispositivos">Dispositivos</a>
-        <a href="/precios/">Precios</a>
-        <a href="/privacidad/">Privacidad</a>
-        <a href="mailto:contact@hardtocrack.com">Contacto</a>
-      </nav>
-    </div>
-  </footer>
+  <footer><div class="wrap"><span>© 2026 HardToCrack</span><nav class="htc-legal-links" aria-label="HardToCrack"><a href="https://partners.hardtocrack.com/">Partners</a> · <a href="/founder/">Founder</a> · <a href="/secure">Verificar canales oficiales</a> · <a href="/faq/">Preguntas frecuentes</a> · <a href="/condiciones/">Condiciones</a> · <a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:contact@hardtocrack.com">Contacto</a></nav></div></footer>
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const navLinks = document.getElementById("navLinks");
-    const closeMobileMenu = () => {
-      navLinks.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Abrir menú");
-    };
-    menuButton.addEventListener("click", () => {
-      const opened = navLinks.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", String(opened));
-      menuButton.setAttribute("aria-label", opened ? "Cerrar menú" : "Abrir menú");
-    });
-    navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMobileMenu));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && navLinks.classList.contains("open")) {
-        closeMobileMenu();
-        menuButton.focus();
-      }
-    });
-    document.addEventListener("click", (event) => {
-      if (navLinks.classList.contains("open") && !navLinks.contains(event.target) && !menuButton.contains(event.target)) closeMobileMenu();
-    });
-
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const header = document.querySelector(".site-header");
     const categoryNav = document.querySelector(".faq-nav");
     const categoryLinks = [...categoryNav.querySelectorAll("a")];
     const categories = categoryLinks.map((link) => document.querySelector(link.getAttribute("href")));
     const indicator = categoryNav.querySelector(".faq-nav-indicator");
     const triggers = [...document.querySelectorAll(".faq-trigger")];
     let activeId = "garantia";
-
-    const setOffset = () => {
-      const headerH = header.offsetHeight;
-      document.documentElement.style.setProperty("--header-h", headerH + "px");
-      document.documentElement.style.setProperty("--scroll-offset", (headerH + categoryNav.offsetHeight + 16) + "px");
-    };
     const moveIndicator = () => {
       const current = categoryNav.querySelector('[aria-current="true"]');
       if (!current) return;
       const list = current.closest(".faq-nav-list");
       const listRect = list.getBoundingClientRect();
       const rect = current.getBoundingClientRect();
-      const left = rect.left - listRect.left + list.scrollLeft;
-      const top = rect.bottom - listRect.top + list.scrollTop - 1;
       indicator.style.width = rect.width + "px";
-      indicator.style.transform = "translate(" + left + "px, " + top + "px)";
-    };
-    const revealLink = (link) => {
-      const list = link.closest(".faq-nav-list");
-      const listRect = list.getBoundingClientRect();
-      const rect = link.getBoundingClientRect();
-      const pad = 20;
-      const behavior = reduceMotion ? "auto" : "smooth";
-      if (rect.left < listRect.left + pad) list.scrollBy({ left: rect.left - listRect.left - pad, behavior });
-      else if (rect.right > listRect.right - pad) list.scrollBy({ left: rect.right - listRect.right + pad, behavior });
+      indicator.style.transform = "translate(" + (rect.left - listRect.left + list.scrollLeft) + "px, " + (rect.bottom - listRect.top + list.scrollTop - 1) + "px)";
     };
     const setCurrent = (id) => {
       if (!id || id === activeId) return;
       activeId = id;
-      let current = null;
       categoryLinks.forEach((link) => {
-        const on = link.getAttribute("href") === "#" + id;
-        if (on) {
-          link.setAttribute("aria-current", "true");
-          current = link;
-        } else link.removeAttribute("aria-current");
+        if (link.getAttribute("href") === "#" + id) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
       });
-      if (current) revealLink(current);
       moveIndicator();
     };
-    const currentFromScroll = () => {
-      const line = header.offsetHeight + categoryNav.offsetHeight + 24;
-      let current = categories[0];
-      categories.forEach((section) => {
-        if (section.getBoundingClientRect().top <= line) current = section;
-      });
-      setCurrent(current.id);
-    };
-
     document.querySelectorAll(".faq-item").forEach((item) => {
       const button = item.querySelector(".faq-trigger");
       const panel = item.querySelector(".faq-panel");
@@ -606,30 +270,15 @@
         next.focus();
       });
     });
-    categoryLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        const section = document.querySelector(link.getAttribute("href"));
-        if (!section) return;
-        section.classList.remove("is-arriving");
-        void section.offsetWidth;
-        section.classList.add("is-arriving");
-      });
-    });
-
-    setOffset();
     moveIndicator();
     requestAnimationFrame(() => indicator.classList.add("is-ready"));
-    let ticking = false;
     window.addEventListener("scroll", () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => { currentFromScroll(); ticking = false; });
+      const line = categoryNav.getBoundingClientRect().bottom + 8;
+      let current = categories[0];
+      categories.forEach((section) => { if (section.getBoundingClientRect().top <= line) current = section; });
+      setCurrent(current.id);
     }, { passive: true });
-    window.addEventListener("resize", () => { setOffset(); moveIndicator(); });
-    if (location.hash) {
-      const target = document.querySelector(location.hash);
-      if (target) target.scrollIntoView();
-    }
+    window.addEventListener("resize", moveIndicator);
   </script>
 </body>
 </html>

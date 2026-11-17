@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo verificar y validar la clave PGP de HardToCrack</title>
+<meta name="description" content="Cómo verificar la clave PGP de HardToCrack (huella DA06 4555…110E): GnuPG, keys.openpgp.org por fingerprint y contraste por un canal independiente.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1018">
+<link rel="canonical" href="https://hardtocrack.com/blog/verificar-clave-pgp-hardtocrack">
+<meta property="og:title" content="Cómo verificar y validar la clave PGP de HardToCrack">
+<meta property="og:description" content="Cómo verificar la clave PGP de HardToCrack (huella DA06 4555…110E): GnuPG, keys.openpgp.org por fingerprint y contraste por un canal independiente.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://hardtocrack.com/blog/verificar-clave-pgp-hardtocrack">
+<link rel="stylesheet" href="/blog/academia.css">
+<meta property="og:type" content="article"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Cómo verificar y validar la clave PGP de HardToCrack","description":"Cómo verificar la clave PGP de HardToCrack (huella DA06 4555…110E): GnuPG, keys.openpgp.org por fingerprint y contraste por un canal independiente.","inLanguage":"es","mainEntityOfPage":"https://hardtocrack.com/blog/verificar-clave-pgp-hardtocrack","author":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/"},"publisher":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/","logo":{"@type":"ImageObject","url":"https://hardtocrack.com/guia/assets/logo-HT.png"}},"datePublished":"2026-10-22","dateModified":"2026-10-22"}</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav">
+    <a class="brand" href="/blog">
+      <img src="/blog/assets/logo-HT.png" width="39" height="44" alt="">
+      <span class="wordmark-inline">hardtocrack</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+    <nav id="nav-links" class="nav-links" aria-label="Secciones">
+      <a href="/blog">Academia</a>
+      <a href="https://hardtocrack.com/">Inicio</a>
+      <a href="https://hardtocrack.com/guia/">Guía</a>
+      <a href="https://hardtocrack.com/secure">Clave pública</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido" class="wrap">
+
+  
+  <header class="article-head">
+    <p class="eyebrow">Serie · Artículos ya publicados</p>
+    <h1>Cómo verificar y validar la clave PGP de HardToCrack</h1>
+    <p class="lede">Cómo verificar la clave PGP de HardToCrack (huella DA06 4555…110E): GnuPG, keys.openpgp.org por fingerprint y contraste por un canal independiente.</p>
+    <p class="chips"><a href="/blog?categoria=comunicaciones-seguras">Comunicaciones seguras</a><a href="/blog?tags=openpgp">OpenPGP</a><a href="/blog?tags=firmas-digitales">Firmas digitales</a><a href="/blog?tags=opsec">OPSEC</a></p>
+    <p class="dates"><time datetime="2026-10-22">Publicado 2026-10-22</time><time datetime="2026-10-28">Revisión 2026-10-28</time><time datetime="2026-10-22">Actualizado 2026-10-22</time></p>
+  </header>
+  <div class="layout">
+    <nav class="toc" aria-label="Índice de contenidos"><p class="toc-label">Índice</p><ol><li><a href="#que-es-un-fingerprint">Qué es un fingerprint</a></li><li><a href="#descargar-la-clave-oficial">Descargar la clave oficial</a></li><li><a href="#verificacion-local-con-gnupg">Verificación local con GnuPG</a></li><li><a href="#consulta-en-el-servidor-de-claves">Consulta en el servidor de claves</a></li><li><a href="#comprobacion-independiente-de-identidad">Comprobación independiente de identidad</a></li><li><a href="#que-hacer-si-existe-discrepancia">Qué hacer si existe discrepancia</a></li><li><a href="#firma-digital-frente-a-identidad">Firma digital frente a identidad</a></li><li><a href="#errores-habituales">Errores habituales</a></li><li><a href="#fuentes">Fuentes</a></li><li><a href="#relacionados">Artículos relacionados</a></li></ol></nav>
+    <div class="prose">
+      <p>Esta guía sirve para comprobar que un archivo <code>.asc</code> es la misma clave pública que publica HardToCrack en <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a>. No sustituye un canal de confianza previo. El tutorial de uso cotidiano (generar tus claves, cifrar, firmar, Android e iOS) está en <a href="/blog/pgp-desde-cero">PGP desde cero</a>.</p>
+<h2 id="que-es-un-fingerprint">Qué es un fingerprint</h2>
+<p>Un fingerprint OpenPGP es una huella calculada sobre el material de la clave. No es un apodo, no es el correo del UID y no es el identificador corto de 8 o 16 caracteres. El de HardToCrack tiene <strong>40 caracteres hexadecimales</strong> (versión 4), que se suelen mostrar en grupos de cuatro:</p>
+<pre><code>DA06 4555 FA94 A360 66F7 12E1 6780 B0FA 5308 110E</code></pre>
+<p>La clave vigente se actualizó el 22 de octubre de 2026. Una huella anterior dejó de usarse para material nuevo; no se presenta aquí como comprometida. Si un canal te envía otro fingerprint, no lo aceptes sin anuncio en <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a> y un contraste independiente.</p>
+<p>Mayúsculas o minúsculas no cambian el valor. Un ID corto se puede colisionar; el fingerprint completo es lo que hay que comparar letra por letra.</p>
+<h2 id="descargar-la-clave-oficial">Descargar la clave oficial</h2>
+<p>Guarda en tu equipo el archivo publicado en el mismo origen que la página de verificación:</p>
+<p><a href="https://hardtocrack.com/pgp-hardtocrack.asc" rel="noreferrer">https://hardtocrack.com/pgp-hardtocrack.asc</a></p>
+<p>El comando de GnuPG asume que ese fichero está en el directorio de trabajo (o que indicas la ruta). Un reenvío por chat no es la fuente; úsalo solo si después comparas la huella con <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a>.</p>
+<h2 id="verificacion-local-con-gnupg">Verificación local con GnuPG</h2>
+<pre><code>gpg --show-keys --with-fingerprint pgp-hardtocrack.asc</code></pre>
+<p><code>--show-keys</code> lee el archivo sin mezclarlo todavía con tu anillo. Debes ver una clave pública (no secreta), el UID <code>security@hardtocrack.com</code> y la huella anterior. Si GnuPG muestra otra huella, ese archivo no es la clave de esta página.</p>
+<pre><code>gpg --import pgp-hardtocrack.asc
+gpg --fingerprint DA064555FA94A36066F712E16780B0FA5308110E</code></pre>
+<p>Importar no marca la clave como «de confianza». Solo la añade a tu almacén local. El archivo oficial de <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a> lleva el UID <code>HardToCrack ES </code>. GnuPG puede rechazar una copia del keyserver con <code>new key but contains no user ID - skipped</code> si ese servidor aún no publica el UID. En ese caso usa el <code>.asc</code> de hardtocrack.com y compara el fingerprint antes de cifrar.</p>
+<h2 id="consulta-en-el-servidor-de-claves">Consulta en el servidor de claves</h2>
+<p>La clave pública vigente se puede consultar en <a href="https://keys.openpgp.org/" rel="noreferrer">keys.openpgp.org</a> <strong>por fingerprint</strong>. La búsqueda por <code>security@hardtocrack.com</code> no está habilitada mientras el UID no se verifique en ese servidor; no la uses como prueba de presencia.</p>
+<p>Comprueba que la huella de lo recuperado coincide exactamente con la de <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a>. Para autenticar su procedencia, contrástala también mediante un canal independiente de confianza.</p>
+<pre><code>gpg --keyserver hkps://keys.openpgp.org --recv-keys DA064555FA94A36066F712E16780B0FA5308110E
+gpg --fingerprint DA064555FA94A36066F712E16780B0FA5308110E</code></pre>
+<p>Búsqueda en el navegador (fingerprint, no correo):</p>
+<pre><code>https://keys.openpgp.org/search?q=DA064555FA94A36066F712E16780B0FA5308110E</code></pre>
+<p>keys.openpgp.org no es una autoridad de identidad. Publicar una clave allí no demuestra quién es HardToCrack. Si GnuPG omite la importación por falta de UID, o la huella difiere, no cifres a esa copia: usa el <code>.asc</code> de hardtocrack.com y un canal independiente.</p>
+<h2 id="comprobacion-independiente-de-identidad">Comprobación independiente de identidad</h2>
+<p>El archivo <code>.asc</code> y el fingerprint de <code>/secure</code> salen del mismo sitio web. Si alguien clona el dominio o sirve HTML falso, ambos datos pueden coincidir entre sí y ser igualmente falsos. La criptografía garantiza coherencia interna, no el control del servidor.</p>
+<p>Contrasta la huella por un canal que ya conocieras antes de esta visita: una tienda partner, un correo previo que sepas auténtico, una persona de confianza. Sin ese contraste, has verificado un archivo, no a la organización.</p>
+<h2 id="que-hacer-si-existe-discrepancia">Qué hacer si existe discrepancia</h2>
+<ul><li>No uses esa clave.</li></ul>
+<ul><li>No cifres información sensible hacia ella.</li></ul>
+<ul><li>Comprueba si hay rotación o revocación anunciada en <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a> y en un canal independiente.</li></ul>
+<ul><li>Contacta por un canal de <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a> que ya tuvieras contrastado, no por el chat que te envió la clave nueva.</li></ul>
+<ul><li>No aceptes un fingerprint nuevo solo porque «lo dice un PDF» o un perfil con el logo.</li></ul>
+<h2 id="firma-digital-frente-a-identidad">Firma digital frente a identidad</h2>
+<p>Tres capas distintas:</p>
+<ul><li><strong>Matemática:</strong> GnuPG dice que esta firma corresponde a esta clave y que el texto no cambió.</li></ul>
+<ul><li><strong>Confianza en la clave:</strong> tú decidiste tratar esa clave como la de HardToCrack.</li></ul>
+<ul><li><strong>Identidad:</strong> esa decisión se apoya en canales humanos y operativos, no en el keyserver.</li></ul>
+<p>«Good signature» no es un certificado de empresa ni una prueba de pago.</p>
+<h2 id="errores-habituales">Errores habituales</h2>
+<ul><li>Comparar solo los primeros grupos de la huella.</li></ul>
+<ul><li>Confundir el ID corto (<code>6C551434</code>) con los 40 caracteres.</li></ul>
+<ul><li>Confiar solo en una búsqueda por <code>security@hardtocrack.com</code> (cualquiera puede reclamar un UID parecido en otros servidores; en keys.openpgp.org el correo ni siquiera aparece hasta que se verifica).</li></ul>
+<ul><li>Usar una clave revocada o una «clave nueva» sin anuncio en /secure. Un cambio de huella anunciado no implica por sí solo que la anterior estuviera comprometida.</li></ul>
+<ul><li>Confundir cifrado (ocultar) con firma (sellar origen e integridad).</li></ul>
+<blockquote><p>No subas claves privadas ni mensajes sensibles a validadores web desconocidos.</p></blockquote>
+      <section aria-labelledby="fuentes">
+        <h2 id="fuentes">Fuentes</h2>
+        <ol><li><a href="https://hardtocrack.com/blog/verificar-clave-pgp-hardtocrack" rel="noreferrer">HardToCrack Blog (producción)</a>, consulta 2026-10-28</li><li><a href="https://hardtocrack.com/pgp-hardtocrack.asc" rel="noreferrer">Clave pública HardToCrack</a>, consulta 2026-10-28</li></ol>
+      </section>
+      <section aria-labelledby="relacionados">
+        <h2 id="relacionados">Artículos relacionados</h2>
+        <ul><li><a href="/blog/pgp-desde-cero">PGP desde cero: qué es, cómo crear tus claves, cifrar archivos y firmar mensajes</a></li></ul>
+      </section>
+    </div>
+  </div>
+
+</main>
+<footer class="wrap"><p>© 2026 hardtocrack</p><nav class="htc-legal-links" aria-label="HardToCrack"><a href="https://partners.hardtocrack.com/">Partners</a> · <a href="/founder/">Founder</a> · <a href="/secure">Verificar canales oficiales</a> · <a href="/faq/">Preguntas frecuentes</a> · <a href="/condiciones/">Condiciones</a> · <a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:contact@hardtocrack.com">Contacto</a></nav></footer>
+
+<script src="/blog/preview.js"></script>
+</body>
+</html>

@@ -2,8 +2,15 @@
   "use strict";
   const $ = id => document.getElementById(id);
   const form = $("orderForm");
-  const rawRef = new URLSearchParams(location.search).get("ref") || "";
-  const reference = HTCDirect.normalize(rawRef) || HTCDirect.defaultCode;
+  const params = new URLSearchParams(location.search);
+  const rawRef = params.get("ref") || "";
+  const inbound = HTCDirect.normalize(rawRef);
+  const stored = HTCDirect.storedPartner();
+  if (stored && (!inbound || HTCDirect.get(inbound))) {
+    location.replace(HTCDirect.partnerCheckout(stored.code, params.get("pack")).href);
+    return;
+  }
+  const reference = inbound || HTCDirect.defaultCode;
   const validReference = Boolean(HTCDirect.get(reference));
   if (!validReference) {
     form.hidden = true;
@@ -12,16 +19,16 @@
     $("referenceWarningCopy").textContent = "Esta página tramita solicitudes directas. Si llegaste desde una tienda, continúa en la guía para conservar su referencia. Si el enlace contiene un error, puedes iniciar una solicitud directa con el botón correspondiente.";
     const guide = new URL("/guia/", location.origin);
     guide.searchParams.set("ref", rawRef);
+    if (["Essential", "Privacy", "Elite"].includes(params.get("pack"))) guide.searchParams.set("pack", params.get("pack"));
     $("partnerGuideLink").href = guide.href;
     return;
   }
   $("directRef").value = reference;
   $("referenceLabel").textContent = reference;
   HTCDirect.propagate(reference);
-  const params = new URLSearchParams(location.search);
   if (["Essential", "Privacy", "Elite", "Consultar"].includes(params.get("pack"))) $("orderPack").value = params.get("pack");
   if (params.get("modelo")) $("orderModel").value = params.get("modelo").slice(0,100);
-  if (Date.now() >= Date.parse("2026-11-01T00:00:00+01:00")) $("onlineOffer").hidden = true;
+  if (Date.now() >= Date.parse("2026-12-01T00:00:00+01:00")) $("onlineOffer").hidden = true;
   let prepared = null;
   function readValue(data, key) { return String(data.get(key) || "").trim(); }
   function choices(data, key) { return data.getAll(key).join(", ") || "Sin preferencias indicadas"; }

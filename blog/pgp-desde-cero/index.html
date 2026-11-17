@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PGP desde cero: qué es, cómo crear tus claves, cifrar archivos y fi…</title>
+<meta name="description" content="PGP desde cero: OpenPGP, GnuPG, Gpg4win, Tails, OpenKeychain en Android y GrapheneOS, e iOS. Cómo cifrar y firmar sin publicar tu clave privada.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1018">
+<link rel="canonical" href="https://hardtocrack.com/blog/pgp-desde-cero">
+<meta property="og:title" content="PGP desde cero: qué es, cómo crear tus claves, cifrar archivos y fi…">
+<meta property="og:description" content="PGP desde cero: OpenPGP, GnuPG, Gpg4win, Tails, OpenKeychain en Android y GrapheneOS, e iOS. Cómo cifrar y firmar sin publicar tu clave privada.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://hardtocrack.com/blog/pgp-desde-cero">
+<link rel="stylesheet" href="/blog/academia.css">
+<meta property="og:type" content="article"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"PGP desde cero: qué es, cómo crear tus claves, cifrar archivos y firmar mensajes","description":"PGP desde cero: OpenPGP, GnuPG, Gpg4win, Tails, OpenKeychain en Android y GrapheneOS, e iOS. Cómo cifrar y firmar sin publicar tu clave privada.","inLanguage":"es","mainEntityOfPage":"https://hardtocrack.com/blog/pgp-desde-cero","author":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/"},"publisher":{"@type":"Organization","name":"HardToCrack","url":"https://hardtocrack.com/","logo":{"@type":"ImageObject","url":"https://hardtocrack.com/guia/assets/logo-HT.png"}},"datePublished":"2026-10-22","dateModified":"2026-10-22"}</script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <div class="nav">
+    <a class="brand" href="/blog">
+      <img src="/blog/assets/logo-HT.png" width="39" height="44" alt="">
+      <span class="wordmark-inline">hardtocrack</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menú</button>
+    <nav id="nav-links" class="nav-links" aria-label="Secciones">
+      <a href="/blog">Academia</a>
+      <a href="https://hardtocrack.com/">Inicio</a>
+      <a href="https://hardtocrack.com/guia/">Guía</a>
+      <a href="https://hardtocrack.com/secure">Clave pública</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido" class="wrap">
+
+  
+  <header class="article-head">
+    <p class="eyebrow">Serie · Artículos ya publicados</p>
+    <h1>PGP desde cero: qué es, cómo crear tus claves, cifrar archivos y firmar mensajes</h1>
+    <p class="lede">PGP desde cero: OpenPGP, GnuPG, Gpg4win, Tails, OpenKeychain en Android y GrapheneOS, e iOS. Cómo cifrar y firmar sin publicar tu clave privada.</p>
+    <p class="chips"><a href="/blog?categoria=comunicaciones-seguras">Comunicaciones seguras</a><a href="/blog?tags=openpgp">OpenPGP</a><a href="/blog?tags=firmas-digitales">Firmas digitales</a><a href="/blog?tags=air-gap">Aislamiento de red</a><a href="/blog?tags=modelo-de-amenazas">Modelo de amenazas</a></p>
+    <p class="dates"><time datetime="2026-10-22">Publicado 2026-10-22</time><time datetime="2026-10-28">Revisión 2026-10-28</time><time datetime="2026-10-22">Actualizado 2026-10-22</time></p>
+  </header>
+  <div class="layout">
+    <nav class="toc" aria-label="Índice de contenidos"><p class="toc-label">Índice</p><ol><li><a href="#fundamentos">Fundamentos</a></li><li><a href="#generacion-de-claves">Generación de claves</a></li><li><a href="#proteccion-de-la-clave-privada">Protección de la clave privada</a></li><li><a href="#importacion-de-claves">Importación de claves</a></li><li><a href="#cifrado">Cifrado</a></li><li><a href="#descifrado">Descifrado</a></li><li><a href="#firma-digital-de-mensajes">Firma digital de mensajes</a></li><li><a href="#casos-de-uso-y-limites">Casos de uso y límites</a></li><li><a href="#pgp-en-android-y-grapheneos">PGP en Android y GrapheneOS</a></li><li><a href="#pgp-en-ios-e-ipados">PGP en iOS e iPadOS</a></li><li><a href="#fuentes">Fuentes</a></li><li><a href="#relacionados">Artículos relacionados</a></li></ol></nav>
+    <div class="prose">
+      <p>Esta guía enseña a usar OpenPGP en tu equipo. La comprobación específica de la clave de HardToCrack está en <a href="/blog/verificar-clave-pgp-hardtocrack">Cómo verificar la clave PGP de HardToCrack</a>. No envíes tu clave privada a HardToCrack ni a nadie.</p>
+<h2 id="fundamentos">Fundamentos</h2>
+<p><strong>OpenPGP</strong> es el formato abierto (RFC) para cifrado y firma. <strong>PGP</strong> fue el nombre original del programa; hoy se usa de forma genérica. <strong>GnuPG</strong> (GPG) es la implementación libre más habitual en escritorio.</p>
+<p>Analogía del candado: la <strong>clave pública</strong> es un candado que puedes regalar. Quien lo cierra (cifra) solo lo abre quien tiene la <strong>llave privada</strong>. Firmar es al revés: sellas con la privada y cualquiera con la pública comprueba que el sello encaja y que el texto no cambió.</p>
+<ul><li><strong>Confidencialidad:</strong> cifrado. Quien no tiene la privada destinataria no lee el contenido.</li></ul>
+<ul><li><strong>Integridad:</strong> una firma válida indica que el archivo no se alteró respecto a lo firmado.</li></ul>
+<ul><li><strong>Autenticidad criptográfica:</strong> esa clave produjo esa firma. No es un DNI.</li></ul>
+<ul><li><strong>Fingerprint:</strong> huella de 40 caracteres para comparar claves. La confianza la pones tú, con canales independientes.</li></ul>
+<p>OpenPGP no te hace anónimo. El correo, el tamaño del archivo y las IPs siguen siendo metadatos. Un teléfono comprometido firma y descifra en tu nombre.</p>
+<h2 id="generacion-de-claves">Generación de claves</h2>
+<p>En <strong>Windows</strong>, instala <a href="https://www.gpg4win.org/" rel="noreferrer">Gpg4win</a> (incluye GnuPG y Kleopatra). En <strong>Linux</strong> suele bastar el paquete <code>gnupg</code> de tu distribución. En <strong>Tails</strong>, GnuPG ya está disponible; si usas persistencia, trata el anillo de claves como material sensible y no lo copies a un USB sin cifrar.</p>
+<pre><code>gpg --full-generate-key</code></pre>
+<p>Elige un algoritmo que tu conjunto de dispositivos acepte. RSA 4096 y las curvas <strong>ed25519</strong> (certificar/firmar) más <strong>cv25519</strong> (cifrado) son combinaciones habituales; Kleopatra y GnuPG no siempre ofrecen el mismo valor por defecto. Si solo generas una clave de firma, no podrás descifrar mensajes cifrados hacia ti. Pon caducidad (por ejemplo dos años) y una frase de paso que no reutilices.</p>
+<p>OpenKeychain e iPGMail tienen asistentes propios. Prueba un cifrado inocuo entre tus dispositivos antes de usarlo para material serio. No uses generadores PGP en la web.</p>
+<h2 id="proteccion-de-la-clave-privada">Protección de la clave privada</h2>
+<ul><li>Frase de paso larga y única.</li></ul>
+<ul><li>Disco cifrado; no sincronices <code>~/.gnupg</code> ni el anillo de Android/iOS en la nube.</li></ul>
+<ul><li>Copia de seguridad cifrada fuera de línea y certificado de revocación nada más crear el par.</li></ul>
+<ul><li>Separa perfiles o dispositivos si manejas material de alto impacto.</li></ul>
+<ul><li>Rota o deja caducar claves; anuncia la huella nueva por un canal ya conocido.</li></ul>
+<ul><li>Un malware en el equipo equivalente a entregar la privada.</li></ul>
+<blockquote><p>Nunca publiques, pegues ni envíes la clave privada, ni a HardToCrack.</p></blockquote>
+<h2 id="importacion-de-claves">Importación de claves</h2>
+<p>Ejemplo: la pública de HardToCrack, descargada desde <a href="https://hardtocrack.com/pgp-hardtocrack.asc" rel="noreferrer">pgp-hardtocrack.asc</a>:</p>
+<pre><code>gpg --show-keys --with-fingerprint pgp-hardtocrack.asc
+gpg --import pgp-hardtocrack.asc</code></pre>
+<p>La huella debe ser <code>DA06 4555 FA94 A360 66F7 12E1 6780 B0FA 5308 110E</code> y el UID <code>HardToCrack ES </code>, igual que en <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a>. Si una copia del keyserver no trae UID, GnuPG puede omitirla: usa entonces el <code>.asc</code> de esta web. Detalle: <a href="/blog/verificar-clave-pgp-hardtocrack">verificar la clave HTC</a>.</p>
+<h2 id="cifrado">Cifrado</h2>
+<pre><code>gpg --encrypt --armor --recipient DA064555FA94A36066F712E16780B0FA5308110E mensaje.txt</code></pre>
+<p>Obtienes <code>mensaje.txt.asc</code>. <strong>Si cifras solo para la pública de HTC, tú no podrás descifrar ese archivo</strong>: hace falta la privada de HardToCrack, que no está publicada. Para conservar una copia legible, añade también tu propia pública como destinataria (<code>--recipient</code> repetido) o guarda el original en claro en un sitio que controles.</p>
+<h2 id="descifrado">Descifrado</h2>
+<p>Ejercicio con un par de prueba tuyo, no con secretos reales ni con la privada de HTC:</p>
+<pre><code>gpg --full-generate-key
+gpg --encrypt --armor --recipient TU_ID_DE_PRUEBA prueba.txt
+gpg --decrypt prueba.txt.asc</code></pre>
+<p>GnuPG pedirá la frase de paso de tu privada. Lo cifrado hacia HTC solo lo abre HTC.</p>
+<h2 id="firma-digital-de-mensajes">Firma digital de mensajes</h2>
+<ul><li><strong>Texto claro</strong> (<code>--clearsign</code>): el mensaje se lee y debajo va el bloque de firma. Típico en correo.</li></ul>
+<ul><li><strong>Firma separada</strong> (<code>--detach-sign</code>): el archivo original intacto más un <code>.asc</code> de firma.</li></ul>
+<ul><li><strong>Archivo firmado</strong> (<code>--sign</code>): empaqueta contenido y firma; puede no ser texto legible.</li></ul>
+<pre><code>gpg --clearsign mensaje.txt
+gpg --armor --detach-sign documento.pdf
+gpg --verify mensaje.txt.asc
+gpg --verify documento.pdf.asc documento.pdf</code></pre>
+<p>«Good signature» significa: esa clave firmó ese contenido. No autentica a una empresa por sí sola.</p>
+<h2 id="casos-de-uso-y-limites">Casos de uso y límites</h2>
+<ul><li>Correo o archivos confidenciales hacia alguien cuya pública ya contrastaste.</li></ul>
+<ul><li>Comprobar que un comunicado o un binario no se alteró.</li></ul>
+<ul><li>Firmar un texto que vas a publicar.</li></ul>
+<p>No cubre metadatos, no sustituye GrapheneOS, no evita phishing si verificas mal la clave, y no es una instrucción de pago. Las wallets oficiales están en <a href="https://hardtocrack.com/secure" rel="noreferrer">/secure</a> y publicarlas no pide una transferencia.</p>
+<h2 id="pgp-en-android-y-grapheneos">PGP en Android y GrapheneOS</h2>
+<p>Recomendación: <strong>OpenKeychain</strong> (<code>org.sufficientlysecure.keychain</code>). <strong>No viene instalada de serie en GrapheneOS.</strong> GrapheneOS ejecuta aplicaciones Android compatibles; instala y comprueba tú la versión y los permisos.</p>
+<ul><li><a href="https://f-droid.org/packages/org.sufficientlysecure.keychain/" rel="noreferrer">F-Droid</a></li></ul>
+<ul><li><a href="https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain" rel="noreferrer">Google Play</a> (en GrapheneOS solo si usas un perfil con Play; no es obligatorio)</li></ul>
+<ul><li><a href="https://www.auroraoss.com/aurora-store" rel="noreferrer">Aurora Store</a>: busca exactamente <code>org.sufficientlysecure.keychain</code></li></ul>
+<ul><li>Web: <a href="https://www.openkeychain.org/" rel="noreferrer">openkeychain.org</a> · código: <a href="https://github.com/open-keychain/open-keychain" rel="noreferrer">GitHub</a></li></ul>
+<p>El proyecto está en mantenimiento limitado. No descargues APK de foros ni Telegram. En GrapheneOS, instálala en el perfil donde vas a cifrar o leer, no copies la privada a todos los usuarios.</p>
+<p>En esta redacción no se ha ejecutado OpenKeychain sobre un Pixel; el flujo (importar <code>.asc</code>, leer fingerprint, cifrar hacia HTC) es el declarado por la aplicación.</p>
+<h2 id="pgp-en-ios-e-ipados">PGP en iOS e iPadOS</h2>
+<p>OpenKeychain no tiene app oficial para iPhone o iPad. No instales un IPA no firmado que pretenda serlo.</p>
+<p><a href="https://apps.apple.com/es/app/ipgmail/id430780873" rel="noreferrer">iPGMail</a> es una alternativa en App Store que declara cifrado y firma OpenPGP. <a href="https://apps.apple.com/es/app/pgp-everywhere/id1011677987" rel="noreferrer">PGP Everywhere</a> es otra ficha adicional. Aquí se citan como funciones <strong>declaradas</strong>, no como compatibilidad ensayada con la clave de HTC en un dispositivo Apple. Prueba antes con un texto inocuo y tu propia pública.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">Windows</th><th scope="col">Linux / Tails</th><th scope="col">Android / GrapheneOS</th><th scope="col">iOS / iPadOS</th></tr></thead><tbody><tr><td>Herramienta</td><td><a href="https://www.gpg4win.org/" rel="noreferrer">Gpg4win</a> / Kleopatra</td><td>GnuPG; persistencia de Tails con cautela</td><td>OpenKeychain</td><td>iPGMail; PGP Everywhere extra</td></tr><tr><td>Base de la ficha</td><td>Documentada; GnuPG ensayado en este lote</td><td>Documentada; GnuPG ensayado en Linux de escritorio</td><td>Función declarada; no ensayada en Pixel</td><td>Función declarada; no ensayada en dispositivo Apple</td></tr></tbody></table></div>
+      <section aria-labelledby="fuentes">
+        <h2 id="fuentes">Fuentes</h2>
+        <ol><li><a href="https://hardtocrack.com/blog/pgp-desde-cero" rel="noreferrer">HardToCrack Blog (producción)</a>, consulta 2026-10-28</li><li><a href="https://www.rfc-editor.org/rfc/rfc9580" rel="noreferrer">RFC 9580 OpenPGP</a>, consulta 2026-10-28</li></ol>
+      </section>
+      <section aria-labelledby="relacionados">
+        <h2 id="relacionados">Artículos relacionados</h2>
+        <ul><li><a href="/blog/verificar-clave-pgp-hardtocrack">Cómo verificar y validar la clave PGP de HardToCrack</a></li></ul>
+      </section>
+    </div>
+  </div>
+
+</main>
+<footer class="wrap"><p>© 2026 hardtocrack</p><nav class="htc-legal-links" aria-label="HardToCrack"><a href="https://partners.hardtocrack.com/">Partners</a> · <a href="/founder/">Founder</a> · <a href="/secure">Verificar canales oficiales</a> · <a href="/faq/">Preguntas frecuentes</a> · <a href="/condiciones/">Condiciones</a> · <a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:contact@hardtocrack.com">Contacto</a></nav></footer>
+
+<script src="/blog/preview.js"></script>
+</body>
+</html>
