@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05080d">
+  <meta name="description" content="Cómo comprobar un dispositivo HardToCrack: pantalla de arranque amarilla, hash de verified boot publicado por GrapheneOS y la app Auditor desde un segundo teléfono.">
+  <link rel="canonical" href="https://hardtocrack.com/verificacion/">
+  <link rel="stylesheet" href="/assets/css/brand-lockup.css">
+  <title>Verificación del dispositivo · HardToCrack</title>
+  <style>
+    :root{color-scheme:dark;--bg:#05080d;--panel:#0c1722;--line:rgba(255,255,255,.12);--text:#f4f8fb;--muted:#b5c4cf;--cyan:#23b8ff;--green:#20e38c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,rgba(35,184,255,.13),transparent 35rem),var(--bg);color:var(--text);font:16px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--cyan)}a:hover{color:var(--green)}.wrap{width:min(100% - 36px,1050px);margin:auto}
+    header{border-bottom:1px solid var(--line);background:#071019}header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);font-size:1.25rem;font-weight:850;letter-spacing:-.04em}.brand img{width:39px;height:44px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(35,184,255,.22))}.brand-text{color:var(--text)}.brand-text span{color:var(--green)}nav{display:flex;gap:22px;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-size:.9rem}
+    main{padding:70px 0 90px}.eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.08;letter-spacing:-.04em;margin:12px 0 20px}h2{font-size:1.35rem;margin:0 0 13px}p{margin:0 0 15px}.intro{max-width:760px;color:var(--muted);font-size:1.08rem}
+    .notice{margin:36px 0;padding:22px 26px;background:linear-gradient(120deg,rgba(35,184,255,.09),rgba(32,227,140,.08));border:1px solid rgba(35,184,255,.25);border-radius:18px}.notice strong{color:var(--text)}.grid{display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:start}.toc{position:sticky;top:22px;padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.toc strong{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}.toc a{display:block;padding:5px 0;color:var(--muted);font-size:.87rem;text-decoration:none}
+    section{padding:25px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}section:first-child{padding-top:0}section:last-child{border:0}section p,section li{color:var(--muted)}ul,ol{padding-left:21px;margin:0 0 15px}li{margin:6px 0}section strong{color:var(--text)}
+    .shot{margin:8px 0 18px}.shot-placeholder{min-height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 22px;text-align:center;border:2px dashed rgba(35,184,255,.7);border-radius:18px;background:repeating-linear-gradient(-45deg,rgba(35,184,255,.07),rgba(35,184,255,.07) 12px,rgba(255,255,255,.02) 12px,rgba(255,255,255,.02) 24px)}.shot-placeholder span{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800}.shot-placeholder strong{color:var(--text);font-size:1.15rem}.shot-placeholder p{max-width:460px;margin:0;color:var(--muted);font-size:.92rem}
+    footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.toc{position:static}main{padding-top:48px}nav{gap:12px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="brand htc-lockup" href="/" aria-label="HardToCrack, inicio"><img src="/assets/img/logo-HT.png" alt=""><span class="brand-word">HARDTO<span>CRACK</span></span></a><nav aria-label="Navegación"><a href="/">Inicio</a><a href="/guia/">Guía</a><a href="/privacidad/">Privacidad</a><a href="mailto:contact@hardtocrack.com">Contacto</a></nav></div></header>
+  <main class="wrap">
+    <div class="eyebrow">Comprobación del dispositivo</div>
+    <h1>Verificación del dispositivo.</h1>
+    <p class="intro">Tres comprobaciones para contrastar, usted mismo, que el teléfono arranca una instalación oficial de GrapheneOS con el bootloader bloqueado. La referencia del hash es la página del proyecto GrapheneOS, no una copia en esta web.</p>
+    <div class="notice"><strong>Resumen:</strong> el aviso de arranque esperado es amarillo; el hash de esa pantalla tiene que coincidir con el que GrapheneOS publica para su modelo; y el resultado de Auditor se lee en un segundo teléfono. Eso describe el estado del sistema en el momento de la comprobación. No demuestra anonimato ni revisa sus aplicaciones. HardToCrack no está afiliada ni respaldada por GrapheneOS ni por Google.</div>
+    <div class="grid">
+      <aside class="toc" aria-label="Contenido">
+        <strong>En esta página</strong>
+        <a href="#antes">Antes de empezar</a>
+        <a href="#amarilla">1. Pantalla amarilla</a>
+        <a href="#hash">2. Hash de la clave</a>
+        <a href="#auditor">3. App Auditor</a>
+        <a href="#demuestra">Qué demuestra</a>
+        <a href="#no-demuestra">Qué no demuestra</a>
+        <a href="#no-coincide">Si no coincide</a>
+      </aside>
+      <div>
+        <section id="antes">
+          <h2>Antes de empezar</h2>
+          <p>Haga la comprobación con el dispositivo que ha recibido, antes de iniciar sesión en cuentas o de introducir datos que quiera mantener en privado. Necesita además un segundo teléfono Android que ya controle, con cámara y Android 13 o posterior: es el teléfono que lee el resultado de Auditor.</p>
+          <p>Los pasos siguen la documentación pública de GrapheneOS. Si esa documentación cambia, manda la página del proyecto. Esta guía no publica el hash: copiarlo aquí podría quedar desactualizado.</p>
+        </section>
+
+        <section id="amarilla">
+          <h2>1. Pantalla de arranque amarilla</h2>
+          <p>Apague el teléfono y enciéndalo. Antes de cargar el sistema, el dispositivo muestra un aviso de arranque. En GrapheneOS ese aviso es <strong>amarillo</strong>. GrapheneOS lo documenta así: al cargar un sistema distinto del de fábrica, el dispositivo muestra un aviso amarillo con el identificador del sistema, calculado a partir del hash SHA-256 de la clave pública de verified boot.</p>
+          <p>El amarillo no es un fallo. Indica un bootloader bloqueado y una clave distinta de la que trae el fabricante. El aviso <strong>naranja</strong> corresponde a un bootloader desbloqueado. El aviso <strong>rojo</strong> corresponde a un fallo de verificación. Ninguno de esos dos es el estado esperado.</p>
+          <p>El color amarillo, por sí solo, no identifica a GrapheneOS. Cualquier sistema alternativo con el bootloader bloqueado puede mostrarlo. Por eso el paso siguiente compara la clave.</p>
+          <figure class="shot">
+            <div class="shot-placeholder">
+              <span>Captura pendiente</span>
+              <strong>Pantalla de arranque amarilla</strong>
+              <p>Espacio reservado para una captura real del aviso amarillo, con el hash a la vista. Este recuadro no es una imagen del dispositivo.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section id="hash">
+          <h2>2. Hash de la clave de verified boot</h2>
+          <p>En el aviso amarillo aparece el identificador de la clave. Compárelo, carácter a carácter, con el hash que GrapheneOS publica para <strong>su modelo exacto</strong> en <a href="https://grapheneos.org/install/web#verified-boot-key-hash" rel="noopener">grapheneos.org/install/web#verified-boot-key-hash</a>.</p>
+          <ul>
+            <li>Use esa página como única referencia. No use un hash copiado de un mensaje, de un anuncio o de esta web.</li>
+            <li>En los Pixel 6 y posteriores la pantalla muestra el hash completo. En los Pixel 4 y 5 solo muestra los primeros 32 bits, y GrapheneOS indica que ese recorte no sirve para esta comparación.</li>
+            <li>Mayúsculas y minúsculas no cambian el valor hexadecimal. Puede ignorar espacios o saltos de línea; no ignore ningún dígito.</li>
+            <li>Tiene que coincidir la línea de su modelo. Un hash de otro modelo, aunque sea de GrapheneOS, no vale.</li>
+          </ul>
+          <p>GrapheneOS indica que esta comprobación manual no hace falta para que verified boot funcione: la clave queda en el elemento seguro y solo puede cambiarse con el bootloader desbloqueado. La comparación sirve para que usted pueda verlo.</p>
+          <figure class="shot">
+            <div class="shot-placeholder">
+              <span>Captura pendiente</span>
+              <strong>Hash de la pantalla y hash publicado</strong>
+              <p>Espacio reservado para una captura que muestre el hash del aviso junto a la línea del mismo modelo en la página de GrapheneOS. Este recuadro no es una imagen.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section id="auditor">
+          <h2>3. App Auditor desde un segundo teléfono</h2>
+          <p>Auditor, la aplicación de GrapheneOS, usa la atestación por hardware para comprobar que el hardware, el firmware y el sistema son genuinos. El resultado no se lee en el teléfono que está siendo comprobado. Hace falta el segundo teléfono. La guía oficial está en <a href="https://attestation.app/tutorial" rel="noopener">attestation.app/tutorial</a> y el encaje con verified boot, en <a href="https://grapheneos.org/install/web#hardware-based-attestation" rel="noopener">la sección de atestación de GrapheneOS</a>.</p>
+          <p>En GrapheneOS, Auditor forma parte del sistema. En el segundo teléfono, instale Auditor siguiendo ese tutorial. Si ese teléfono no usa GrapheneOS, la edición de Play Store usa otro identificador de aplicación; el tutorial lo distingue.</p>
+          <ol>
+            <li>En el segundo teléfono, abra Auditor y pulse <strong>Auditor</strong>. Ese teléfono es el que comprueba.</li>
+            <li>En el dispositivo que quiere verificar, abra Auditor y pulse <strong>Auditee</strong>.</li>
+            <li>Con la cámara del dispositivo a verificar, lea el código QR del segundo teléfono. Es el reto.</li>
+            <li>En el segundo teléfono, toque el QR para avanzar. Si lo hace demasiado pronto, puede volver atrás.</li>
+            <li>Con la cámara del segundo teléfono, lea el QR que muestra entonces el dispositivo a verificar.</li>
+            <li>Lea el resultado en el segundo teléfono. Una comprobación correcta muestra la atestación y una huella del emparejamiento, con la hora de la primera o de la última verificación.</li>
+          </ol>
+          <p>La primera comprobación crea el emparejamiento. Las siguientes comparan con las claves que Auditor fijó entonces. Puede repetirla después de una actualización o si el aviso de arranque cambia.</p>
+          <figure class="shot">
+            <div class="shot-placeholder">
+              <span>Captura pendiente</span>
+              <strong>Resultado de Auditor en el segundo teléfono</strong>
+              <p>Espacio reservado para una captura del resultado en el teléfono que comprueba, no en el teléfono comprobado. Este recuadro no es una imagen.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section id="demuestra">
+          <h2>Qué demuestra</h2>
+          <ul>
+            <li>El aviso amarillo, con el hash igual al publicado por GrapheneOS para ese modelo, muestra un bootloader bloqueado y un sistema firmado con la clave de verified boot que el proyecto publica.</li>
+            <li>Auditor, leído desde el segundo teléfono, añade la atestación por hardware: el resultado no depende de lo que muestre en pantalla el teléfono que se está comprobando.</li>
+            <li>Juntas, las tres comprobaciones permiten contrastar que, en ese momento, el dispositivo arranca GrapheneOS oficial para ese modelo.</li>
+          </ul>
+        </section>
+
+        <section id="no-demuestra">
+          <h2>Qué no demuestra</h2>
+          <ul>
+            <li>El aviso amarillo sin comparar el hash solo indica un sistema distinto del de fábrica con el bootloader bloqueado. No demuestra que sea GrapheneOS.</li>
+            <li>No demuestra anonimato, seguridad absoluta ni protección frente a cualquier amenaza.</li>
+            <li>No revisa aplicaciones, perfiles, cuentas, VPN ni el resto de la preparación. No sustituye las <a href="/condiciones/">condiciones de compra</a>, la garantía ni el desistimiento.</li>
+            <li>No queda hecha para siempre. Describe el estado en el momento de la comprobación.</li>
+            <li>GrapheneOS documenta un límite de la primera verificación con Auditor: se apoya en una raíz de atestación de Android, y una clave de atestación filtrada, o desviar la comprobación a otro dispositivo con el modelo, la versión y el parche que usted espera, podría superarla. Después del emparejamiento, Auditor fija las claves de hardware. Use un segundo teléfono en el que ya confíe.</li>
+            <li>No identifica por sí sola qué ocurrió con el dispositivo antes de que usted lo recibiera, más allá del estado que puede comprobar ahora.</li>
+          </ul>
+        </section>
+
+        <section id="no-coincide">
+          <h2>Si no coincide</h2>
+          <p>No inicie sesión en cuentas ni introduzca datos personales. Escriba a <a href="mailto:contact@hardtocrack.com">contact@hardtocrack.com</a> e indique el modelo, el color del aviso, si el hash coincidió con la línea de su modelo y qué mostró Auditor en el segundo teléfono.</p>
+          <p>No envíe los códigos QR de Auditor. Si adjunta una foto del aviso amarillo, basta con que se lean el color y el hash.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><div class="wrap"><span>© 2026 HardToCrack · Verificación del dispositivo</span><nav class="htc-legal-links" aria-label="HardToCrack"><a href="https://partners.hardtocrack.com/">Partners</a> · <a href="/founder/">Founder</a> · <a href="/secure">Verificar canales oficiales</a> · <a href="/faq/">Preguntas frecuentes</a> · <a href="/condiciones/">Condiciones</a> · <a href="/verificacion/">Verificación</a> · <a href="/privacidad/">Privacidad</a> · <a href="/cookies/">Cookies</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="mailto:contact@hardtocrack.com">Contacto</a></nav></div></footer>
+</body>
+</html>
