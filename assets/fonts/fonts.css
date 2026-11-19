@@ -1,0 +1,9 @@
+/* Tipografías servidas desde hardtocrack.com (sin peticiones a terceros).
+   Origen: paquetes @fontsource 5.3.0, licencia SIL Open Font License 1.1. */
+@font-face{font-family:'Big Shoulders Stencil Display';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/big-shoulders-stencil-display-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Big Shoulders Stencil Display';font-style:normal;font-weight:900;font-display:swap;src:url(/assets/fonts/big-shoulders-stencil-display-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/vt323-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Archivo Narrow';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/archivo-narrow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Archivo Narrow';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/archivo-narrow-latin-700-normal.woff2) format('woff2')}
