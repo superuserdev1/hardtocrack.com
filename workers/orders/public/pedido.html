@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Pedido preview · HardToCrack</title>
+  <style>
+    body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#05080d;color:#f4f8fb}
+    main{max-width:640px;margin:0 auto;padding:32px 20px 64px}
+    h1{font-size:1.6rem;margin:0 0 8px}p{color:#9eacbb}
+    label{display:block;margin:14px 0 6px;font-size:.85rem;color:#dce9f7}
+    input,select,textarea{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #426b76;background:#0c1722;color:#fff;font:inherit}
+    button{margin-top:18px;padding:12px 18px;border:0;border-radius:999px;background:#23b8ff;color:#041018;font-weight:700;cursor:pointer}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    #status{min-height:1.4em;color:#20e38c}#captcha{margin-top:14px}
+    .note{font-size:.85rem;color:#9eacbb;border:1px solid #426b76;border-radius:12px;padding:12px 14px;margin:18px 0}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pedido (preview)</h1>
+    <p>Formulario de prueba del Worker Preview. Envía a <code>/api/orders</code> de este mismo origen. No es producción.</p>
+    <div class="note">Solo para validar el envío automático en el entorno preview (D1 <code>htc-orders-preview</code>).</div>
+    <form id="orderForm">
+      <label>Nombre o alias<input name="nombre" id="nombre" required maxlength="100" value="E2E Preview Tester"></label>
+      <label>Correo<input type="email" name="email" id="email" required maxlength="180" value="e2e-preview@hardtocrack.com"></label>
+      <label>Modelo<input name="modelo" id="modelo" required maxlength="100" value="Google Pixel 10a"></label>
+      <label>Pack
+        <select name="pack" id="pack" required>
+          <option value="Essential" selected>Essential</option>
+          <option value="Privacy">Privacy</option>
+          <option value="Elite">Elite</option>
+        </select>
+      </label>
+      <label>Tipo<input name="tipo" id="tipo" required maxlength="120" value="Asesoramiento antes de elegir"></label>
+      <label>Entrega<input name="entrega" id="entrega" maxlength="120" value="Consultar opciones de entrega"></label>
+      <label>Localidad<input name="localidad" id="localidad" maxlength="120" value="Madrid (preview E2E)"></label>
+      <label>Comentarios<textarea name="comentarios" id="comentarios" maxlength="1000" rows="3">Prueba E2E automática en Worker Preview. No es un pedido real.</textarea></label>
+      <label><input type="checkbox" name="privacidad" id="privacidad" required checked> He leído la información de privacidad (prueba).</label>
+      <div id="captcha"></div>
+      <button type="submit" id="send">Enviar solicitud automática</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script>
+  (function () {
+    const API = '/api/orders';
+    const form = document.getElementById('orderForm');
+    const status = document.getElementById('status');
+    const send = document.getElementById('send');
+    const captcha = document.getElementById('captcha');
+    let config = null, widget = null, requestKey = crypto.randomUUID(), sending = false;
+    function loadTurnstile() {
+      if (window.turnstile) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = () => reject(new Error('No se pudo cargar Turnstile'));
+        document.head.append(s);
+      });
+    }
+    function payload() {
+      return {
+        source: 'direct',
+        reference: 'HTC-WEB-001',
+        customer_name: document.getElementById('nombre').value.trim(),
+        customer_email: document.getElementById('email').value.trim(),
+        contact: '',
+        model: document.getElementById('modelo').value.trim(),
+        pack: document.getElementById('pack').value,
+        type: document.getElementById('tipo').value.trim(),
+        delivery: document.getElementById('entrega').value.trim(),
+        privacy: document.getElementById('privacidad').checked,
+        details: {
+          estado: 'Consultar disponibilidad',
+          localidad: document.getElementById('localidad').value.trim(),
+          comentarios: document.getElementById('comentarios').value.trim(),
+          finanzas_canal: 'no_aplica'
+        }
+      };
+    }
+    fetch(API + '/config', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then(async (c) => {
+        config = c;
+        if (!c?.enabled) {
+          status.textContent = 'Envío automático no disponible en este preview (config.enabled=false).';
+          send.disabled = true;
+          return;
+        }
+        status.textContent = 'Envío automático disponible. Completa la verificación y envía.';
+        await loadTurnstile();
+        widget = turnstile.render(captcha, {
+          sitekey: config.site_key,
+          action: 'order',
+          size: 'compact',
+          callback: () => { send.disabled = false; },
+          'expired-callback': () => { send.disabled = true; },
+          'error-callback': () => { send.disabled = true; status.textContent = 'Falló Turnstile.'; }
+        });
+        send.disabled = true;
+      })
+      .catch((e) => { status.textContent = 'No se pudo leer /config: ' + e.message; send.disabled = true; });
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (sending || !config?.enabled || !form.reportValidity()) return;
+      const token = turnstile.getResponse(widget);
+      if (!token) { status.textContent = 'Completa Turnstile.'; return; }
+      sending = true; send.disabled = true; status.textContent = 'Registrando solicitud…';
+      try {
+        const response = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...payload(), request_key: requestKey, turnstile_token: token })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.registered) throw new Error(result.error || 'No registrado');
+        status.textContent = 'Registrada ' + result.id + '. email_status=' + (result.email_status || 'n/d') + (result.duplicate ? ' (duplicado)' : '');
+        send.hidden = true;
+      } catch (e) {
+        status.textContent = e.message;
+        try { turnstile.reset(widget); } catch (_) {}
+        send.disabled = false;
+      } finally {
+        sending = false;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
