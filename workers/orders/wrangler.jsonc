@@ -3,7 +3,7 @@
   "main": "worker.mjs",
   "compatibility_date": "2026-10-08",
   "workers_dev": true,
-  "preview_urls": false,
+  "preview_urls": true,
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
@@ -34,7 +34,7 @@
     "vars": {
       "HTC_EMAIL": "pedidos@hardtocrack.com",
       "MAIL_FROM": "pedidos@avisos.hardtocrack.com",
-      "ORDERS_ENABLED": "false",
+      "ORDERS_ENABLED": "true",
       "TURNSTILE_SITE_KEY": "0x4AAAAAAFRznBh2y2Lwr8Fo"
     },
     "d1_databases": [
