@@ -29,5 +29,20 @@
     "MAIL_FROM": "pedidos@avisos.hardtocrack.com",
     "ORDERS_ENABLED": "true",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAFRznBh2y2Lwr8Fo"
+  },
+  "previews": {
+    "vars": {
+      "HTC_EMAIL": "pedidos@hardtocrack.com",
+      "MAIL_FROM": "pedidos@avisos.hardtocrack.com",
+      "ORDERS_ENABLED": "false",
+      "TURNSTILE_SITE_KEY": "0x4AAAAAAFRznBh2y2Lwr8Fo"
+    },
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "htc-orders-preview",
+        "database_id": "13bc5d16-3db3-42cf-bfdc-47854f6aa196"
+      }
+    ]
   }
 }
